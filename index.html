@@ -42,7 +42,7 @@ var _hmt = _hmt || [];
   <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      <div class="overlay"></div>
+      <div class="overlay" style="background-color: #005a87;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -138,6 +138,72 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-solr全文检索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/11/solr全文检索/">Solr全文检索</a>
+    </h1>
+  
+
+        <a href="/2017/01/11/solr全文检索/" class="archive-article-date">
+  	<time datetime="2017-01-11T02:15:37.099Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。</p>
+</blockquote>
+<h5 id="一、Lucene和Solr"><a href="#一、Lucene和Solr" class="headerlink" title="一、Lucene和Solr"></a>一、Lucene和Solr</h5><p>一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，<a href="http://lucene.apache.org/" target="_blank">官网</a>上已经解释了很清楚：</p>
+<blockquote>
+<ul>
+<li>Lucene Core, our flagship sub-project, provides Java-based indexing and search technology, as well as spellchecking, hit highlighting and advanced analysis/tokenization capabilities.</li>
+<li>Solr<sup>TM</sup> is a high performance search server built using Lucene Core, with XML/HTTP and JSON/Python/Ruby APIs, hit highlighting, faceted search, caching, replication, and a web admin interface.</li>
+</ul>
+</blockquote>
+<p>说白了Lucene是个Java Library，而Solr是一个基于Lucene的全文搜索服务器。如果使用Lucene需要自行实现一堆东西，但更灵活；Solr作为企业级的搜索引擎系统，使用方便。商城这里用solr练手，实际的商城网站如京东或淘宝，当然，肯定是其他高大上的东西了。
+        
+          <a class="article-more-a" href="/2017/01/11/solr全文检索/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Solr/">Solr</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/11/solr全文检索/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-给博客换个主题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -312,11 +378,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">其他</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">博客</a>
+                <a href="javascript:void(0)">solr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Solr</a>
               </li>
             
             <div class="clearfix"></div>
