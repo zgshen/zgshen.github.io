@@ -235,9 +235,10 @@
         $.dialog.init();
         return this;
     };
-    $.alert = function(options) {
+    $.alert = function(options,title) {
     	settings = $.extend({}, $.fn.dialog.defaults, options);
-        $.dialog.init(options);
+    	_dialogType = 'alert';
+        $.dialog.init(options,title);
         return this;
     };
     $.confirm = function(options,state) {
@@ -265,6 +266,7 @@
     	if(_msg)settings.contentHtml = _msg;
     	if(_state)settings.infoState = _state;
     	/**扩展自定义属性**/
+    	if(_dialogType=='alert'){if(_state)settings.titleText=_state;}
     	if(_dialogType=='info'){
     		settings.type = _dialogType;
     		settings.infoState = _state;

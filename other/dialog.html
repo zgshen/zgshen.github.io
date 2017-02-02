@@ -58,10 +58,11 @@ button:hover { background-color: #f2f2f2; }
 <script type="text/javascript">
 
 $('#alert').click(function(){
-	$.alert('can shu8989')
+	$.alert('提示信息内容','测试标题')
 });
 $('#one').click(function(){
     $.dialog({
+		titleText : 'alert Title',
         contentHtml : '<p>我是自动关闭的对话框示例展示。</p> <p>我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。</p>'
     });
 });
