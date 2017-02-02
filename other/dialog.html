@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>dialog modify</title>
+<link href="../css/dialog.css" rel="stylesheet">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/dialog.js"></script>
+<style>
+button { padding: 0 15px; cursor: pointer; margin-right: 15px; background: #f6f7fb; border: 1px solid #c7ced2; border-radius: 2px; color: #191d24; display: inline-block; height: 40px; line-height: 40px; text-align: center; outline:none; font-family: "Microsoft Yahei"; }
+button:hover { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+
+<span>(原)：插件原来的写法		(简)：简化的调用方式</span><br><br>
+<span>原文档：<a href="http://sufangyu.github.io/project/dialog/" target="_blank">http://sufangyu.github.io/project/dialog/</a></span><br><br>
+
+
+<button id="one">alert提示(原)</button>&nbsp;&nbsp;<button id="alert">alert(简)</button>
+<br><br><br>
+
+<button id="two">确定/取消(原)</button>
+<button id="confirm">确定/取消(简)</button>
+<br><br><br>
+
+
+<button id="three">加载中(原)</button>
+<button id="load">加载中(简)</button>
+<br><br><br>
+
+
+<button id="sus">成功(原)</button>
+<button id="success">成功(简)</button>
+<br><br><br>
+
+<div id="">测试测试测试测试测试测试测试测试测试文字</div>
+
+<button id="fail">失败(原)</button>
+<button id="fail2">失败(简)</button>
+<br><br><br>
+
+
+<button id="ToSus">to加载成功(原)</button>
+<button id="Tosuccess">to加载成功(简)</button>
+<button id="ToFail">to失败(简)</button>
+<br><br><br>
+
+
+<button id="tip">tip(原)</button>
+<button id="tips">tip(简)</button>
+<br><br><br>
+
+<div id="">dialog plugin test end.</div><br><br>
+</body>
+
+<script type="text/javascript">
+
+$('#alert').click(function(){
+	$.alert('can shu8989')
+});
+$('#one').click(function(){
+    $.dialog({
+        contentHtml : '<p>我是自动关闭的对话框示例展示。</p> <p>我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。</p>'
+    });
+});
+
+/*******confirm********/
+$('#two').click(function(){
+    $.dialog({
+       type : 'confirm',
+       titleText : '自定义提示',
+       onClickOk : function(){
+    	   console.log('你点了确定~~');
+       },
+       onClickCancel : function(){
+    	   console.log('你点了取消~~');
+       },
+       contentHtml : 'test'
+    });
+});
+$('#confirm').click(function(){
+	$.confirm({
+       titleText : '自定义标题22',
+       contentHtml : '确定删除么?长文本测测二次侧侧侧测试测试测试测试活佛济公个的房价高读后感发达国家爱的很反感阿德法国红酒',
+       onClickOk : function(){
+           console.log('你点了确定~~');
+       },
+       onClickCancel : function(){
+    	   //console.log('你点了取消~~');
+    	   return false;
+       }
+    });
+});
+
+
+/***加载中***/
+$('#three').click(function(){
+    $.dialog({
+       type : 'info',
+       infoState: 'loading',
+       infoText : '加载中…',
+       autoClose : 1500
+    });
+});
+$('#load').click(function(){
+	$.info('加载中...','loading', 1500)
+});
+
+
+/***操作成功***/
+$('#sus').click(function(){
+    $.dialog({
+       type : 'info',
+       infoState: 'success',
+       infoText : '操作成功',
+       autoClose : 1000
+    });
+});
+$('#success').click(function(){
+	$.info('已完成','success',1000)
+});
+
+
+/***操作失败***/
+$('#fail').click(function(){
+    $.dialog({
+       type : 'info',
+       infoState: 'fail',
+       infoText : '操作失败',
+       autoClose : 1000
+    });
+});
+$('#fail2').click(function(){
+	$.info('操作失败','fail',1000)
+});
+
+
+/***等待到成功***/
+$('#ToSus').click(function(){
+    var infoDialog = $.dialog({
+        type : 'info',
+        infoText : '加载中…',
+        infoState: 'loading'	
+    });
+
+    window.setTimeout(function() {
+        infoDialog.dialog.update({
+	        autoClose : 1000,
+	        infoText : '操作成功',
+	        infoState : 'success'
+	        //infoIcon : 'images/icon/success.png'
+        });
+    }, 1500);
+});
+
+$('#Tosuccess').click(function(){
+	var infoDialog = $.info('加载中','loading')
+	window.setTimeout(function() {
+		infoDialog.info.update('加载成功', 'success', 1000);
+    }, 1500);
+});
+
+/***等待到失败***/
+$('#ToFail').click(function(){
+	var infoDialog = $.info('加载中','loading')
+	window.setTimeout(function() {
+		infoDialog.info.update('加载失败', 'fail', 1000);
+    }, 1500);
+});
+
+/***简单提示***/
+$('#tip').click(function(){
+    var infoDialog = $.dialog({
+        type : 'tips',
+        infoText : '正在提交中…',
+        autoClose : 1000
+    });
+});
+
+$('#tips').click(function(){
+	$.tips('标题不能为空 !',1000);
+});
+
+
+</script>
+</body>
+</html>
