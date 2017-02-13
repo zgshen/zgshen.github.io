@@ -75,7 +75,8 @@
                 break;
 
             case 'tips' :
-                var tipsContent = settings.contentHtml || (settings.infoIcon ? '<img class="info-icon" src="'+ settings.infoIcon +'" alt="'+ settings.infoText +'" />' : '') + '<span class="info-text">'+ settings.infoText +'</span>';
+                settings.infoText = (settings.contentHtml)==0 ? settings.infoText : settings.contentHtml; 
+                var tipsContent = '<span class="info-text">'+ settings.infoText +'</span>';
                 content.append(
                     contentBd = $('<div class="dialog-content-bd">'+ tipsContent +'</div>')
                 );
@@ -329,8 +330,10 @@
     };
     
     $.info.update = function(msg, state, time) {
-    	$(".infoDialog").removeClass("dialog-loading");
-    	$(".infoDialog").addClass("dialog-cs dialog-"+state+"");//success or fail
+		if(state!='tips'){
+			$(".infoDialog").removeClass("dialog-loading");
+			$(".infoDialog").addClass("dialog-cs dialog-"+state+"");//success or fail
+		}
     	$(".info-text").html(msg);
     	window.setTimeout(function(){
             $.dialog.close();
