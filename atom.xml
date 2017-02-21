@@ -1,178 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>啊深的博客</title>
+  <subtitle>这个人很懒，神马都没有写…</subtitle>
+  <link href="/atom.xml" rel="self"/>
   
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>Solr全文检索 | 啊深的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
-
-一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Solr全文检索">
-<meta property="og:url" content="http://javazgs.com/2017/01/11/solr全文检索/index.html">
-<meta property="og:site_name" content="啊深的博客">
-<meta property="og:description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
-
-一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
-<meta property="og:image" content="http://img.blog.csdn.net/20170111091018269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170111091433612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170111091519159?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170111091549666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170111093524121?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-01-11T02:30:05.984Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solr全文检索">
-<meta name="twitter:description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
-
-一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170111091018269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  <link href="http://javazgs.com/"/>
+  <updated>2017-02-21T15:01:26.101Z</updated>
+  <id>http://javazgs.com/</id>
   
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
-  
-
-  
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-</head>
-
-<body>
-  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
-    <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
-      <div class="overlay" style="background-color: #005a87;"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/assets/blogImg/head.jpg" class="js-avatar">
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Shen</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-    			
-            
-    			
-    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:676853385@qq.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
-    </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Shen</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/assets/blogImg/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Shen</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-		        
-		        	<li><a href="/archives/">所有文章</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="mail" target="_blank" href="mailto:676853385@qq.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div id="wrapper" class="body-wrap">
-        <div class="menu-l">
-          <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
-          </div>
-          <div id="js-content" class="content-ll">
-            <article id="post-solr全文检索" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+  <author>
+    <name>Shen</name>
     
-      <header class="article-header">
-        
+  </author>
   
-    <h1 class="article-title" itemprop="name">
-      Solr全文检索
-    </h1>
+  <generator uri="http://hexo.io/">Hexo</generator>
   
-
-        <a href="/2017/01/11/solr全文检索/" class="archive-article-date">
-  	<time datetime="2017-01-11T02:15:37.099Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
-      </header>
+  <entry>
+    <title>躲过了初一，逃过了十五</title>
+    <link href="http://javazgs.com/2017/02/14/0214%E5%B9%BF%E5%B7%9E/"/>
+    <id>http://javazgs.com/2017/02/14/0214广州/</id>
+    <published>2017-02-13T16:24:35.044Z</published>
+    <updated>2017-02-21T15:01:26.101Z</updated>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+    <content type="html"><![CDATA[<h1 id="本命年"><a href="#本命年" class="headerlink" title="本命年"></a>本命年</h1><p>暂且不用去想太多破事，认真过好今年</p>
+<p>E时光上的广州<br><img src="\assets\articleImg\fyetime.jpg" alt="方圆E时光上的广州"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;本命年&quot;&gt;&lt;a href=&quot;#本命年&quot; class=&quot;headerlink&quot; title=&quot;本命年&quot;&gt;&lt;/a&gt;本命年&lt;/h1&gt;&lt;p&gt;暂且不用去想太多破事，认真过好今年&lt;/p&gt;
+&lt;p&gt;E时光上的广州&lt;br&gt;&lt;img src=&quot;\assets\articleImg\f
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://javazgs.com/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>鸡年大吉</title>
+    <link href="http://javazgs.com/2017/01/27/%E9%99%A4%E5%A4%95/"/>
+    <id>http://javazgs.com/2017/01/27/除夕/</id>
+    <published>2017-01-27T07:22:50.789Z</published>
+    <updated>2017-01-27T14:34:36.807Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><p>除夕<br>辞旧迎新<br>新年快乐<br><img src="\assets\articleImg\chuxi.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2017&quot;&gt;&lt;a href=&quot;#2017&quot; class=&quot;headerlink&quot; title=&quot;2017&quot;&gt;&lt;/a&gt;2017&lt;/h1&gt;&lt;p&gt;除夕&lt;br&gt;辞旧迎新&lt;br&gt;新年快乐&lt;br&gt;&lt;img src=&quot;\assets\articleImg\chuxi.png&quot; 
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://javazgs.com/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Solr全文检索</title>
+    <link href="http://javazgs.com/2017/01/11/solr%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/"/>
+    <id>http://javazgs.com/2017/01/11/solr全文检索/</id>
+    <published>2017-01-11T02:15:37.099Z</published>
+    <updated>2017-01-11T02:30:05.984Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p> 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。</p>
 </blockquote>
 <h5 id="一、Lucene和Solr"><a href="#一、Lucene和Solr" class="headerlink" title="一、Lucene和Solr"></a>一、Lucene和Solr</h5><p>一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，<a href="http://lucene.apache.org/" target="_blank">官网</a>上已经解释了很清楚：</p>
@@ -234,311 +128,93 @@ var _hmt = _hmt || [];
 <li><p>业务照搬，或根据自己的需要修改。感觉事实上非要建个search工程实在是…封装个类足以。测试搜索如下<br><img src="http://img.blog.csdn.net/20170111093524121?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 </li>
 </ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Solr/">Solr</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2017/01/11/solr全文检索/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;一、Lucene和Solr&quot;&gt;&lt;a href=&quot;#一、Lucene和Solr&quot; class=&quot;headerlink&quot; title=&quot;一、Lucene和Solr&quot;&gt;&lt;/a&gt;一、Lucene和Solr&lt;/h5&gt;&lt;p&gt;一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，&lt;a href=&quot;http://lucene.apache.org/&quot; target=&quot;_blank&quot;&gt;官网&lt;/a&gt;上已经解释了很清楚：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Lucene Core, our flagship sub-project, provides Java-based indexing and search technology, as well as spellchecking, hit highlighting and advanced analysis/tokenization capabilities.&lt;/li&gt;
+&lt;li&gt;Solr&lt;sup&gt;TM&lt;/sup&gt; is a high performance search server built using Lucene Core, with XML/HTTP and JSON/Python/Ruby APIs, hit highlighting, faceted search, caching, replication, and a web admin interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;说白了Lucene是个Java Library，而Solr是一个基于Lucene的全文搜索服务器。如果使用Lucene需要自行实现一堆东西，但更灵活；Solr作为企业级的搜索引擎系统，使用方便。商城这里用solr练手，实际的商城网站如京东或淘宝，当然，肯定是其他高大上的东西了。
+    
+    </summary>
+    
+    
+      <category term="Solr" scheme="http://javazgs.com/tags/Solr/"/>
+    
+  </entry>
   
-<nav id="article-nav">
+  <entry>
+    <title>给博客换个主题</title>
+    <link href="http://javazgs.com/2016/12/29/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%8D%A2%E4%B8%AA%E4%B8%BB%E9%A2%98/"/>
+    <id>http://javazgs.com/2016/12/29/给博客换个主题/</id>
+    <published>2016-12-28T16:20:54.229Z</published>
+    <updated>2017-01-11T02:15:50.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>搭好了博客之后，想把博客换了个hexo主题，挑来挑去最后选了Litten的Yilia主题。事实好多主题都做得很棒，现在不管是网站和移动端的应用，都很注重页面展示和交互体验，由此前端的技术也是日新月异，作为一个后端，看得真是眼花缭乱。</p>
+<p>转眼间2016也即将过去了，这年毕业了，开始工作，真正地靠自己生活着，做了许多事情，也学会很多东西。整体上马马虎虎，但事实还有许多事情没有做好，找个时间再写个年终总结吧。</p>
+<ul>
+<li>加首歌试试</li>
+</ul>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=848867&auto=0&height=66"></iframe>
+
+<hr>
+<p>markdown真是好用啊。顺便加上多说评论。</p>
+<p><strong>以下测试</strong>    <a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	 System.out.println(<span class="string">"欢迎来到啊深的博客。"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>故人西辞黄鹤楼，烟花三月下扬州。孤帆远影碧空尽，惟见长江天际流。</p>
+</blockquote>
+<p>16/12/29</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;搭好了博客之后，想把博客换了个hexo主题，挑来挑去最后选了Litten的Yilia主题。事实好多主题都做得很棒，现在不管是网站和移动端的应用，都很注重页面展示和交互体验，由此前端的技术也是日新月异，作为一个后端，看得真是眼花缭乱。&lt;/p&gt;
+&lt;p&gt;转眼间2016也即将过去了，这年毕业了，开始工作，真正地靠自己生活着，做了许多事情，也学会很多东西。整体上马马虎虎，但事实还有许多事情没有做好，找个时间再写个年终总结吧。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加首歌试试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=848867&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+&lt;p&gt;markdown真是好用啊。顺便加上多说评论。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下测试&lt;/strong&gt;
+    
+    </summary>
+    
+    
+      <category term="博客" scheme="http://javazgs.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
   
-    <a href="/2017/01/27/除夕/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          鸡年大吉
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/12/29/给博客换个主题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">给博客换个主题</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017/01/11/solr全文检索/" data-title="Solr全文检索" data-url="http://javazgs.com/2017/01/11/solr全文检索/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"zdshen"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-
-          </div>
-        </div>
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 Shen
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		mathjax: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
-</script>
-
-<script src="/./main.js?v=4.0.0.js"></script>
-
+  <entry>
+    <title>欢迎来到我的博客</title>
+    <link href="http://javazgs.com/2016/12/20/hello-world/"/>
+    <id>http://javazgs.com/2016/12/20/hello-world/</id>
+    <published>2016-12-20T06:20:09.498Z</published>
+    <updated>2016-12-25T16:42:02.877Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，遂开始鼓捣个博客。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，遂开始鼓捣个博客。&lt;/p&gt;
 
     
-<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
-  <div class="tools-wrap">
+    </summary>
     
-    	<section class="tools-section tools-section-all" q-show="innerArchive">
-        <div class="search-wrap">
-          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
-          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
-        </div>
-        <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
-          <label class="search-switch">
-            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
-          </label>
-          <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Solr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">博客</a>
-              </li>
-            
-            <div class="clearfix"></div>
-          </ul>
-        </div>
-        <ul class="search-ul">
-          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
-            2、在根目录_config.yml里添加配置：
-<pre style="font-size: 12px;" q-show="jsonFail">
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: true
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
-            <p class="search-time">
-              <i class="icon-calendar icon"></i>
-              <span q-text="date|dateformat"></span>
-            </p>
-            <p class="search-tag">
-              <i class="icon-price-tags icon"></i>
-              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
-            </p>
-          </li>
-        </ul>
-    	</section>
     
-
+      <category term="其他" scheme="http://javazgs.com/tags/%E5%85%B6%E4%BB%96/"/>
     
-
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现仍居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
-  	  	
-    	</section>
-    
-  </div>
+  </entry>
   
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
-</body>
-</html>
+</feed>
