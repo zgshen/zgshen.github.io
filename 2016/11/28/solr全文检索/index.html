@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://javazgs.com">
+  <title>淘淘商城的实践(5)——Solr全文检索 | 啊深的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
+
+一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淘淘商城的实践(5)——Solr全文检索">
+<meta property="og:url" content="http://javazgs.com/2016/11/28/solr全文检索/index.html">
+<meta property="og:site_name" content="啊深的博客">
+<meta property="og:description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
+
+一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
+<meta property="og:image" content="http://img.blog.csdn.net/20170111091018269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170111091433612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170111091519159?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170111091549666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170111093524121?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-06T15:04:49.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="淘淘商城的实践(5)——Solr全文检索">
+<meta name="twitter:description" content="时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。
+
+一、Lucene和Solr一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，官网上已经解释了很清楚">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170111091018269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay" style="background-color: #005a87;"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/blogImg/head.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Shen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Shen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/blogImg/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Shen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-solr全文检索" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      淘淘商城的实践(5)——Solr全文检索
+    </h1>
+  
+
+        <a href="/2016/11/28/solr全文检索/" class="archive-article-date">
+  	<time datetime="2016-11-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-28</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。</p>
+</blockquote>
+<h5 id="一、Lucene和Solr"><a href="#一、Lucene和Solr" class="headerlink" title="一、Lucene和Solr"></a>一、Lucene和Solr</h5><p>一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，<a href="http://lucene.apache.org/" target="_blank">官网</a>上已经解释了很清楚：</p>
+<blockquote>
+<ul>
+<li>Lucene Core, our flagship sub-project, provides Java-based indexing and search technology, as well as spellchecking, hit highlighting and advanced analysis/tokenization capabilities.</li>
+<li>Solr<sup>TM</sup> is a high performance search server built using Lucene Core, with XML/HTTP and JSON/Python/Ruby APIs, hit highlighting, faceted search, caching, replication, and a web admin interface.</li>
+</ul>
+</blockquote>
+<p>说白了Lucene是个Java Library，而Solr是一个基于Lucene的全文搜索服务器。如果使用Lucene需要自行实现一堆东西，但更灵活；Solr作为企业级的搜索引擎系统，使用方便。商城这里用solr练手，实际的商城网站如京东或淘宝，当然，肯定是其他高大上的东西了。<a id="more"></a></p>
+<h5 id="二、安装Solr"><a href="#二、安装Solr" class="headerlink" title="二、安装Solr"></a>二、安装Solr</h5><ol>
+<li><p>先到Solr官网<a href="http://lucene.apache.org/solr/" target="_blank">下载</a>,Solr的版本基本是和Lucene一起更新的，不就前看到的时候5.5.0版，现在都到6.3.0版了。<br>商城教程使用的tomcat和solr版本都比较老，这里直接用tomcat8和solr6.3.0。在高版本solr中原商城教程有些方法已经过时，不推荐使用，这里会重新实现一遍。</p>
+</li>
+<li><p>解压solr压缩包，可以看到几个文件夹，有常规的docs文档、licenses版本信息和example例子。bin目录下是命令操作区，dos下在本目录执行 <strong>solr start</strong> 快速启动solr，在浏览器输入 localhost:8983 可看到solr的基本操作页面，这里我们不直接启动，而是将solr发布到tomcat。contrib文件包含了一些扩展工具包，dist是solr编译之后的目标文件夹，包含各类jar包，server文件夹即应用文件夹。</p>
+</li>
+<li><p>将solr-6.3.0\server\solr-webapp下的webapp文件复制到tomcat的webapps下并重命名为solr，即当成一个发布的工程。</p>
+</li>
+<li><p>将solr-6.3.0\server\lib\ext下的文件复制到刚重命名的solr工程中 WEB-INF\lib 目录下，在WEB-INF创建classes文件夹，将solr-6.3.0\server\resources下的log4j.properties复制到classes文件夹中，这些都是一些日志相关的东西。</p>
+</li>
+<li><p>接着需要创建一个solr home，随意在某个目录下创建一个文件夹并命名为solr_home，例如D盘下D:\solr_home，然后将solr-6.3.0\server\solr文件夹复制过来。编辑solr工程web.xml文件，指定solr home的路径为D:\solr_home。索引库默认存放在这个文件夹，并包含刚复制过来分配置文件。</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">env-entry</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">env-entry-name</span>&gt;</span>solr/home<span class="tag">&lt;/<span class="name">env-entry-name</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">env-entry-value</span>&gt;</span>D:/solr_home/solr<span class="tag">&lt;/<span class="name">env-entry-value</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">env-entry-type</span>&gt;</span>java.lang.String<span class="tag">&lt;/<span class="name">env-entry-type</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">env-entry</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>尝试访问<a href="http://localhost:8080/solr/index.html" target="_blank">http://localhost:8080/solr/index.html</a>报错403，资源拒绝访问，回到solr工程的web.xml文件，可以看到有这么一段配置</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Get rid of error message --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>Disable TRACE<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">http-method</span>&gt;</span>TRACE<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">auth-constraint</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>Enable everything but TRACE<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">http-method-omission</span>&gt;</span>TRACE<span class="tag">&lt;/<span class="name">http-method-omission</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>注释掉本段配置，开放访问权限就能正常访问。</p>
+<h5 id="三、创建core"><a href="#三、创建core" class="headerlink" title="三、创建core"></a>三、创建core</h5><ol>
+<li><p>将solr-6.3.0/dist中的solr-dataimporthandler、solr-dataimporthandler-extras的jar包复制到tomcat\webapps\solr\WEB-INF\lib目录下；</p>
+</li>
+<li><p>在D:\solr_home\solr下创建taotao_core文件夹，并在taotao_core下创建data和conf文件夹。将solr-6.3.0\example\example-DIH\solr\solr\conf所有文件和文件夹复制到D:\solr_home\solr\taotao_core\conf目录下；</p>
+</li>
+<li><p>访问solr工程，创建core，instanceDir和name填core文件夹的名字，即taotao_core。</p>
+</li>
+</ol>
+<h5 id="四、配置IK中文分词器"><a href="#四、配置IK中文分词器" class="headerlink" title="四、配置IK中文分词器"></a>四、配置IK中文分词器</h5><ol>
+<li><p>下载跟solr对应版本的IK分词器<a href="http://download.csdn.net/detail/u012809062/9730367" target="_blank" rel="external">IK-analyze-solr6.3</a>，解压后将jar包复制到solr工程WEB-INF\lib目录下，将IKAnalyzer.cfg.xml配置文件和mydict.dic、stopword.dic两个词典复制到到solr工程WEB-INF\classes目录下。</p>
+</li>
+<li><p>配置业务字段：修改D:\solr_home\solr\taotao_core\conf下的managed-schema文件<br>在底部<strong>&lt; /schema&gt;</strong>线加上</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">name</span>=<span class="string">"text_ik"</span> <span class="attr">class</span>=<span class="string">"solr.TextField"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">class</span>=<span class="string">"org.wltea.analyzer.lucene.IKAnalyzer"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_title"</span> <span class="attr">type</span>=<span class="string">"text_ik"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_sell_point"</span> <span class="attr">type</span>=<span class="string">"text_ik"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_price"</span>  <span class="attr">type</span>=<span class="string">"long"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_image"</span> <span class="attr">type</span>=<span class="string">"string"</span> <span class="attr">indexed</span>=<span class="string">"false"</span> <span class="attr">stored</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_category_name"</span> <span class="attr">type</span>=<span class="string">"string"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_desc"</span> <span class="attr">type</span>=<span class="string">"text_ik"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"false"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_keywords"</span> <span class="attr">type</span>=<span class="string">"text_ik"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"false"</span> <span class="attr">multiValued</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_title"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_sell_point"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_category_name"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_desc"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务器，选择taotao_core点击分词器 analysis，FieldType选择item_desc,贴上一段文本分析测试<br><img src="http://img.blog.csdn.net/20170111091018269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</li>
+</ol>
+<h5 id="五、在taotao-search整合并使用solr"><a href="#五、在taotao-search整合并使用solr" class="headerlink" title="五、在taotao-search整合并使用solr"></a>五、在taotao-search整合并使用solr</h5><ol>
+<li>创建taotao-search工程，同样数据库、SpringMvc照着配置，没什么好说的，applicationContext-solr.xml需要修改一下，因为httpSolrServer在6.3版本已经过时了，换成HttpSolrClient连接solr服务。从原来的HttpSolrServer可以看到,类已经deprecated了，改为使用HttpSolrClient<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@deprecated</span> Use &#123;<span class="doctag">@link</span> org.apache.solr.client.solrj.impl.HttpSolrClient&#125;</div><div class="line"> */</div><div class="line"><span class="meta">@Deprecated</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpSolrServer</span> <span class="keyword">extends</span> <span class="title">HttpSolrClient</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HttpSolrServer</span><span class="params">(String baseURL)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(baseURL);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HttpSolrServer</span><span class="params">(String baseURL, HttpClient client)</span> </span>&#123;</div><div class="line">	<span class="keyword">super</span>(baseURL, client);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HttpSolrServer</span><span class="params">(String baseURL, HttpClient client, ResponseParser parser)</span> </span>&#123;</div><div class="line">	<span class="keyword">super</span>(baseURL, client, parser);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>再看下HttpSolrClient类中一个地方，baseURL参数依旧，注释给了个例子，如果是标准的solr玩意，照着这个规则配，当我们的solr是发布到tomcat的，一会配的url不行就改下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">   * <span class="doctag">@param</span> baseURL</div><div class="line">   *          The URL of the Solr server. For example, "</div><div class="line">   *          &lt;code&gt;http://localhost:8983/solr/&lt;/code&gt;" if you are using the</div><div class="line">   *          standard distribution Solr webapp on your local machine.</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">HttpSolrClient</span><span class="params">(String baseURL)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(baseURL, <span class="keyword">null</span>, <span class="keyword">new</span> BinaryResponseParser());</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>applicationContext-solr.xml中bean的配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 配置SolrServer对象 --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 单机版 --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;bean id="HttpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrServer"&gt; --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"HttpSolrClient"</span> <span class="attr">class</span>=<span class="string">"org.apache.solr.client.solrj.impl.HttpSolrClient"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"baseURL"</span> <span class="attr">value</span>=<span class="string">"$&#123;SOLR.SERVER.URL&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 集群版 --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;bean id="cloudSolrServer" class="org.apache.solr.client.solrj.impl.CloudSolrServer"&gt;</span></div><div class="line">		&lt;constructor-arg name="zkHost" value="192.168.25.154:2181,192.168.25.154:2182,192.168.25.154:2183"&gt;&lt;/constructor-arg&gt;</div><div class="line">		&lt;property name="defaultCollection" value="collection2"&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt; --&gt;</div></pre></td></tr></table></figure></p>
+<p>其中SOLR.SERVER.URL变量的配置在resource.properties中配置,指向solr下的core就是了，正常连接<a href="http://localhost:8080/solr/index.html#/taotao_core" target="_blank" rel="external">http://localhost:8080/solr/index.html#/taotao_core</a> 的<strong>index.html#</strong>去掉，如果在tomcat的server xml配了根路径，没有index.html，中间的#/同样需要去掉<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SOLR.SERVER.URL=http://localhost:8080/solr/taotao_core</div></pre></td></tr></table></figure></p>
+<p>ItemServiceImpl改为注入HttpSolrClient<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//private SolrServer solrServer;//过时方法，废弃不用</span></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> HttpSolrClient solrServer;<span class="comment">//使用HttpSolrClient，实例化名称solrServer懒得改，注意</span></div></pre></td></tr></table></figure></p>
+<p>SearchDaoImpl搜索服务同理换下HttpSolrClient<br>访问<a href="http://localhost:8083/search/manager/importall" target="_blank" rel="external">http://localhost:8083/search/manager/importall</a> 导入数据，成功状态200，数据多可能比较慢<br><img src="http://img.blog.csdn.net/20170111091433612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>query一下看看导进来那些东东，可以看到查到商品了<br><img src="http://img.blog.csdn.net/20170111091519159?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>搜下“移动电源试试” <a href="http://localhost:8083/search/query?q=移动电源&amp;page=3&amp;rows=15" target="_blank" rel="external">http://localhost:8083/search/query?q=移动电源&amp;page=3&amp;rows=15</a><br><img src="http://img.blog.csdn.net/20170111091549666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h5 id="六、发布搜索服务到taotao-portal"><a href="#六、发布搜索服务到taotao-portal" class="headerlink" title="六、发布搜索服务到taotao-portal"></a>六、发布搜索服务到taotao-portal</h5><ol>
+<li><p>在taotao-portal资源文件resource.properties配置搜索服务连接</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SEARCH_BASE_URL=http://localhost:8083/search/query</div></pre></td></tr></table></figure>
+</li>
+<li><p>业务照搬，或根据自己的需要修改。感觉事实上非要建个search工程实在是…封装个类足以。测试搜索如下<br><img src="http://img.blog.csdn.net/20170111093524121?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/商城技术应用/">商城技术应用</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2016/11/28/solr全文检索/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/11/29/淘淘商城的实践(6)——单点登录、集群及总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          淘淘商城的实践(6)——单点登录、集群及总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">淘淘商城的实践(4)——redis的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/11/28/solr全文检索/" data-title="淘淘商城的实践(5)——Solr全文检索" data-url="http://javazgs.com/2016/11/28/solr全文检索/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zdshen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Shen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Solr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">商城技术应用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">spring</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

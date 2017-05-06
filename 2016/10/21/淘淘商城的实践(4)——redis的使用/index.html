@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://javazgs.com">
+  <title>淘淘商城的实践(4)——redis的使用 | 啊深的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。
+
+一、缓存工具的选择——redis
+Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淘淘商城的实践(4)——redis的使用">
+<meta property="og:url" content="http://javazgs.com/2016/10/21/淘淘商城的实践(4)——redis的使用/index.html">
+<meta property="og:site_name" content="啊深的博客">
+<meta property="og:description" content="一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。
+
+一、缓存工具的选择——redis
+Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125005932896">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125010853204">
+<meta property="og:updated_time" content="2017-05-06T14:59:12.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="淘淘商城的实践(4)——redis的使用">
+<meta name="twitter:description" content="一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。
+
+一、缓存工具的选择——redis
+Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161125005932896">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay" style="background-color: #005a87;"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/blogImg/head.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Shen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Shen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/blogImg/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Shen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/shen28" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-淘淘商城的实践(4)——redis的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      淘淘商城的实践(4)——redis的使用
+    </h1>
+  
+
+        <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/" class="archive-article-date">
+  	<time datetime="2016-10-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-21</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。</p>
+</blockquote>
+<h4 id="一、缓存工具的选择——redis"><a href="#一、缓存工具的选择——redis" class="headerlink" title="一、缓存工具的选择——redis"></a>一、缓存工具的选择——redis</h4><blockquote>
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br><a id="more"></a></p>
+<h5 id="1、安装启动"><a href="#1、安装启动" class="headerlink" title="1、安装启动"></a>1、安装启动</h5><p>先到<a href="http://redis.io/download" target="_blank">官网</a>下载需要的对应版本的redis。redis是用C语言写的，下载有编译版和直接安装的。<br>我这里直接用win版，解压，cd到根目录，执行redis-server.exe就可以启动redis了，默认端口6379:<br><img src="http://img.blog.csdn.net/20161125005932896" width="98%"><br>再新开dos，cd到redis根目录，redis-cli打开客户端，输入ping测试，响应返回pong，表示客户服务两端连接正常：<br><img src="http://img.blog.csdn.net/20161125010853204" alt="这里写图片描述"><br>然后就可以愉快进行操作了。之前公司有简单用到redis，试着放在win下，然后，貌似不怎么稳定，这东西还是放Linux下吧。</p>
+<h5 id="2、可视化工具"><a href="#2、可视化工具" class="headerlink" title="2、可视化工具"></a>2、可视化工具</h5><p>在Windows下redis提供了一个可视化工具，可以链接和查看redis的各种信息。<a href="http://download.csdn.net/detail/u012809062/9499207" target="_blank">[RedisDesktopManager]</a></p>
+</blockquote>
+<h4 id="二、redis和spring的整合"><a href="#二、redis和spring的整合" class="headerlink" title="二、redis和spring的整合"></a>二、redis和spring的整合</h4><p>这里只看单机版的。根据系统的架构，所有与redis的数据交互都在taotao-rest工程完成，在本工程的操作直接注入调用redis相应的实现类即可，对于其他工程则需提供另外接口服务以供调用。</p>
+<h5 id="1、xml的配置"><a href="#1、xml的配置" class="headerlink" title="1、xml的配置"></a>1、xml的配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 连接池配置 --&gt;</div><div class="line">	&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;</div><div class="line">		&lt;!-- 最大连接数 --&gt;</div><div class="line">		&lt;property name=&quot;maxTotal&quot; value=&quot;30&quot; /&gt;</div><div class="line">		&lt;!-- 最大空闲连接数 --&gt;</div><div class="line">		&lt;property name=&quot;maxIdle&quot; value=&quot;10&quot; /&gt;</div><div class="line">		&lt;!-- 每次释放连接的最大数目 --&gt;</div><div class="line">		&lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;1024&quot; /&gt;</div><div class="line">		&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</div><div class="line">		&lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;30000&quot; /&gt;</div><div class="line">		&lt;!-- 连接最小空闲时间 --&gt;</div><div class="line">		&lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;1800000&quot; /&gt;</div><div class="line">		&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</div><div class="line">		&lt;property name=&quot;softMinEvictableIdleTimeMillis&quot; value=&quot;10000&quot; /&gt;</div><div class="line">		&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</div><div class="line">		&lt;property name=&quot;maxWaitMillis&quot; value=&quot;1500&quot; /&gt;</div><div class="line">		&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</div><div class="line">		&lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot; /&gt;</div><div class="line">		&lt;!-- 在空闲时检查有效性, 默认false --&gt;</div><div class="line">		&lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;</div><div class="line">		&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</div><div class="line">		&lt;property name=&quot;blockWhenExhausted&quot; value=&quot;false&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	</div><div class="line">	&lt;!-- redis连接池 --&gt;</div><div class="line">	&lt;bean id=&quot;redisClient&quot; class=&quot;redis.clients.jedis.JedisPool&quot;&gt;</div><div class="line">		&lt;constructor-arg name=&quot;host&quot; value=&quot;127.0.0.1&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">		&lt;constructor-arg name=&quot;port&quot; value=&quot;6379&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">		&lt;constructor-arg name=&quot;poolConfig&quot; ref=&quot;jedisPoolConfig&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;bean id=&quot;jedisClient&quot; class=&quot;com.taotao.rest.dao.impl.JedisClientSingle&quot;&gt;&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h5 id="2、接口及实现"><a href="#2、接口及实现" class="headerlink" title="2、接口及实现"></a>2、接口及实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package com.taotao.rest.dao;</div><div class="line">public interface JedisClient &#123;</div><div class="line">	String get(String key);</div><div class="line">	String set(String key, String value);</div><div class="line">	String hget(String hkey, String key);</div><div class="line">	long hset(String hkey, String key, String value);//hash</div><div class="line">	long incr(String key);//自增</div><div class="line">	long expire(String key, int second);//设置过期时间,单位秒</div><div class="line">	long ttl(String key);//生存时间</div><div class="line">	long del(String key);//删除</div><div class="line">	long hdel(String hkey, String key);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JedisClientSingle再实现JedisClient 接口，完成redis的基本功能。<br>系统的缓存逻辑是从redis获取数据，若redis对应数据不存在，就从mysql数据库取数据存储到redis中，返回。下次即能直接从redis获得数据，若数据发生变更，在变更操作后删除对应键值在redis中的数据，重复上述方法。</p>
+<h5 id="3、为其他工程提供服务接口"><a href="#3、为其他工程提供服务接口" class="headerlink" title="3、为其他工程提供服务接口"></a>3、为其他工程提供服务接口</h5><p>以taotao-manager-service内容管理更新redis为例。dao接口仍然是JedisClient ,基础操作功能一样。<br>实现类为一个Service。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Service</div><div class="line">public class RedisServiceImpl implements RedisService </div><div class="line">	@Autowired</div><div class="line">	private JedisClient jedisClient;</div><div class="line">	@Value(&quot;$&#123;INDEX_CONTENT_REDIS_KEY&#125;&quot;)</div><div class="line">	private String INDEX_CONTENT_REDIS_KEY;</div><div class="line">	@Override</div><div class="line">	public TaotaoResult syncContent(long contentCid) &#123;</div><div class="line">		try &#123;</div><div class="line">			jedisClient.hdel(INDEX_CONTENT_REDIS_KEY, contentCid + &quot;&quot;);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));</div><div class="line">		&#125;</div><div class="line">		return TaotaoResult.ok();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>controller发布service,需要时直接根据http调此controller即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Controller</div><div class="line">@RequestMapping(&quot;/cache/sync&quot;)</div><div class="line">public class RedisController &#123;</div><div class="line">	@Autowired</div><div class="line">	private RedisService redisService;</div><div class="line">	@RequestMapping(&quot;/content/&#123;contentCid&#125;&quot;)</div><div class="line">	@ResponseBody</div><div class="line">	public TaotaoResult contentCacheSync(@PathVariable Long contentCid) &#123;</div><div class="line">		TaotaoResult result = redisService.syncContent(contentCid);</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="redis看似上手简单，但真正要应用起来就不是这么回事了，需要用到redis应该都死初具规模或有特殊要求的系统，要用好不容易。作为一个广泛使用的nosql数据库，值得去学习了解。"><a href="#redis看似上手简单，但真正要应用起来就不是这么回事了，需要用到redis应该都死初具规模或有特殊要求的系统，要用好不容易。作为一个广泛使用的nosql数据库，值得去学习了解。" class="headerlink" title="redis看似上手简单，但真正要应用起来就不是这么回事了，需要用到redis应该都死初具规模或有特殊要求的系统，要用好不容易。作为一个广泛使用的nosql数据库，值得去学习了解。"></a>redis看似上手简单，但真正要应用起来就不是这么回事了，需要用到redis应该都死初具规模或有特殊要求的系统，要用好不容易。作为一个广泛使用的nosql数据库，值得去学习了解。</h4><h4 id="商城剩下比较主要的内容包括全文检索、单点登录、nginx及系统架构分析，只是作为一个培训练习的项目也没太多可以看了。"><a href="#商城剩下比较主要的内容包括全文检索、单点登录、nginx及系统架构分析，只是作为一个培训练习的项目也没太多可以看了。" class="headerlink" title="商城剩下比较主要的内容包括全文检索、单点登录、nginx及系统架构分析，只是作为一个培训练习的项目也没太多可以看了。"></a>商城剩下比较主要的内容包括全文检索、单点登录、nginx及系统架构分析，只是作为一个培训练习的项目也没太多可以看了。</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/商城技术应用/">商城技术应用</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2016/10/21/淘淘商城的实践(4)——redis的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/11/28/solr全文检索/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          淘淘商城的实践(5)——Solr全文检索
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/02/淘淘商城的实践(3)——图片服务器部署和前台工程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">淘淘商城的实践(3)——图片服务器部署和前台工程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/10/21/淘淘商城的实践(4)——redis的使用/" data-title="淘淘商城的实践(4)——redis的使用" data-url="http://javazgs.com/2016/10/21/淘淘商城的实践(4)——redis的使用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zdshen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Shen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Solr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">商城技术应用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">spring</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
