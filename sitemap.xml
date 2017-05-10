@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://javazgs.com/2016/12/20/hello-world/</loc>
+    
+    <lastmod>2017-05-10T17:53:14.112Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://javazgs.com/2017/05/11/%E5%88%9B%E5%BB%BASpring%20Boot%E5%B7%A5%E7%A8%8B/</loc>
     
     <lastmod>2017-05-10T16:45:58.734Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>http://javazgs.com/2017/01/27/%E9%99%A4%E5%A4%95/</loc>
     
     <lastmod>2017-05-06T14:56:30.940Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javazgs.com/2016/12/20/hello-world/</loc>
-    
-    <lastmod>2017-05-06T14:56:18.781Z</lastmod>
     
   </url>
   
