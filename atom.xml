@@ -144,7 +144,7 @@
     <link href="http://javazgs.com/2017/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     <id>http://javazgs.com/2017/05/01/多线程/</id>
     <published>2017-04-30T16:00:00.000Z</published>
-    <updated>2017-05-08T16:56:40.205Z</updated>
+    <updated>2017-05-30T13:49:08.494Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>在编程中，多线程的意思是某个程序同时多个任务，这样的每一个任务则称为一个线程。线程这部分涉及的知识非常多，在实际开发的应用也是非常重要，这里将介绍基本的部分。</p>
@@ -159,6 +159,7 @@
 <p>2、实现Runnable接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test01</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Test01</span><span class="params">(String name)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)&#123;</div><div class="line">			System.out.println(name+<span class="string">"---&gt;"</span>+i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Test01 test1 = <span class="keyword">new</span> Test01(<span class="string">"one"</span>);</div><div class="line">		Test01 test2 = <span class="keyword">new</span> Test01(<span class="string">"two"</span>);</div><div class="line"></div><div class="line">		Thread thread1 = <span class="keyword">new</span> Thread(test1);<span class="comment">//使用thread类执行start方法</span></div><div class="line">		Thread thread2 = <span class="keyword">new</span> Thread(test2);</div><div class="line">		thread1.start();</div><div class="line">		thread2.start();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3、使用Callable和Future接口创建线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test03</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt;</span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)&#123;</div><div class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"---&gt;"</span>+i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">		Test03 t1 = <span class="keyword">new</span> Test03();</div><div class="line">		Test03 t2 = <span class="keyword">new</span> Test03();</div><div class="line">		FutureTask&lt;Integer&gt; task1 = <span class="keyword">new</span> FutureTask&lt;&gt;(t1);</div><div class="line">		FutureTask&lt;Integer&gt; task2 = <span class="keyword">new</span> FutureTask&lt;&gt;(t2);</div><div class="line">		<span class="keyword">new</span> Thread(task1, <span class="string">"新建线程1"</span>).start();</div><div class="line">		<span class="keyword">new</span> Thread(task2, <span class="string">"新建线程2"</span>).start();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><p>使用<code>getState()</code>方法可获取当前线程的状态(枚举类型)，各种状态如下：</p>
 <ul>
 <li>New（新生)<br>当new一个新的线程时，线程还没开始运行时，状态是new<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Thread thread = <span class="keyword">new</span> Thread();</div><div class="line">		System.out.println(thread.getState());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -717,6 +718,28 @@
   </entry>
   
   <entry>
+    <title>淘淘商城的实践(1)——说明篇</title>
+    <link href="http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(1)%E2%80%94%E2%80%94%E8%AF%B4%E6%98%8E%E7%AF%87/"/>
+    <id>http://javazgs.com/2016/09/29/淘淘商城的实践(1)——说明篇/</id>
+    <published>2016-09-28T16:00:00.000Z</published>
+    <updated>2017-05-06T15:02:30.196Z</updated>
+    
+    <content type="html"><![CDATA[<p>   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个项目用来简单了解各种技术在开发中的应用与结合，积累基础知识确实很有用处。<br>        本人今年刚毕业，在校一直学的是嵌入式方面的知识，在参加工作时才刚转的JavaWeb开发，对java开发的了解还停留在基础阶段，知识积累远远不够。因此，这段时间打算看看这个商城项目，希望有所受益。<br>        商城项目包括后台的CMS系统，到前台页面的商品展示页面，串通从发布商品到下单支付购买的整个流程（支付貌似没有，后面尝试加上），基本的商城功能都有了。手动实现一遍整个项目估计需要不少时间，介绍先到这里，开始搭框架。</p>
+<p>吧友给的资料分享链接：<a href="http://pan.baidu.com/s/1jI36OGe" target="_blank">度盘链接</a>提取密码：7wfj</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个
+    
+    </summary>
+    
+    
+      <category term="商城技术应用" scheme="http://javazgs.com/tags/%E5%95%86%E5%9F%8E%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>淘淘商城的实践(2)——后台系统搭建</title>
     <link href="http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(2)%E2%80%94%E2%80%94%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/"/>
     <id>http://javazgs.com/2016/09/29/淘淘商城的实践(2)——后台系统搭建/</id>
@@ -743,28 +766,6 @@
     <summary type="html">
     
       &lt;p&gt;前言：在这里记录在项目开发中的要点，对原网上的源码进一步优化和修改一些错误，对于开发过程中的一些冗长讲解不进行详细的分析，比如接下来的工程创建等等。&lt;br&gt;一、工程创建&lt;br&gt;1、系统工程使用Maven构建工具创建，工程之间的依赖关系如下&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="商城技术应用" scheme="http://javazgs.com/tags/%E5%95%86%E5%9F%8E%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>淘淘商城的实践(1)——说明篇</title>
-    <link href="http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(1)%E2%80%94%E2%80%94%E8%AF%B4%E6%98%8E%E7%AF%87/"/>
-    <id>http://javazgs.com/2016/09/29/淘淘商城的实践(1)——说明篇/</id>
-    <published>2016-09-28T16:00:00.000Z</published>
-    <updated>2017-05-06T15:02:30.196Z</updated>
-    
-    <content type="html"><![CDATA[<p>   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个项目用来简单了解各种技术在开发中的应用与结合，积累基础知识确实很有用处。<br>        本人今年刚毕业，在校一直学的是嵌入式方面的知识，在参加工作时才刚转的JavaWeb开发，对java开发的了解还停留在基础阶段，知识积累远远不够。因此，这段时间打算看看这个商城项目，希望有所受益。<br>        商城项目包括后台的CMS系统，到前台页面的商品展示页面，串通从发布商品到下单支付购买的整个流程（支付貌似没有，后面尝试加上），基本的商城功能都有了。手动实现一遍整个项目估计需要不少时间，介绍先到这里，开始搭框架。</p>
-<p>吧友给的资料分享链接：<a href="http://pan.baidu.com/s/1jI36OGe" target="_blank">度盘链接</a>提取密码：7wfj</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个
     
     </summary>
     
