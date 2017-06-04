@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://javazgs.com/"/>
-  <updated>2017-05-18T10:03:27.228Z</updated>
+  <updated>2017-06-04T09:41:04.230Z</updated>
   <id>http://javazgs.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot 过滤器和拦截器使用</title>
+    <link href="http://javazgs.com/2017/05/31/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/"/>
+    <id>http://javazgs.com/2017/05/31/Spring Boot 过滤器和拦截器使用/</id>
+    <published>2017-05-30T16:00:00.000Z</published>
+    <updated>2017-06-04T09:41:04.230Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Web框架" scheme="http://javazgs.com/tags/Web%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深圳</title>
+    <link href="http://javazgs.com/2017/05/28/%E6%B7%B1%E5%9C%B3/"/>
+    <id>http://javazgs.com/2017/05/28/深圳/</id>
+    <published>2017-05-27T16:00:00.000Z</published>
+    <updated>2017-06-04T10:00:00.190Z</updated>
+    
+    <content type="html"><![CDATA[<p>深圳是一个充满活力的城市。<br><img src="\assets\articleImg\shenzhen.jpg" alt="深圳北站"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;深圳是一个充满活力的城市。&lt;br&gt;&lt;img src=&quot;\assets\articleImg\shenzhen.jpg&quot; alt=&quot;深圳北站&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://javazgs.com/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boor配置Druid数据源</title>
@@ -709,63 +747,6 @@
     <summary type="html">
     
       &lt;p&gt;前言：之前后台系统的框架基本搭建完毕，后台剩下的就是一些增删改查业务操作。文本操作一般没什么问题，比较重要的是后台新增发布信息时涉及的图片的上传、存储和读取。教程里使用了ftp服务器来上传图片，使用nginx作为访问静态资源服务器。后台搞定之后接下来搭建前台系统。&lt;br&gt;一、图片服务器相关&lt;br&gt;商城系统中，新增商品经常需要编辑介绍和上传图片，后台系统的编辑页面使用了kindedit富文本编辑器，图片的上传需要我们自己配置。&lt;br&gt;1、图片上传服务器&lt;br&gt;使用ftp服务器作为图片上传的服务器，教程中的ftp服务器是部署在Linux系统下，跟着操作就行，没必要说，所以自己尝试在Windows下搭建ftp服务器。&lt;br&gt;Windows下搭建ftp比较简单，参考链接：&lt;a href=&quot;https://www.baidu.com/link?url=OlyREktg1bWh0TNWcRIDi_sIrx7e-EDHEZ3ENmm_n9ZzA_W4ymN7S5ZKXqtTD3PrB93tnwkG98f5l0humIxG9uMQG_cQGDNPn3nxZ9fYETa&amp;wd=&amp;eqid=a272a68300069f720000000657f1d0f2&quot; target=&quot;_blank&quot;&gt;win10搭建ftp服务器&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="商城技术应用" scheme="http://javazgs.com/tags/%E5%95%86%E5%9F%8E%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>淘淘商城的实践(1)——说明篇</title>
-    <link href="http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(1)%E2%80%94%E2%80%94%E8%AF%B4%E6%98%8E%E7%AF%87/"/>
-    <id>http://javazgs.com/2016/09/29/淘淘商城的实践(1)——说明篇/</id>
-    <published>2016-09-28T16:00:00.000Z</published>
-    <updated>2017-05-06T15:02:30.196Z</updated>
-    
-    <content type="html"><![CDATA[<p>   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个项目用来简单了解各种技术在开发中的应用与结合，积累基础知识确实很有用处。<br>        本人今年刚毕业，在校一直学的是嵌入式方面的知识，在参加工作时才刚转的JavaWeb开发，对java开发的了解还停留在基础阶段，知识积累远远不够。因此，这段时间打算看看这个商城项目，希望有所受益。<br>        商城项目包括后台的CMS系统，到前台页面的商品展示页面，串通从发布商品到下单支付购买的整个流程（支付貌似没有，后面尝试加上），基本的商城功能都有了。手动实现一遍整个项目估计需要不少时间，介绍先到这里，开始搭框架。</p>
-<p>吧友给的资料分享链接：<a href="http://pan.baidu.com/s/1jI36OGe" target="_blank">度盘链接</a>提取密码：7wfj</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个
-    
-    </summary>
-    
-    
-      <category term="商城技术应用" scheme="http://javazgs.com/tags/%E5%95%86%E5%9F%8E%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>淘淘商城的实践(2)——后台系统搭建</title>
-    <link href="http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(2)%E2%80%94%E2%80%94%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/"/>
-    <id>http://javazgs.com/2016/09/29/淘淘商城的实践(2)——后台系统搭建/</id>
-    <published>2016-09-28T16:00:00.000Z</published>
-    <updated>2017-05-06T14:55:46.422Z</updated>
-    
-    <content type="html"><![CDATA[<p>前言：在这里记录在项目开发中的要点，对原网上的源码进一步优化和修改一些错误，对于开发过程中的一些冗长讲解不进行详细的分析，比如接下来的工程创建等等。<br>一、工程创建<br>1、系统工程使用Maven构建工具创建，工程之间的依赖关系如下<br><a id="more"></a><br><img src="http://img.blog.csdn.net/20160929110316423" alt="这里写图片描述"></p>
-<p>跟着视频教程和源码资料创建工程，视频已经讲得非常详细这里就不多说。<br>如上图taotao-parent是一个pom类型父工程，用来管理依赖的jar包的版本，全局级别。<br>原网上的源码pom.xml中有些jar包配置存在错误，如果在构建完工程报jar包相关错误请检查配置。<br>例如原先commons-io的groupId就错了，应该是commons-io，在运行打包时就会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">错误</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;commons-io&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;$&#123;commons-io.version&#125;&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">正确</div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;commons-io&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;commons-io&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;$&#123;commons-io.version&#125;&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
-<p>各种jar包的maven配置可以去<a href="http://mvnrepository.com/" target="_blank">maven repository</a> 网站查找，搜素需要的jar包，选择对应的版本就有相应的maven配置。例：<br><img src="http://img.blog.csdn.net/20160929113145796" alt="这里写图片描述"><br>自己重新排查了一遍，有些jar包因为本地仓库已经有了别的版本号文件，所以改了版本号不必重新下载。Spring用了4.3.0-release版，mybatis用了3.3.0版。</p>
-<p> 2、taotao-common工程是用来存放各种自封装或其他来源的工具类，jar工程，最终打包成jar文件，给其他工程调用，需要调用的工程要依赖此工程。<br> 3、 创建聚合工程taotao-manager，pom类型，然后在工程下创建pojo实体类、mapper接口、service层， controller层对应的module模块工程。所有模块均依赖taotao-common工程，其中taotao-manager-mapper还依赖taotao-manager-pojo；taotao-manager-service还依赖taotao-manager-mapper和taotao-manager-pojo；taotao-manager-controller则manager其他模块都依赖。<br> 在Maven Dependencies目录下可以看到工程或模块依赖的jar包和工程。<br> <img src="http://img.blog.csdn.net/20160929115928354" alt="这里写图片描述"><br>  &nbsp;&nbsp;&nbsp;<img src="http://img.blog.csdn.net/20160929115946776" alt="taotao-manager-web依赖的jar包和工程模块"></p>
-<p>3、在generatorSqlmapCustom工程配置数据库链接，使用mybatis逆向工程自动生成pojo类和mapper文件（逆向工程在度盘资源，第二天：框架整合，框架系统搭建文件夹中的参考资料压缩包中，包括数据库的sql，直接导入到本地数据库就行），生成的pojo类和mapper接口和xml复制到对应的工程下面。<br><img src="http://img.blog.csdn.net/20160929120908733" alt="这里写图片描述"></p>
-<p>4、Spring、Mybatis和SpringMvc整合<br>框架整合配置xml文件和web.xml都在taotao-manager-web模块下进行配置，照着资料就行，不啰嗦<br><img src="http://img.blog.csdn.net/20160929164720171" alt="这里写图片描述"><br>事实Spring的三个applicationContext没必要分开，直接一个就行，当然，分开找起来比较容易，目的明确。</p>
-<p>5、运行及简单测试工程。<br>(1)安装tomcat插件和依赖工程到maven仓库<br>    工程运行采用的是maven的tomcat插件，需要在taotao-parent工程的pom.xml进行配置，顺便指定jdk版本等其他配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;build&gt;</div><div class="line">	&lt;finalName&gt;$&#123;project.artifactId&#125;&lt;/finalName&gt;</div><div class="line">	&lt;plugins&gt;</div><div class="line">		&lt;!-- 资源文件拷贝插件 --&gt;</div><div class="line">		&lt;plugin&gt;</div><div class="line">			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;2.7&lt;/version&gt;</div><div class="line">			&lt;configuration&gt;</div><div class="line">				&lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">			&lt;/configuration&gt;</div><div class="line">		&lt;/plugin&gt;</div><div class="line">		&lt;!-- java编译插件 --&gt;</div><div class="line">		&lt;plugin&gt;</div><div class="line">			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;3.1&lt;/version&gt;</div><div class="line">			&lt;configuration&gt;</div><div class="line">				&lt;source&gt;1.8&lt;/source&gt;</div><div class="line">				&lt;target&gt;1.8&lt;/target&gt;</div><div class="line">				&lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">			&lt;/configuration&gt;</div><div class="line">		&lt;/plugin&gt;</div><div class="line">	&lt;/plugins&gt;</div><div class="line">	&lt;pluginManagement&gt;</div><div class="line">		&lt;plugins&gt;</div><div class="line">			&lt;!-- 配置Tomcat插件 --&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;2.2&lt;/version&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">		&lt;/plugins&gt;</div><div class="line">	&lt;/pluginManagement&gt;</div><div class="line">&lt;/build&gt;</div></pre></td></tr></table></figure></p>
-<p>由于项目工程的jar版本都依赖taotao-parent工程，所以需要先将taotao-parent工程安装到本地maven仓库中，同样的，taotao-common也要安装到maven仓库中。安装方法：右键工程run as—maven install，执行完毕会在当前系统用户文件夹的.m2文件夹下面看到安装的taotao-parent和taotao-common<br><img src="http://img.blog.csdn.net/20160929152056555" alt="这里写图片描述"></p>
-<p>(2)打包和运行<br>我们最终发布出去放到服务器上的是war包，即taotao-manager-web模块的war包，直接对聚合工程taotao-manager打包，会自动对工程下的模块的jar或war模块进行打包，最终发布的是taotao-manager-web下的war包。操作:右键run as -maven build ，选第二个（第一次选第一个也行），在 Goals一栏输入clean package，点击run即可。<br><img src="http://img.blog.csdn.net/20160929152724033" alt="执行成功的信息"></p>
-<p>这里需要注意的地方是mapper模块是打成jar包的，默认不包含mybatis的映射xml文件，需要在taotao-manager-mapper的pom.xml文件加上以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 --&gt;</div><div class="line">	&lt;build&gt;</div><div class="line">		&lt;resources&gt;</div><div class="line">			&lt;resource&gt;</div><div class="line">				&lt;directory&gt;src/main/java&lt;/directory&gt;</div><div class="line">				&lt;includes&gt;</div><div class="line">					&lt;include&gt;**/*.properties&lt;/include&gt;</div><div class="line">					&lt;include&gt;**/*.xml&lt;/include&gt;</div><div class="line">				&lt;/includes&gt;</div><div class="line">				&lt;filtering&gt;false&lt;/filtering&gt;</div><div class="line">			&lt;/resource&gt;</div><div class="line">		&lt;/resources&gt;</div><div class="line">	&lt;/build&gt;</div></pre></td></tr></table></figure></p>
-<p>运行或调试命令:右键taotao-manager工程run as 选第二项，在在 Goals一栏输入clean tomcat7:run，然后点击run即可。<br>调试时若提示找不到源文件，手动添加即可，可以在提示界面直接选择添加，也可以入下图在debug或run按钮的debug/run Configurations里面的Source选项卡进行配置，将需要的工程添加进去<br><img src="http://img.blog.csdn.net/20160929163345262" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20160929163359823" alt="这里写图片描述"></p>
-<p>测试结果,浏览器访问index.jsp<br><img src="http://img.blog.csdn.net/20160929163617250" alt="这里写图片描述"></p>
-<p>访问测试controller请求，查询数据库商品<br><img src="http://img.blog.csdn.net/20160929163800184" alt="这里写图片描述"></p>
-<p>重新整理的工程源码<a href="http://download.csdn.net/detail/u012809062/9643235" target="_blank">点击下载</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;前言：在这里记录在项目开发中的要点，对原网上的源码进一步优化和修改一些错误，对于开发过程中的一些冗长讲解不进行详细的分析，比如接下来的工程创建等等。&lt;br&gt;一、工程创建&lt;br&gt;1、系统工程使用Maven构建工具创建，工程之间的依赖关系如下&lt;br&gt;
     
     </summary>
     
