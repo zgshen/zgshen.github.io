@@ -143,6 +143,119 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring Boot 普通类调用Bean对象的一种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">Spring Boot 普通类调用Bean对象的一种方式</a>
+    </h1>
+  
+
+        <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" class="archive-article-date">
+  	<time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
+<p>注入TestService 接口就可以调用此接口实现类的实现的方法。
+        
+          <a class="article-more-a" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spring Boot 过滤器、监听器和拦截器使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">Spring Boot 过滤器、监听器和拦截器使用</a>
+    </h1>
+  
+
+        <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/" class="archive-article-date">
+  	<time datetime="2017-06-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、过滤器和监听器<br>Spring Boot中对于过滤器和监听器的使用跟一般web工程中使用方式没什么不同，使用注解方式就可以快速创建，只是要使用注解方式需要在Application类加上 <code>@ServletComponentScan</code> 注解表明开启servlet的注解<br>创建一个监听器
+        
+          <a class="article-more-a" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-深圳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -597,134 +710,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-反射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/04/反射/">反射</a>
-    </h1>
-  
-
-        <a href="/2017/04/04/反射/" class="archive-article-date">
-  	<time datetime="2017-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>相信大家经常听说某些框架设计用到了反射机制啥啥，但自己对此概念却了解甚少，虽然一般开发不会用到，但还是有必要知道反射的基本原理和操作。</p>
-</blockquote>
-<p>  使用反射，可以做到：</p>
-<ul>
-<li>在运行中分析类的能力。</li>
-<li>在运行中查看对象，例如，编写一个toString方法供所有类使用。</li>
-<li>实现数组的操作代码。</li>
-<li>利用Method对象，这个对象很像C++中的函数指针。</li>
-</ul>
-<p>反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）<br>
-        
-          <a class="article-more-a" href="/2017/04/04/反射/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/04/反射/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Mysql存储过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/Mysql存储过程/">Mysql存储过程</a>
-    </h1>
-  
-
-        <a href="/2017/02/26/Mysql存储过程/" class="archive-article-date">
-  	<time datetime="2017-02-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>当需要实现复杂的逻辑，需要写多条sql语句或写的sql比较复杂时，可以考虑使用存储过程来处理，最终返回需要的结果集。存储过程即一组SQL语句集。</p>
-</blockquote>
-<p>存储过程的基本语法也不算复杂，以下为创建一个存储过程的模板<br>
-        
-          <a class="article-more-a" href="/2017/02/26/Mysql存储过程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/Mysql存储过程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -780,11 +768,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">其他</a>
+                <a href="javascript:void(0)">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">数据库</a>
+                <a href="javascript:void(0)">web框架</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,11 +780,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Java基础</a>
+                <a href="javascript:void(0)">其他</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">web框架</a>
+                <a href="javascript:void(0)">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,6 +797,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Spring</a>
               </li>
             
             <div class="clearfix"></div>

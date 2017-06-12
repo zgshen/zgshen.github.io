@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://javazgs.com/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2017-06-12T14:50:57.913Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot 普通类调用Bean对象的一种方式</title>
+        <pubTime>2017-06-07T16:00:00.000Z</pubTime>
+        
+        <tag>Spring</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://javazgs.com/2017/06/07/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-06-12T14:49:15.383Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot 过滤器、监听器和拦截器使用</title>
+        <pubTime>2017-06-06T16:00:00.000Z</pubTime>
+        
+        <tag>web框架</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://javazgs.com/2017/05/28/%E6%B7%B1%E5%9C%B3/</loc>
     <lastmod>2017-06-04T10:00:00.190Z</lastmod>
     <data>

@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>Tag: Spring | 啊深的博客</title>
+  <title>Spring Boot 普通类调用Bean对象的一种方式 | 啊深的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="啊深的博客">
-<meta property="og:url" content="http://javazgs.com/tags/Spring/index.html">
+  <meta name="description" content="有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过12@Autowiredprivate TestService testService;
+注入TestService 接口就可以调用此接口实现类的实现的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot 普通类调用Bean对象的一种方式">
+<meta property="og:url" content="http://javazgs.com/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/index.html">
 <meta property="og:site_name" content="啊深的博客">
-<meta property="og:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+<meta property="og:description" content="有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过12@Autowiredprivate TestService testService;
+注入TestService 接口就可以调用此接口实现类的实现的方法。">
+<meta property="og:updated_time" content="2017-06-12T14:50:57.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="啊深的博客">
-<meta name="twitter:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+<meta name="twitter:title" content="Spring Boot 普通类调用Bean对象的一种方式">
+<meta name="twitter:description" content="有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过12@Autowiredprivate TestService testService;
+注入TestService 接口就可以调用此接口实现类的实现的方法。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -141,54 +145,141 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring Boot 普通类调用Bean对象的一种方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" class="archive-article-date">
-  	<time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">Spring Boot 普通类调用Bean对象的一种方式</a>
+    <h1 class="article-title" itemprop="name">
+      Spring Boot 普通类调用Bean对象的一种方式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" class="archive-article-date">
+  	<time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
+<p>注入TestService 接口就可以调用此接口实现类的实现的方法。<a id="more"></a><br>但在一般类中显然不可以这么做，注入的 TestService  将会报空指针异常，你无法拿到这个bean，在一般的ssm工程中我们可以通过xml配置把普通类设置成一个bean对象，那么 TestService 就有效了， 或者使用 <code>ApplicationContext</code> 直接读取xml配置中的bean也可以拿到 TestService。`</p>
+<p>Spring Boot 已经摒弃了各种繁琐的xml配置，当然就不再使用xml配置的方式，之前在网上看到一种很简便的方式，但现在又找不到链接了，这里做下记录。</p>
+<p>在普通类中定义 <code>ApplicationContext</code> 静态变量和set方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</div><div class="line">	applicationContext = context;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在启动类中，启动时事实已经生成 ConfigurableApplicationContext 对象， ConfigurableApplicationContext 是 ApplicationContext 接口的实现，这里直接传到普通类的 setApplicationContext 方法就行了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="meta">@ServletComponentScan</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WxApplication</span> <span class="keyword">implements</span> <span class="title">EmbeddedServletContainerCustomizer</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ConfigurableApplicationContext applicationContext = SpringApplication.run(WxApplication.class, args);</div><div class="line">		TestClass.setApplicationContext(applicationContext);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于是静态变量，类加载时 applicationContext 已经存在，就可获取到 TestService 了，唯一不好就是静态变量在服务器启动后将一直存在<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		applicationContext = context;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getBeanTest</span><span class="params">()</span></span>&#123;</div><div class="line">		TestService testService  = (TestService)applicationContext.getBean(TestService.class);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot 过滤器、监听器和拦截器使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" data-title="Spring Boot 普通类调用Bean对象的一种方式" data-url="http://javazgs.com/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zdshen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -211,9 +302,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
