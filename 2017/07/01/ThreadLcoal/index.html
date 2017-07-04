@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>avr单片机三种时钟模式 | 啊深的博客</title>
+  <title>ThreadLcoal | 啊深的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
+  <meta name="description" content="ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="avr单片机三种时钟模式">
-<meta property="og:url" content="http://javazgs.com/2015/05/04/avr单片机三种时钟模式/index.html">
+<meta property="og:title" content="ThreadLcoal">
+<meta property="og:url" content="http://javazgs.com/2017/07/01/ThreadLcoal/index.html">
 <meta property="og:site_name" content="啊深的博客">
-<meta property="og:description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
-<meta property="og:updated_time" content="2017-05-06T14:54:52.040Z">
+<meta property="og:description" content="ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。">
+<meta property="og:updated_time" content="2017-07-04T04:09:46.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="avr单片机三种时钟模式">
-<meta name="twitter:description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
+<meta name="twitter:title" content="ThreadLcoal">
+<meta name="twitter:description" content="ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -142,25 +142,31 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-avr单片机三种时钟模式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ThreadLcoal" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      avr单片机三种时钟模式
+      ThreadLcoal
     </h1>
   
 
-        <a href="/2015/05/04/avr单片机三种时钟模式/" class="archive-article-date">
-  	<time datetime="2015-05-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-04</time>
+        <a href="/2017/07/01/ThreadLcoal/" class="archive-article-date">
+  	<time datetime="2017-06-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>AVR单片机时钟有三种模式：<br>1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。<br>2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机XTAL1端口，熔丝设置为外部时钟即可（不是外部晶振）。<br>3、设置晶振熔丝错误会导致芯片锁死，如果设置为外部晶振，直接加晶振即可解除，设置为外部时钟源，那只好提供外部时钟才能解除（有源晶振）。</p>
+        <p>ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。<br><a id="more"></a></p>
+<p>####<strong>使用</strong><br>类定义，支持泛型<br><code>public class ThreadLocal&lt;T&gt;</code><br>初始化值<br><code>private T setInitialValue()</code><br>set方法<br><code>public void set(T value)</code><br>get方法<br><code>public T get()</code></p>
+<p>####<strong>例子</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test04</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> ThreadLocal&lt;Integer&gt; local = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">localTread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNum</span><span class="params">()</span></span>&#123;</div><div class="line">            local.set(i++);</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> Integer <span class="title">getNum</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">return</span> local.get();</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(local.get() == <span class="keyword">null</span>)&#123;</div><div class="line">                setNum();</div><div class="line">                System.out.println(<span class="string">"set threadlocal num..."</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.print(<span class="string">"the object is: "</span>);</div><div class="line">            System.out.println(local);</div><div class="line">            System.out.println(local.get());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            localTread t = <span class="keyword">new</span> Test04().new localTread();</div><div class="line">            </div><div class="line">            Thread t1 = <span class="keyword">new</span> Thread(t);</div><div class="line">            Thread t2 = <span class="keyword">new</span> Thread(t);</div><div class="line">            Thread t3 = <span class="keyword">new</span> Thread(t);</div><div class="line">            </div><div class="line">            t1.start();</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            t2.start();</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            t3.start();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set threadlocal num...</div><div class="line">the object is: java.lang.ThreadLocal@6b2ce86d</div><div class="line">0</div><div class="line">set threadlocal num...</div><div class="line">the object is: java.lang.ThreadLocal@6b2ce86d</div><div class="line">1</div><div class="line">set threadlocal num...</div><div class="line">the object is: java.lang.ThreadLocal@6b2ce86d</div><div class="line">2</div></pre></td></tr></table></figure></p>
+<p>可以看到三个线程访问的都是同一个ThreadLocal，但只能访问当前线程存储的各自的变量。<br>看源码set方法的实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">	Thread t = Thread.currentThread();</div><div class="line">	ThreadLocalMap map = getMap(t);</div><div class="line">	<span class="keyword">if</span> (map != <span class="keyword">null</span>)</div><div class="line">		map.set(<span class="keyword">this</span>, value);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		createMap(t, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过获取当前线程，再ThreadL中，ThreadLocalMap用弱引用实现<br>get方法实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">	Thread t = Thread.currentThread();</div><div class="line">	ThreadLocalMap map = getMap(t);</div><div class="line">	<span class="keyword">if</span> (map != <span class="keyword">null</span>) &#123;</div><div class="line">		ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);</div><div class="line">		<span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">			T result = (T)e.value;</div><div class="line">			<span class="keyword">return</span> result;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> setInitialValue();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样是为了解决多线程中变量冲突的问题，线程同步机制实现在某个时间点只有一个线程能访问变量，而ThreadLcoal是通过存储每个线程自己变量，以隔离多线程访问数据的冲突，一个损耗时间，一个损耗空间。</p>
 
       
 
@@ -171,7 +177,7 @@ var _hmt = _hmt || [];
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
 	</div>
 
       
@@ -224,7 +230,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2015/05/04/avr单片机三种时钟模式/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2017/07/01/ThreadLcoal/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -238,15 +244,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2015/05/04/opencv简单的彩色图像灰度化和二值化（学习笔记）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          opencv简单的彩色图像灰度化和二值化（学习笔记）
-        
-      </div>
-    </a>
   
+    <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSM框架，基于JavaConfig配置方式，不用xml配置文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -257,7 +259,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015/05/04/avr单片机三种时钟模式/" data-title="avr单片机三种时钟模式" data-url="http://javazgs.com/2015/05/04/avr单片机三种时钟模式/"></div>
+	<div class="ds-thread" data-thread-key="2017/07/01/ThreadLcoal/" data-title="ThreadLcoal" data-url="http://javazgs.com/2017/07/01/ThreadLcoal/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

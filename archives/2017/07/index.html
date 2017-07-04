@@ -6,18 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>avr单片机三种时钟模式 | 啊深的博客</title>
+  <title>Archives: 2017/7 | 啊深的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
-<meta property="og:type" content="article">
-<meta property="og:title" content="avr单片机三种时钟模式">
-<meta property="og:url" content="http://javazgs.com/2015/05/04/avr单片机三种时钟模式/index.html">
+  <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="啊深的博客">
+<meta property="og:url" content="http://javazgs.com/archives/2017/07/index.html">
 <meta property="og:site_name" content="啊深的博客">
-<meta property="og:description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
-<meta property="og:updated_time" content="2017-05-06T14:54:52.040Z">
+<meta property="og:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="avr单片机三种时钟模式">
-<meta name="twitter:description" content="AVR单片机时钟有三种模式：1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机">
+<meta name="twitter:title" content="啊深的博客">
+<meta name="twitter:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -142,140 +141,54 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-avr单片机三种时钟模式" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      avr单片机三种时钟模式
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/01/ThreadLcoal/" class="archive-article-date">
+  	<time datetime="2017-06-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/01/ThreadLcoal/">ThreadLcoal</a>
     </h1>
   
 
-        <a href="/2015/05/04/avr单片机三种时钟模式/" class="archive-article-date">
-  	<time datetime="2015-05-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>AVR单片机时钟有三种模式：<br>1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。<br>2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机XTAL1端口，熔丝设置为外部时钟即可（不是外部晶振）。<br>3、设置晶振熔丝错误会导致芯片锁死，如果设置为外部晶振，直接加晶振即可解除，设置为外部时钟源，那只好提供外部时钟才能解除（有源晶振）。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2015/05/04/avr单片机三种时钟模式/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2015/05/04/opencv简单的彩色图像灰度化和二值化（学习笔记）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          opencv简单的彩色图像灰度化和二值化（学习笔记）
-        
-      </div>
-    </a>
   
   
-</nav>
+    </div></section>
+  
 
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015/05/04/avr单片机三种时钟模式/" data-title="avr单片机三种时钟模式" data-url="http://javazgs.com/2015/05/04/avr单片机三种时钟模式/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"zdshen"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
           </div>
@@ -298,8 +211,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
