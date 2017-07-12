@@ -41,7 +41,7 @@
 <li>List有序且允许元素重复。ArrayList、LinkedList和Vector是三个主要的实现类。</li><li>Set无序不允许元素重复。HashSet和TreeSet是两个主要的实现类。</li></ul><p>Map接口也属于集合系统，key不能重复，否则会被覆盖，但是value可以重复。HashMap、TreeMap和Hashtable是三个主要的实现类。SortedSet和SortedMap接口对元素按指定规则排序，SortedMap是对key列进行排序。</p><h5 id="2、hashmap和hashtable的区别"><a name="2、hashmap和hashtable的区别" href="#2、hashmap和hashtable的区别"></a>2、HashMap和HashTable的区别</h5><p>HashMap：继承于AbstractMap，key、value都可以为null，非线程安全；<br>Hashtable：继承于Dictionary，key、value都不可以为null，线程安全。</p><h5 id="3、什么是迭代器(iterator)"><a name="3、什么是迭代器(iterator)" href="#3、什么是迭代器(iterator)"></a>3、什么是迭代器(Iterator)</h5><p>Iterator接口提供了很多对集合元素进行迭代的方法。每一个集合类都包含了可以返回迭代器实例的迭代方法。迭代器可以在迭代的过程中删除底层集合的元素（例如ArrayList的遍历过程中删除不能使用简单的for循环而应该用迭代器）。</p><h5 id="4、数组(array)和列表(arraylist)有什么区别"><a name="4、数组(array)和列表(arraylist)有什么区别" href="#4、数组(array)和列表(arraylist)有什么区别"></a>4、数组(Array)和列表(ArrayList)有什么区别</h5><p>Array可以包含基本类型和对象类型，ArrayList只能包含对象类型。<br>Array大小是固定的，ArrayList的大小是动态变化的。<br>ArrayList提供了更多的方法和特性，比如：addAll()，removeAll()，iterator()等等。</p><h5 id="5、arraylist和linkedlist有什么区别"><a name="5、arraylist和linkedlist有什么区别" href="#5、arraylist和linkedlist有什么区别"></a>5、ArrayList和LinkedList有什么区别</h5><p>ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。<br>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针<br>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据</p><h2 id="三、多线程"><a name="三、多线程" href="#三、多线程"></a>三、多线程</h2><h5 id="1、多线程的实现方式"><a name="1、多线程的实现方式" href="#1、多线程的实现方式"></a>1、多线程的实现方式</h5><p>继承Thread类；<br>实现Runnable接口；<br>使用ExecutorService、Callable、Future实现有返回结果的多线程。</p><h4 id="2、什么是线程安全"><a name="2、什么是线程安全" href="#2、什么是线程安全"></a>2、什么是线程安全</h4><p>线程安全就是多线程访问同一代码，不会产生不确定的结果。</p><h5 id="3、如何保证线程安全"><a name="3、如何保证线程安全" href="#3、如何保证线程安全"></a>3、如何保证线程安全</h5><p>对非安全的代码进行加锁控制（synchronized）；<br>使用线程安全的类；<br>多线程并发的情况下，线程共享的变量改为方法级的局部变量</p><h5 id="4、sleep和wait的区别"><a name="4、sleep和wait的区别" href="#4、sleep和wait的区别"></a>4、sleep和wait的区别</h5><p>sleep()方法是Thread类中方法，而wait()方法是Object类中的方法。<br>调用sleep()方法过程中不会释放对象锁；<br>而当调用wait()方法的时候，线程会放弃对象锁，调用notify()方法后本线程才进入对象锁定池准备。</p><h5 id="5、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?"><a name="5、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?" href="#5、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?"></a>5、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?</h5><p>可以进入其他非synchronized的方法，synchronized的方法不可以的。</p><h5 id="6、线程同步"><a name="6、线程同步" href="#6、线程同步"></a>6、线程同步</h5><ul>
 <li>synchronized 关键字修饰方法、代码块</li><li>使用volatile特殊域变量实现线程同步</li><li>使用重入锁实现线程同步 (java.util.concurrent包,ReentrantLock类)</li><li>使用ThreadLocal局部变量实现线程同步</li><li>使用阻塞队列实现线程同步 (java.util.concurrent包,LinkedBlockingQueue 类)</li><li>使用原子变量实现线程同步 (util.concurrent.atomic包,AtomicInteger类)</li></ul><h2 id="四、jvm知识"><a name="四、jvm知识" href="#四、jvm知识"></a>四、JVM知识</h2><h5 id="1、jvm基本结构"><a name="1、jvm基本结构" href="#1、jvm基本结构"></a>1、JVM基本结构</h5><ul>
 <li>虚拟机栈（栈，存储栈帧）</li><li>堆</li><li>方法区</li><li>本地方法栈</li><li>程序计数器</li></ul><h5 id="2、java堆栈区别"><a name="2、java堆栈区别" href="#2、java堆栈区别"></a>2、Java堆栈区别</h5><p>“所有局部变量存放在栈中，所有对象存堆中”</p><ul>
-<li>局部变量如果是基本类型，则存栈中；如果是对象类型，实际上操作的是一个引用，引用存栈中，对象存堆中。</li><li>对象存堆中的含义就是对象的所有字段存堆中，所以对象的字段不管是基本数据类型和引用一律在堆中，引用指向的对象自然也在堆中。</li></ul><h5 id="2、java中垃圾回收有什么目的？什么时候进行垃圾回收？"><a name="2、java中垃圾回收有什么目的？什么时候进行垃圾回收？" href="#2、java中垃圾回收有什么目的？什么时候进行垃圾回收？"></a>2、Java中垃圾回收有什么目的？什么时候进行垃圾回收？</h5><p>垃圾回收的目的是识别并且丢弃应用不再使用的对象来释放和重用资源。</p><h5 id="3、system.gc()和runtime.gc()会做什么事情"><a name="3、system.gc()和runtime.gc()会做什么事情" href="#3、system.gc()和runtime.gc()会做什么事情"></a>3、System.gc()和Runtime.gc()会做什么事情</h5><p>这两个方法用来提示JVM要进行垃圾回收。但立即开始还是延迟进行垃圾回收是取决与JVM的。</p><h5 id="4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存"><a name="4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存" href="#4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存"></a>4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存</h5><p>不会，在下一次垃圾回收周期中，这个对象是可被回收的</p><h5 id="5、如何强制垃圾回收一个对象？"><a name="5、如何强制垃圾回收一个对象？" href="#5、如何强制垃圾回收一个对象？"></a>5、如何强制垃圾回收一个对象？</h5><p>垃圾回收不能被强制执行。可以调用System.gc()，但JVM不保证马上执行垃圾回收动作。</p><h5 id="6、gc基本算法"><a name="6、gc基本算法" href="#6、gc基本算法"></a>6、GC基本算法</h5><p>引用计数、复制、标记-清扫、标记-压缩、分代</p><h5 id="7、内存泄漏定位"><a name="7、内存泄漏定位" href="#7、内存泄漏定位"></a>7、内存泄漏定位</h5><p>使用命令或工具</p><h2 id="五、io流"><a name="五、io流" href="#五、io流"></a>五、IO流</h2><h5 id="1、bio、nio、aio的区别，nio的使用场景"><a name="1、bio、nio、aio的区别，nio的使用场景" href="#1、bio、nio、aio的区别，nio的使用场景"></a>1、BIO、NIO、AIO的区别，NIO的使用场景</h5><p>BIO 同步阻塞式IO<br>NIO 同步阻塞式IO（jdk1.4特性），服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理；</p><p>AIO 异步非阻塞IO（jdk1.7特性），服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理</p><blockquote>
+<li>局部变量如果是基本类型，则存栈中；如果是对象类型，实际上操作的是一个引用，引用存栈中，对象存堆中。</li><li>对象存堆中的含义就是对象的所有字段存堆中，所以对象的字段不管是基本数据类型和引用一律在堆中，引用指向的对象自然也在堆中。</li></ul><h5 id="2、java中垃圾回收有什么目的？什么时候进行垃圾回收？"><a name="2、java中垃圾回收有什么目的？什么时候进行垃圾回收？" href="#2、java中垃圾回收有什么目的？什么时候进行垃圾回收？"></a>2、Java中垃圾回收有什么目的？什么时候进行垃圾回收？</h5><p>垃圾回收的目的是识别并且丢弃应用不再使用的对象来释放和重用资源。</p><h5 id="3、system.gc()和runtime.gc()会做什么事情"><a name="3、system.gc()和runtime.gc()会做什么事情" href="#3、system.gc()和runtime.gc()会做什么事情"></a>3、System.gc()和Runtime.gc()会做什么事情</h5><p>这两个方法用来提示JVM要进行垃圾回收。但立即开始还是延迟进行垃圾回收是取决与JVM的。</p><h5 id="4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存"><a name="4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存" href="#4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存"></a>4、如果对象的引用被置为null，垃圾收集器是否会立即释放占用内存</h5><p>不会，在下一次垃圾回收周期中，这个对象是可被回收的</p><h5 id="5、如何强制垃圾回收一个对象？"><a name="5、如何强制垃圾回收一个对象？" href="#5、如何强制垃圾回收一个对象？"></a>5、如何强制垃圾回收一个对象？</h5><p>垃圾回收不能被强制执行。可以调用System.gc()，但JVM不保证马上执行垃圾回收动作。</p><h5 id="6、gc基本算法"><a name="6、gc基本算法" href="#6、gc基本算法"></a>6、GC基本算法</h5><p>引用计数、复制、标记-清扫、标记-压缩、分代</p><h5 id="7、内存泄漏定位"><a name="7、内存泄漏定位" href="#7、内存泄漏定位"></a>7、内存泄漏定位</h5><p>使用命令或工具</p><h2 id="五、io流"><a name="五、io流" href="#五、io流"></a>五、IO流</h2><h5 id="1、bio、nio、aio的区别，nio的使用场景"><a name="1、bio、nio、aio的区别，nio的使用场景" href="#1、bio、nio、aio的区别，nio的使用场景"></a>1、BIO、NIO、AIO的区别，NIO的使用场景</h5><p>BIO 同步阻塞式IO<br>NIO 同步非阻塞式IO（jdk1.4特性），服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理；</p><p>AIO 异步非阻塞IO（jdk1.7特性），服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理</p><blockquote>
 <p>NIO适用于数量多的短连接架构（如聊天服务器）；AIO适用于数量多的长连接（如相册服务器）</p>
 </blockquote><h2 id="六、web框架"><a name="六、web框架" href="#六、web框架"></a>六、Web框架</h2><h5 id="1、什么是mvc，你的理解"><a name="1、什么是mvc，你的理解" href="#1、什么是mvc，你的理解"></a>1、什么是MVC，你的理解</h5><p>MVC是一种设计模式，分为三个部分：</p><ul>
 <li>视图（view）：用户界面</li><li>控制器（controller）：业务逻辑</li><li>模型（model）：数据保存</li></ul><pre><code class="mermaid" data-origin="<pre><code class=&quot;mermaid&quot;>graph TD;
@@ -151,7 +151,253 @@ view--&amp;gt;controller
 <td>n大时较好</td>
 </tr>
 </tbody>
-</table><h5 id="2、快速排序"><a name="2、快速排序" href="#2、快速排序"></a>2、快速排序</h5><p>请看维基，手写快排<br><a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F</a></p>
+</table><h5 id="2、快速排序"><a name="2、快速排序" href="#2、快速排序"></a>2、快速排序</h5><p>请看维基，手写快排<br><a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F</a></p><pre class="java hljs"><code class="java" data-origin="<pre><code class=&quot;java&quot;>public class QuickSort {
+
+    int[] arr = {3, 7, 8, 5, 2, 1, 9, 5, 4};
+
+    private void swap(int x, int y) {
+        int temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+    }
+
+    private void quick_sort_recursive(int start, int end) {
+        if (start &amp;gt;= end){
+            return;
+        }
+
+        int mid = arr[end];
+        int left = start, right = end - 1;
+        while (left &amp;lt; right) {
+            while (arr[left] &amp;lt;= mid &amp;amp;&amp;amp; left &amp;lt; right)
+                left++;
+            while (arr[right] &amp;gt;= mid &amp;amp;&amp;amp; left &amp;lt; right)
+                right--;
+            swap(left, right);
+        }
+        if (arr[left] &amp;gt;= arr[end])
+            swap(left, end);
+        else
+            left++;
+        quick_sort_recursive(start, left - 1);
+        quick_sort_recursive(left, end);
+    }
+
+    public void sort() {
+        quick_sort_recursive(0, arr.length - 1);
+    }
+
+    public static void main(String[] args) {
+        QuickSort qq = new QuickSort();
+        //qq.arr = {3, 7, 8, 5, 2, 1, 9, 5, 4};
+        qq.sort();
+        System.out.println(Arrays.toString(qq.arr));
+        //System.out.println(Arrays.toString(qq.arr));
+    }
+}
+</code></pre>"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QuickSort</span> </span>{
+
+    <span class="hljs-keyword">int</span>[] arr = {<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>};
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
+        <span class="hljs-keyword">int</span> temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quick_sort_recursive</span><span class="hljs-params">(<span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span> </span>{
+        <span class="hljs-keyword">if</span> (start &gt;= end){
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-keyword">int</span> mid = arr[end];
+        <span class="hljs-keyword">int</span> left = start, right = end - <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span> (left &lt; right) {
+            <span class="hljs-keyword">while</span> (arr[left] &lt;= mid &amp;&amp; left &lt; right)
+                left++;
+            <span class="hljs-keyword">while</span> (arr[right] &gt;= mid &amp;&amp; left &lt; right)
+                right--;
+            swap(left, right);
+        }
+        <span class="hljs-keyword">if</span> (arr[left] &gt;= arr[end])
+            swap(left, end);
+        <span class="hljs-keyword">else</span>
+            left++;
+        quick_sort_recursive(start, left - <span class="hljs-number">1</span>);
+        quick_sort_recursive(left, end);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">()</span> </span>{
+        quick_sort_recursive(<span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        QuickSort qq = <span class="hljs-keyword">new</span> QuickSort();
+        <span class="hljs-comment">//qq.arr = {3, 7, 8, 5, 2, 1, 9, 5, 4};</span>
+        qq.sort();
+        System.out.println(Arrays.toString(qq.arr));
+        <span class="hljs-comment">//System.out.println(Arrays.toString(qq.arr));</span>
+    }
+}
+</code></pre><p>排序——</p><pre class="java hljs"><code class="java" data-origin="<pre><code class=&quot;java&quot;>public class Sorting {
+
+    private int arr[] = {2, 5, 4, 3, 1};
+
+    /**
+     * @desc 冒泡排序
+     *          从第i位开始到len-i-1位，相邻比较，大数往后移动
+     *          第一次遍历将最大放到最后，第二次将倒数第二大放到倒数第二位置
+     *          最大或最小元素会慢慢“冒”到数列顶端（取决遍历判断方式）
+     * @date 2017年5月3日
+     */
+    @Test
+    public void bubble() {
+        int len = arr.length, temp;
+        System.out.println(len);
+        //len=10  i=0 j=0-9  i=1 j=0-8 交换大值
+        for(int i=0; i&amp;lt;len-1; i++){
+            System.out.println(len-1-i);
+            for(int j=0; j&amp;lt;len-1-i; j++){
+                if(arr[j] &amp;gt; arr[j+1]){
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+                System.out.println(&quot;arr--&amp;gt;&quot;+Arrays.toString(arr));
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    //{2, 5, 1, 3, 4}
+    //1 5 2 3 4 
+    //1  2534  
+    /**
+     * @desc 选择排序
+     *          从第i位开始，相邻比较，找到剩下元素最小是哪一个，与i位值交换
+     * @date 2017年5月3日
+     */
+    @Test
+    public void select(){
+        int len = arr.length, temp, j, min;
+        for(int i=0; i&amp;lt;len-1; i++){
+            min = i;
+            for(j=i+1; j&amp;lt;len; j++){
+                if(arr[min] &amp;gt; arr[j]){
+                    min = j;//最小值的元素位值
+                }
+            }
+            //与i位置值交换
+            temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    /**{2, 5, 4, 3, 1}
+     * @desc 插入排序
+     * @date 2017年5月3日
+     */
+    @Test
+    public void insert() {
+        int len=arr.length, temp;
+        for(int i=0; i&amp;lt;len-1; i++){
+            //System.out.println(i+1);
+            //System.out.println(&quot;--&amp;gt;&quot;+arr[i+1]);
+            for(int j=i+1; j&amp;gt;0; j--){
+                if(arr[j-1] &amp;lt; arr[j]){
+                    break;
+                }
+                temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                System.out.println(&quot;==&amp;gt;&quot;+Arrays.toString(arr));
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
+</code></pre>"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sorting</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> arr[] = {<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>};
+
+    <span class="hljs-javadoc">/**
+     *<span class="hljs-javadoctag"> @desc</span> 冒泡排序
+     *          从第i位开始到len-i-1位，相邻比较，大数往后移动
+     *          第一次遍历将最大放到最后，第二次将倒数第二大放到倒数第二位置
+     *          最大或最小元素会慢慢“冒”到数列顶端（取决遍历判断方式）
+     *<span class="hljs-javadoctag"> @date</span> 2017年5月3日
+     */</span>
+    <span class="hljs-annotation">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bubble</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">int</span> len = arr.length, temp;
+        System.out.println(len);
+        <span class="hljs-comment">//len=10  i=0 j=0-9  i=1 j=0-8 交换大值</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;len-<span class="hljs-number">1</span>; i++){
+            System.out.println(len-<span class="hljs-number">1</span>-i);
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;len-<span class="hljs-number">1</span>-i; j++){
+                <span class="hljs-keyword">if</span>(arr[j] &gt; arr[j+<span class="hljs-number">1</span>]){
+                    temp = arr[j];
+                    arr[j] = arr[j+<span class="hljs-number">1</span>];
+                    arr[j+<span class="hljs-number">1</span>] = temp;
+                }
+                System.out.println(<span class="hljs-string">"arr--&gt;"</span>+Arrays.toString(arr));
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    <span class="hljs-comment">//{2, 5, 1, 3, 4}</span>
+    <span class="hljs-comment">//1 5 2 3 4 </span>
+    <span class="hljs-comment">//1  2534  </span>
+    <span class="hljs-javadoc">/**
+     *<span class="hljs-javadoctag"> @desc</span> 选择排序
+     *          从第i位开始，相邻比较，找到剩下元素最小是哪一个，与i位值交换
+     *<span class="hljs-javadoctag"> @date</span> 2017年5月3日
+     */</span>
+    <span class="hljs-annotation">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">select</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">int</span> len = arr.length, temp, j, min;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;len-<span class="hljs-number">1</span>; i++){
+            min = i;
+            <span class="hljs-keyword">for</span>(j=i+<span class="hljs-number">1</span>; j&lt;len; j++){
+                <span class="hljs-keyword">if</span>(arr[min] &gt; arr[j]){
+                    min = j;<span class="hljs-comment">//最小值的元素位值</span>
+                }
+            }
+            <span class="hljs-comment">//与i位置值交换</span>
+            temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    <span class="hljs-javadoc">/**{2, 5, 4, 3, 1}
+     *<span class="hljs-javadoctag"> @desc</span> 插入排序
+     *<span class="hljs-javadoctag"> @date</span> 2017年5月3日
+     */</span>
+    <span class="hljs-annotation">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">int</span> len=arr.length, temp;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;len-<span class="hljs-number">1</span>; i++){
+            <span class="hljs-comment">//System.out.println(i+1);</span>
+            <span class="hljs-comment">//System.out.println("--&gt;"+arr[i+1]);</span>
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>; j&gt;<span class="hljs-number">0</span>; j--){
+                <span class="hljs-keyword">if</span>(arr[j-<span class="hljs-number">1</span>] &lt; arr[j]){
+                    <span class="hljs-keyword">break</span>;
+                }
+                temp = arr[j];
+                arr[j] = arr[j-<span class="hljs-number">1</span>];
+                arr[j-<span class="hljs-number">1</span>] = temp;
+                System.out.println(<span class="hljs-string">"==&gt;"</span>+Arrays.toString(arr));
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
+</code></pre>
 <!--
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
 -->
