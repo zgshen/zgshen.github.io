@@ -424,7 +424,7 @@ public class Sorting {
 ```
 
 <br>
-<a href="/Java面试题资料.md">md源文件链接</a>
+<a href="/Java面试题资料.md">md源文件链接，浏览器打开保存</a>
 <br>
 <div style="float:right">by shen</div>
 
