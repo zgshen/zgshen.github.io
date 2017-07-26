@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://javazgs.com/"/>
-  <updated>2017-07-04T04:48:39.562Z</updated>
+  <updated>2017-07-26T14:27:28.592Z</updated>
   <id>http://javazgs.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot 打包部署</title>
+    <link href="http://javazgs.com/2017/07/15/Spring%20Boot%E9%83%A8%E7%BD%B2/"/>
+    <id>http://javazgs.com/2017/07/15/Spring Boot部署/</id>
+    <published>2017-07-14T16:00:00.000Z</published>
+    <updated>2017-07-26T14:27:28.592Z</updated>
+    
+    <content type="html"><![CDATA[<p>Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。<br><a id="more"></a></p>
+<h2 id="使用集成的Web容器部署方式"><a href="#使用集成的Web容器部署方式" class="headerlink" title="使用集成的Web容器部署方式"></a>使用集成的Web容器部署方式</h2><p><strong>打包</strong><br>maven 工程在 eclipse 中执行 Run as Maven build，输入 clean package 进行打包，这里要注意的是 Spring Boot 打成jar包要可以运行，必须使用Spring Boot提供的一个插件，不然打成的普通的jar是无法运行Spring Boot工程的，一般会提示 jar中没有主清单属性。<br>在pom.xml加入插件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>repackage<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>生成的 jar 包使用 <code>java -jar xx.jar</code> 命令就可以启动。</p>
+<h2 id="部署到外部Web容器方式"><a href="#部署到外部Web容器方式" class="headerlink" title="部署到外部Web容器方式"></a>部署到外部Web容器方式</h2><p>在 pom.xml 文件将 <code>&lt;packaging&gt;jar&lt;/packaging&gt;</code> 改为 <code>&lt;packaging&gt;war&lt;/packaging&gt;</code><br>加上build插件，表明此Web工程不需要web.xml文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>排除 Spring Boot Tomcat 组件，scope 属性设为 provided<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在 Application 即main方法类同包下创建实现外部 Web 容器启动的启动类<br>例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.springframework.boot.builder.SpringApplicationBuilder;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.web.support.SpringBootServletInitializer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WxServletInitializer</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder builder)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> builder.sources(WxApplication.class);<span class="comment">//WxApplication 为原main函数启动类</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打包完毕将war包部署到外部Web容器。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="web框架" scheme="http://javazgs.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>ThreadLcoal</title>
@@ -673,27 +700,6 @@
     
     
       <category term="博客" scheme="http://javazgs.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>欢迎来到我的博客</title>
-    <link href="http://javazgs.com/2016/12/20/hello-world/"/>
-    <id>http://javazgs.com/2016/12/20/hello-world/</id>
-    <published>2016-12-19T16:00:00.000Z</published>
-    <updated>2017-05-10T17:55:56.416Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 <a href="http://blog.csdn.net/u012809062" target="_blank" rel="external">http://blog.csdn.net/u012809062</a> 。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 &lt;a href=&quot;http://blog.csdn.net/u012
-    
-    </summary>
-    
-    
-      <category term="其他" scheme="http://javazgs.com/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   

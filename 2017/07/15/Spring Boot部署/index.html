@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>欢迎来到我的博客 | ⑨课编程</title>
+  <title>Spring Boot 打包部署 | ⑨课编程</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 http://blog.csdn.net/u012809062 。">
+  <meta name="description" content="Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的博客">
-<meta property="og:url" content="http://javazgs.com/2016/12/20/hello-world/index.html">
+<meta property="og:title" content="Spring Boot 打包部署">
+<meta property="og:url" content="http://javazgs.com/2017/07/15/Spring Boot部署/index.html">
 <meta property="og:site_name" content="⑨课编程">
-<meta property="og:description" content="之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 http://blog.csdn.net/u012809062 。">
-<meta property="og:updated_time" content="2017-05-10T17:55:56.416Z">
+<meta property="og:description" content="Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。">
+<meta property="og:updated_time" content="2017-07-26T14:27:28.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到我的博客">
-<meta name="twitter:description" content="之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 http://blog.csdn.net/u012809062 。">
+<meta name="twitter:title" content="Spring Boot 打包部署">
+<meta name="twitter:description" content="Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -142,25 +142,31 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring Boot部署" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      欢迎来到我的博客
+      Spring Boot 打包部署
     </h1>
   
 
-        <a href="/2016/12/20/hello-world/" class="archive-article-date">
-  	<time datetime="2016-12-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
+        <a href="/2017/07/15/Spring Boot部署/" class="archive-article-date">
+  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 <a href="http://blog.csdn.net/u012809062" target="_blank" rel="external">http://blog.csdn.net/u012809062</a> 。</p>
+        <p>Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。<br><a id="more"></a></p>
+<h2 id="使用集成的Web容器部署方式"><a href="#使用集成的Web容器部署方式" class="headerlink" title="使用集成的Web容器部署方式"></a>使用集成的Web容器部署方式</h2><p><strong>打包</strong><br>maven 工程在 eclipse 中执行 Run as Maven build，输入 clean package 进行打包，这里要注意的是 Spring Boot 打成jar包要可以运行，必须使用Spring Boot提供的一个插件，不然打成的普通的jar是无法运行Spring Boot工程的，一般会提示 jar中没有主清单属性。<br>在pom.xml加入插件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>repackage<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>生成的 jar 包使用 <code>java -jar xx.jar</code> 命令就可以启动。</p>
+<h2 id="部署到外部Web容器方式"><a href="#部署到外部Web容器方式" class="headerlink" title="部署到外部Web容器方式"></a>部署到外部Web容器方式</h2><p>在 pom.xml 文件将 <code>&lt;packaging&gt;jar&lt;/packaging&gt;</code> 改为 <code>&lt;packaging&gt;war&lt;/packaging&gt;</code><br>加上build插件，表明此Web工程不需要web.xml文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>排除 Spring Boot Tomcat 组件，scope 属性设为 provided<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在 Application 即main方法类同包下创建实现外部 Web 容器启动的启动类<br>例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.springframework.boot.builder.SpringApplicationBuilder;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.web.support.SpringBootServletInitializer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WxServletInitializer</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder builder)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> builder.sources(WxApplication.class);<span class="comment">//WxApplication 为原main函数启动类</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打包完毕将war包部署到外部Web容器。</p>
 
       
 
@@ -171,7 +177,7 @@ var _hmt = _hmt || [];
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
 	</div>
 
       
@@ -224,7 +230,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2016/12/20/hello-world/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2017/07/15/Spring Boot部署/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -238,18 +244,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/12/29/给博客换个主题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          给博客换个主题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/11/29/淘淘商城的实践(6)——单点登录、集群及总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">淘淘商城的实践(6)——单点登录、集群及总结</div>
+    <a href="/2017/07/01/ThreadLcoal/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ThreadLcoal</div>
       <i class="icon-circle-right"></i>
     </a>
   
