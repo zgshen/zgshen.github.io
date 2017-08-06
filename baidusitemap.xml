@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://javazgs.com/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2017-08-06T10:57:30.570Z</lastmod>
+    <data>
+        <display>
+        <title>Linux下安装Nginx并配置一个图片服务器</title>
+        <pubTime>2017-04-20T16:00:00.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://javazgs.com/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
-    <lastmod>2017-08-02T14:38:00.367Z</lastmod>
+    <lastmod>2017-08-03T02:42:45.356Z</lastmod>
     <data>
         <display>
         <title>线程池</title>
@@ -471,23 +488,6 @@
         <pubTime>2015-12-11T16:00:00.000Z</pubTime>
         
         <tag>数据库</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://javazgs.com/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2017-05-06T14:58:19.808Z</lastmod>
-    <data>
-        <display>
-        <title>Linux下安装Nginx并配置一个图片服务器</title>
-        <pubTime>2017-04-20T16:00:00.000Z</pubTime>
-        
-        <tag>Linux</tag>
          
          
            

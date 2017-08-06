@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://javazgs.com/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    
+    <lastmod>2017-08-06T10:57:30.570Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://javazgs.com/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
     
-    <lastmod>2017-08-02T14:38:00.367Z</lastmod>
+    <lastmod>2017-08-03T02:42:45.356Z</lastmod>
     
   </url>
   
@@ -194,13 +201,6 @@
     <loc>http://javazgs.com/2015/12/12/MySQL%E5%85%A5%E9%97%A8%E6%8E%A5%E8%A7%A6%E8%AE%B0%E5%BD%95--%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0Java%E9%80%9A%E8%BF%87JDBC%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     
     <lastmod>2017-05-06T14:58:40.021Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javazgs.com/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    
-    <lastmod>2017-05-06T14:58:19.808Z</lastmod>
     
   </url>
   
