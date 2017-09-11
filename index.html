@@ -1,943 +1,645 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>⑨课编程</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="⑨课编程">
-<meta property="og:url" content="http://javazgs.com/index.html">
-<meta property="og:site_name" content="⑨课编程">
-<meta property="og:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="⑨课编程">
-<meta name="twitter:description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
-  
+    <title>
+    ⑨课编程
+    
+        | 这个人很懒，神马都没有写…
+    
+</title>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="⑨课编程">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+<meta name="keywords" content="nlvi, Nlvi" />
 
-  
+
+    <meta name="subtitle" content="这个人很懒，神马都没有写…">
+
+
+    <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+
+
+    <meta name="keywords" content="JavaSE,Spring,其他" />
+
+
+<link rel="stylesheet" href="/style/style.css">
+<script src="/script/jquery.min.js"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
+    var CONFIG = {
+        title: "⑨课编程",
+        author: "zgshen",
+        lightbox: true,
+        animate: true
+    }
 </script>
+
+
+
+    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+
+
+
 
 
 </head>
-
 <body>
-  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
-    <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
-      <div class="overlay" style="background-color: #005a87;"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/assets/blogImg/head.jpg" class="js-avatar">
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">zgshen</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-    			
-            
-    			
-    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
+    <div class="progress">
+    <div class="progress-inner"></div>
 </div>
-
+    <div class="body">
+    <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+    <div class="tagcloud-inner">
+        <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
     </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">zgshen</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/assets/blogImg/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">zgshen</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-		        
-		        	<li><a href="/archives/">所有文章</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+</div>
+    <header class="header" id="header">
+    <div class="title syuanpi tvIn">
+    <div class="table">
+        <div class="connect">
+            <div class="connect-inner">
+                <span><a href="/">⑨课编程</a></span>
+                
+                    <span id="subtitle">这个人很懒，神马都没有写…</span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <nav class="main-nav syuanpi tvIn">
+<div class="table">
+
+    <ul class="menu">
+        
+        <li class="menu-item">
+            <a href="javascript:;" id="search">
+                <span>Search</span>
+                
+                
+            </a>
+        </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>Article</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/archives">
+                    <span>Archives</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="javascript:;" id="tags">
+                    <span>Tags</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/about">
+                    <span>About</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+    </ul>
+
+</div>
 </nav>
-
-      <div id="wrapper" class="body-wrap">
-        <div class="menu-l">
-          <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
-          </div>
-          <div id="js-content" class="content-ll">
+</header>
+<div class="mobile-header">
+    <div class="mobile-header-body">
+        <div class="mobile-header-list">
             
-  
-    <article id="post-线程池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/20/线程池/">线程池</a>
-    </h1>
-  
-
-        <a href="/2017/07/20/线程池/" class="archive-article-date">
-  	<time datetime="2017-07-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>创建一个新的线程是有代价的，创建大量的线程会消耗许多系统资源，影响系统的性能。这时，我们就需要使用线程池来管理线程，线程池能缓存线程，可用闲置的线程来执行新任务，能有效控制线程并发数，并对线程进行一些简单的管理。
-        
-          <a class="article-more-a" href="/2017/07/20/线程池/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/20/线程池/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring Boot部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/15/Spring Boot部署/">Spring Boot 打包部署</a>
-    </h1>
-  
-
-        <a href="/2017/07/15/Spring Boot部署/" class="archive-article-date">
-  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。<br>
-        
-          <a class="article-more-a" href="/2017/07/15/Spring Boot部署/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/15/Spring Boot部署/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ThreadLcoal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/01/ThreadLcoal/">ThreadLcoal</a>
-    </h1>
-  
-
-        <a href="/2017/07/01/ThreadLcoal/" class="archive-article-date">
-  	<time datetime="2017-06-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。<br>
-        
-          <a class="article-more-a" href="/2017/07/01/ThreadLcoal/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/01/ThreadLcoal/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/30/泛型/">泛型</a>
-    </h1>
-  
-
-        <a href="/2017/06/30/泛型/" class="archive-article-date">
-  	<time datetime="2017-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。使用泛型，意味着编写的代码可以被很多不同类型    的对象所重用。<br>
-        
-          <a class="article-more-a" href="/2017/06/30/泛型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/30/泛型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SSM框架，基于JavaConfig配置方式，不用xml配置文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/">SSM框架，基于JavaConfig配置方式，不用xml配置文件</a>
-    </h1>
-  
-
-        <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/" class="archive-article-date">
-  	<time datetime="2017-06-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在使用Spring开发时，我们经常会看到各种各样xml配置，过于繁多的xml配置显得复杂烦人。在Spring3之后，Spring支持使用JavaConfig来代替xml配置，这种方式也得到越来越多人的推荐，甚至在Spring Boot的项目中，基本上已经见不到xml的影子了。这里将使用JavaConfig方式对SSM框架进行整合。<br>
-        
-          <a class="article-more-a" href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring Boot 普通类调用Bean对象的一种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">Spring Boot 普通类调用Bean对象的一种方式</a>
-    </h1>
-  
-
-        <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/" class="archive-article-date">
-  	<time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-08</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
-<p>注入TestService 接口就可以调用此接口实现类的实现的方法。
-        
-          <a class="article-more-a" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring Boot 过滤器、监听器和拦截器使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">Spring Boot 过滤器、监听器和拦截器使用</a>
-    </h1>
-  
-
-        <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/" class="archive-article-date">
-  	<time datetime="2017-06-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、过滤器和监听器<br>Spring Boot中对于过滤器和监听器的使用跟一般web工程中使用方式没什么不同，使用注解方式就可以快速创建，只是要使用注解方式需要在Application类加上 <code>@ServletComponentScan</code> 注解表明开启servlet的注解<br>创建一个监听器
-        
-          <a class="article-more-a" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-深圳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/28/深圳/">深圳</a>
-    </h1>
-  
-
-        <a href="/2017/05/28/深圳/" class="archive-article-date">
-  	<time datetime="2017-05-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>深圳北站。<br><img src="\assets\articleImg\shenzhen.jpg" alt="深圳北站"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/28/深圳/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring Boor配置Druid数据源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/18/Spring Boor配置Druid数据源/">Spring Boor配置Druid数据源</a>
-    </h1>
-  
-
-        <a href="/2017/05/18/Spring Boor配置Druid数据源/" class="archive-article-date">
-  	<time datetime="2017-05-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Druid是阿里巴巴开源平台上的一个项目,整个项目由数据库连接池、插件框架和SQL解析器组成。</p>
-<h3 id="添加Druid数据源"><a href="#添加Druid数据源" class="headerlink" title="添加Druid数据源"></a>添加Druid数据源</h3><p>要使用Druid数据源，我们需要在 application.properties 下添加配置信息
-        
-          <a class="article-more-a" href="/2017/05/18/Spring Boor配置Druid数据源/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/18/Spring Boor配置Druid数据源/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring Boot 热部署与日志配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/Spring Boot 热部署与日志配置/">Spring Boot 热部署与日志配置</a>
-    </h1>
-  
-
-        <a href="/2017/05/11/Spring Boot 热部署与日志配置/" class="archive-article-date">
-  	<time datetime="2017-05-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>热部署和日志是开发中常用的功能，Srping Boot同样集成了相应的工具，可以方便地实现这些功能。</p>
-<h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><p>Spring Boot提供了 <code>spring-boot-devtools</code> 模块用于热部署，直接引入就行。
-        
-          <a class="article-more-a" href="/2017/05/11/Spring Boot 热部署与日志配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web框架/">web框架</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/Spring Boot 热部署与日志配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
-
-          </div>
-        </div>
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 zgshen
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		mathjax: false,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
-</script>
-
-<script src="/./main.js?v=4.0.0.js"></script>
-
-
-    
-<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
-  <div class="tools-wrap">
-    
-    	<section class="tools-section tools-section-all" q-show="innerArchive">
-        <div class="search-wrap">
-          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
-          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
-        </div>
-        <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
-          <label class="search-switch">
-            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
-          </label>
-          <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">web框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">商城技术应用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">博客</a>
-              </li>
             
-            <div class="clearfix"></div>
-          </ul>
-        </div>
-        <ul class="search-ul">
-          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
-            2、在根目录_config.yml里添加配置：
-<pre style="font-size: 12px;" q-show="jsonFail">
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: true
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
-            <p class="search-time">
-              <i class="icon-calendar icon"></i>
-              <span q-text="date|dateformat"></span>
-            </p>
-            <p class="search-tag">
-              <i class="icon-price-tags icon"></i>
-              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
-            </p>
-          </li>
-        </ul>
-    	</section>
-    
-
-    
-
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
-  	  	
-    	</section>
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
+                <div class="mobile-nav-item">
+                    <a href="/">
+                        <span>Article</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>Archives</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item inner-cloud">
+                    <div class="mobile-nav-tag">
+                        <a href="javascript:;" id="mobile-tags">
+                            <span>Tags</span>
+                            
+                            
+                        </a>
+                    </div>
+                    <div class="mobile-nav-tagcloud">
+                        <div class="mobile-tagcloud-inner">
+                            <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/about">
+                        <span>About</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
         </div>
-
     </div>
-
+    <div class="mobile-header-nav">
+        <div class="mobile-header-item" id="mobile-left">
+            <div class="header-menu-item">
+                <span class="header-menu-line"></span>
+            </div>
+        </div>
+        <h1 class="mobile-header-title">
+            <a href="/">⑨课编程</a>
+        </h1>
+        <div class="mobile-header-item"></div>
+    </div>
 </div>
-  </div>
+
+    <div class="container">
+        <main class="main" id="main">
+            
+    
+
+<section class="posts">
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>August 25, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/08/25/RESTful API 开发/">RESTful API开发</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。</p>
+<p>#####定义<br>REST 的全称是 Resource Representational State Transfer ，资源以某种表现形式进行状态转移<br>Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等；<br>Representational：某种表现形式，比如用JSON，XML，JPEG等；<br>State Transfer：状态变化。通过HTTP动词实现。</p>
+<p>#####相关参考链接</p>
+<ul>
+<li><a href="https://zhihu.com/question/28557115/answer/48094438" target="_blank" rel="external">怎样用通俗的语言解释REST，以及RESTful？ - 回答作者: 覃超</a></li>
+</ul>
+
+                
+            
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>July 20, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/07/20/线程池/">线程池</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>创建一个新的线程是有代价的，创建大量的线程会消耗许多系统资源，影响系统的性能。这时，我们就需要使用线程池来管理线程，线程池能缓存线程，可用闲置的线程来执行新任务，能有效控制线程并发数，并对线程进行一些简单的管理。
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/07/20/线程池/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>July 15, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/07/15/Spring Boot部署/">Spring Boot 打包部署</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/07/15/Spring Boot部署/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>July 1, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/07/01/ThreadLcoal/">ThreadLcoal</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/07/01/ThreadLcoal/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>June 30, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/06/30/泛型/">泛型</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。使用泛型，意味着编写的代码可以被很多不同类型    的对象所重用。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/30/泛型/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>June 14, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/">SSM框架，基于JavaConfig配置方式，不用xml配置文件</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>在使用Spring开发时，我们经常会看到各种各样xml配置，过于繁多的xml配置显得复杂烦人。在Spring3之后，Spring支持使用JavaConfig来代替xml配置，这种方式也得到越来越多人的推荐，甚至在Spring Boot的项目中，基本上已经见不到xml的影子了。这里将使用JavaConfig方式对SSM框架进行整合。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>June 8, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">Spring Boot 普通类调用Bean对象的一种方式</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
+<p>注入TestService 接口就可以调用此接口实现类的实现的方法。
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>June 7, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">Spring Boot 过滤器、监听器和拦截器使用</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>1、过滤器和监听器<br>Spring Boot中对于过滤器和监听器的使用跟一般web工程中使用方式没什么不同，使用注解方式就可以快速创建，只是要使用注解方式需要在Application类加上 <code>@ServletComponentScan</code> 注解表明开启servlet的注解<br>创建一个监听器
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>May 28, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/05/28/深圳/">深圳</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>深圳北站。<br><img src="\assets\articleImg\shenzhen.jpg" alt="深圳北站"></p>
+
+                
+            
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>May 18, 2017</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/05/18/Spring Boor配置Druid数据源/">Spring Boor配置Druid数据源</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>Druid是阿里巴巴开源平台上的一个项目,整个项目由数据库连接池、插件框架和SQL解析器组成。</p>
+<h3 id="添加Druid数据源"><a href="#添加Druid数据源" class="headerlink" title="添加Druid数据源"></a>添加Druid数据源</h3><p>要使用Druid数据源，我们需要在 application.properties 下添加配置信息
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/05/18/Spring Boor配置Druid数据源/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+</section>
+    
+    <nav class="pagination">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next ></a>
+    </nav>
+
+
+        </main>
+        <footer class="footer syuanpi fadeIn" id="footer">
+    <hr>
+    <div class="footer-wrapper">
+        <div class="left">
+            <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+        </div>
+        <div class="right">
+            <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>1970 ~ 2017</span>
+        <span>❤</span>
+        <span>zgshen</span>
+    </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="/script/nlvi.js"></script>
+<script src="/script/search.js"></script>
+
+    <script src="/lightbox/js/lightbox.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    document.body.addEventListener('touchstart', function () {});
+    $('.progress').hide();
+    $('.body').show();
+    Nlvi.tagcloud();
+    Nlvi.mobileHeader();
+    Nlvi.back2top();
+    Nlvi.smoothScroll();
+    Nlvi.onView();
+    Nlvi.showToc();
+    Nlvi.showComments();
+    Nlvi.showReward();
+
+    !CONFIG.animate && Nlvi.offAnimate();
+    CONFIG.lightbox && Nlvi.onPicBox();
+})
+</script>
+    </div>
+    
+    <div class="backtop syuanpi dead toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+    
+    <div class="search" id="search">
+        <div class="mask" id="mask"></div>
+        <div class="search-wrapper syuanpi">
+            <h1 id="search-header" class="syuanpi">搜索一下？</h1>
+            <div class="input">
+                <input type="text" id="local-search-input" results="0" name="">
+            </div>
+            <div id="local-search-result"></div>
+        </div>
+    </div>
+    <script>
+    var GREETING = {
+        morning: "当我们探索时，就要发现到真理",
+        noon: "人的天职在于勇于探索真理。",
+        after: "一件事实是一条没有性别的真理",
+        night: "真理有时可能变得黯淡，但它永远不会熄灭",
+        midnight: "真理在人那里获得生命力，并且展现出来"
+    }
+    $(document).ready(function(){
+        Nlvi.search();
+    });
+    </script>
+
 </body>
 </html>

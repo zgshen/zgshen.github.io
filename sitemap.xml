@@ -2,259 +2,266 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://javazgs.com/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <loc>http://zgshen.github.io/2017/08/25/RESTful%20API%20%E5%BC%80%E5%8F%91/</loc>
+    
+    <lastmod>2017-09-06T14:40:27.828Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zgshen.github.io/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     
     <lastmod>2017-08-06T10:57:30.570Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <loc>http://zgshen.github.io/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
     
     <lastmod>2017-08-03T02:42:45.356Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/07/15/Spring%20Boot%E9%83%A8%E7%BD%B2/</loc>
+    <loc>http://zgshen.github.io/2017/07/15/Spring%20Boot%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2017-07-26T14:27:28.592Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/06/30/%E6%B3%9B%E5%9E%8B/</loc>
+    <loc>http://zgshen.github.io/2017/06/30/%E6%B3%9B%E5%9E%8B/</loc>
     
     <lastmod>2017-07-26T09:39:31.606Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/28/%E6%B7%B1%E5%9C%B3/</loc>
+    <loc>http://zgshen.github.io/2017/05/28/%E6%B7%B1%E5%9C%B3/</loc>
     
     <lastmod>2017-07-19T07:08:43.501Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/07/01/ThreadLcoal/</loc>
+    <loc>http://zgshen.github.io/2017/07/01/ThreadLcoal/</loc>
     
     <lastmod>2017-07-04T04:48:39.562Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/06/14/SSM%E6%A1%86%E6%9E%B6%EF%BC%8C%E5%9F%BA%E4%BA%8EJavaConfig%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%8D%E7%94%A8xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
+    <loc>http://zgshen.github.io/2017/06/14/SSM%E6%A1%86%E6%9E%B6%EF%BC%8C%E5%9F%BA%E4%BA%8EJavaConfig%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%8D%E7%94%A8xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2017-06-14T14:26:20.599Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
+    <loc>http://zgshen.github.io/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
     
     <lastmod>2017-06-12T14:50:57.913Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/06/07/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/</loc>
+    <loc>http://zgshen.github.io/2017/06/07/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2017-06-12T14:49:15.383Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>http://zgshen.github.io/2017/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     
     <lastmod>2017-05-30T13:49:08.494Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/18/Spring%20Boor%E9%85%8D%E7%BD%AEDruid%E6%95%B0%E6%8D%AE%E6%BA%90/</loc>
+    <loc>http://zgshen.github.io/2017/05/18/Spring%20Boor%E9%85%8D%E7%BD%AEDruid%E6%95%B0%E6%8D%AE%E6%BA%90/</loc>
     
     <lastmod>2017-05-18T10:03:27.228Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/11/Spring%20Boot%20%E7%83%AD%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://zgshen.github.io/2017/05/11/Spring%20Boot%20%E7%83%AD%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2017-05-11T10:11:47.845Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/10/%E5%88%9B%E5%BB%BASpring%20Boot%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>http://zgshen.github.io/2017/05/10/%E5%88%9B%E5%BB%BASpring%20Boot%E5%B7%A5%E7%A8%8B/</loc>
     
     <lastmod>2017-05-11T10:06:43.656Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/12/20/hello-world/</loc>
+    <loc>http://zgshen.github.io/2016/12/20/hello-world/</loc>
     
     <lastmod>2017-05-10T17:55:56.416Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/11/28/solr%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</loc>
+    <loc>http://zgshen.github.io/2016/11/28/solr%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</loc>
     
     <lastmod>2017-05-06T15:04:49.783Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/11/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(6)%E2%80%94%E2%80%94%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E3%80%81%E9%9B%86%E7%BE%A4%E5%8F%8A%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://zgshen.github.io/2016/11/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(6)%E2%80%94%E2%80%94%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E3%80%81%E9%9B%86%E7%BE%A4%E5%8F%8A%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2017-05-06T15:03:14.659Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(1)%E2%80%94%E2%80%94%E8%AF%B4%E6%98%8E%E7%AF%87/</loc>
+    <loc>http://zgshen.github.io/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(1)%E2%80%94%E2%80%94%E8%AF%B4%E6%98%8E%E7%AF%87/</loc>
     
     <lastmod>2017-05-06T15:02:30.196Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/05/02/eclipse%20neon%E7%89%88%E6%9C%AC%E6%89%93%E5%BC%80%E6%9F%90%E4%BA%9Bjavascript%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</loc>
+    <loc>http://zgshen.github.io/2017/05/02/eclipse%20neon%E7%89%88%E6%9C%AC%E6%89%93%E5%BC%80%E6%9F%90%E4%BA%9Bjavascript%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2017-05-06T15:01:53.417Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/04/04/%E5%8F%8D%E5%B0%84/</loc>
+    <loc>http://zgshen.github.io/2017/04/04/%E5%8F%8D%E5%B0%84/</loc>
     
     <lastmod>2017-05-06T15:01:43.492Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/02/26/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
+    <loc>http://zgshen.github.io/2017/02/26/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
     
     <lastmod>2017-05-06T15:01:26.783Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/12/29/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%8D%A2%E4%B8%AA%E4%B8%BB%E9%A2%98/</loc>
+    <loc>http://zgshen.github.io/2016/12/29/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%8D%A2%E4%B8%AA%E4%B8%BB%E9%A2%98/</loc>
     
     <lastmod>2017-05-06T15:01:10.006Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/09/05/%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</loc>
+    <loc>http://zgshen.github.io/2016/09/05/%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</loc>
     
     <lastmod>2017-05-06T15:00:57.204Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/07/09/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/</loc>
+    <loc>http://zgshen.github.io/2016/07/09/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/</loc>
     
     <lastmod>2017-05-06T15:00:44.399Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/08/13/%E9%9B%86%E5%90%88/</loc>
+    <loc>http://zgshen.github.io/2016/08/13/%E9%9B%86%E5%90%88/</loc>
     
     <lastmod>2017-05-06T15:00:13.594Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/07/09/%E5%AD%97%E7%AC%A6%E7%9B%B8%E5%85%B3/</loc>
+    <loc>http://zgshen.github.io/2016/07/09/%E5%AD%97%E7%AC%A6%E7%9B%B8%E5%85%B3/</loc>
     
     <lastmod>2017-05-06T14:59:39.643Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/07/01/Java%20%E7%AE%80%E4%BB%8B%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+    <loc>http://zgshen.github.io/2016/07/01/Java%20%E7%AE%80%E4%BB%8B%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
     
     <lastmod>2017-05-06T14:59:25.711Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/10/21/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(4)%E2%80%94%E2%80%94redis%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <loc>http://zgshen.github.io/2016/10/21/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(4)%E2%80%94%E2%80%94redis%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2017-05-06T14:59:12.926Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/04/10/spring%20springmvc%20mybatis%20%E6%95%B4%E5%90%88/</loc>
+    <loc>http://zgshen.github.io/2016/04/10/spring%20springmvc%20mybatis%20%E6%95%B4%E5%90%88/</loc>
     
     <lastmod>2017-05-06T14:58:53.762Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2015/12/12/MySQL%E5%85%A5%E9%97%A8%E6%8E%A5%E8%A7%A6%E8%AE%B0%E5%BD%95--%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0Java%E9%80%9A%E8%BF%87JDBC%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://zgshen.github.io/2015/12/12/MySQL%E5%85%A5%E9%97%A8%E6%8E%A5%E8%A7%A6%E8%AE%B0%E5%BD%95--%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0Java%E9%80%9A%E8%BF%87JDBC%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     
     <lastmod>2017-05-06T14:58:40.021Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/01/27/%E9%99%A4%E5%A4%95/</loc>
+    <loc>http://zgshen.github.io/2017/01/27/%E9%99%A4%E5%A4%95/</loc>
     
     <lastmod>2017-05-06T14:56:30.940Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/02/14/0214%E5%B9%BF%E5%B7%9E/</loc>
+    <loc>http://zgshen.github.io/2017/02/14/0214%E5%B9%BF%E5%B7%9E/</loc>
     
     <lastmod>2017-05-06T14:55:57.511Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(2)%E2%80%94%E2%80%94%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</loc>
+    <loc>http://zgshen.github.io/2016/09/29/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(2)%E2%80%94%E2%80%94%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2017-05-06T14:55:46.422Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2015/05/04/avr%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%89%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://zgshen.github.io/2015/05/04/avr%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%89%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-05-06T14:54:52.040Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/04/16/eclipse%20neon%20git%20%E6%8F%90%E4%BA%A4%E7%AA%97%E5%8F%A3%E5%A4%AA%E5%B0%8F%E9%97%AE%E9%A2%98/</loc>
+    <loc>http://zgshen.github.io/2017/04/16/eclipse%20neon%20git%20%E6%8F%90%E4%BA%A4%E7%AA%97%E5%8F%A3%E5%A4%AA%E5%B0%8F%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2017-05-06T14:54:22.536Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2016/10/02/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(3)%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%92%8C%E5%89%8D%E5%8F%B0%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>http://zgshen.github.io/2016/10/02/%E6%B7%98%E6%B7%98%E5%95%86%E5%9F%8E%E7%9A%84%E5%AE%9E%E8%B7%B5(3)%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%92%8C%E5%89%8D%E5%8F%B0%E5%B7%A5%E7%A8%8B/</loc>
     
     <lastmod>2017-05-06T14:54:05.023Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2017/02/23/%E5%86%85%E9%83%A8%E7%B1%BB%E7%9B%B8%E5%85%B3%E2%80%94%E2%80%94%E5%AE%9A%E4%B9%89%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E3%80%81%E5%9B%9E%E8%B0%83%E5%AE%9E%E7%8E%B0%E5%8F%8A%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
+    <loc>http://zgshen.github.io/2017/02/23/%E5%86%85%E9%83%A8%E7%B1%BB%E7%9B%B8%E5%85%B3%E2%80%94%E2%80%94%E5%AE%9A%E4%B9%89%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E3%80%81%E5%9B%9E%E8%B0%83%E5%AE%9E%E7%8E%B0%E5%8F%8A%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
     
     <lastmod>2017-05-06T14:53:09.456Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://javazgs.com/2015/05/04/opencv%E7%AE%80%E5%8D%95%E7%9A%84%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E7%81%B0%E5%BA%A6%E5%8C%96%E5%92%8C%E4%BA%8C%E5%80%BC%E5%8C%96%EF%BC%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/</loc>
+    <loc>http://zgshen.github.io/2015/05/04/opencv%E7%AE%80%E5%8D%95%E7%9A%84%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E7%81%B0%E5%BA%A6%E5%8C%96%E5%92%8C%E4%BA%8C%E5%80%BC%E5%8C%96%EF%BC%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/</loc>
     
     <lastmod>2017-05-06T14:52:08.233Z</lastmod>
     

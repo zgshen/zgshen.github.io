@@ -1,488 +1,363 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>opencv简单的彩色图像灰度化和二值化（学习笔记） | ⑨课编程</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255255255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少">
-<meta property="og:type" content="article">
-<meta property="og:title" content="opencv简单的彩色图像灰度化和二值化（学习笔记）">
-<meta property="og:url" content="http://javazgs.com/2015/05/04/opencv简单的彩色图像灰度化和二值化（学习笔记）/index.html">
-<meta property="og:site_name" content="⑨课编程">
-<meta property="og:description" content="图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255255255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少">
-<meta property="og:updated_time" content="2017-05-06T14:52:08.233Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="opencv简单的彩色图像灰度化和二值化（学习笔记）">
-<meta name="twitter:description" content="图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255255255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
-  
+    <title> opencv简单的彩色图像灰度化和二值化（学习笔记） · ⑨课编程 </title>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="⑨课编程">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+<meta name="keywords" content="nlvi, Nlvi" />
 
-  
+
+    <meta name="subtitle" content="这个人很懒，神马都没有写…">
+
+
+    <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+
+
+    <meta name="keywords" content="JavaSE,Spring,其他" />
+
+
+    <meta name="keywords" content="其他, Nlvi" />
+
+<link rel="stylesheet" href="/style/style.css">
+<script src="/script/jquery.min.js"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
+    var CONFIG = {
+        title: "⑨课编程",
+        author: "zgshen",
+        lightbox: true,
+        animate: true
+    }
 </script>
+
+
+
+    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+
+
+
 
 
 </head>
-
 <body>
-  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
-    <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
-      <div class="overlay" style="background-color: #005a87;"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/assets/blogImg/head.jpg" class="js-avatar">
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">zgshen</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-    			
-            
-    			
-    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
+    <div class="progress">
+    <div class="progress-inner"></div>
 </div>
-
+    <div class="body">
+    <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+    <div class="tagcloud-inner">
+        <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
     </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">zgshen</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/assets/blogImg/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">zgshen</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-		        
-		        	<li><a href="/archives/">所有文章</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+</div>
+    <header class="header" id="header">
+    <div class="title syuanpi tvIn">
+    <div class="table">
+        <div class="connect">
+            <div class="connect-inner">
+                <span><a href="/">⑨课编程</a></span>
+                
+                    <span id="subtitle">这个人很懒，神马都没有写…</span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <nav class="main-nav syuanpi tvIn">
+<div class="table">
+
+    <ul class="menu">
+        
+        <li class="menu-item">
+            <a href="javascript:;" id="search">
+                <span>Search</span>
+                
+                
+            </a>
+        </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>Article</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/archives">
+                    <span>Archives</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="javascript:;" id="tags">
+                    <span>Tags</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/about">
+                    <span>About</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+    </ul>
+
+</div>
 </nav>
-
-      <div id="wrapper" class="body-wrap">
-        <div class="menu-l">
-          <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
-          </div>
-          <div id="js-content" class="content-ll">
-            <article id="post-opencv简单的彩色图像灰度化和二值化（学习笔记）" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      opencv简单的彩色图像灰度化和二值化（学习笔记）
-    </h1>
-  
-
-        <a href="/2015/05/04/opencv简单的彩色图像灰度化和二值化（学习笔记）/" class="archive-article-date">
-  	<time datetime="2015-05-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255<em>255</em>255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少一些。灰度图像的描述与彩色图像一样仍然反映了整幅图像的整体和局部的色度和亮度等级的分布和特征。图像的灰度化处理可用两种方法来实现。<br>   图像的二值化是将图像上的像素点的灰度值设置为0或255，也就是将整个图像呈现出明显的黑白效果。要对RGB彩色图像进行二值化一般首先要对图像进行灰度化处理。<br><a id="more"></a><br>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cv.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"highgui.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cvaux.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">    &#123;</div><div class="line">        IplImage* img;</div><div class="line">        IplImage* img0;</div><div class="line">        IplImage* img1;</div><div class="line"></div><div class="line">        img = cvLoadImage(<span class="string">"test.jpg"</span>);<span class="comment">//默认初始图像放在工程文件下</span></div><div class="line">        <span class="comment">//IplImage* img1 = img;</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == img)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//灰度化操作</span></div><div class="line">        img0 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCvtColor(img,img0,CV_BGR2GRAY);</div><div class="line"><span class="comment">//图像数据复制</span></div><div class="line">        img1 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCopy(img0, img1, <span class="literal">NULL</span>);<span class="comment">//数据复制，若直接赋值相当指针指向同一地址会对原本img0操作</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//二值化操作</span></div><div class="line">        <span class="keyword">int</span> height = img1-&gt;height;</div><div class="line">        <span class="keyword">int</span> width = img1-&gt;width;</div><div class="line">        <span class="keyword">int</span> step = img1-&gt;widthStep;</div><div class="line">        <span class="keyword">int</span> channels = img1-&gt;nChannels;</div><div class="line">        uchar *data = (uchar*)img1-&gt;imageData;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i != height; ++ i)</div><div class="line">        &#123;</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j != width; ++ j)</div><div class="line">         &#123;</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k != channels; ++ k)</div><div class="line">             &#123;</div><div class="line">                 <span class="keyword">if</span>(data[i*step+j*channels+k]&lt;<span class="number">128</span>)</div><div class="line">                  data[i*step+j*channels+k]=<span class="number">0</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">                  <span class="keyword">else</span></div><div class="line">                  data[i*step+j*channels+k]=<span class="number">255</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">        &#125;</div><div class="line"><span class="comment">//创建窗口、显示图像、销毁图像、释放图像</span></div><div class="line">        cvNamedWindow( <span class="string">"test1"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test1"</span>, img0);</div><div class="line"></div><div class="line">        cvNamedWindow( <span class="string">"test"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test"</span>, img1);</div><div class="line"></div><div class="line">        cvWaitKey(<span class="number">0</span>);</div><div class="line"></div><div class="line">        cvDestroyWindow( <span class="string">"test1"</span> );</div><div class="line">        cvDestroyWindow( <span class="string">"test"</span> );</div><div class="line"></div><div class="line">        cvReleaseImage( &amp;img0 );</div><div class="line">        cvReleaseImage( &amp;img1 );</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2015/05/04/opencv简单的彩色图像灰度化和二值化（学习笔记）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2015/05/04/avr单片机三种时钟模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          avr单片机三种时钟模式
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-
-
-
-
-
-
-
-<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTY1OC82MjI2">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-       if (typeof LivereTower === 'function') { return; }
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-
-
-
-
-          </div>
-        </div>
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 zgshen
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		mathjax: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
-</script>
-
-<script src="/./main.js?v=4.0.0.js"></script>
-
-
-    
-<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
-  <div class="tools-wrap">
-    
-    	<section class="tools-section tools-section-all" q-show="innerArchive">
-        <div class="search-wrap">
-          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
-          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
-        </div>
-        <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
-          <label class="search-switch">
-            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
-          </label>
-          <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">web框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">商城技术应用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">博客</a>
-              </li>
+</header>
+<div class="mobile-header">
+    <div class="mobile-header-body">
+        <div class="mobile-header-list">
             
-            <div class="clearfix"></div>
-          </ul>
-        </div>
-        <ul class="search-ul">
-          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
-            2、在根目录_config.yml里添加配置：
-<pre style="font-size: 12px;" q-show="jsonFail">
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: true
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
-            <p class="search-time">
-              <i class="icon-calendar icon"></i>
-              <span q-text="date|dateformat"></span>
-            </p>
-            <p class="search-tag">
-              <i class="icon-price-tags icon"></i>
-              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
-            </p>
-          </li>
-        </ul>
-    	</section>
-    
-
-    
-
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
-  	  	
-    	</section>
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
+            
+                <div class="mobile-nav-item">
+                    <a href="/">
+                        <span>Article</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>Archives</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item inner-cloud">
+                    <div class="mobile-nav-tag">
+                        <a href="javascript:;" id="mobile-tags">
+                            <span>Tags</span>
+                            
+                            
+                        </a>
+                    </div>
+                    <div class="mobile-nav-tagcloud">
+                        <div class="mobile-tagcloud-inner">
+                            <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/about">
+                        <span>About</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
         </div>
-
     </div>
-
+    <div class="mobile-header-nav">
+        <div class="mobile-header-item" id="mobile-left">
+            <div class="header-menu-item">
+                <span class="header-menu-line"></span>
+            </div>
+        </div>
+        <h1 class="mobile-header-title">
+            <a href="/">⑨课编程</a>
+        </h1>
+        <div class="mobile-header-item"></div>
+    </div>
 </div>
-  </div>
+
+    <div class="container">
+        <main class="main" id="main">
+            
+    
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>May 4, 2015</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                opencv简单的彩色图像灰度化和二值化（学习笔记）
+            
+            </h1>
+            
+                
+                    <div class="post-tags syuanpi riseIn-light back-3">
+                    
+                        <a href="/tags/其他/">其他</a>
+                    
+                    </div>
+                
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                <p>  图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255<em>255</em>255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少一些。灰度图像的描述与彩色图像一样仍然反映了整幅图像的整体和局部的色度和亮度等级的分布和特征。图像的灰度化处理可用两种方法来实现。<br>   图像的二值化是将图像上的像素点的灰度值设置为0或255，也就是将整个图像呈现出明显的黑白效果。要对RGB彩色图像进行二值化一般首先要对图像进行灰度化处理。<br><a id="more"></a><br>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cv.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"highgui.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cvaux.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">    &#123;</div><div class="line">        IplImage* img;</div><div class="line">        IplImage* img0;</div><div class="line">        IplImage* img1;</div><div class="line"></div><div class="line">        img = cvLoadImage(<span class="string">"test.jpg"</span>);<span class="comment">//默认初始图像放在工程文件下</span></div><div class="line">        <span class="comment">//IplImage* img1 = img;</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == img)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//灰度化操作</span></div><div class="line">        img0 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCvtColor(img,img0,CV_BGR2GRAY);</div><div class="line"><span class="comment">//图像数据复制</span></div><div class="line">        img1 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCopy(img0, img1, <span class="literal">NULL</span>);<span class="comment">//数据复制，若直接赋值相当指针指向同一地址会对原本img0操作</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//二值化操作</span></div><div class="line">        <span class="keyword">int</span> height = img1-&gt;height;</div><div class="line">        <span class="keyword">int</span> width = img1-&gt;width;</div><div class="line">        <span class="keyword">int</span> step = img1-&gt;widthStep;</div><div class="line">        <span class="keyword">int</span> channels = img1-&gt;nChannels;</div><div class="line">        uchar *data = (uchar*)img1-&gt;imageData;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i != height; ++ i)</div><div class="line">        &#123;</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j != width; ++ j)</div><div class="line">         &#123;</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k != channels; ++ k)</div><div class="line">             &#123;</div><div class="line">                 <span class="keyword">if</span>(data[i*step+j*channels+k]&lt;<span class="number">128</span>)</div><div class="line">                  data[i*step+j*channels+k]=<span class="number">0</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">                  <span class="keyword">else</span></div><div class="line">                  data[i*step+j*channels+k]=<span class="number">255</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">        &#125;</div><div class="line"><span class="comment">//创建窗口、显示图像、销毁图像、释放图像</span></div><div class="line">        cvNamedWindow( <span class="string">"test1"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test1"</span>, img0);</div><div class="line"></div><div class="line">        cvNamedWindow( <span class="string">"test"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test"</span>, img1);</div><div class="line"></div><div class="line">        cvWaitKey(<span class="number">0</span>);</div><div class="line"></div><div class="line">        cvDestroyWindow( <span class="string">"test1"</span> );</div><div class="line">        cvDestroyWindow( <span class="string">"test"</span> );</div><div class="line"></div><div class="line">        cvReleaseImage( &amp;img0 );</div><div class="line">        cvReleaseImage( &amp;img1 );</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+
+            
+        
+        </div>
+        
+            
+            
+        
+    </article>
+    
+        
+    <nav class="article-page">
+        
+            <a href="/2015/12/12/MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库/" id="art-left" class="art-right">
+                <span class="next-title">
+                    MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库<i class="iconfont icon-right"></i> 
+                </span>
+            </a>
+        
+        
+            <a href="/2015/05/04/avr单片机三种时钟模式/" id="art-right" class="art-left">
+                <span class="prev-title"> 
+                    <i class="iconfont icon-left"></i>avr单片机三种时钟模式
+                </span>
+            </a>
+        
+    </nav>
+
+        
+    
+
+
+        </main>
+        <footer class="footer syuanpi fadeIn" id="footer">
+    <hr>
+    <div class="footer-wrapper">
+        <div class="left">
+            <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+        </div>
+        <div class="right">
+            <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>1970 ~ 2017</span>
+        <span>❤</span>
+        <span>zgshen</span>
+    </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="/script/nlvi.js"></script>
+<script src="/script/search.js"></script>
+
+    <script src="/lightbox/js/lightbox.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    document.body.addEventListener('touchstart', function () {});
+    $('.progress').hide();
+    $('.body').show();
+    Nlvi.tagcloud();
+    Nlvi.mobileHeader();
+    Nlvi.back2top();
+    Nlvi.smoothScroll();
+    Nlvi.onView();
+    Nlvi.showToc();
+    Nlvi.showComments();
+    Nlvi.showReward();
+
+    !CONFIG.animate && Nlvi.offAnimate();
+    CONFIG.lightbox && Nlvi.onPicBox();
+})
+</script>
+    </div>
+    
+        
+    
+    <div class="backtop syuanpi dead toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
+</div>
+    
+    <div class="search" id="search">
+        <div class="mask" id="mask"></div>
+        <div class="search-wrapper syuanpi">
+            <h1 id="search-header" class="syuanpi">搜索一下？</h1>
+            <div class="input">
+                <input type="text" id="local-search-input" results="0" name="">
+            </div>
+            <div id="local-search-result"></div>
+        </div>
+    </div>
+    <script>
+    var GREETING = {
+        morning: "当我们探索时，就要发现到真理",
+        noon: "人的天职在于勇于探索真理。",
+        after: "一件事实是一条没有性别的真理",
+        night: "真理有时可能变得黯淡，但它永远不会熄灭",
+        midnight: "真理在人那里获得生命力，并且展现出来"
+    }
+    $(document).ready(function(){
+        Nlvi.search();
+    });
+    </script>
+
 </body>
 </html>

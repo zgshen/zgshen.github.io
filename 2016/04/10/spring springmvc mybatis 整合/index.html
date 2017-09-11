@@ -1,170 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://javazgs.com">
-  <title>spring springmvc mybatis 整合 | ⑨课编程</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近鼓捣ssm框架的东西，写篇博文记录。环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.51、各个xml配置文件的配置(1)pom.xml 配置清单文件连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8">
-<meta property="og:type" content="article">
-<meta property="og:title" content="spring springmvc mybatis 整合">
-<meta property="og:url" content="http://javazgs.com/2016/04/10/spring springmvc mybatis 整合/index.html">
-<meta property="og:site_name" content="⑨课编程">
-<meta property="og:description" content="最近鼓捣ssm框架的东西，写篇博文记录。环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.51、各个xml配置文件的配置(1)pom.xml 配置清单文件连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8">
-<meta property="og:image" content="http://img.blog.csdn.net/20160409215530663">
-<meta property="og:image" content="http://img.blog.csdn.net/20160409221836381">
-<meta property="og:image" content="http://img.blog.csdn.net/20160409222553125">
-<meta property="og:updated_time" content="2017-05-06T14:58:53.762Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring springmvc mybatis 整合">
-<meta name="twitter:description" content="最近鼓捣ssm框架的东西，写篇博文记录。环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.51、各个xml配置文件的配置(1)pom.xml 配置清单文件连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160409215530663">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
-  
+    <title> spring springmvc mybatis 整合 · ⑨课编程 </title>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="browsermode" content="application">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="⑨课编程">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-navbutton-color" content="#666666">
+<meta name= "format-detection" content="telephone=no" />
+<meta name="keywords" content="nlvi, Nlvi" />
 
-  
+
+    <meta name="subtitle" content="这个人很懒，神马都没有写…">
+
+
+    <meta name="description" content="啊深的博客。记录一些日常琐事和技术心得等等。">
+
+
+    <meta name="keywords" content="JavaSE,Spring,其他" />
+
+
+    <meta name="keywords" content="spring, Nlvi" />
+
+<link rel="stylesheet" href="/style/style.css">
+<script src="/script/jquery.min.js"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?51ad55e3cb13f255e31f90ec4edb71f6";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
+    var CONFIG = {
+        title: "⑨课编程",
+        author: "zgshen",
+        lightbox: true,
+        animate: true
+    }
 </script>
 
 
+
+    <link rel="stylesheet" href="/lightbox/css/lightbox.min.css">
+
+
+
+
+    <link rel="stylesheet" href="/syuanpi/syuanpi.min.css">
+
+
+
+
+
+
+
+
+
+
 </head>
-
 <body>
-  <div id="container" q-class="show:isCtnShow" style="background: url(http://cdn.aixifan.com/acfun-pc/1.7.11/img/page/space/bg.png) no-repeat;">
-    <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
-      <div class="overlay" style="background-color: #005a87;"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/assets/blogImg/head.jpg" class="js-avatar">
-		</a>
+    <div class="progress">
+    <div class="progress-inner"></div>
+</div>
+    <div class="body">
+    <div class="tagcloud-mask"></div>  
+<div class="tagcloud" id="tagcloud">
+    <div class="tagcloud-inner">
+        <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
+    </div>
+</div>
+    <header class="header" id="header">
+    <div class="title syuanpi tvIn">
+    <div class="table">
+        <div class="connect">
+            <div class="connect-inner">
+                <span><a href="/">⑨课编程</a></span>
+                
+                    <span id="subtitle">这个人很懒，神马都没有写…</span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <nav class="main-nav syuanpi tvIn">
+<div class="table">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">zgshen</a></h1>
-		</hgroup>
+    <ul class="menu">
+        
+        <li class="menu-item">
+            <a href="javascript:;" id="search">
+                <span>Search</span>
+                
+                
+            </a>
+        </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>Article</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/archives">
+                    <span>Archives</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="javascript:;" id="tags">
+                    <span>Tags</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+        
+            <li class="menu-item">
+                <a href="/about">
+                    <span>About</span>
+                    
+                    
+                </a>
+            </li>
+        
+        
+    </ul>
 
-		
-		<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-    			
+</div>
+</nav>
+</header>
+<div class="mobile-header">
+    <div class="mobile-header-body">
+        <div class="mobile-header-list">
             
-    			
-    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-    			
             
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
+                <div class="mobile-nav-item">
+                    <a href="/">
+                        <span>Article</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>Archives</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item inner-cloud">
+                    <div class="mobile-nav-tag">
+                        <a href="javascript:;" id="mobile-tags">
+                            <span>Tags</span>
+                            
+                            
+                        </a>
+                    </div>
+                    <div class="mobile-nav-tagcloud">
+                        <div class="mobile-tagcloud-inner">
+                            <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/about">
+                        <span>About</span>
+                        
+                        
+                    </a>
+                </div>
+            
+            
+        </div>
+    </div>
+    <div class="mobile-header-nav">
+        <div class="mobile-header-item" id="mobile-left">
+            <div class="header-menu-item">
+                <span class="header-menu-line"></span>
+            </div>
+        </div>
+        <h1 class="mobile-header-title">
+            <a href="/">⑨课编程</a>
+        </h1>
+        <div class="mobile-header-item"></div>
+    </div>
 </div>
 
-    </div>
-    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">zgshen</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/assets/blogImg/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">zgshen</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">这个人很懒，神马都没有写…</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-		        
-		        	<li><a href="/archives/">所有文章</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zgshen" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="mail" target="_blank" href="mailto:zdshen@163.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div id="wrapper" class="body-wrap">
-        <div class="menu-l">
-          <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
-          </div>
-          <div id="js-content" class="content-ll">
-            <article id="post-spring springmvc mybatis 整合" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+    <div class="container">
+        <main class="main" id="main">
+            
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      spring springmvc mybatis 整合
-    </h1>
-  
-
-        <a href="/2016/04/10/spring springmvc mybatis 整合/" class="archive-article-date">
-  	<time datetime="2016-04-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-10</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近鼓捣ssm框架的东西，写篇博文记录。<br>环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.5<br>1、各个xml配置文件的配置<br>(1)pom.xml 配置清单文件<br>连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8<a id="more"></a></p>
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>April 10, 2016</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                spring springmvc mybatis 整合
+            
+            </h1>
+            
+                
+                    <div class="post-tags syuanpi riseIn-light back-3">
+                    
+                        <a href="/tags/spring/">spring</a>
+                    
+                    </div>
+                
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                <p>最近鼓捣ssm框架的东西，写篇博文记录。<br>环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.5<br>1、各个xml配置文件的配置<br>(1)pom.xml 配置清单文件<br>连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8<a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;</div><div class="line">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line">  &lt;groupId&gt;cn.shen&lt;/groupId&gt;</div><div class="line">  &lt;artifactId&gt;ssmdemo&lt;/artifactId&gt;</div><div class="line">  &lt;packaging&gt;war&lt;/packaging&gt;</div><div class="line">  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</div><div class="line">  &lt;name&gt;ssmdemo Maven Webapp&lt;/name&gt;</div><div class="line">  &lt;url&gt;http://maven.apache.org&lt;/url&gt;</div><div class="line">  </div><div class="line">  &lt;dependencies&gt;</div><div class="line">		&lt;!-- 添加spring依赖，对应版本号jar包 --&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">	 </div><div class="line">		&lt;!-- 添加tomcat下servlet-api依赖,对应版本 --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;3.1.0&lt;/version&gt;</div><div class="line">			&lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line"></div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.12&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line"></div><div class="line">		</div><div class="line">		&lt;!-- 添加jtl支持 --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;javax.servlet&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;jstl&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.2&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">	  </div><div class="line">	  	&lt;!-- 添加Spring支持 --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">	  		&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	  		&lt;artifactId&gt;spring-core&lt;/artifactId&gt;</div><div class="line">	  		&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">	  	&lt;/dependency&gt;</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">	  		&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	  		&lt;artifactId&gt;spring-beans&lt;/artifactId&gt;</div><div class="line">	  		&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">	  	&lt;/dependency&gt;</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">	         &lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	         &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;</div><div class="line">	         &lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">	        &lt;/dependency&gt;</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">	  		&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	  		&lt;artifactId&gt;spring-context&lt;/artifactId&gt;</div><div class="line">	  		&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">	  	&lt;/dependency&gt;</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">	  		&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">	  		&lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;</div><div class="line">	  		&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">	  	&lt;/dependency&gt;</div><div class="line">	  	</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-web&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-aop&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;4.1.7.RELEASE&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">	  </div><div class="line">		  &lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.mybatis&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.2.3&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 添加日志支持 --&gt;</div><div class="line">	  	&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;log4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;log4j&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.2.17&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.7.12&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 添加mybatis支持 --&gt;</div><div class="line">		 &lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;org.mybatis&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;mybatis&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;3.3.0&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;!-- jdbc驱动包  --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;5.1.37&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;commons-fileupload&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.3.1&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 添加连接池druid支持 --&gt;</div><div class="line">		&lt;dependency&gt;</div><div class="line">			&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</div><div class="line">			&lt;artifactId&gt;druid&lt;/artifactId&gt;</div><div class="line">			&lt;version&gt;1.0.16&lt;/version&gt;</div><div class="line">		&lt;/dependency&gt;</div><div class="line">		</div><div class="line">	&lt;/dependencies&gt;</div><div class="line">  </div><div class="line">  &lt;build&gt;</div><div class="line">    &lt;finalName&gt;ssmdemo&lt;/finalName&gt;</div><div class="line">    &lt;!-- 指定jdk编译器版本 --&gt;</div><div class="line">		&lt;plugins&gt;</div><div class="line">			&lt;plugin&gt;</div><div class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">				&lt;version&gt;3.1&lt;/version&gt;</div><div class="line">				&lt;configuration&gt;</div><div class="line">					&lt;source&gt;1.8&lt;/source&gt;</div><div class="line">					&lt;target&gt;1.8&lt;/target&gt;</div><div class="line">				&lt;/configuration&gt;</div><div class="line">			&lt;/plugin&gt;</div><div class="line">		&lt;/plugins&gt;</div><div class="line">  &lt;/build&gt;</div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
 <p>(2)web.xml配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance</div><div class="line"> http://www.springmodules.org/schema/cache/springmodules-cache.xsd</div><div class="line"> http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd &quot;</div><div class="line">	xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; </div><div class="line">	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; </div><div class="line">	id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;</div><div class="line">  &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;</div><div class="line">  </div><div class="line">   &lt;!-- Spring配置文件 --&gt;</div><div class="line">   &lt;!--  --&gt;</div><div class="line">	&lt;context-param&gt;</div><div class="line">		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">		&lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;</div><div class="line">	&lt;/context-param&gt;</div><div class="line">   </div><div class="line">   &lt;!-- 解决工程编码过滤器 --&gt;</div><div class="line">	&lt;filter&gt;</div><div class="line">		&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;</div><div class="line">		&lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;</div><div class="line">		&lt;init-param&gt;</div><div class="line">			&lt;param-name&gt;encoding&lt;/param-name&gt;</div><div class="line">			&lt;param-value&gt;UTF-8&lt;/param-value&gt;</div><div class="line">		&lt;/init-param&gt;</div><div class="line">		&lt;init-param&gt;</div><div class="line">			&lt;param-name&gt;forceEncoding&lt;/param-name&gt;</div><div class="line">			&lt;param-value&gt;true&lt;/param-value&gt;</div><div class="line">		&lt;/init-param&gt;</div><div class="line">	&lt;/filter&gt;</div><div class="line">	&lt;filter-mapping&gt;</div><div class="line">		&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;</div><div class="line">		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</div><div class="line">	&lt;/filter-mapping&gt;</div><div class="line">   </div><div class="line">    &lt;!-- Spring监听器 --&gt;</div><div class="line">	&lt;listener&gt;</div><div class="line">		&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</div><div class="line">	&lt;/listener&gt;</div><div class="line">	</div><div class="line">   &lt;!-- 添加对springmvc的支持 --&gt;</div><div class="line">	&lt;servlet&gt;</div><div class="line">		&lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</div><div class="line">		&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</div><div class="line">		&lt;init-param&gt;</div><div class="line">			&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">			&lt;param-value&gt;classpath:spring-mvc.xml&lt;/param-value&gt;</div><div class="line">		&lt;/init-param&gt;</div><div class="line">		&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</div><div class="line">		&lt;async-supported&gt;true&lt;/async-supported&gt;</div><div class="line">	&lt;/servlet&gt;</div><div class="line">	&lt;servlet-mapping&gt;</div><div class="line">        &lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</div><div class="line">        &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;</div><div class="line">    &lt;/servlet-mapping&gt;</div><div class="line">	&lt;servlet-mapping&gt;</div><div class="line">		&lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</div><div class="line">		&lt;url-pattern&gt;*.html&lt;/url-pattern&gt;</div><div class="line">	&lt;/servlet-mapping&gt;</div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure>
@@ -189,332 +256,131 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;pre name=&quot;code&quot; class=&quot;html&quot;&gt;&lt;pre name=&quot;code&quot; class=&quot;html&quot;&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</div><div class="line">&lt;mapper namespace=&quot;cn.web.open.dao.UserDao&quot;&gt;</div><div class="line">	&lt;resultMap type=&quot;User&quot; id=&quot;UserResult&quot;&gt;</div><div class="line">		&lt;result column=&quot;USER_CODE&quot; property=&quot;userCode&quot; /&gt;</div><div class="line">		&lt;result column=&quot;USER_NAME&quot; property=&quot;userName&quot; /&gt;</div><div class="line">		&lt;result column=&quot;USER_PWD&quot; property=&quot;userPwd&quot; /&gt;</div><div class="line">	&lt;/resultMap&gt;</div><div class="line">	&lt;!-- 查询条件:账号密码用户类型. 0第一个参数,1第二个参数,对应dao接口参数 --&gt;</div><div class="line">	&lt;select id=&quot;findById&quot; parameterType=&quot;String&quot; resultMap=&quot;UserResult&quot;&gt;</div><div class="line">		SELECT USER_CODE,USER_NAME,USER_PWD FROM BLOG_USER WHERE USER_CODE=#&#123;0&#125; AND USER_PWD=#&#123;1&#125; AND USER_TYPE=2</div><div class="line">	&lt;/select&gt;</div><div class="line"></div><div class="line">	&lt;!-- </div><div class="line">	&lt;select id=&quot;getAllUsers&quot; resultMap=&quot;userResult&quot;&gt;</div><div class="line">		SELECT USER_CODE,USER_NAME,USER_PWD,CREATE_DATE</div><div class="line">		FROM BLOG_USER</div><div class="line">	&lt;/select&gt;</div><div class="line">	 --&gt;</div><div class="line">&lt;/mapper&gt;</div></pre></td></tr></table></figure>
 <p>(3)前台的一些测试页面<br><img src="http://img.blog.csdn.net/20160409221836381" alt="这里写图片描述"><br>WEB_INF下文件不能通过URL直接访问,登录页面网上拿了别人做了一个页面，挺有趣的，访问工程地址,端口你自己配的,输入管理员类型的账号测试<br><img src="http://img.blog.csdn.net/20160409222553125" alt="这里写图片描述"><br>刚开始对于各种注解的使用不甚了解鼓捣了许久,用maven管理项目构建时也碰到许多小问题，着实查了许多资料,下过别人的demo参考，总算是把ssm这一套搭起来了，如果发现有问题，请留言指教。demo下载<a href="http://download.csdn.net/detail/u012809062/9486330" target="_blank" rel="external">http://download.csdn.net/detail/u012809062/9486330</a></p>
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
+            
         
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://javazgs.com/2016/04/10/spring springmvc mybatis 整合/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/07/01/Java 简介和开发环境/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
         
-          Java 简介和开发环境
+            
+            
         
-      </div>
-    </a>
-  
-  
-    <a href="/2015/12/12/MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+    </article>
+    
+        
+    <nav class="article-page">
+        
+            <a href="/2016/07/01/Java 简介和开发环境/" id="art-left" class="art-right">
+                <span class="next-title">
+                    Java 简介和开发环境<i class="iconfont icon-right"></i> 
+                </span>
+            </a>
+        
+        
+            <a href="/2015/12/12/MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库/" id="art-right" class="art-left">
+                <span class="prev-title"> 
+                    <i class="iconfont icon-left"></i>MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库
+                </span>
+            </a>
+        
+    </nav>
+
+        
+    
 
 
-
-
-
-
-
-
-<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTY1OC82MjI2">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-       if (typeof LivereTower === 'function') { return; }
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+        </main>
+        <footer class="footer syuanpi fadeIn" id="footer">
+    <hr>
+    <div class="footer-wrapper">
+        <div class="left">
+            <div class="contact-icon">
+    
+    
+    
+    
+    
+    
+    
+    
 </div>
-<!-- City版安装代码已完成 -->
-
-
-
-
-          </div>
         </div>
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 zgshen
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+        <div class="right">
+            <div class="copyright">
+    <div class="info">
+        <span>&copy;</span>
+        <span>1970 ~ 2017</span>
+        <span>❤</span>
+        <span>zgshen</span>
     </div>
-  </div>
+    <div class="theme">
+        <span>
+            Powered by
+            <a href="http://hexo.io/" target="_blank">Hexo </a>
+        </span>
+        <span>
+            Theme
+            <a href="https://github.com/ColMugX/hexo-theme-Nlvi"> Nlvi </a>
+        </span>
+    </div>
+    
+</div>
+        </div>
+    </div>
 </footer>
     </div>
-    <script>
-	var yiliaConfig = {
-		mathjax: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
+    <script src="/script/nlvi.js"></script>
+<script src="/script/search.js"></script>
+
+    <script src="/lightbox/js/lightbox.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    document.body.addEventListener('touchstart', function () {});
+    $('.progress').hide();
+    $('.body').show();
+    Nlvi.tagcloud();
+    Nlvi.mobileHeader();
+    Nlvi.back2top();
+    Nlvi.smoothScroll();
+    Nlvi.onView();
+    Nlvi.showToc();
+    Nlvi.showComments();
+    Nlvi.showReward();
+
+    !CONFIG.animate && Nlvi.offAnimate();
+    CONFIG.lightbox && Nlvi.onPicBox();
+})
 </script>
-
-<script src="/./main.js?v=4.0.0.js"></script>
-
-
-    
-<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
-  <div class="tools-wrap">
-    
-    	<section class="tools-section tools-section-all" q-show="innerArchive">
-        <div class="search-wrap">
-          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
-          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
-        </div>
-        <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
-          <label class="search-switch">
-            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
-          </label>
-          <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">其他</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">web框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">商城技术应用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">博客</a>
-              </li>
-            
-            <div class="clearfix"></div>
-          </ul>
-        </div>
-        <ul class="search-ul">
-          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
-            2、在根目录_config.yml里添加配置：
-<pre style="font-size: 12px;" q-show="jsonFail">
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: true
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
-            <p class="search-time">
-              <i class="icon-calendar icon"></i>
-              <span q-text="date|dateformat"></span>
-            </p>
-            <p class="search-tag">
-              <i class="icon-price-tags icon"></i>
-              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
-            </p>
-          </li>
-        </ul>
-    	</section>
-    
-
-    
-
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Java后端开发者&lt;br&gt;16年7月毕业于广大&lt;br&gt;现居广州&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—啊深</div>
-  	  	
-    	</section>
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
     </div>
-
+    
+        
+    
+    <div class="backtop syuanpi dead toTop" id="backtop">
+    <i class="iconfont icon-up"></i>
+    <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
 </div>
-  </div>
+    
+    <div class="search" id="search">
+        <div class="mask" id="mask"></div>
+        <div class="search-wrapper syuanpi">
+            <h1 id="search-header" class="syuanpi">搜索一下？</h1>
+            <div class="input">
+                <input type="text" id="local-search-input" results="0" name="">
+            </div>
+            <div id="local-search-result"></div>
+        </div>
+    </div>
+    <script>
+    var GREETING = {
+        morning: "当我们探索时，就要发现到真理",
+        noon: "人的天职在于勇于探索真理。",
+        after: "一件事实是一条没有性别的真理",
+        night: "真理有时可能变得黯淡，但它永远不会熄灭",
+        midnight: "真理在人那里获得生命力，并且展现出来"
+    }
+    $(document).ready(function(){
+        Nlvi.search();
+    });
+    </script>
+
 </body>
 </html>
