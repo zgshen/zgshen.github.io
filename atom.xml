@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgshen.github.io/"/>
-  <updated>2017-09-06T14:40:27.828Z</updated>
+  <updated>2017-08-03T02:42:45.356Z</updated>
   <id>http://zgshen.github.io/</id>
   
   <author>
@@ -14,33 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>RESTful API开发</title>
-    <link href="http://zgshen.github.io/2017/08/25/RESTful%20API%20%E5%BC%80%E5%8F%91/"/>
-    <id>http://zgshen.github.io/2017/08/25/RESTful API 开发/</id>
-    <published>2017-08-24T16:00:00.000Z</published>
-    <updated>2017-09-06T14:40:27.828Z</updated>
-    
-    <content type="html"><![CDATA[<p>在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。</p>
-<p>#####定义<br>REST 的全称是 Resource Representational State Transfer ，资源以某种表现形式进行状态转移<br>Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等；<br>Representational：某种表现形式，比如用JSON，XML，JPEG等；<br>State Transfer：状态变化。通过HTTP动词实现。</p>
-<p>#####相关参考链接</p>
-<ul>
-<li><a href="https://zhihu.com/question/28557115/answer/48094438" target="_blank" rel="external">怎样用通俗的语言解释REST，以及RESTful？ - 回答作者: 覃超</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。&lt;/p&gt;
-&lt;p&gt;#####定义&lt;br&gt;REST 的
-    
-    </summary>
-    
-    
-      <category term="Web技术" scheme="http://zgshen.github.io/tags/Web%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
   
   <entry>
     <title>线程池</title>
@@ -705,6 +678,27 @@
     
       &lt;h1 id=&quot;本命年&quot;&gt;&lt;a href=&quot;#本命年&quot; class=&quot;headerlink&quot; title=&quot;本命年&quot;&gt;&lt;/a&gt;本命年&lt;/h1&gt;&lt;p&gt;暂且不用去想太多破事，认真过好今年&lt;/p&gt;
 &lt;p&gt;E时光上的广州&lt;br&gt;&lt;img src=&quot;\assets\articleImg\f
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>鸡年大吉</title>
+    <link href="http://zgshen.github.io/2017/01/27/%E9%99%A4%E5%A4%95/"/>
+    <id>http://zgshen.github.io/2017/01/27/除夕/</id>
+    <published>2017-01-26T16:00:00.000Z</published>
+    <updated>2017-05-06T14:56:30.940Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><p>除夕<br>辞旧迎新<br>新年快乐<br><img src="\assets\articleImg\chuxi.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2017&quot;&gt;&lt;a href=&quot;#2017&quot; class=&quot;headerlink&quot; title=&quot;2017&quot;&gt;&lt;/a&gt;2017&lt;/h1&gt;&lt;p&gt;除夕&lt;br&gt;辞旧迎新&lt;br&gt;新年快乐&lt;br&gt;&lt;img src=&quot;\assets\articleImg\chuxi.png&quot; 
     
     </summary>
     
