@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgshen.github.io/"/>
-  <updated>2017-09-14T09:18:04.039Z</updated>
+  <updated>2017-09-21T14:35:31.158Z</updated>
   <id>http://zgshen.github.io/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>闭包</title>
+    <link href="http://zgshen.github.io/2017/09/12/%E9%97%AD%E5%8C%85/"/>
+    <id>http://zgshen.github.io/2017/09/12/闭包/</id>
+    <published>2017-09-11T16:00:00.000Z</published>
+    <updated>2017-09-21T14:35:31.158Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Web开发中，在使用JavScript时，就算没用过，也听说过闭包这个名词</p>
+<p>虚函数这个概念在Java中很少提到，导致一直以为是C++里才有的东西</p>
+<p>一直以为C++里有虚函数<br>Java中的虚函数<br>在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Web开发中，在使用JavScript时，就算没用过，也听说过闭包这个名词&lt;/p&gt;
+&lt;p&gt;虚函数这个概念在Java中很少提到，导致一直以为是C++里才有的东西&lt;/p&gt;
+&lt;p&gt;一直以为C++里有虚函数&lt;br&gt;Java中的虚函数&lt;br&gt;在很早之前接触 Spring MVC 的
+    
+    </summary>
+    
+    
+      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>RESTful API开发的简单应用</title>
@@ -682,47 +707,6 @@
     
     
       <category term="数据库" scheme="http://zgshen.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内部类相关——定义、匿名内部类、回调实现及静态内部类</title>
-    <link href="http://zgshen.github.io/2017/02/23/%E5%86%85%E9%83%A8%E7%B1%BB%E7%9B%B8%E5%85%B3%E2%80%94%E2%80%94%E5%AE%9A%E4%B9%89%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E3%80%81%E5%9B%9E%E8%B0%83%E5%AE%9E%E7%8E%B0%E5%8F%8A%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB/"/>
-    <id>http://zgshen.github.io/2017/02/23/内部类相关——定义、匿名内部类、回调实现及静态内部类/</id>
-    <published>2017-02-22T16:00:00.000Z</published>
-    <updated>2017-05-06T14:53:09.456Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>内部类，顾名思义就是在一个类中的类。内部类可以访问所在类的数据，包括私有数据，而又可以对其他类隐藏，在快速实现回调函数时可以使用匿名内部类，比较便捷。</p>
-</blockquote>
-<p>1、以下为一个简单的内部类例子，内部类可以定义为私有以对其他类隐藏起来；可以用内部类来达到实现多继承的效果。需要注意的是，通过成员函数传入内部类的变量必须定义为final类型，以保证数据的一致性。<a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Walk</span></span>&#123;</div><div class="line">	<span class="comment">//private私有类，继承Walk和Eat</span></div><div class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">LittleCat</span> <span class="keyword">extends</span> <span class="title">Eat</span> </span>&#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">			System.out.println(<span class="string">"Walking....Eating...."</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		LittleCat lCat = <span class="keyword">new</span> Cat().new LittleCat();<span class="comment">//创建内部类对象方式，通过先创建所在外围类对象再创建内部类对象</span></div><div class="line">		lCat.doSomething();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">event</span><span class="params">(<span class="keyword">final</span> String name)</span> </span>&#123;</div><div class="line">		<span class="class"><span class="keyword">class</span> <span class="title">EatFish</span></span>&#123;</div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</div><div class="line">				<span class="comment">//name = "Tom";//在这里修改会报错，name 必须为final类型，保证数据一致</span></div><div class="line">				System.out.println(name);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		EatFish test = <span class="keyword">new</span> EatFish();</div><div class="line">		test.eat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>两个父类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public class Walk &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public class Eat &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2、匿名内部类<br>从名称可以知道匿名就是没有类名的类，匿名内部类用于快速调用接口或抽象类等等中的方法，不需要多写一个实现类来实现调用。</p>
-<p>抽象类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public abstract class Dog &#123;</div><div class="line">	abstract void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface Animal &#123;</div><div class="line">	void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class AnonymousDemo &#123;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		 </div><div class="line">		/**</div><div class="line">		 * 通过创建的一个接口或抽象类分引用，快速便捷重写需要实现的方法，不需要先写一个实现类再实例化以调用方法</div><div class="line">		 */</div><div class="line">		</div><div class="line">		//实现接口方式</div><div class="line">		Animal dog = new Animal() &#123;</div><div class="line">			@Override</div><div class="line">			public void eat() &#123;</div><div class="line">				System.out.println(&quot;like bone.&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		dog.eat();//向上转型的实例，直接调用重写的eat方法</div><div class="line">		</div><div class="line">		//继承抽象类的方式</div><div class="line">		Dog littleDog = new Dog() &#123;</div><div class="line">			@Override</div><div class="line">			void eat() &#123;</div><div class="line">				System.out.println(&quot;I like bone.&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		littleDog.eat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此外，Java的回调函数式可以通过匿名内部类来实现，比如以下例子</p>
-<p>(1)封装的类和提供的接口<br>封装给别人调用的类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Person &#123;</div><div class="line">	</div><div class="line">	private EatFood eatFood;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * 普通方式，构造传递引用</div><div class="line">	 */</div><div class="line">	public Person(EatFood eatSomething)&#123;</div><div class="line">		this.eatFood = eatSomething;//构造时传入引用</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * 普通方式，成员函数传递引用</div><div class="line">	 */</div><div class="line">	public Person()&#123;</div><div class="line">	&#125;</div><div class="line">	public void setCallBack(EatFood eatSomething) &#123;</div><div class="line">		this.eatFood = eatSomething;//用成员函数传入引用</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//需要调用的方法</div><div class="line">	public void eatFood() &#123;</div><div class="line">		eatFood.eat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>调用类需要的接口定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface EatFood &#123;</div><div class="line">	void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>(2)实际调用<br>一般做法都会写一个类实现接口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class EatRice implements EatFood &#123;</div><div class="line">	@Override</div><div class="line">	public void eat() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		System.out.println(&quot;It&apos;s time to eat rice.&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后是实际使用的类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class PeronEatTest &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		//普通方式，构造传递引用</div><div class="line">		Person personOne = new Person(new EatRice());//EatRice实现类方式。多写一个方法传入也可</div><div class="line">		personOne.eatFood();</div><div class="line"></div><div class="line">		//普通方式，成员函数传递引用</div><div class="line">		Person personOne = new Person();</div><div class="line">		EatRice eatRice = new EatRice();</div><div class="line">		personOne.setCallBack(eatRice);</div><div class="line">		personOne.eatFood();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果使用匿名内部类就便捷了许多<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class PeronEatTest &#123;</div><div class="line">	public static void main(String[] args) &#123;	</div><div class="line">		Person personTwo = new Person(new EatFood() &#123;</div><div class="line">			@Override</div><div class="line">			public void eat() &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">				System.out.println(&quot;It&apos;s time to eat rice.&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		personTwo.eatFood();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3、静态内部类<br>创建是不需要依赖于外围类，但也不能使用任何外围类的非static成员变量和方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Cat&#123;</div><div class="line">	</div><div class="line">	private String str = &quot;cat&quot;;</div><div class="line">	private static String str_static = &quot;cat&quot;;</div><div class="line">	</div><div class="line">	private class LittleCat&#123;</div><div class="line">		//public static String str_test = &quot;test&quot;;//错误，非静态内部类变量不能为静态</div><div class="line">		public static final String str_test = &quot;test&quot;;//但加上final就可以</div><div class="line">		public void doSomething() &#123;</div><div class="line">			str = &quot;little cat&quot;;</div><div class="line">			System.out.println(&quot;Walking....Eating....&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	static class BigCat&#123;</div><div class="line">		public void doSomething() &#123;</div><div class="line">			//str = &quot;little cat&quot;;//错误，静态内部类反问外围非静态变量和方法</div><div class="line">			str_static = &quot;big cat&quot;;</div><div class="line">			System.out.println(&quot;I am a big cat.&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		LittleCat lCat = new Cat().new LittleCat();//依赖外围类</div><div class="line">		lCat.doSomething();</div><div class="line">		</div><div class="line">		BigCat bigCat = new BigCat();//不依赖外围类</div><div class="line">		bigCat.doSomething();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;内部类，顾名思义就是在一个类中的类。内部类可以访问所在类的数据，包括私有数据，而又可以对其他类隐藏，在快速实现回调函数时可以使用匿名内部类，比较便捷。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;1、以下为一个简单的内部类例子，内部类可以定义为私有以对其他类隐藏起来；可以用内部类来达到实现多继承的效果。需要注意的是，通过成员函数传入内部类的变量必须定义为final类型，以保证数据的一致性。
-    
-    </summary>
-    
-    
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
