@@ -288,7 +288,8 @@
 <p>在普通类中定义 <code>ApplicationContext</code> 静态变量和set方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</div><div class="line">	applicationContext = context;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>在启动类中，启动时事实已经生成 ConfigurableApplicationContext 对象， ConfigurableApplicationContext 是 ApplicationContext 接口的实现，这里直接传到普通类的 setApplicationContext 方法就行了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="meta">@ServletComponentScan</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WxApplication</span> <span class="keyword">implements</span> <span class="title">EmbeddedServletContainerCustomizer</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ConfigurableApplicationContext applicationContext = SpringApplication.run(WxApplication.class, args);</div><div class="line">		TestClass.setApplicationContext(applicationContext);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>由于是静态变量，类加载时 applicationContext 已经存在，就可获取到 TestService 了，唯一不好就是静态变量在服务器启动后将一直存在<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		applicationContext = context;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getBeanTest</span><span class="params">()</span></span>&#123;</div><div class="line">		TestService testService  = (TestService)applicationContext.getBean(TestService.class);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+<p><strong>补充</strong>：<br>在普通 Spring 工程在启动的时候都会通过 <code>org.springframework.web.context.ContextLoaderListener</code> 监听器从加载系统资源并管理bean， Spring 提供的 <code>WebApplicationContextUtils</code> 工具类能在请求时获取到运行时工程的bean，如果看源码就可以知道监听器执行时与 <code>WebApplicationContextUtils</code> 类的关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//封装一下，类的class和请求request为必要参数</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getBean</span><span class="params">(Class&lt;? extends Object&gt; cla,HttpServletRequest request)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(request == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (T)WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext()).getBean(cla);<span class="comment">//getBean参数可为bean类的.class或直接是bean的Id</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//这样获取bean</span></div><div class="line">TestService testService= (TestService)getBean(TestService.class, request);</div></pre></td></tr></table></figure>
             
         
         </div>
@@ -317,6 +318,41 @@
     </nav>
 
         
+    <i id="com-switch" class="iconfont icon-more jumping-in long infinite" style="font-size:24px;display:block;text-align:center;transform:rotate(180deg);"></i>
+    <div class="post-comments" id="post-comments" style="display: block;margin: auto 16px;">
+        
+        
+<!-- Gitment Comments -->
+<div id="gitment"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "zgshen",
+  repo: 'https://github.com/zgshen/zgshen.github.io',
+  oauth: {
+    client_id: 'ab37daf4a8324c68229f',
+    client_secret: 'db67b5852357755c84a6a4ccea0b4f1cd884ebe5',
+  },
+})
+gitment.render('gitment')
+</script>
+
+        
+<!-- SOHUCS Comments -->
+<div id="SOHUCS"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = '';
+var conf = '';
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+        
+
+    </div>
+
     
 
 
