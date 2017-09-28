@@ -246,6 +246,8 @@ ApplicationContext除了提供上述BeanFactory所能提供的功能之外，还
 SessionFactory接口负责初始化Hibernate。它充当数据存储源的代理，并负责创建Session对象。
 一般通过Configuration读取配置文件生成Configuration对象来创建SessionFactory。
 
+#####5、Hibernate一级缓存、二级缓存和查询缓存区别
+
 ##七、前端知识
 #####1、简述Ajax原理，XMLHttpRequest对象是什么，它有哪些属性方法
 Ajax的原理简单来说是通过XMLHttpRequest对象向服务器发异步请求，从服务器获得数据，然后使用javascript来操作DOM而更新页面。
