@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>zgshen</title>
-  <subtitle>欢迎…</subtitle>
+  <subtitle>Learning is a kind of attitude</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgshen.github.io/"/>
