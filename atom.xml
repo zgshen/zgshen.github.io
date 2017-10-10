@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgshen.github.io/"/>
-  <updated>2017-09-22T10:58:00.655Z</updated>
+  <updated>2017-10-10T15:20:03.567Z</updated>
   <id>http://zgshen.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天河公园</title>
+    <link href="http://zgshen.github.io/2017/10/08/tianhe/"/>
+    <id>http://zgshen.github.io/2017/10/08/tianhe/</id>
+    <published>2017-10-07T16:00:00.000Z</published>
+    <updated>2017-10-10T15:20:03.567Z</updated>
+    
+    <content type="html"><![CDATA[<p>跑跑步…<br><img src="\assets\articleImg\tianhepark.png" alt="天河公园"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;跑跑步…&lt;br&gt;&lt;img src=&quot;\assets\articleImg\tianhepark.png&quot; alt=&quot;天河公园&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>闭包</title>
@@ -683,38 +705,6 @@
     
     
       <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mysql存储过程</title>
-    <link href="http://zgshen.github.io/2017/02/26/Mysql%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
-    <id>http://zgshen.github.io/2017/02/26/Mysql存储过程/</id>
-    <published>2017-02-25T16:00:00.000Z</published>
-    <updated>2017-05-06T15:01:26.783Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>当需要实现复杂的逻辑，需要写多条sql语句或写的sql比较复杂时，可以考虑使用存储过程来处理，最终返回需要的结果集。存储过程即一组SQL语句集。</p>
-</blockquote>
-<p>存储过程的基本语法也不算复杂，以下为创建一个存储过程的模板<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> TEST_FUNCTION;</div><div class="line"><span class="comment">/*定义存储过程名称，设置入参，指定类型和大小*/</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> TEST_FUNCTION(<span class="keyword">in</span> DATA_A <span class="built_in">INT</span>(<span class="number">20</span>),<span class="keyword">in</span> DATA_B <span class="built_in">INT</span>(<span class="number">20</span>),<span class="keyword">in</span> B_TYPE <span class="built_in">varchar</span>(<span class="number">20</span>))</div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">     <span class="comment">/*DECLARE 关键字用于定义变量*/</span></div><div class="line">    <span class="keyword">DECLARE</span> <span class="keyword">SUM</span> <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">DECLARE</span> t_error <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">DECLARE</span> CONTINUE <span class="keyword">HANDLER</span> <span class="keyword">FOR</span> SQLEXCEPTION <span class="keyword">SET</span> t_error=<span class="number">1</span>;<span class="comment">/*异常标志*/</span></div><div class="line">    </div><div class="line">    <span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;<span class="comment">/*启动事务*/</span></div><div class="line">    <span class="comment">/*字符串的判断，STRCMP用法类似于C++*/</span></div><div class="line">    if STRCMP(B_TYPE,'SUM')=0 then</div><div class="line">    <span class="keyword">begin</span></div><div class="line">         <span class="keyword">SELECT</span>  DATA_A+DATA_B <span class="keyword">INTO</span> <span class="keyword">SUM</span>;<span class="comment">/*INTO 把值放到变量中*/</span></div><div class="line">         <span class="keyword">SELECT</span> <span class="keyword">SUM</span>;</div><div class="line">    <span class="keyword">end</span>;<span class="comment">/*一个begin对应一个end*/</span></div><div class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;<span class="comment">/*一个if对应一个end if*/</span></div><div class="line">    </div><div class="line">    IF t_error = 1 THEN  </div><div class="line">    <span class="keyword">ROLLBACK</span>;<span class="comment">/*异常回滚*/</span></div><div class="line">    ELSE</div><div class="line">    <span class="keyword">COMMIT</span>;<span class="comment">/*正常提交*/</span></div><div class="line">    <span class="keyword">END</span> <span class="keyword">IF</span>;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
-<p>创建生成的样子</p>
-<p><img src="http://img.blog.csdn.net/20170226161939611?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>DEFINER的信息是’用户名’@’host’</p>
-<p>输入参数值测试<br><img src="http://img.blog.csdn.net/20170226162314021?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>调用存储使用call命令<br><img src="http://img.blog.csdn.net/20170226162538526?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;当需要实现复杂的逻辑，需要写多条sql语句或写的sql比较复杂时，可以考虑使用存储过程来处理，最终返回需要的结果集。存储过程即一组SQL语句集。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;存储过程的基本语法也不算复杂，以下为创建一个存储过程的模板&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://zgshen.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
