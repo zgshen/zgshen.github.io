@@ -282,10 +282,11 @@
         </header>
         <div class="post-content syuanpi riseIn-light back-3">
             
-                <p>首先到Nginx官网下载tar.gz格式的安装包，这里下载的是nginx-1.10.3版本，环境使用centos的虚拟机</p>
+                <p>首先到Nginx官网下载tar.gz格式的安装包，这里下载的是nginx-1.10.3版本，环境使用centos6的虚拟机</p>
 <p>1、将安装包上传，解压，命令tar -xvf nginx-1.10.3.tar.gz；</p>
 <p>2、自定义创建一个文件夹作为Nginx安装目录，这里在home下创建nginx文件夹；<br><a id="more"></a><br><img src="http://img.blog.csdn.net/20170421004011580?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <p>3、在解压的文件夹（nginx-1.10.3）下执行<code>./configure --prefix=/home/nginx</code> 命令。<br>意思即配置安装环境，将会把Nginx安装到/home/nginx下；</p>
+<p>若没有gcc，先安装<br><code>yum -y install gcc gcc-c++ autoconf automake make</code></p>
 <p>若出现缺少依赖包则先安装依赖包，以下纯净centos mini版碰到的两个依赖包问题<br><img src="http://img.blog.csdn.net/20170421004354876?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>出现上面这个执行 yum -y install pcre-devel 安装依赖，</p>
 <p><img src="http://img.blog.csdn.net/20170421004425814?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>出现这个yum install -y zlib-devel 安装依赖，</p>
 <p>若还有其他依赖问题，根据缺少的文件提示安装相应的东西；</p>
