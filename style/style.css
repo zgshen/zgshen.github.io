@@ -213,7 +213,7 @@ template {
   background-color: #f0f0f0;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #666;
+  background-color: #34495e;
 }
 ::selection {
   background-color: #ddd;
@@ -488,6 +488,7 @@ img {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
+  border-bottom: 1px solid #e6e6e6;
 }
 .header .table {
   display: table;
@@ -508,7 +509,7 @@ img {
   font-family: 'LedFont', cursive, 'Microsoft YaHei', sans-serif;
   font-weight: 300;
   font-size: 40px;
-  color: #666;
+  color: #34495e;
   text-decoration: none;
 }
 .header .title {
@@ -523,6 +524,7 @@ img {
 .header #subtitle {
   font-size: 12px;
   margin-top: 8px;
+  color: #34495e;
 }
 .header .main-nav {
   flex: 3;
@@ -543,7 +545,7 @@ img {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   font-size: 16px;
 }
 .header .main-nav .menu .menu-item a:hover {
@@ -596,7 +598,7 @@ img {
     display: block;
   }
   .mobile-header .mobile-header-nav {
-    background-color: #666;
+    background-color: #34495e;
     color: #fff;
     display: flex;
     flex-direction: row;
@@ -642,7 +644,7 @@ img {
     line-height: 1;
   }
   .mobile-header .mobile-header-body .mobile-header-list {
-    background-color: #666;
+    background-color: #34495e;
     opacity: 0.9;
     box-sizing: border-box;
     padding: 8px 0;
@@ -722,6 +724,9 @@ img {
 .posts {
   padding: 0 8px;
 }
+.post + .post {
+  border-top: 1px solid #e6e6e6;
+}
 .post {
   position: relative;
   background-color: #fefefe;
@@ -760,14 +765,14 @@ img {
   font-family: "Source Sans Pro", "Helvetica Neue";
   font-weight: 400;
   font-size: 14px;
-  color: #666;
+  color: #34495e;
 }
 .post .post-header .post-time .post-category {
   font-size: inherit;
 }
 .post .post-header .post-time .post-category a {
   text-decoration: none;
-  color: #666;
+  color: #34495e;
 }
 .post .post-header .post-time .post-category:before {
   content: ' · ';
@@ -775,12 +780,14 @@ img {
 .post .post-header .post-title {
   margin: 0;
   padding: 5px 0;
-  font-weight: 200;
+  font-weight: 350;
   font-size: 28px;
+  color: #34495e;
 }
 .post .post-header .post-title a {
   text-decoration: none;
-  color: #000;
+/*color: #000*/
+  color: #34495e;
 }
 @media screen and (max-width: 650px) {
   .post .post-header .post-time {
@@ -802,62 +809,62 @@ img {
   }
 }
 .post-content h1 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h1:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content h2 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h2:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content h3 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h3:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content h4 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h4:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content h5 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h5:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content h6 {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h6:before {
-  content: ' ';
+  content: '∮ ';
 }
 .post-content a {
-  color: #666;
+  color: #34495e;
   text-decoration: underline;
 }
 .post-content a:hover {
   color: #000;
 }
 .post-content p {
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   margin: 8px 0;
   line-height: 1.5em;
   font-weight: 300;
@@ -871,11 +878,11 @@ img {
 }
 .post-content strong {
   font-weight: bold;
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
 }
 .post-content i {
   font-weight: 100;
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
 }
 .post-content img {
   width: 500px;
@@ -896,7 +903,7 @@ img {
   -webkit-transform: translateX(10%);
 }
 .content-link a {
-  color: #666;
+  color: #34495e;
   text-decoration: none;
 }
 .content-link a:hover {
@@ -910,7 +917,7 @@ img {
 }
 .post-tags a {
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   margin: 0 4px;
 }
 .post-tags a:before {
@@ -941,7 +948,7 @@ blockquote:before {
 }
 blockquote p {
   margin: 0;
-  font-family: $font-family-use;
+  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
 }
 .archive {
   margin: 0 48px;
@@ -951,7 +958,7 @@ blockquote p {
   margin: 0;
   font-family: Athelas, "PingFang SC", serif;
   font-weight: 300;
-  color: #666;
+  color: #34495e;
 }
 .archive .archive-num {
   margin: 8px;
@@ -976,8 +983,8 @@ blockquote p {
 .archive .archive-list .archive-post:hover {
   padding: 0 16px;
   background-color: $main-back;
-  border-left: 3px solid #666;
-  border-right: 3px solid #666;
+  border-left: 3px solid #34495e;
+  border-right: 3px solid #34495e;
 }
 .archive .archive-list .archive-post-time {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
@@ -990,7 +997,7 @@ blockquote p {
 .archive .archive-list .archive-post-link a {
   margin: 0 8px;
   text-decoration: none;
-  color: #666;
+  color: #34495e;
 }
 .archive .archive-list .archive-post-link a:hover {
   color: #000;
@@ -1014,7 +1021,7 @@ blockquote p {
 }
 .pagination .extend {
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   font-size: 18px;
 }
 .pagination .extend.next {
@@ -1054,7 +1061,7 @@ blockquote p {
 }
 .article-page a {
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   font-size: 16px;
 }
 @media screen and (max-width: 650px) {
@@ -1116,8 +1123,8 @@ blockquote p {
 .footer hr {
   border: none;
   height: 1px;
-  background-color: #666;
-  background-image: -webkit-linear-gradient(0deg, #fff, #666, #fff);
+  background-color: #34495e;
+  background-image: -webkit-linear-gradient(0deg, #fff, #34495e, #fff);
 }
 .footer .footer-wrapper {
   display: flex;
@@ -1148,7 +1155,7 @@ blockquote p {
 .footer .left .contact-icon a {
   margin: 4px 8px;
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   font-size: 26px;
 }
 .footer .left .icon-github:hover {
@@ -1188,21 +1195,21 @@ blockquote p {
   flex-direction: column;
 }
 .footer .right .copyright span {
-  color: #666;
+  color: #34495e;
   font-size: 11px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .footer .right .copyright a {
   font-family: Arial;
   text-decoration: none;
-  color: #666;
+  color: #34495e;
 }
 .footer .right .copyright a:hover {
   color: #000;
   text-decoration: underline;
 }
 .footer .visit_count {
-  color: #666;
+  color: #34495e;
   display: flex;
   align-items: center;
 }
@@ -1245,7 +1252,7 @@ blockquote p {
 .post-copyright .copy-url a,
 .post-copyright .copy-origin a,
 .post-copyright .copy-license a {
-  color: #666;
+  color: #34495e;
 }
 .post-copyright .copy-author a:hover,
 .post-copyright .copy-url a:hover,
@@ -1261,13 +1268,13 @@ blockquote p {
   margin: 8px auto;
   padding: 8px;
   text-align: center;
-  border: 1px solid #666;
+  border: 1px solid #34495e;
   width: 48px;
   border-radius: 8px;
 }
 .post-reward .reward-btn:hover {
   color: #fff;
-  background-color: #666;
+  background-color: #34495e;
   cursor: pointer;
 }
 .post-reward .reward-wrapper {
@@ -1334,12 +1341,12 @@ blockquote p {
 }
 .post-toc .title-link a {
   text-decoration: none;
-  color: #666;
+  color: #34495e;
   padding: 0 8px;
   font-size: 14px;
 }
 .post-toc .title-link a.active {
-  border-left: 2px solid #666;
+  border-left: 2px solid #34495e;
 }
 .post-toc .toc {
   margin: 0;
@@ -1347,16 +1354,16 @@ blockquote p {
   list-style: none;
 }
 .post-toc .toc .toc-item {
-  color: #666;
+  color: #34495e;
 }
 .post-toc .toc .toc-item .toc-link {
-  color: #666;
+  color: #34495e;
   text-decoration: none;
   padding: 0 8px;
   font-size: 14px;
 }
 .post-toc .toc .toc-item .toc-link.active {
-  border-left: 2px solid #666;
+  border-left: 2px solid #34495e;
 }
 @media screen and (max-width: 650px) {
   .post-toc {
@@ -1510,8 +1517,8 @@ blockquote p {
   min-height: 120px;
   text-align: center;
   box-sizing: border-box;
-  background-color: #666;
-  border-bottom: 3px solid #666;
+  background-color: #34495e;
+  border-bottom: 3px solid #34495e;
   box-shadow: inset 0px -8px 10px 0px #585858;
 }
 .tagcloud-mask {
@@ -1589,7 +1596,7 @@ blockquote p {
   position: absolute;
   width: auto;
   will-change: left right;
-  background: #666;
+  background: #34495e;
   -webkit-animation: indeterminate 2.2s ease-out infinite;
   animation: indeterminate 2.2s ease-out infinite;
 }
@@ -1599,7 +1606,7 @@ blockquote p {
   position: absolute;
   width: auto;
   will-change: left right;
-  background: #666;
+  background: #34495e;
   -webkit-animation: indeterminate-short 2.2s ease-out infinite;
   animation: indeterminate-short 2.2s ease-out infinite;
 }
