@@ -198,6 +198,79 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
+                <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/">SSM框架，基于JavaConfig配置方式，不用xml配置文件</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2017年6月14日</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>在使用Spring开发时，我们经常会看到各种各样xml配置，过于繁多的xml配置显得复杂烦人。在Spring3之后，Spring支持使用JavaConfig来代替xml配置，这种方式也得到越来越多人的推荐，甚至在Spring Boot的项目中，基本上已经见不到xml的影子了。这里将使用JavaConfig方式对SSM框架进行整合。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/#more">
+                    <span class="iconfont icon-right">继续阅读</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/">Spring Boot 普通类调用Bean对象的一种方式</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2017年6月8日</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
+<p>注入TestService 接口就可以调用此接口实现类的实现的方法。
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/#more">
+                    <span class="iconfont icon-right">继续阅读</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
                 <a href="/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/">Spring Boot 过滤器、监听器和拦截器使用</a>
             
             </h1>
@@ -481,84 +554,6 @@
     
 
     
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2017/04/16/eclipse neon git 提交窗口太小问题/">eclipse neon git 提交窗口太小问题</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2017年4月16日</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
-<p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
-
-                
-            
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2017/04/04/反射/">反射</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2017年4月4日</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <blockquote>
-<p>相信大家经常听说某些框架设计用到了反射机制啥啥，但自己对此概念却了解甚少，虽然一般开发不会用到，但还是有必要知道反射的基本原理和操作。</p>
-</blockquote>
-<p>  使用反射，可以做到：</p>
-<ul>
-<li>在运行中分析类的能力。</li>
-<li>在运行中查看对象，例如，编写一个toString方法供所有类使用。</li>
-<li>实现数组的操作代码。</li>
-<li>利用Method对象，这个对象很像C++中的函数指针。</li>
-</ul>
-<p>反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）<br>
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2017/04/04/反射/#more">
-                    <span class="iconfont icon-right">继续阅读</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
 </section>
     
     <nav class="pagination">
@@ -596,7 +591,7 @@
             <div class="copyright">
     <div class="info">
         <span>&copy;</span>
-        <span>2016 ~ 2017</span>
+        <span>2016 ~ 2018</span>
         <span></span>
         <span>zgshen</span>
     </div>

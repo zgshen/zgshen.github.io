@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zgshen.github.io/"/>
-  <updated>2017-10-10T15:20:03.567Z</updated>
+  <updated>2018-02-23T15:00:46.353Z</updated>
   <id>http://zgshen.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>星球大战</title>
+    <link href="http://zgshen.github.io/2018/02/23/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/"/>
+    <id>http://zgshen.github.io/2018/02/23/星球大战/</id>
+    <published>2018-02-22T16:00:00.000Z</published>
+    <updated>2018-02-23T15:00:46.353Z</updated>
+    
+    <content type="html"><![CDATA[<p>趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。<br><img src="\assets\articleImg\starwars.jpg" alt="start wars"><br>星战电影拍摄时间线比较有意思的是先拍了正传的三部，后来才补全拍的几部前传。虽然从1977年正传第一部到2017年第八部，跨度40年，电影技术与时俱进，但早年的几部也经过了重制，特效和观影效果不至于看起来太尴尬。<br>系列电影让人感触的是，随着一部部作品的发展，角色的命运也被慢慢揭示。甚至，扮演这些角色的演员，由于他们所扮演的角色成为自己的另一个符号，被世人所熟知，比如我们的莱亚公主。而且，他们的命运也跟戏里的角色有了关联，这样想起来，编剧也是个不得了的工作呢。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。&lt;br&gt;&lt;img src=&quot;\assets\articleImg\starwars.jpg&quot; alt=&quot;start wars&quot;&gt;&lt;br&gt;星战电影拍摄时间线比较有意思的是先
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://zgshen.github.io/2018/01/01/2018/"/>
+    <id>http://zgshen.github.io/2018/01/01/2018/</id>
+    <published>2018-01-01T13:54:37.721Z</published>
+    <updated>2018-01-01T13:54:37.721Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>天河公园</title>
@@ -633,79 +668,6 @@
     
     
       <category term="Linux" scheme="http://zgshen.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>eclipse neon git 提交窗口太小问题</title>
-    <link href="http://zgshen.github.io/2017/04/16/eclipse%20neon%20git%20%E6%8F%90%E4%BA%A4%E7%AA%97%E5%8F%A3%E5%A4%AA%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
-    <id>http://zgshen.github.io/2017/04/16/eclipse neon git 提交窗口太小问题/</id>
-    <published>2017-04-15T16:00:00.000Z</published>
-    <updated>2017-05-06T14:54:22.536Z</updated>
-    
-    <content type="html"><![CDATA[<p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
-<p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常&lt;br&gt;&lt;code&gt;java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime
-    
-    </summary>
-    
-    
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反射</title>
-    <link href="http://zgshen.github.io/2017/04/04/%E5%8F%8D%E5%B0%84/"/>
-    <id>http://zgshen.github.io/2017/04/04/反射/</id>
-    <published>2017-04-03T16:00:00.000Z</published>
-    <updated>2017-05-06T15:01:43.492Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>相信大家经常听说某些框架设计用到了反射机制啥啥，但自己对此概念却了解甚少，虽然一般开发不会用到，但还是有必要知道反射的基本原理和操作。</p>
-</blockquote>
-<p>  使用反射，可以做到：</p>
-<ul>
-<li>在运行中分析类的能力。</li>
-<li>在运行中查看对象，例如，编写一个toString方法供所有类使用。</li>
-<li>实现数组的操作代码。</li>
-<li>利用Method对象，这个对象很像C++中的函数指针。</li>
-</ul>
-<p>反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）<br><a id="more"></a><br>一、反射获取类</p>
-<p>新建一个Student类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	</div><div class="line">	<span class="comment">//无参构造</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//有参构造</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> age, String name)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		System.out.println(<span class="string">"My name is "</span>+name+<span class="string">",I'm "</span>+age+<span class="string">" years old."</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learning</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"learning..."</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class ReflexTest &#123;</div><div class="line">	public static void main(String[] args) throws ClassNotFoundException &#123;</div><div class="line">		Student student = new Student(20, &quot;shen&quot;);//一般创建对象</div><div class="line">		</div><div class="line">		Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);//通过Class获取指定类的完整结构</div><div class="line">		System.out.println(&quot;getName---&gt;&quot;+stu.getName());</div><div class="line">		</div><div class="line">		Student s = null;</div><div class="line">		Student s1 = null; </div><div class="line">		try &#123;</div><div class="line">			s = (Student)stu.newInstance();//默认构造的是无参构造，若存在有参构造，这里将报错</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			s1 = (Student)constructor.newInstance(23, &quot;shen&quot;);//有参构造</div><div class="line">			</div><div class="line">			Constructor[] constructors = stu.getConstructors();//所有构造</div><div class="line">			s1 = (Student)constructors[0].newInstance();//第一个构造(无参那个)</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="http://img.blog.csdn.net/20170403212710052?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>Class类forName方法通过完整包路径类型来实例化Class对象，再通过Class对象获取Student类实例；<br>再使用newInstance()创建对象，这里要注意Student的构造方法，默认使用的试试无参构造，可使用Constructor类操作构造方法。</p>
-<p>二、获取类的基本结构</p>
-<p>1、使用反射操作对象属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Test01 &#123;</div><div class="line">	public static void main(String[] args) throws Exception, Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			Student s = (Student)constructor.newInstance(23, &quot;shen&quot;);//有参构造</div><div class="line">			</div><div class="line">			//Field[] fields = stu.getFields();//获取public的属性</div><div class="line">			Field[] fields = stu.getDeclaredFields();//获取所有属性</div><div class="line">			for(Field field : fields)&#123;</div><div class="line">				System.out.println(&quot;属性--&gt;&quot;+field);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			Field fieldName = stu.getDeclaredField(&quot;name&quot;);//获取私有变量name</div><div class="line">			fieldName.setAccessible(true);</div><div class="line">			System.out.println(fieldName.getName());//私有属性名称</div><div class="line">			System.out.println(fieldName.get(s));//私有属性值</div><div class="line">			</div><div class="line">			fieldName.set(s, &quot;a-shen&quot;);</div><div class="line">			System.out.println(fieldName.get(s));//改变私有属性值</div><div class="line">			</div><div class="line">		&#125; catch (ClassNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结果输出<br><img src="http://img.blog.csdn.net/20170403212205519?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>其中对于fieldName.setAccessible(true);使用java反射获取类的属性值时，如果该属性被声明为private 的，需要将setAccessible设置为true. 默认的值为false</p>
-<p>2、使用反射访问成员函数<br>通过反射调用方法，使用invoke方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Test02 &#123;</div><div class="line">	public static void main(String[] args) throws Exception, Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			Constructor[] constructors = stu.getConstructors();</div><div class="line">			Student s = (Student)constructors[0].newInstance();//无参构造对象</div><div class="line">			</div><div class="line">			//Method[] methods = stu.getMethods();//获取类所有方法，包括继承自父类和实现接口的方法</div><div class="line">			Method[] methods = stu.getDeclaredMethods();//获取类本身各类方法和实现接口的方法及重写的方法，不包括继承的方法</div><div class="line">			for(Method method : methods)&#123;</div><div class="line">				System.out.println(&quot;成员函数---&gt;&quot;+method);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			Method m1 = s.getClass().getMethod(&quot;setName&quot;, String.class);</div><div class="line">			m1.invoke(s, &quot;ashen&quot;);//设置name值为&quot;ashen&quot;</div><div class="line">			</div><div class="line">			Method m2 = s.getClass().getMethod(&quot;getName&quot;);</div><div class="line">			String name = (String) m2.invoke(s);</div><div class="line">			System.out.println(&quot;getName---&gt;&quot;+name);//输出name值</div><div class="line">			</div><div class="line">		&#125;catch (ClassNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果输出<br><img src="http://img.blog.csdn.net/20170404015222950?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;相信大家经常听说某些框架设计用到了反射机制啥啥，但自己对此概念却了解甚少，虽然一般开发不会用到，但还是有必要知道反射的基本原理和操作。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;  使用反射，可以做到：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在运行中分析类的能力。&lt;/li&gt;
-&lt;li&gt;在运行中查看对象，例如，编写一个toString方法供所有类使用。&lt;/li&gt;
-&lt;li&gt;实现数组的操作代码。&lt;/li&gt;
-&lt;li&gt;利用Method对象，这个对象很像C++中的函数指针。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   

@@ -198,6 +198,84 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
+                <a href="/2017/04/16/eclipse neon git 提交窗口太小问题/">eclipse neon git 提交窗口太小问题</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2017年4月16日</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
+<p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
+
+                
+            
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2017/04/04/反射/">反射</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2017年4月4日</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <blockquote>
+<p>相信大家经常听说某些框架设计用到了反射机制啥啥，但自己对此概念却了解甚少，虽然一般开发不会用到，但还是有必要知道反射的基本原理和操作。</p>
+</blockquote>
+<p>  使用反射，可以做到：</p>
+<ul>
+<li>在运行中分析类的能力。</li>
+<li>在运行中查看对象，例如，编写一个toString方法供所有类使用。</li>
+<li>实现数组的操作代码。</li>
+<li>利用Method对象，这个对象很像C++中的函数指针。</li>
+</ul>
+<p>反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2017/04/04/反射/#more">
+                    <span class="iconfont icon-right">继续阅读</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
                 <a href="/2017/02/26/Mysql存储过程/">Mysql存储过程</a>
             
             </h1>
@@ -494,82 +572,6 @@
     
 
     
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/">商城的实践(4)——redis的使用</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016年10月21日</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <blockquote>
-<p>一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。</p>
-</blockquote>
-<h4 id="一、缓存工具的选择——redis"><a href="#一、缓存工具的选择——redis" class="headerlink" title="一、缓存工具的选择——redis"></a>一、缓存工具的选择——redis</h4><blockquote>
-<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br>
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/#more">
-                    <span class="iconfont icon-right">继续阅读</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2016/10/02/淘淘商城的实践(3)——图片服务器部署和前台工程/">商城的实践(3)——图片服务器部署和前台工程</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016年10月2日</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>前言：之前后台系统的框架基本搭建完毕，后台剩下的就是一些增删改查业务操作。文本操作一般没什么问题，比较重要的是后台新增发布信息时涉及的图片的上传、存储和读取。教程里使用了ftp服务器来上传图片，使用nginx作为访问静态资源服务器。后台搞定之后接下来搭建前台系统。<br>一、图片服务器相关<br>商城系统中，新增商品经常需要编辑介绍和上传图片，后台系统的编辑页面使用了kindedit富文本编辑器，图片的上传需要我们自己配置。<br>1、图片上传服务器<br>使用ftp服务器作为图片上传的服务器，教程中的ftp服务器是部署在Linux系统下，跟着操作就行，没必要说，所以自己尝试在Windows下搭建ftp服务器。<br>Windows下搭建ftp比较简单，参考链接：<a href="https://www.baidu.com/link?url=OlyREktg1bWh0TNWcRIDi_sIrx7e-EDHEZ3ENmm_n9ZzA_W4ymN7S5ZKXqtTD3PrB93tnwkG98f5l0humIxG9uMQG_cQGDNPn3nxZ9fYETa&wd=&eqid=a272a68300069f720000000657f1d0f2" target="_blank">win10搭建ftp服务器</a><br>
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2016/10/02/淘淘商城的实践(3)——图片服务器部署和前台工程/#more">
-                    <span class="iconfont icon-right">继续阅读</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
 </section>
     
     <nav class="pagination">
@@ -607,7 +609,7 @@
             <div class="copyright">
     <div class="info">
         <span>&copy;</span>
-        <span>2016 ~ 2017</span>
+        <span>2016 ~ 2018</span>
         <span></span>
         <span>zgshen</span>
     </div>
