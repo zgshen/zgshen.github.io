@@ -483,7 +483,7 @@ img {
 }
 .header {
   width: 100%;
-  height: 110px;
+  height: 5em;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -506,9 +506,9 @@ img {
   flex-direction: column;
 }
 .header .table .connect .connect-inner span a {
-  font-family: 'LedFont', cursive, 'Microsoft YaHei', sans-serif;
+/*font-family 'LedFont', cursive, 'Microsoft YaHei', sans-serif*/
   font-weight: 300;
-  font-size: 40px;
+  font-size: 1.5em;
   color: #34495e;
   text-decoration: none;
 }
@@ -809,52 +809,52 @@ img {
   }
 }
 .post-content h1 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h1:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content h2 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h2:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content h3 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h3:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content h4 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h4:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content h5 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h5:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content h6 {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   font-weight: 300;
   margin: 16px 0;
 }
 .post-content h6:before {
-  content: '∮ ';
+  content: ' ';
 }
 .post-content a {
   color: #34495e;
@@ -864,7 +864,7 @@ img {
   color: #000;
 }
 .post-content p {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   margin: 8px 0;
   line-height: 1.5em;
   font-weight: 300;
@@ -878,11 +878,11 @@ img {
 }
 .post-content strong {
   font-weight: bold;
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
 }
 .post-content i {
   font-weight: 100;
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
 }
 .post-content img {
   width: 500px;
@@ -948,7 +948,7 @@ blockquote:before {
 }
 blockquote p {
   margin: 0;
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
+  font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
 }
 .archive {
   margin: 0 48px;
@@ -1409,7 +1409,7 @@ blockquote p {
 }
 .highlight {
   position: relative;
-  background-color: #f7f7f7;
+  background-color: rgba(221,221,221,0.369);
   width: 100%;
   margin: 8px 0;
   overflow-x: auto;
