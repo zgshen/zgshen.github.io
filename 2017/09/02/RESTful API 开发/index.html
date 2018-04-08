@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <title> RESTful API开发的简单应用 · zgshen </title>
+    <title> RESTful API开发的简单应用 · zgshen's notes </title>
     <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="browsermode" content="application">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="zgshen">
+<meta name="apple-mobile-web-app-title" content="zgshen's notes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
@@ -29,7 +29,7 @@
 <script src="/script/jquery.min.js"></script>
 <script>
     var CONFIG = {
-        title: "zgshen",
+        title: "zgshen's notes",
         author: "zgshen",
         lightbox: true,
         animate: true
@@ -91,7 +91,7 @@
     <div class="table">
         <div class="connect">
             <div class="connect-inner">
-                <span><a href="/">zgshen</a></span>
+                <span><a href="/">zgshen's notes</a></span>
                 
                     <span id="subtitle">Learning is a kind of attitude</span>
                 
@@ -104,22 +104,22 @@
 
     <ul class="menu">
         
-        <li class="menu-item">
-            <a href="javascript:;" id="search">
-                <span>搜索</span>
-                
-                    <span class="menu-item-label">search</span>
-                
-            </a>
-        </li>
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>Home</span>
+                    
+                    
+                </a>
+            </li>
         
         
         
             <li class="menu-item">
                 <a href="/archives">
-                    <span>归档</span>
+                    <span>Archives</span>
                     
-                        <span class="menu-item-label">archives</span>
                     
                 </a>
             </li>
@@ -128,9 +128,8 @@
         
             <li class="menu-item">
                 <a href="/about">
-                    <span>关于</span>
+                    <span>About</span>
                     
-                        <span class="menu-item-label">about</span>
                     
                 </a>
             </li>
@@ -141,16 +140,25 @@
 </div>
 </nav>
 </header>
-<div class="mobile-header">
+<!--<div class="mobile-header">
     <div class="mobile-header-body">
         <div class="mobile-header-list">
             
             
                 <div class="mobile-nav-item">
-                    <a href="/archives">
-                        <span>归档</span>
+                    <a href="/">
+                        <span>Home</span>
                         
-                            <span class="menu-item-label">archives</span>
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>Archives</span>
+                        
                         
                     </a>
                 </div>
@@ -159,9 +167,8 @@
             
                 <div class="mobile-nav-item">
                     <a href="/about">
-                        <span>关于</span>
+                        <span>About</span>
                         
-                            <span class="menu-item-label">about</span>
                         
                     </a>
                 </div>
@@ -176,11 +183,11 @@
             </div>
         </div>
         <h1 class="mobile-header-title">
-            <a href="/">zgshen</a>
+            <a href="/">zgshen's notes</a>
         </h1>
         <div class="mobile-header-item"></div>
     </div>
-</div>
+</div>-->
 
     <div class="container">
         <main class="main" id="main">
@@ -196,7 +203,7 @@
             </h1>
 			
 			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2017年9月2日</span>
+                <span>2017-09-02</span>
                 
             </div>
 			
@@ -213,7 +220,7 @@
         <div class="post-content syuanpi riseIn-light back-3">
             
                 <p>在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。</p>
-<p>#####定义<br>REST 的全称是 Resource Representational State Transfer ，资源以某种表现形式进行状态转移<br>Resource：资源，即数据；<br>Representational：某种表现形式，比如用JSON，XML，JPEG等；<br>State Transfer：状态变化。通过HTTP动词实现。<br><a id="more"></a><br>HTTP动词有如下几个：</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>REST 的全称是 Resource Representational State Transfer ，资源以某种表现形式进行状态转移<br>Resource：资源，即数据；<br>Representational：某种表现形式，比如用JSON，XML，JPEG等；<br>State Transfer：状态变化。通过HTTP动词实现。<br><a id="more"></a><br>HTTP动词有如下几个：</p>
 <ul>
 <li>GET    用来获取资源，</li>
 <li>POST  用来新建资源（也可以用于更新资源），</li>
@@ -363,28 +370,5 @@ $(document).ready(function(){
     <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
 </div>
     
-    <div class="search" id="search">
-        <div class="mask" id="mask"></div>
-        <div class="search-wrapper syuanpi">
-            <h1 id="search-header" class="syuanpi">搜索一下？</h1>
-            <div class="input">
-                <input type="text" id="local-search-input" results="0" name="">
-            </div>
-            <div id="local-search-result"></div>
-        </div>
-    </div>
-    <script>
-    var GREETING = {
-        morning: "当我们探索时，就要发现到真理",
-        noon: "人的天职在于勇于探索真理。",
-        after: "一件事实是一条没有性别的真理",
-        night: "真理有时可能变得黯淡，但它永远不会熄灭",
-        midnight: "真理在人那里获得生命力，并且展现出来"
-    }
-    $(document).ready(function(){
-        Nlvi.search();
-    });
-    </script>
-
 </body>
 </html>

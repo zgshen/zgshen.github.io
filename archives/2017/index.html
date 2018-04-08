@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <title>
   
-    归档 · zgshen
+    Archives · zgshen's notes
   
 </title>
     <meta charset="UTF-8"/>
@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="browsermode" content="application">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="zgshen">
+<meta name="apple-mobile-web-app-title" content="zgshen's notes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
@@ -31,7 +31,7 @@
 <script src="/script/jquery.min.js"></script>
 <script>
     var CONFIG = {
-        title: "zgshen",
+        title: "zgshen's notes",
         author: "zgshen",
         lightbox: true,
         animate: true
@@ -93,7 +93,7 @@
     <div class="table">
         <div class="connect">
             <div class="connect-inner">
-                <span><a href="/">zgshen</a></span>
+                <span><a href="/">zgshen's notes</a></span>
                 
                     <span id="subtitle">Learning is a kind of attitude</span>
                 
@@ -106,22 +106,22 @@
 
     <ul class="menu">
         
-        <li class="menu-item">
-            <a href="javascript:;" id="search">
-                <span>搜索</span>
-                
-                    <span class="menu-item-label">search</span>
-                
-            </a>
-        </li>
+        
+        
+            <li class="menu-item">
+                <a href="/">
+                    <span>Home</span>
+                    
+                    
+                </a>
+            </li>
         
         
         
             <li class="menu-item">
                 <a href="/archives">
-                    <span>归档</span>
+                    <span>Archives</span>
                     
-                        <span class="menu-item-label">archives</span>
                     
                 </a>
             </li>
@@ -130,9 +130,8 @@
         
             <li class="menu-item">
                 <a href="/about">
-                    <span>关于</span>
+                    <span>About</span>
                     
-                        <span class="menu-item-label">about</span>
                     
                 </a>
             </li>
@@ -143,16 +142,25 @@
 </div>
 </nav>
 </header>
-<div class="mobile-header">
+<!--<div class="mobile-header">
     <div class="mobile-header-body">
         <div class="mobile-header-list">
             
             
                 <div class="mobile-nav-item">
-                    <a href="/archives">
-                        <span>归档</span>
+                    <a href="/">
+                        <span>Home</span>
                         
-                            <span class="menu-item-label">archives</span>
+                        
+                    </a>
+                </div>
+            
+            
+            
+                <div class="mobile-nav-item">
+                    <a href="/archives">
+                        <span>Archives</span>
+                        
                         
                     </a>
                 </div>
@@ -161,9 +169,8 @@
             
                 <div class="mobile-nav-item">
                     <a href="/about">
-                        <span>关于</span>
+                        <span>About</span>
                         
-                            <span class="menu-item-label">about</span>
                         
                     </a>
                 </div>
@@ -178,11 +185,11 @@
             </div>
         </div>
         <h1 class="mobile-header-title">
-            <a href="/">zgshen</a>
+            <a href="/">zgshen's notes</a>
         </h1>
         <div class="mobile-header-item"></div>
     </div>
-</div>
+</div>-->
 
     <div class="container">
         <main class="main" id="main">
@@ -191,7 +198,7 @@
     <div class="archive syuanpi riseIn-light" id="archive">
         
             <h1 class="archive-title">Total</h1>
-            <span class="archive-num">一共有 43 篇文章</span>
+            <span class="archive-num">42 Posts In Total</span>
         
         <div class="archive-list">
             <ul>
@@ -386,7 +393,7 @@
     </div>
     
     <nav class="pagination">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/2/">下一页 ></a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next ></a>
     </nav>
 
 
@@ -476,28 +483,5 @@ $(document).ready(function(){
     <span style="text-align:center;font-family:Georgia;"><span style="font-family:Georgia;" id="scrollpercent">1</span>%</span>
 </div>
     
-    <div class="search" id="search">
-        <div class="mask" id="mask"></div>
-        <div class="search-wrapper syuanpi">
-            <h1 id="search-header" class="syuanpi">搜索一下？</h1>
-            <div class="input">
-                <input type="text" id="local-search-input" results="0" name="">
-            </div>
-            <div id="local-search-result"></div>
-        </div>
-    </div>
-    <script>
-    var GREETING = {
-        morning: "当我们探索时，就要发现到真理",
-        noon: "人的天职在于勇于探索真理。",
-        after: "一件事实是一条没有性别的真理",
-        night: "真理有时可能变得黯淡，但它永远不会熄灭",
-        midnight: "真理在人那里获得生命力，并且展现出来"
-    }
-    $(document).ready(function(){
-        Nlvi.search();
-    });
-    </script>
-
 </body>
 </html>
