@@ -506,7 +506,7 @@ img {
 }
 .header .table .connect .connect-inner span a {
 /*font-family 'LedFont', cursive, 'Microsoft YaHei', sans-serif*/
-  font-weight: 300;
+/*font-weight 300*/
   font-size: 1.5em;
   color: #34495e;
   text-decoration: none;
