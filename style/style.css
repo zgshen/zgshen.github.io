@@ -197,7 +197,6 @@ template {
   display: none;
 }
 * {
-  font-family: 'Optima', 'PingFang SC', 'Roboto', 'Noto SansCJK', 'Helvetica Neue', 'Helvetica', "微软雅黑", "YaHei-Consolas-Hybrid", sans-serif;
   transition-duration: 0.35s;
   -moz-transition-duration: 0.35s;
   -webkit-transition-duration: 0.35s;
