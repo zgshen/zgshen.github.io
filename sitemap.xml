@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zgshen.github.io/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    
+    <lastmod>2018-04-14T09:35:04.681Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zgshen.github.io/2017/09/02/RESTful%20API%20%E5%BC%80%E5%8F%91/</loc>
     
     <lastmod>2018-04-08T14:00:49.442Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://zgshen.github.io/2017/09/12/%E9%97%AD%E5%8C%85/</loc>
     
     <lastmod>2017-09-22T10:58:00.655Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zgshen.github.io/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
-    
-    <lastmod>2017-09-20T14:54:53.163Z</lastmod>
     
   </url>
   
