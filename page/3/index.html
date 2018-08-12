@@ -205,76 +205,6 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2017/04/21/Linux下安装Nginx并配置一个图片服务器/">Linux下安装Nginx并配置一个图片服务器</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2017-04-21</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>首先到Nginx官网下载tar.gz格式的安装包，这里下载的是nginx-1.10.3版本，环境使用centos6的虚拟机</p>
-<p>1、将安装包上传，解压，命令tar -xvf nginx-1.10.3.tar.gz；</p>
-<p>2、自定义创建一个文件夹作为Nginx安装目录，这里在home下创建nginx文件夹；<br>
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2017/04/21/Linux下安装Nginx并配置一个图片服务器/#more">
-                    <span class="iconfont icon-right">Read More...</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2017/04/16/eclipse neon git 提交窗口太小问题/">eclipse neon git 提交窗口太小问题</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2017-04-16</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
-<p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
-
-                
-            
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
                 <a href="/2017/04/04/反射/">反射</a>
             
             </h1>
@@ -561,6 +491,92 @@
         
             <p class="content-link">
                 <a href="/2016/11/29/淘淘商城的实践(6)——单点登录、集群及总结/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2016/11/28/solr全文检索/">商城的实践(5)——Solr全文检索</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2016-11-28</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <blockquote>
+<p> 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。</p>
+</blockquote>
+<h5 id="一、Lucene和Solr"><a href="#一、Lucene和Solr" class="headerlink" title="一、Lucene和Solr"></a>一、Lucene和Solr</h5><p>一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，<a href="http://lucene.apache.org/" target="_blank">官网</a>上已经解释了很清楚：</p>
+<blockquote>
+<ul>
+<li>Lucene Core, our flagship sub-project, provides Java-based indexing and search technology, as well as spellchecking, hit highlighting and advanced analysis/tokenization capabilities.</li>
+<li>Solr<sup>TM</sup> is a high performance search server built using Lucene Core, with XML/HTTP and JSON/Python/Ruby APIs, hit highlighting, faceted search, caching, replication, and a web admin interface.</li>
+</ul>
+</blockquote>
+<p>说白了Lucene是个Java Library，而Solr是一个基于Lucene的全文搜索服务器。如果使用Lucene需要自行实现一堆东西，但更灵活；Solr作为企业级的搜索引擎系统，使用方便。商城这里用solr练手，实际的商城网站如京东或淘宝，当然，肯定是其他高大上的东西了。
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2016/11/28/solr全文检索/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/">商城的实践(4)——redis的使用</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2016-10-21</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <blockquote>
+<p>一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。</p>
+</blockquote>
+<h4 id="一、缓存工具的选择——redis"><a href="#一、缓存工具的选择——redis" class="headerlink" title="一、缓存工具的选择——redis"></a>一、缓存工具的选择——redis</h4><blockquote>
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br>
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/#more">
                     <span class="iconfont icon-right">Read More...</span>
                 </a>
             </p>

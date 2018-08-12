@@ -205,92 +205,6 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2016/11/28/solr全文检索/">商城的实践(5)——Solr全文检索</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016-11-28</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <blockquote>
-<p> 时间又过去了好久，最近在鼓捣微信开发停不来下…..在上一篇博文记录了使用redis为商城系统添加缓存服务，以提高网站的访问速度和性能。另外，我们很容易注意到搜索服务在商城网站中是必不可少的，事实上，在内容繁多的一般网站业也会有搜索功能，而这里很多人就想到Lucene或Solr。</p>
-</blockquote>
-<h5 id="一、Lucene和Solr"><a href="#一、Lucene和Solr" class="headerlink" title="一、Lucene和Solr"></a>一、Lucene和Solr</h5><p>一说到全文检索总会提到Lucene和Solr，但这两者有什么区别，<a href="http://lucene.apache.org/" target="_blank">官网</a>上已经解释了很清楚：</p>
-<blockquote>
-<ul>
-<li>Lucene Core, our flagship sub-project, provides Java-based indexing and search technology, as well as spellchecking, hit highlighting and advanced analysis/tokenization capabilities.</li>
-<li>Solr<sup>TM</sup> is a high performance search server built using Lucene Core, with XML/HTTP and JSON/Python/Ruby APIs, hit highlighting, faceted search, caching, replication, and a web admin interface.</li>
-</ul>
-</blockquote>
-<p>说白了Lucene是个Java Library，而Solr是一个基于Lucene的全文搜索服务器。如果使用Lucene需要自行实现一堆东西，但更灵活；Solr作为企业级的搜索引擎系统，使用方便。商城这里用solr练手，实际的商城网站如京东或淘宝，当然，肯定是其他高大上的东西了。
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2016/11/28/solr全文检索/#more">
-                    <span class="iconfont icon-right">Read More...</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/">商城的实践(4)——redis的使用</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016-10-21</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <blockquote>
-<p>一忙起来就不动博客了，这样不好，接着上个月的商城小项目。上次商城系统从后台发布商品到前台工程的展示都已经实现了，但实际上线系统由于用户数量增多，为了应付网站的大访问量，降低数据库及整个系统的压力，一般都会选择缓存功能。</p>
-</blockquote>
-<h4 id="一、缓存工具的选择——redis"><a href="#一、缓存工具的选择——redis" class="headerlink" title="一、缓存工具的选择——redis"></a>一、缓存工具的选择——redis</h4><blockquote>
-<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br>
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2016/10/21/淘淘商城的实践(4)——redis的使用/#more">
-                    <span class="iconfont icon-right">Read More...</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
                 <a href="/2016/10/02/淘淘商城的实践(3)——图片服务器部署和前台工程/">商城的实践(3)——图片服务器部署和前台工程</a>
             
             </h1>
@@ -327,6 +241,38 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
+                <a href="/2016/09/29/淘淘商城的实践(1)——说明篇/">商城的实践(1)——说明篇</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2016-09-29</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个项目用来简单了解各种技术在开发中的应用与结合，积累基础知识确实很有用处。<br>        本人今年刚毕业，在校一直学的是嵌入式方面的知识，在参加工作时才刚转的JavaWeb开发，对java开发的了解还停留在基础阶段，知识积累远远不够。因此，这段时间打算看看这个商城项目，希望有所受益。<br>        商城项目包括后台的CMS系统，到前台页面的商品展示页面，串通从发布商品到下单支付购买的整个流程（支付貌似没有，后面尝试加上），基本的商城功能都有了。手动实现一遍整个项目估计需要不少时间，介绍先到这里，开始搭框架。</p>
+<p>吧友给的资料分享链接：<a href="http://pan.baidu.com/s/1jI36OGe" target="_blank">度盘链接</a>提取密码：7wfj</p>
+
+                
+            
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
                 <a href="/2016/09/29/淘淘商城的实践(2)——后台系统搭建/">商城的实践(2)——后台系统搭建</a>
             
             </h1>
@@ -350,38 +296,6 @@
                     <span class="iconfont icon-right">Read More...</span>
                 </a>
             </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2016/09/29/淘淘商城的实践(1)——说明篇/">商城的实践(1)——说明篇</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016-09-29</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>   之前在贴吧看到有吧友分享这个淘淘商城的项目，简单看了下介绍原来是培训机构的一个培训项目，虽然是培训的教学项目，但从工程的基础架构创建到各种框架的整合，以及结合了许多常用的web技术，没有具体特别深入单一技术的研究，但整个项目可谓面面俱到，各种功能都有。正因为如此，这个项目用来简单了解各种技术在开发中的应用与结合，积累基础知识确实很有用处。<br>        本人今年刚毕业，在校一直学的是嵌入式方面的知识，在参加工作时才刚转的JavaWeb开发，对java开发的了解还停留在基础阶段，知识积累远远不够。因此，这段时间打算看看这个商城项目，希望有所受益。<br>        商城项目包括后台的CMS系统，到前台页面的商品展示页面，串通从发布商品到下单支付购买的整个流程（支付貌似没有，后面尝试加上），基本的商城功能都有了。手动实现一遍整个项目估计需要不少时间，介绍先到这里，开始搭框架。</p>
-<p>吧友给的资料分享链接：<a href="http://pan.baidu.com/s/1jI36OGe" target="_blank">度盘链接</a>提取密码：7wfj</p>
-
-                
-            
         
         </div>
         
@@ -467,42 +381,6 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2016/07/09/字符相关/">字符相关</a>
-            
-            </h1>
-			
-			<div class="post-time syuanpi riseIn-light back-1">
-                <span>2016-07-09</span>
-                
-            </div>
-			
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>一、字符类型<br>char是Java的一种基本数据类型，也是Java中的保留字。char在Java中占两个字节，无符号类型，是16位二进制Unicode字符。<br>char是类型表示的是字符，不是字符串；<br>char类型变量值只能用单引号来表示，不可使用双引号；<br>即表示单引号内的单个字符。
-                    
-            
-        
-            <p class="content-link">
-                <a href="/2016/07/09/字符相关/#more">
-                    <span class="iconfont icon-right">Read More...</span>
-                </a>
-            </p>
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
                 <a href="/2016/07/09/类与对象/">类与对象</a>
             
             </h1>
@@ -539,6 +417,42 @@
             
             <h1 class="post-title syuanpi riseIn-light back-2">
             
+                <a href="/2016/07/09/字符相关/">字符相关</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2016-07-09</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>一、字符类型<br>char是Java的一种基本数据类型，也是Java中的保留字。char在Java中占两个字节，无符号类型，是16位二进制Unicode字符。<br>char是类型表示的是字符，不是字符串；<br>char类型变量值只能用单引号来表示，不可使用双引号；<br>即表示单引号内的单个字符。
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2016/07/09/字符相关/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
                 <a href="/2016/07/01/Java 简介和开发环境/">Java 简介和开发环境</a>
             
             </h1>
@@ -559,6 +473,78 @@
         
             <p class="content-link">
                 <a href="/2016/07/01/Java 简介和开发环境/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2016/04/10/spring springmvc mybatis 整合/">spring springmvc mybatis 整合</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2016-04-10</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>最近鼓捣ssm框架的东西，写篇博文记录。<br>环境 apache-tomcat-8.0.33、jdk1.8.0_05  maven Dynamic Web Module 2.5<br>1、各个xml配置文件的配置<br>(1)pom.xml 配置清单文件<br>连接池用的阿里巴巴Druid，数据库mysql，指定jdk编译版本1.8
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2016/04/10/spring springmvc mybatis 整合/#more">
+                    <span class="iconfont icon-right">Read More...</span>
+                </a>
+            </p>
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2015/12/12/MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库/">MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库</a>
+            
+            </h1>
+			
+			<div class="post-time syuanpi riseIn-light back-1">
+                <span>2015-12-12</span>
+                
+            </div>
+			
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    <p>一、安装MySQL<br>1.本人用的版本是mysql-5.6.24-winx64解压免装版，链接：<br><a href="http://xiazai.zol.com.cn/detail/4/33431.shtml">http://xiazai.zol.com.cn/detail/4/33431.shtml</a><br>解压后找到my-default.ini文件，复制改名为my.ini，修改添加以下语句：
+                    
+            
+        
+            <p class="content-link">
+                <a href="/2015/12/12/MySQL入门接触记录--从安装到Java通过JDBC连接MySQL数据库/#more">
                     <span class="iconfont icon-right">Read More...</span>
                 </a>
             </p>
