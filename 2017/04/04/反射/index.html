@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
-<meta name="keywords" content="nlvi, Nlvi" />
+<meta name="keywords" content="zgshen" />
 
 
     <meta name="subtitle" content="Learning is a kind of attitude">
@@ -80,12 +80,6 @@
     <div class="progress-inner"></div>
 </div>
     <div class="body">
-    <!--<div class="tagcloud-mask"></div>  
-<div class="tagcloud" id="tagcloud">
-    <div class="tagcloud-inner">
-        <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
-    </div>
-</div>-->
     <header class="header" id="header">
     <div class="title syuanpi tvIn">
     <div class="table">
@@ -140,54 +134,6 @@
 </div>
 </nav>
 </header>
-<!--<div class="mobile-header">
-    <div class="mobile-header-body">
-        <div class="mobile-header-list">
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/">
-                        <span>Home</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/archives">
-                        <span>Archives</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/about">
-                        <span>About</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-        </div>
-    </div>
-    <div class="mobile-header-nav">
-        <div class="mobile-header-item" id="mobile-left">
-            <div class="header-menu-item">
-                <span class="header-menu-line"></span>
-            </div>
-        </div>
-        <h1 class="mobile-header-title">
-            <a href="/">zgshen's notes</a>
-        </h1>
-        <div class="mobile-header-item"></div>
-    </div>
-</div>-->
 
     <div class="container">
         <main class="main" id="main">
@@ -232,14 +178,14 @@
 <p>反射操作主要用到的类有Class（类）、Field（属性）、Method（成员函数）、Constructor（构造）和Modifier（修饰符）<br><a id="more"></a><br>一、反射获取类</p>
 <p>新建一个Student类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	</div><div class="line">	<span class="comment">//无参构造</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//有参构造</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> age, String name)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		System.out.println(<span class="string">"My name is "</span>+name+<span class="string">",I'm "</span>+age+<span class="string">" years old."</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learning</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"learning..."</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class ReflexTest &#123;</div><div class="line">	public static void main(String[] args) throws ClassNotFoundException &#123;</div><div class="line">		Student student = new Student(20, &quot;shen&quot;);//一般创建对象</div><div class="line">		</div><div class="line">		Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);//通过Class获取指定类的完整结构</div><div class="line">		System.out.println(&quot;getName---&gt;&quot;+stu.getName());</div><div class="line">		</div><div class="line">		Student s = null;</div><div class="line">		Student s1 = null; </div><div class="line">		try &#123;</div><div class="line">			s = (Student)stu.newInstance();//默认构造的是无参构造，若存在有参构造，这里将报错</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			s1 = (Student)constructor.newInstance(23, &quot;shen&quot;);//有参构造</div><div class="line">			</div><div class="line">			Constructor[] constructors = stu.getConstructors();//所有构造</div><div class="line">			s1 = (Student)constructors[0].newInstance();//第一个构造(无参那个)</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="http://img.blog.csdn.net/20170403212710052?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>Class类forName方法通过完整包路径类型来实例化Class对象，再通过Class对象获取Student类实例；<br>再使用newInstance()创建对象，这里要注意Student的构造方法，默认使用的试试无参构造，可使用Constructor类操作构造方法。</p>
+<p>输出：<br><img src="https://i.imgur.com/5d2iXr0.png" alt="这里写图片描述"><br>Class类forName方法通过完整包路径类型来实例化Class对象，再通过Class对象获取Student类实例；<br>再使用newInstance()创建对象，这里要注意Student的构造方法，默认使用的试试无参构造，可使用Constructor类操作构造方法。</p>
 <p>二、获取类的基本结构</p>
 <p>1、使用反射操作对象属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Test01 &#123;</div><div class="line">	public static void main(String[] args) throws Exception, Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			Student s = (Student)constructor.newInstance(23, &quot;shen&quot;);//有参构造</div><div class="line">			</div><div class="line">			//Field[] fields = stu.getFields();//获取public的属性</div><div class="line">			Field[] fields = stu.getDeclaredFields();//获取所有属性</div><div class="line">			for(Field field : fields)&#123;</div><div class="line">				System.out.println(&quot;属性--&gt;&quot;+field);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			Field fieldName = stu.getDeclaredField(&quot;name&quot;);//获取私有变量name</div><div class="line">			fieldName.setAccessible(true);</div><div class="line">			System.out.println(fieldName.getName());//私有属性名称</div><div class="line">			System.out.println(fieldName.get(s));//私有属性值</div><div class="line">			</div><div class="line">			fieldName.set(s, &quot;a-shen&quot;);</div><div class="line">			System.out.println(fieldName.get(s));//改变私有属性值</div><div class="line">			</div><div class="line">		&#125; catch (ClassNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结果输出<br><img src="http://img.blog.csdn.net/20170403212205519?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>结果输出<br><img src="https://i.imgur.com/Y1ywur9.png" alt="这里写图片描述"></p>
 <p>其中对于fieldName.setAccessible(true);使用java反射获取类的属性值时，如果该属性被声明为private 的，需要将setAccessible设置为true. 默认的值为false</p>
 <p>2、使用反射访问成员函数<br>通过反射调用方法，使用invoke方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class Test02 &#123;</div><div class="line">	public static void main(String[] args) throws Exception, Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			Class stu = Class.forName(&quot;com.test.reflex.Student&quot;);</div><div class="line">			</div><div class="line">			Constructor constructor = stu.getConstructor(int.class, String.class);//获取有参构造,已知确定参数</div><div class="line">			Constructor[] constructors = stu.getConstructors();</div><div class="line">			Student s = (Student)constructors[0].newInstance();//无参构造对象</div><div class="line">			</div><div class="line">			//Method[] methods = stu.getMethods();//获取类所有方法，包括继承自父类和实现接口的方法</div><div class="line">			Method[] methods = stu.getDeclaredMethods();//获取类本身各类方法和实现接口的方法及重写的方法，不包括继承的方法</div><div class="line">			for(Method method : methods)&#123;</div><div class="line">				System.out.println(&quot;成员函数---&gt;&quot;+method);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			Method m1 = s.getClass().getMethod(&quot;setName&quot;, String.class);</div><div class="line">			m1.invoke(s, &quot;ashen&quot;);//设置name值为&quot;ashen&quot;</div><div class="line">			</div><div class="line">			Method m2 = s.getClass().getMethod(&quot;getName&quot;);</div><div class="line">			String name = (String) m2.invoke(s);</div><div class="line">			System.out.println(&quot;getName---&gt;&quot;+name);//输出name值</div><div class="line">			</div><div class="line">		&#125;catch (ClassNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果输出<br><img src="http://img.blog.csdn.net/20170404015222950?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>结果输出<br><img src="https://i.imgur.com/d7jwS3i.png" alt="这里写图片描述"></p>
 
             
         

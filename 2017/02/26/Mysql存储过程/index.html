@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
-<meta name="keywords" content="nlvi, Nlvi" />
+<meta name="keywords" content="zgshen" />
 
 
     <meta name="subtitle" content="Learning is a kind of attitude">
@@ -80,12 +80,6 @@
     <div class="progress-inner"></div>
 </div>
     <div class="body">
-    <!--<div class="tagcloud-mask"></div>  
-<div class="tagcloud" id="tagcloud">
-    <div class="tagcloud-inner">
-        <a href="/tags/Java基础/" style="font-size: 14px;">Java基础</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Spring/" style="font-size: 14px;">Spring</a> <a href="/tags/Web技术/" style="font-size: 14px;">Web技术</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/web框架/" style="font-size: 14px;">web框架</a> <a href="/tags/其他/" style="font-size: 14px;">其他</a> <a href="/tags/博客/" style="font-size: 14px;">博客</a> <a href="/tags/商城技术应用/" style="font-size: 14px;">商城技术应用</a> <a href="/tags/数据库/" style="font-size: 14px;">数据库</a>
-    </div>
-</div>-->
     <header class="header" id="header">
     <div class="title syuanpi tvIn">
     <div class="table">
@@ -140,54 +134,6 @@
 </div>
 </nav>
 </header>
-<!--<div class="mobile-header">
-    <div class="mobile-header-body">
-        <div class="mobile-header-list">
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/">
-                        <span>Home</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/archives">
-                        <span>Archives</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-            
-                <div class="mobile-nav-item">
-                    <a href="/about">
-                        <span>About</span>
-                        
-                        
-                    </a>
-                </div>
-            
-            
-        </div>
-    </div>
-    <div class="mobile-header-nav">
-        <div class="mobile-header-item" id="mobile-left">
-            <div class="header-menu-item">
-                <span class="header-menu-line"></span>
-            </div>
-        </div>
-        <h1 class="mobile-header-title">
-            <a href="/">zgshen's notes</a>
-        </h1>
-        <div class="mobile-header-item"></div>
-    </div>
-</div>-->
 
     <div class="container">
         <main class="main" id="main">
@@ -224,10 +170,10 @@
 </blockquote>
 <p>存储过程的基本语法也不算复杂，以下为创建一个存储过程的模板<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> TEST_FUNCTION;</div><div class="line"><span class="comment">/*定义存储过程名称，设置入参，指定类型和大小*/</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> TEST_FUNCTION(<span class="keyword">in</span> DATA_A <span class="built_in">INT</span>(<span class="number">20</span>),<span class="keyword">in</span> DATA_B <span class="built_in">INT</span>(<span class="number">20</span>),<span class="keyword">in</span> B_TYPE <span class="built_in">varchar</span>(<span class="number">20</span>))</div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">     <span class="comment">/*DECLARE 关键字用于定义变量*/</span></div><div class="line">    <span class="keyword">DECLARE</span> <span class="keyword">SUM</span> <span class="built_in">int</span> <span class="keyword">default</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">DECLARE</span> t_error <span class="built_in">INTEGER</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">DECLARE</span> CONTINUE <span class="keyword">HANDLER</span> <span class="keyword">FOR</span> SQLEXCEPTION <span class="keyword">SET</span> t_error=<span class="number">1</span>;<span class="comment">/*异常标志*/</span></div><div class="line">    </div><div class="line">    <span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;<span class="comment">/*启动事务*/</span></div><div class="line">    <span class="comment">/*字符串的判断，STRCMP用法类似于C++*/</span></div><div class="line">    if STRCMP(B_TYPE,'SUM')=0 then</div><div class="line">    <span class="keyword">begin</span></div><div class="line">         <span class="keyword">SELECT</span>  DATA_A+DATA_B <span class="keyword">INTO</span> <span class="keyword">SUM</span>;<span class="comment">/*INTO 把值放到变量中*/</span></div><div class="line">         <span class="keyword">SELECT</span> <span class="keyword">SUM</span>;</div><div class="line">    <span class="keyword">end</span>;<span class="comment">/*一个begin对应一个end*/</span></div><div class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;<span class="comment">/*一个if对应一个end if*/</span></div><div class="line">    </div><div class="line">    IF t_error = 1 THEN  </div><div class="line">    <span class="keyword">ROLLBACK</span>;<span class="comment">/*异常回滚*/</span></div><div class="line">    ELSE</div><div class="line">    <span class="keyword">COMMIT</span>;<span class="comment">/*正常提交*/</span></div><div class="line">    <span class="keyword">END</span> <span class="keyword">IF</span>;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
 <p>创建生成的样子</p>
-<p><img src="http://img.blog.csdn.net/20170226161939611?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><img src="https://i.imgur.com/6h3FmqU.png" alt="这里写图片描述"></p>
 <p>DEFINER的信息是’用户名’@’host’</p>
-<p>输入参数值测试<br><img src="http://img.blog.csdn.net/20170226162314021?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>调用存储使用call命令<br><img src="http://img.blog.csdn.net/20170226162538526?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjgwOTA2Mg==/font/5a6L5L2T/fontsize/200/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>输入参数值测试<br><img src="https://i.imgur.com/ikltBrd.png" alt="这里写图片描述"></p>
+<p>调用存储使用call命令<br><img src="https://i.imgur.com/VhhN91s.png" alt="这里写图片描述"></p>
 
             
         

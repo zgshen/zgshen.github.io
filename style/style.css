@@ -731,36 +731,11 @@ img {
   background-color: #fefefe;
   padding: 16px;
   margin-bottom: 16px;
-/*&:before
-        z-index -1
-        content ''
-        width 50px
-        height @width
-        background-color $color-angle
-        box-shadow -1px -1px 1px #bbb
-        position absolute
-        top -(yard - 7)
-        left @top
-        -webkit-animation fadeIn 0.5s ease-in-out backwards .5s
-        animation fadeIn 0.5s ease-in-out backwards .5s
-    &:after
-        z-index -1
-        content ''
-        width 50px
-        height @width
-        background-color: $color-angle
-        box-shadow 1px 1px 1px #bbb
-        position absolute
-        bottom -(yard - 7)
-        right @bottom
-        -webkit-animation fadeIn 0.5s ease-in-out backwards .5s
-        animation fadeIn 0.5s ease-in-out backwards .5s */
 }
 .post .post-header {
   z-index: 10;
 }
 .post .post-header .post-time {
-/*padding-left (yard*2)*/
   font-family: "Source Sans Pro", "Helvetica Neue";
   font-weight: 400;
   font-size: 14px;
@@ -785,7 +760,6 @@ img {
 }
 .post .post-header .post-title a {
   text-decoration: none;
-/*color: #000*/
   color: #34495e;
 }
 @media screen and (max-width: 650px) {
@@ -809,7 +783,6 @@ img {
 }
 .post-content h1 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h1:before {
@@ -817,7 +790,6 @@ img {
 }
 .post-content h2 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h2:before {
@@ -825,7 +797,6 @@ img {
 }
 .post-content h3 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h3:before {
@@ -833,7 +804,6 @@ img {
 }
 .post-content h4 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h4:before {
@@ -841,7 +811,6 @@ img {
 }
 .post-content h5 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h5:before {
@@ -849,7 +818,6 @@ img {
 }
 .post-content h6 {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-/*font-weight 300*/
   margin: 16px 0;
 }
 .post-content h6:before {
@@ -866,10 +834,8 @@ img {
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
   margin: 8px 0;
   line-height: 1.5em;
-/*font-weight 300*/
 }
 .post-content code {
-/*border 1px solid $color-border*/
   background-color: #f0f0f0;
   padding: 0 4px;
   margin: 0 4px;
@@ -882,9 +848,6 @@ img {
 .post-content i {
   font-weight: 100;
   font-family: 'Helvetica', 'Hiragino Sans GB', 'Roboto', 'Noto SansCJK', 'Heiti TC', 'Heiti SC', sans-serif;
-}
-.post-content img {
-  width: 500px;
 }
 @media screen and (max-width: 650px) {
   .post-content {
