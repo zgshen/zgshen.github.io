@@ -510,15 +510,17 @@
     <link href="http://zgshen.github.io/2017/05/02/eclipse%20neon%E7%89%88%E6%9C%AC%E6%89%93%E5%BC%80%E6%9F%90%E4%BA%9Bjavascript%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/"/>
     <id>http://zgshen.github.io/2017/05/02/eclipse neon版本打开某些javascript文件异常问题/</id>
     <published>2017-05-01T16:00:00.000Z</published>
-    <updated>2017-05-06T15:01:53.417Z</updated>
+    <updated>2018-09-14T01:46:44.151Z</updated>
     
-    <content type="html"><![CDATA[<p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
+    <content type="html"><![CDATA[<p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常</p>
+<p></p><p style="word-wrap:break-word;word-break:break-all;"><br>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;<br></p><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a><p></p>
 <p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常&lt;br&gt;&lt;code&gt;java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime
+      &lt;p&gt;eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;word-wrap:break-word;word-break:break-all;&quot;&gt;
     
     </summary>
     
@@ -660,15 +662,14 @@
     <link href="http://zgshen.github.io/2017/04/16/eclipse%20neon%20git%20%E6%8F%90%E4%BA%A4%E7%AA%97%E5%8F%A3%E5%A4%AA%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
     <id>http://zgshen.github.io/2017/04/16/eclipse neon git 提交窗口太小问题/</id>
     <published>2017-04-15T16:00:00.000Z</published>
-    <updated>2017-05-06T14:54:22.536Z</updated>
+    <updated>2018-09-14T01:40:14.989Z</updated>
     
-    <content type="html"><![CDATA[<p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常<br><code>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;</code><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a></p>
-<p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
+    <content type="html"><![CDATA[<p>eclipse neon 版本更新了git工具EGit版本，默认commit时使用的是一个标签窗口，不是像之前一个新 dialog窗口，像下面这样：<br><img src="https://i.imgur.com/suIxQNW.png" alt="" title=""><br>不能单独作为新窗口拖出来的，个人用起来也觉得操作真的是不方便，翻了下设置，在Window-Preferences-Team-Git-Committing可以看到第一个选项 Use Staging View … （使用staging代替原来dialog的commit视图），把这个打钩去掉提交界面就回到前版本的样子<br><img src="https://i.imgur.com/G6abdps.png" alt="" title=""></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常&lt;br&gt;&lt;code&gt;java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime
+      &lt;p&gt;eclipse neon 版本更新了git工具EGit版本，默认commit时使用的是一个标签窗口，不是像之前一个新 dialog窗口，像下面这样：&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/suIxQNW.png&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
     
     </summary>
     
