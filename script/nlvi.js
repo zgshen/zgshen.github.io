@@ -51,7 +51,6 @@
         onPicBox () {
             $('.post-content').each(function() {
                 $(this).find('img').each(function() {
-					console.log(this.height + '-----' + this.width);
 					if (this.height===0 && this.width!=0) {
 						$(this).replaceWith("<a href='" + this.src + "' data-title='" + this.alt + "' data-lightbox='group'><img src='" + this.src + "' alt='" + this.alt + "' width='"+this.width+"px'></a>")
 					} else if (this.height===0 || this.width===0) {
