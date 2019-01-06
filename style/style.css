@@ -512,7 +512,7 @@ img {
   text-decoration: none;
 }
 .header .title {
-  flex: 3;
+  flex: 4.8;
   height: 100%;
   text-align: center;
   padding-right: 24px;
@@ -1164,7 +1164,7 @@ blockquote p {
 .footer .right .copyright a {
   font-family: Arial;
   text-decoration: none;
-  color: #34495e;
+  color: #2370bb;
 }
 .footer .right .copyright a:hover {
   color: #000;
@@ -1389,7 +1389,7 @@ blockquote p {
   position: relative;
 }
 .highlight pre {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Consolas;
 }
 .highlight .gutter {
   width: 10px;
@@ -1405,7 +1405,7 @@ blockquote p {
   padding: 0 8px;
 }
 .highlight .line {
-  height: 1.5em;
+  height: 1.15em;
 }
 .highlight tr,
 .highlight td {
