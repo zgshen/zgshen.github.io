@@ -479,6 +479,7 @@ a {
 }
 img {
   max-width: 100%;
+  height: auto;
 }
 .header {
   width: 100%;
