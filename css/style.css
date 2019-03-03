@@ -247,7 +247,8 @@ div {
           text-decoration: underline; }
     .post .post-content .caption {
       color: #444;
-      display: block;
+      /**display: block;**/
+      display: none;
       font-size: 0.9em;
       margin-top: 0.1em;
       position: relative;
@@ -261,7 +262,7 @@ div {
       max-width: 100%;
       padding: 0.5em 0;
       margin: auto;
-      display: block; }
+      /**display: block;**/ }
     .post .post-content ul, .post .post-content ol {
       border-radius: 3px;
       margin: 1em 0; }
