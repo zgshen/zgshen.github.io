@@ -17,6 +17,12 @@
 <p>物理上删除表，这里用 truncate 命令直接清空文件也可以，执行 <code>truncate -s 0 cc_card_log_120601.ibd.hdlk</code></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -58,6 +64,12 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -77,6 +89,12 @@
 <p><img src="https://i.imgur.com/m9vDwUo.png" alt="porkbun" title=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -89,9 +107,15 @@
     <entry>
       <title><![CDATA[星球大战]]></title>
       <url>/2018/02/23/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/</url>
-      <content type="html"><![CDATA[<p>趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。<br><img src="https://i.imgur.com/uOmRjVv.jpg" alt="startwar" title="" width="500px"><br>星战电影拍摄时间线比较有意思的是先拍了正传的三部，后来才补全拍的几部前传。虽然从1977年正传第一部到2017年第八部，跨度40年，电影技术与时俱进，但早年的几部也经过了重制，特效和观影效果不至于看起来太尴尬。<br>系列电影让人感触的是，随着一部部作品的发展，角色的命运也被慢慢揭示。甚至，扮演这些角色的演员，由于他们所扮演的角色成为自己的另一个符号，被世人所熟知，比如我们的莱亚公主。而且，他们的命运也跟戏里的角色有了关联，这样想起来，编剧也是个不得了的工作呢。</p>
+      <content type="html"><![CDATA[<p>趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。<br><img src="https://i.imgur.com/uOmRjVv.jpg" alt="starwars" title="starwars"><br>星战电影拍摄时间线比较有意思的是先拍了正传的三部，后来才补全拍的几部前传。虽然从1977年正传第一部到2017年第八部，跨度40年，电影技术与时俱进，但早年的几部也经过了重制，特效和观影效果不至于看起来太尴尬。<br>系列电影让人感触的是，随着一部部作品的发展，角色的命运也被慢慢揭示。甚至，扮演这些角色的演员，由于他们所扮演的角色成为自己的另一个符号，被世人所熟知，比如我们的莱亚公主。而且，他们的命运也跟戏里的角色有了关联，这样想起来，编剧也是个不得了的工作呢。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 生活 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -104,9 +128,15 @@
     <entry>
       <title><![CDATA[天河公园]]></title>
       <url>/2017/10/08/tianhe/</url>
-      <content type="html"><![CDATA[<p>跑跑步…<br><img src="https://i.imgur.com/wlNk0y3.png" alt="天河公园" title="" width="500px"></p>
+      <content type="html"><![CDATA[<p>跑跑步…<br><img src="https://i.imgur.com/wlNk0y3.png" alt="天河公园" title="天河公园"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 生活 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -133,6 +163,12 @@
 <p>因此，也有些人认为Java的闭包不能算是真正意义上的闭包，有不可修改外部变量的限制。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -168,6 +204,12 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -183,6 +225,12 @@
       <content type="html"><![CDATA[<p>今天要用到node-sass这东西，使用命令 <code>npm install node-sass --save</code> 安装。然而搞半天始终下载不来，换成淘宝的镜像都不行，因为下载时还会去github下载一个 <code>win32-x64-48_binding.node</code> 的包，然后下不来就一直卡着最后失败。<br>一种解决方法就是根据下载失败提示的链接直接把那个二进制包下载下来，然后放在本地服务器目录下，比如可以根据失败提示的版本号在Nginx的html目录下以版本号建个文件夹放进去，像这样 <code>nginx-1.10.1\html\v4.5.3\win32-x64-48_binding.node</code> ,然后执行 <code>npm install node-sass --save-dev --sass-binary-site=http://localhost:8090/ --registry=https://registry.npm.taobao.org</code> 端口号为Nginx设置的端口号， <code>v4.5.3\win32-x64-48_binding.node</code> 这一串不用加，这样 <code>win32-x64-48_binding.node</code> 这个包就直接从本地服务器下载了。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -225,6 +273,12 @@
 <p>线程池线程核心数设置为2，最大线程数设置为4，当执行少数量任务时线程池未饱和不会触发终止策略，而执行大量任务就可能会触发，比如以上测试例子的4个任务和20任务的区别。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -246,6 +300,12 @@
 <p>打包完毕将war包部署到外部Web容器。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -266,6 +326,12 @@
 <p>同样是为了解决多线程中变量冲突的问题，线程同步机制实现在某个时间点只有一个线程能访问变量，而ThreadLcoal是通过存储每个线程自己变量，以隔离多线程访问数据的冲突，一个损耗时间，一个损耗空间。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -292,6 +358,12 @@
 <p><code>transfer</code> 方法允许使用通配符方式传进一个 <code>ClassTest&lt;Peple&gt;</code> ,因为 <code>People</code>  是 <code>Man</code> 的超类。下面的两个错误是因为此时不确定get方法返回的对象类型无法保证，只能把它赋给一个 Object ，而set方法可以使用任意 Man 对象或它的子类型调用它。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -326,6 +398,12 @@
 <p>本文我写了一个demo，放在 <a href="https://github.com/shen28/ssm-demo" target="_blank" rel="external">https://github.com/shen28/ssm-demo</a> ，后续有时间会加上其他的一些东西。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -347,6 +425,12 @@
 <p><strong>补充</strong>：<br>在普通 Spring 工程在启动的时候都会通过 <code>org.springframework.web.context.ContextLoaderListener</code> 监听器从加载系统资源并管理bean， Spring 提供的 <code>WebApplicationContextUtils</code> 工具类能在请求时获取到运行时工程的bean，如果看源码就可以知道监听器执行时与 <code>WebApplicationContextUtils</code> 类的关联</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//封装一下，类的class和请求request为必要参数</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getBean</span><span class="params">(Class&lt;? extends Object&gt; cla,HttpServletRequest request)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(request == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (T)WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext()).getBean(cla);<span class="comment">//getBean参数可为bean类的.class或直接是bean的Id</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//这样获取bean</span></div><div class="line">TestService testService= (TestService)getBean(TestService.class, request);</div></pre></td></tr></table></figure>]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -370,6 +454,12 @@
 <p>参考博客 <code>http://blog.csdn.net/catoop/article/details/50501696</code></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -409,6 +499,12 @@
 <p>查看数据源选项卡可以看到配置连接池参数也都生效了<br><img src="https://i.imgur.com/y0z7uOV.png" alt="这里写图片描述"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -435,6 +531,12 @@
 <p>其他更多详细的logback配置可查看官方文档 <a href="https://logback.qos.ch/manual/configuration.html" target="_blank" rel="external">https://logback.qos.ch/manual/configuration.html</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -462,6 +564,12 @@
 <p><img src="https://i.imgur.com/GQsVBkE.png" alt="这里写图片描述"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -479,6 +587,12 @@
 <p>照回答者意思是javascript开发工具没法解析某些特殊语法的js代码；<br>另一个回答是说新版本的jdk已经解决这个问题，尝试卸了jdk（一直用的1.8.0_05版），装上最新版本的（目前是1.8.0_131版），问题解决。（仅供参考）</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -560,6 +674,12 @@
 <p>输出一段i的值之后当执行stopThread方法线程就结束了。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -574,11 +694,11 @@
       <url>/2017/04/21/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Nginx%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
       <content type="html"><![CDATA[<p>首先到Nginx官网下载tar.gz格式的安装包，这里下载的是nginx-1.10.3版本，环境使用centos6的虚拟机</p>
 <p>1、将安装包上传，解压，命令tar -xvf nginx-1.10.3.tar.gz；</p>
-<p>2、自定义创建一个文件夹作为Nginx安装目录，这里在home下创建nginx文件夹；<br><a id="more"></a><br><img src="https://i.imgur.com/mC614ol.png" alt="这里写图片描述"></p>
+<p>2、自定义创建一个文件夹作为Nginx安装目录，这里在home下创建nginx文件夹；<br><a id="more"></a><br><img src="https://i.imgur.com/mC614ol.png" alt=""></p>
 <p>3、在解压的文件夹（nginx-1.10.3）下执行<code>./configure --prefix=/home/nginx</code> 命令。<br>意思即配置安装环境，将会把Nginx安装到/home/nginx下；</p>
 <p>若没有gcc，先安装<br><code>yum -y install gcc gcc-c++ autoconf automake make</code></p>
-<p>若出现缺少依赖包则先安装依赖包，以下纯净centos mini版碰到的两个依赖包问题<br><img src="https://i.imgur.com/QTPk1ng.png" alt="这里写图片描述"><br>出现上面这个执行 yum -y install pcre-devel 安装依赖，</p>
-<p><img src="https://i.imgur.com/PzUawgZ.png" alt="这里写图片描述"><br>出现这个yum install -y zlib-devel 安装依赖，</p>
+<p>若出现缺少依赖包则先安装依赖包，以下纯净centos mini版碰到的两个依赖包问题<br><img src="https://i.imgur.com/QTPk1ng.png" alt=""><br>出现上面这个执行 yum -y install pcre-devel 安装依赖，</p>
+<p><img src="https://i.imgur.com/PzUawgZ.png" alt=""><br>出现这个yum install -y zlib-devel 安装依赖，</p>
 <p>若还有其他依赖问题，根据缺少的文件提示安装相应的东西；</p>
 <p>4、编译：在解压的文件夹下先后执行make 和 make install 命令</p>
 <p>5、Nginx默认使用端口是80，这里直接先把Nginx端口改为8088，vi /home/nginx/conf/nginx.conf，修改server的端口，并配置一个图片服务器</p>
@@ -586,10 +706,16 @@
 <p>server下listen的端口改为8088，并增加一个location配置，用于访问图片文件，这一串配置有#号在前面的注释掉的都可以删掉，免得看起来又长又乱。</p>
 <p>6、启动命令： /home/nginx/sbin/nginx -c /home/nginx/conf/nginx.conf。<br>打开防火墙对应端口供访问，8088，当然也可以直接关了防火墙。<br>若修改了nginx.conf配置，则需要重启才生效，命令：/home/nginx/sbin/nginx -s reload</p>
 <p>7、访问。<br>输入ifconfig命令查看虚拟机ip，测试：</p>
-<p><img src="https://i.imgur.com/n4QXlG8.png" alt="这里写图片描述" title="" width="700px" height="280px"></p>
+<p><img src="https://i.imgur.com/n4QXlG8.png" alt="" title="" width="700px" height="280px"></p>
 <p>在/home/images下放张图片，测试访问：<br><img src="https://i.imgur.com/E4LVgOy.png" alt="doge" title="" width="400px" height="300px"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -605,6 +731,12 @@
       <content type="html"><![CDATA[<p>eclipse neon 版本更新了git工具EGit版本，默认commit时使用的是一个标签窗口，不是像之前一个新 dialog窗口，像下面这样：<br><img src="https://i.imgur.com/suIxQNW.png" alt="" title=""><br>不能单独作为新窗口拖出来的，个人用起来也觉得操作真的是不方便，翻了下设置，在Window-Preferences-Team-Git-Committing可以看到第一个选项 Use Staging View … （使用staging代替原来dialog的commit视图），把这个打钩去掉提交界面就回到前版本的样子<br><img src="https://i.imgur.com/G6abdps.png" alt="" title=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -640,6 +772,12 @@
 <p>结果输出<br><img src="https://i.imgur.com/d7jwS3i.png" alt="这里写图片描述"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -663,6 +801,12 @@
 <p>调用存储使用call命令<br><img src="https://i.imgur.com/VhhN91s.png" alt="这里写图片描述"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -695,6 +839,12 @@
 <p>3、静态内部类<br>创建是不需要依赖于外围类，但也不能使用任何外围类的非static成员变量和方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class Cat&#123;</div><div class="line">	</div><div class="line">	private String str = &quot;cat&quot;;</div><div class="line">	private static String str_static = &quot;cat&quot;;</div><div class="line">	</div><div class="line">	private class LittleCat&#123;</div><div class="line">		//public static String str_test = &quot;test&quot;;//错误，非静态内部类变量不能为静态</div><div class="line">		public static final String str_test = &quot;test&quot;;//但加上final就可以</div><div class="line">		public void doSomething() &#123;</div><div class="line">			str = &quot;little cat&quot;;</div><div class="line">			System.out.println(&quot;Walking....Eating....&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	static class BigCat&#123;</div><div class="line">		public void doSomething() &#123;</div><div class="line">			//str = &quot;little cat&quot;;//错误，静态内部类反问外围非静态变量和方法</div><div class="line">			str_static = &quot;big cat&quot;;</div><div class="line">			System.out.println(&quot;I am a big cat.&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		LittleCat lCat = new Cat().new LittleCat();//依赖外围类</div><div class="line">		lCat.doSomething();</div><div class="line">		</div><div class="line">		BigCat bigCat = new BigCat();//不依赖外围类</div><div class="line">		bigCat.doSomething();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -708,9 +858,15 @@
       <title><![CDATA[无题]]></title>
       <url>/2017/02/14/0214%E5%B9%BF%E5%B7%9E/</url>
       <content type="html"><![CDATA[<h1 id="本命年"><a href="#本命年" class="headerlink" title="本命年"></a>本命年</h1><p>暂且不用去想太多破事，认真过好今年</p>
-<p>E时光上的广州<br><img src="https://i.imgur.com/MItvRB6.jpg" alt="方圆E时光上的广州" title="" width="500px"></p>
+<p>E时光上的广州<br><img src="https://i.imgur.com/MItvRB6.jpg" alt="方圆E时光上的广州" title="方圆E时光上的广州"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 生活 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -726,6 +882,12 @@
       <content type="html"><![CDATA[<h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><p>除夕<br>辞旧迎新<br>新年快乐<br><img src="https://i.imgur.com/lJ4bD3w.png" alt="" title="" width="500px"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 生活 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -755,6 +917,12 @@
 <p>16/12/29</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -770,6 +938,12 @@
       <content type="html"><![CDATA[<p>之前鼓捣服务器的时候买了个域名耍耍，空间到期之后域名一直放着，不久前才想起github上能搭个博客能用自定义域名，而且刚好又不需要备案，就鼓捣了这个博客。顺便把CSDN的博文同步过来试试，CSDN博客地址 <a href="http://blog.csdn.net/u012809062" target="_blank" rel="external">http://blog.csdn.net/u012809062</a> 。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -800,6 +974,12 @@
 <p>注：<br>接口是隐式抽象的，当声明一个接口的时候，不必使用abstract关键字。<br>接口中每一个方法也是隐式抽象的，声明时同样不需要abstract关键子。<br>接口中的方法都是公有的。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -830,26 +1010,12 @@
 <p>3、TreeMap<br>TreeMap是可排序的Map集合按照集合中的key进行排序，key不允许重复。TreeMap是红黑树基于Map接口的实现。<a href="http://blog.csdn.net/chenssy/article/details/26668941" target="_blank">关于TreeMap红黑树参考</a>,初次接触不容易理解，多查资料。</p>
 ]]></content>
       
-        
-        <tags>
+        <categories>
             
-            <tag> Java基础 </tag>
+            <category> 技术 </category>
             
-        </tags>
+        </categories>
         
-    </entry>
-    
-    <entry>
-      <title><![CDATA[类与对象]]></title>
-      <url>/2016/07/09/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/</url>
-      <content type="html"><![CDATA[<p>一、Java的对象和类<br>Java作为一种面向对象语言，有类、对象、实例、方法、继承、重载、抽象、多态、封装的基本概念。<br>1、类<br>(1)类是Java的核心和本质，封装、继承、多态和抽象几大特性都离不开类，可以把类看成是对象的模板。<br>(2)类中的变量。包括局部变量、全局变量和类变量。<br>    局部变量：定义在方法中的变量，作用域为本方法中。<br>    成员变量：定义在类中方法外的变量，作用域为本类。<br>    类变量(静态变量)：类变量也声明在类中，方法体之外，但必须声明为static类型(static表示全局的、静态的)。<br>    <a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author shen</div><div class="line"> * @desc test</div><div class="line"> * @date 2016年7月10日</div><div class="line"> */</div><div class="line">public class Book &#123;</div><div class="line">	</div><div class="line">	static int num = 0;//类变量</div><div class="line">	static final String type = &quot;children&quot;;//用final变量只能被初始化一次，之后不能再赋值</div><div class="line">	</div><div class="line">	String str=&quot;this is a book&quot;;//实例变量</div><div class="line">	public void borrow()&#123;</div><div class="line">		int i = 0;//局部变量</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void rend()&#123;</div><div class="line">		//静态方法，无需创建对象就能使用</div><div class="line">		System.out.println(&quot;this is a static method.&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		rend();//直接调用</div><div class="line">		System.out.println(&quot;this is a main function.&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	static &#123;</div><div class="line">		//静态代码块，类加载时调用</div><div class="line">		System.out.println(&quot;this is a static code block.&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果：<br><img src="http://img.blog.csdn.net/20160710185420433" alt="这里写图片描述"><br>(3)构造方法<br>        每个类都有构造方法，如果没有显式定义构造方法，编译器会默认为类创建一个不带参的构造方法(若子类继承有带参构造方法的父类，需要显式调用父类构造方法)。<br>        构造方法名必须与类名相同，一个类中可以有多个构造方法(参数不同)，创建对象时至少一个构造方法。<br>2、对象<br>    对象的创建：声明，声明类的类型和名称；实例化，使用new创建一个对象；初始化，创建对象时会调用构造方法初始化对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author shen</div><div class="line"> * @desc test</div><div class="line"> * @date 2016年7月10日</div><div class="line"> */</div><div class="line">public class User &#123;</div><div class="line">	</div><div class="line">	private String type = &quot;student&quot;;</div><div class="line">	private String name;//私有属性只能在本类获取到</div><div class="line">	private int age;</div><div class="line">	public int height;//公有属性其他类也能获取到</div><div class="line">	</div><div class="line">	public int getHeight() &#123;</div><div class="line">		return height;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setHeight(int height) &#123;</div><div class="line">		this.height = height;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//Javabean的规范，通过getter和setter对数据进行封装</div><div class="line">	public String getType() &#123;</div><div class="line">		return type;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setType(String type) &#123;</div><div class="line">		this.type = type;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public User()&#123;</div><div class="line">		//无参构造方法</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User(String num)&#123;</div><div class="line">		//带参构造</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User(String name,int age)&#123;</div><div class="line">		//参数个数不同的构造</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//普通方法</div><div class="line">	public void borrow(String bookName)&#123;</div><div class="line">		//bookName为方法体中的局部变量</div><div class="line">		System.out.println(this.name + &quot; borrow a book :&quot; + bookName );</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		User jack = new User();//默认的无参构造创建对象</div><div class="line">		jack.age = 20;//私有属性，只能在本类使用这种方式</div><div class="line">		jack.name = &quot;jack&quot;;</div><div class="line">		</div><div class="line">		//公有属性其他类也能获取到，暴露了数据细节。将属性定义为private并使用getter和setter方法隐藏数据的细节(Java的封装特性)</div><div class="line">		jack.height = 170;</div><div class="line">		jack.borrow(&quot;Java code&quot;);</div><div class="line">		System.out.println(jack.type);</div><div class="line">		</div><div class="line">		User jane = new User();</div><div class="line">		jane.setAge(19);//Javabean规范，实现对数据细节的隐藏封装</div><div class="line">		jane.setName(&quot;jane&quot;);</div><div class="line">		jane.setType(&quot;teacher&quot;);</div><div class="line">		jane.borrow(&quot;C prime plus&quot;);</div><div class="line">		System.out.println(jane.type);</div><div class="line">		</div><div class="line">		User tom = new User(&quot;tom&quot;, 21);//使用带参构造创建对象</div><div class="line">		tom.borrow(&quot;C++ prime plus&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果：<br><img src="http://img.blog.csdn.net/20160710185740775" alt="这里写图片描述"></p>
-<p>二、基本规则<br>1、一个源文件中只能有一个public类，可以有多个非public类，并且public类名必须与源文件名称相同<br>2、包与import语句<br>(1)Java包主要是用来给类分类，创建包使用package语句实现。包也有基本的命名规则，根据公司或个人名、项目名、模块名等命名。<br>(2)import语句。import语句就是用来提供一个合理的路径，使得编译器可以找到某个类，有点类似与c的头文件和c++的命名空间。</p>
-]]></content>
-      
         
         <tags>
             
@@ -888,6 +1054,38 @@
 <p>如果要操作少量的数据用String<br>单线程操作字符串缓冲区下操作大量数据StringBuilder<br>多线程操作字符串缓冲区下操作大量数据StringBuffer<br>5、其他<a href="http://blog.csdn.net/renfufei/article/details/14448147" target="_blank">[引用]</a><br>I.字符串比较”==”与equal()方法<br>“==” 判断两个引用的是不是同一个内存地址(同一个物理对象).<br>equals 判断两个字符串的值是否相等.<br>除非你想判断两个string引用是否同一个对象,否则应该总是使用 equals()方法.<br>II.密码及其他问题上char[]优先于String原因<br>    String是不可变对象, 意思是一旦创建,那么整个对象就不可改变. 即使新手觉得String引用变了,实际上只是(指针)引用指向了另一个(新的)对象.<br>    而程序员可以明确地对字符数组进行修改,因此敏感信息(如密码)不容易在其他地方暴露(只要你用完后对char[]置0).</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[类与对象]]></title>
+      <url>/2016/07/09/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/</url>
+      <content type="html"><![CDATA[<p>一、Java的对象和类<br>Java作为一种面向对象语言，有类、对象、实例、方法、继承、重载、抽象、多态、封装的基本概念。<br>1、类<br>(1)类是Java的核心和本质，封装、继承、多态和抽象几大特性都离不开类，可以把类看成是对象的模板。<br>(2)类中的变量。包括局部变量、全局变量和类变量。<br>    局部变量：定义在方法中的变量，作用域为本方法中。<br>    成员变量：定义在类中方法外的变量，作用域为本类。<br>    类变量(静态变量)：类变量也声明在类中，方法体之外，但必须声明为static类型(static表示全局的、静态的)。<br>    <a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author shen</div><div class="line"> * @desc test</div><div class="line"> * @date 2016年7月10日</div><div class="line"> */</div><div class="line">public class Book &#123;</div><div class="line">	</div><div class="line">	static int num = 0;//类变量</div><div class="line">	static final String type = &quot;children&quot;;//用final变量只能被初始化一次，之后不能再赋值</div><div class="line">	</div><div class="line">	String str=&quot;this is a book&quot;;//实例变量</div><div class="line">	public void borrow()&#123;</div><div class="line">		int i = 0;//局部变量</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void rend()&#123;</div><div class="line">		//静态方法，无需创建对象就能使用</div><div class="line">		System.out.println(&quot;this is a static method.&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		rend();//直接调用</div><div class="line">		System.out.println(&quot;this is a main function.&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	static &#123;</div><div class="line">		//静态代码块，类加载时调用</div><div class="line">		System.out.println(&quot;this is a static code block.&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果：<br><img src="http://img.blog.csdn.net/20160710185420433" alt="这里写图片描述"><br>(3)构造方法<br>        每个类都有构造方法，如果没有显式定义构造方法，编译器会默认为类创建一个不带参的构造方法(若子类继承有带参构造方法的父类，需要显式调用父类构造方法)。<br>        构造方法名必须与类名相同，一个类中可以有多个构造方法(参数不同)，创建对象时至少一个构造方法。<br>2、对象<br>    对象的创建：声明，声明类的类型和名称；实例化，使用new创建一个对象；初始化，创建对象时会调用构造方法初始化对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author shen</div><div class="line"> * @desc test</div><div class="line"> * @date 2016年7月10日</div><div class="line"> */</div><div class="line">public class User &#123;</div><div class="line">	</div><div class="line">	private String type = &quot;student&quot;;</div><div class="line">	private String name;//私有属性只能在本类获取到</div><div class="line">	private int age;</div><div class="line">	public int height;//公有属性其他类也能获取到</div><div class="line">	</div><div class="line">	public int getHeight() &#123;</div><div class="line">		return height;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setHeight(int height) &#123;</div><div class="line">		this.height = height;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//Javabean的规范，通过getter和setter对数据进行封装</div><div class="line">	public String getType() &#123;</div><div class="line">		return type;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setType(String type) &#123;</div><div class="line">		this.type = type;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public User()&#123;</div><div class="line">		//无参构造方法</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User(String num)&#123;</div><div class="line">		//带参构造</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User(String name,int age)&#123;</div><div class="line">		//参数个数不同的构造</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//普通方法</div><div class="line">	public void borrow(String bookName)&#123;</div><div class="line">		//bookName为方法体中的局部变量</div><div class="line">		System.out.println(this.name + &quot; borrow a book :&quot; + bookName );</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		User jack = new User();//默认的无参构造创建对象</div><div class="line">		jack.age = 20;//私有属性，只能在本类使用这种方式</div><div class="line">		jack.name = &quot;jack&quot;;</div><div class="line">		</div><div class="line">		//公有属性其他类也能获取到，暴露了数据细节。将属性定义为private并使用getter和setter方法隐藏数据的细节(Java的封装特性)</div><div class="line">		jack.height = 170;</div><div class="line">		jack.borrow(&quot;Java code&quot;);</div><div class="line">		System.out.println(jack.type);</div><div class="line">		</div><div class="line">		User jane = new User();</div><div class="line">		jane.setAge(19);//Javabean规范，实现对数据细节的隐藏封装</div><div class="line">		jane.setName(&quot;jane&quot;);</div><div class="line">		jane.setType(&quot;teacher&quot;);</div><div class="line">		jane.borrow(&quot;C prime plus&quot;);</div><div class="line">		System.out.println(jane.type);</div><div class="line">		</div><div class="line">		User tom = new User(&quot;tom&quot;, 21);//使用带参构造创建对象</div><div class="line">		tom.borrow(&quot;C++ prime plus&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果：<br><img src="http://img.blog.csdn.net/20160710185740775" alt="这里写图片描述"></p>
+<p>二、基本规则<br>1、一个源文件中只能有一个public类，可以有多个非public类，并且public类名必须与源文件名称相同<br>2、包与import语句<br>(1)Java包主要是用来给类分类，创建包使用package语句实现。包也有基本的命名规则，根据公司或个人名、项目名、模块名等命名。<br>(2)import语句。import语句就是用来提供一个合理的路径，使得编译器可以找到某个类，有点类似与c的头文件和c++的命名空间。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -905,6 +1103,12 @@
 <p>javac命令，各种编译选项<br><img src="http://img.blog.csdn.net/20160703095933655" alt="这里写图片描述"><br>三、基本数据类型<br>1、Java有八种基本数据类型，包括byte字节类型、int整形、short短整形、long长整形、char字符型、float浮点型(单精度)、double双精度类型、boolean布尔型。<br>2、基本知识<br>一个字节等于8位，一个字节等于256个数，就是-128到127一共256。<br>kB就是kBytes<br>Bytes就是“字节”的意思！<br>K就是千的意思，因为计算机是通过二进制来计算，10个1正好是1024<br>1111111111（二进制）=1024（十进制）<br>1Bytes（字节）=8bit（比特）<br>一个英文字母或一个阿拉伯数字就是一个字符，占用一个字节<br>一个汉字就是两个字符，占用两个字节。<br>3、数据类型转换<br>byte-&gt;short<br>char-&gt;int-&gt;long<br>float-&gt;double<br>int-&gt;float<br>long-&gt;double<br>范围小的转到范围大的<br>范围大的转换到范围小的会失去精度</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -943,6 +1147,12 @@
 <p>(3)前台的一些测试页面<br><img src="http://img.blog.csdn.net/20160409221836381" alt="这里写图片描述"><br>WEB_INF下文件不能通过URL直接访问,登录页面网上拿了别人做了一个页面，挺有趣的，访问工程地址,端口你自己配的,输入管理员类型的账号测试<br><img src="http://img.blog.csdn.net/20160409222553125" alt="这里写图片描述"><br>刚开始对于各种注解的使用不甚了解鼓捣了许久,用maven管理项目构建时也碰到许多小问题，着实查了许多资料,下过别人的demo参考，总算是把ssm这一套搭起来了，如果发现有问题，请留言指教。demo下载<a href="http://download.csdn.net/detail/u012809062/9486330" target="_blank" rel="external">http://download.csdn.net/detail/u012809062/9486330</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -968,6 +1178,12 @@
 <p>印象流程大概这样，水平有限，记录。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -978,9 +1194,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[opencv简单的彩色图像灰度化和二值化（学习笔记）]]></title>
-      <url>/2015/05/04/opencv%E7%AE%80%E5%8D%95%E7%9A%84%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E7%81%B0%E5%BA%A6%E5%8C%96%E5%92%8C%E4%BA%8C%E5%80%BC%E5%8C%96%EF%BC%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/</url>
-      <content type="html"><![CDATA[<p>  图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255<em>255</em>255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少一些。灰度图像的描述与彩色图像一样仍然反映了整幅图像的整体和局部的色度和亮度等级的分布和特征。图像的灰度化处理可用两种方法来实现。<br>   图像的二值化是将图像上的像素点的灰度值设置为0或255，也就是将整个图像呈现出明显的黑白效果。要对RGB彩色图像进行二值化一般首先要对图像进行灰度化处理。<br><a id="more"></a><br>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cv.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"highgui.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cvaux.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">    &#123;</div><div class="line">        IplImage* img;</div><div class="line">        IplImage* img0;</div><div class="line">        IplImage* img1;</div><div class="line"></div><div class="line">        img = cvLoadImage(<span class="string">"test.jpg"</span>);<span class="comment">//默认初始图像放在工程文件下</span></div><div class="line">        <span class="comment">//IplImage* img1 = img;</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == img)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//灰度化操作</span></div><div class="line">        img0 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCvtColor(img,img0,CV_BGR2GRAY);</div><div class="line"><span class="comment">//图像数据复制</span></div><div class="line">        img1 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCopy(img0, img1, <span class="literal">NULL</span>);<span class="comment">//数据复制，若直接赋值相当指针指向同一地址会对原本img0操作</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//二值化操作</span></div><div class="line">        <span class="keyword">int</span> height = img1-&gt;height;</div><div class="line">        <span class="keyword">int</span> width = img1-&gt;width;</div><div class="line">        <span class="keyword">int</span> step = img1-&gt;widthStep;</div><div class="line">        <span class="keyword">int</span> channels = img1-&gt;nChannels;</div><div class="line">        uchar *data = (uchar*)img1-&gt;imageData;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i != height; ++ i)</div><div class="line">        &#123;</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j != width; ++ j)</div><div class="line">         &#123;</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k != channels; ++ k)</div><div class="line">             &#123;</div><div class="line">                 <span class="keyword">if</span>(data[i*step+j*channels+k]&lt;<span class="number">128</span>)</div><div class="line">                  data[i*step+j*channels+k]=<span class="number">0</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">                  <span class="keyword">else</span></div><div class="line">                  data[i*step+j*channels+k]=<span class="number">255</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">        &#125;</div><div class="line"><span class="comment">//创建窗口、显示图像、销毁图像、释放图像</span></div><div class="line">        cvNamedWindow( <span class="string">"test1"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test1"</span>, img0);</div><div class="line"></div><div class="line">        cvNamedWindow( <span class="string">"test"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test"</span>, img1);</div><div class="line"></div><div class="line">        cvWaitKey(<span class="number">0</span>);</div><div class="line"></div><div class="line">        cvDestroyWindow( <span class="string">"test1"</span> );</div><div class="line">        cvDestroyWindow( <span class="string">"test"</span> );</div><div class="line"></div><div class="line">        cvReleaseImage( &amp;img0 );</div><div class="line">        cvReleaseImage( &amp;img1 );</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+      <title><![CDATA[avr单片机三种时钟模式]]></title>
+      <url>/2015/05/04/avr%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%89%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p>AVR单片机时钟有三种模式：<br>1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。<br>2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机XTAL1端口，熔丝设置为外部时钟即可（不是外部晶振）。<br>3、设置晶振熔丝错误会导致芯片锁死，如果设置为外部晶振，直接加晶振即可解除，设置为外部时钟源，那只好提供外部时钟才能解除（有源晶振）。</p>
 ]]></content>
       
         
@@ -993,11 +1209,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[avr单片机三种时钟模式]]></title>
-      <url>/2015/05/04/avr%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%89%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<p>AVR单片机时钟有三种模式：<br>1、内部时钟源，可分为内部晶振和外部晶振，用的是单片机内部的振荡电路。内部晶振可以设置1M、2M、4M、8MHz晶振频率，外部可支持到16MHz（MEGA16或者MEGA16A）MEGA16L可支持最高8MHz的外部晶振（通过熔丝设置）。<br>2、外部时钟源，靠外部振荡电路提供时钟，可以用外部同步时钟信号（如用其他单片机提供时钟）或者外部振荡器（如有源晶振）将此信号接到单片机XTAL1端口，熔丝设置为外部时钟即可（不是外部晶振）。<br>3、设置晶振熔丝错误会导致芯片锁死，如果设置为外部晶振，直接加晶振即可解除，设置为外部时钟源，那只好提供外部时钟才能解除（有源晶振）。</p>
+      <title><![CDATA[opencv简单的彩色图像灰度化和二值化（学习笔记）]]></title>
+      <url>/2015/05/04/opencv%E7%AE%80%E5%8D%95%E7%9A%84%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E7%81%B0%E5%BA%A6%E5%8C%96%E5%92%8C%E4%BA%8C%E5%80%BC%E5%8C%96%EF%BC%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p>  图像的灰度化即是将彩色图像转化成为灰度图像的过程成为图像的灰度化处理。彩色图像中的每个像素的颜色有R、G、B三个分量决定，而每个分量有255中值可取，这样一个像素点可以有1600多万（255<em>255</em>255）的颜色的变化范围。而灰度图像是R、G、B三个分量相同的一种特殊的彩色图像，其一个像素点的变化范围为255种，所以在数字图像处理种一般先将各种格式的图像转变成灰度图像以使后续的图像的计算量变得少一些。灰度图像的描述与彩色图像一样仍然反映了整幅图像的整体和局部的色度和亮度等级的分布和特征。图像的灰度化处理可用两种方法来实现。<br>   图像的二值化是将图像上的像素点的灰度值设置为0或255，也就是将整个图像呈现出明显的黑白效果。要对RGB彩色图像进行二值化一般首先要对图像进行灰度化处理。<br><a id="more"></a><br>例子<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cv.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"highgui.h"</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cvaux.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">    &#123;</div><div class="line">        IplImage* img;</div><div class="line">        IplImage* img0;</div><div class="line">        IplImage* img1;</div><div class="line"></div><div class="line">        img = cvLoadImage(<span class="string">"test.jpg"</span>);<span class="comment">//默认初始图像放在工程文件下</span></div><div class="line">        <span class="comment">//IplImage* img1 = img;</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == img)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">//灰度化操作</span></div><div class="line">        img0 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCvtColor(img,img0,CV_BGR2GRAY);</div><div class="line"><span class="comment">//图像数据复制</span></div><div class="line">        img1 = cvCreateImage(cvGetSize(img),IPL_DEPTH_8U,<span class="number">1</span>);<span class="comment">//申请一段内存</span></div><div class="line">        cvCopy(img0, img1, <span class="literal">NULL</span>);<span class="comment">//数据复制，若直接赋值相当指针指向同一地址会对原本img0操作</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//二值化操作</span></div><div class="line">        <span class="keyword">int</span> height = img1-&gt;height;</div><div class="line">        <span class="keyword">int</span> width = img1-&gt;width;</div><div class="line">        <span class="keyword">int</span> step = img1-&gt;widthStep;</div><div class="line">        <span class="keyword">int</span> channels = img1-&gt;nChannels;</div><div class="line">        uchar *data = (uchar*)img1-&gt;imageData;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i != height; ++ i)</div><div class="line">        &#123;</div><div class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j != width; ++ j)</div><div class="line">         &#123;</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k != channels; ++ k)</div><div class="line">             &#123;</div><div class="line">                 <span class="keyword">if</span>(data[i*step+j*channels+k]&lt;<span class="number">128</span>)</div><div class="line">                  data[i*step+j*channels+k]=<span class="number">0</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">                  <span class="keyword">else</span></div><div class="line">                  data[i*step+j*channels+k]=<span class="number">255</span>;<span class="comment">//255-data[i*step+j*channels+k];</span></div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">        &#125;</div><div class="line"><span class="comment">//创建窗口、显示图像、销毁图像、释放图像</span></div><div class="line">        cvNamedWindow( <span class="string">"test1"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test1"</span>, img0);</div><div class="line"></div><div class="line">        cvNamedWindow( <span class="string">"test"</span>, <span class="number">0</span> );</div><div class="line">        cvShowImage(<span class="string">"test"</span>, img1);</div><div class="line"></div><div class="line">        cvWaitKey(<span class="number">0</span>);</div><div class="line"></div><div class="line">        cvDestroyWindow( <span class="string">"test1"</span> );</div><div class="line">        cvDestroyWindow( <span class="string">"test"</span> );</div><div class="line"></div><div class="line">        cvReleaseImage( &amp;img0 );</div><div class="line">        cvReleaseImage( &amp;img1 );</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
         
         <tags>
             

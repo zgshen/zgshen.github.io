@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>zgshen&#39;s notes</title>
-  <subtitle>Learning is a kind of attitude</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://zgshen.github.io/"/>
-  <updated>2019-01-06T11:54:47.591Z</updated>
-  <id>http://zgshen.github.io/</id>
+  <link href="https://zgshen.me/"/>
+  <updated>2019-03-03T14:47:00.013Z</updated>
+  <id>https://zgshen.me/</id>
   
   <author>
     <name>zgshen</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Mysql切换表和删除大表操作备忘</title>
-    <link href="http://zgshen.github.io/2018/12/15/Mysql%E5%88%87%E6%8D%A2%E8%A1%A8%E5%92%8C%E5%88%A0%E9%99%A4%E5%A4%A7%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/"/>
-    <id>http://zgshen.github.io/2018/12/15/Mysql切换表和删除大表操作备忘/</id>
+    <link href="https://zgshen.me/2018/12/15/Mysql%E5%88%87%E6%8D%A2%E8%A1%A8%E5%92%8C%E5%88%A0%E9%99%A4%E5%A4%A7%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/"/>
+    <id>https://zgshen.me/2018/12/15/Mysql切换表和删除大表操作备忘/</id>
     <published>2018-12-14T16:00:00.000Z</published>
-    <updated>2019-01-06T11:54:47.591Z</updated>
+    <updated>2019-03-03T14:47:00.013Z</updated>
     
     <content type="html"><![CDATA[<p>线上有一张日志表累计了太多数据，占用了服务器100多G的内存，需要把历史的数据清除掉，腾出空间。直接删除表的记录 Mysql 是不会自动归还硬盘空间的，需要对表进行 <code>OPTIMIZE TABLE</code> 优化操作归还空间，但此操作会长时间锁定表，不能在线上随便操作。<br><a id="more"></a><br>另一种方式就是新建一张新的表结构与日志表相同，把新的表表名互换，切到新表。之后就可以把占空间大的旧表删除，由于 <code>drop</code> 操作删除表会有锁影响数据库其他操作，而且如果是普通硬盘删除100多G数据也不会很快，会影响服务器IO操作。因此，删除大表一般使用网络上大多人推荐的建立硬链接来进行删除的方式。</p>
 <h4 id="切换表操作"><a href="#切换表操作" class="headerlink" title="切换表操作"></a>切换表操作</h4><p>建表 <code>cc_card_log_1206</code> ，结构与表 <code>cc_card_log</code> 完全相同,把表 <code>cc_card_log_1206</code> 相互切换表名 <code>cc_card_log</code>，锁写操作，互换表名，解锁。</p>
@@ -40,17 +40,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="技术" scheme="http://zgshen.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="技术" scheme="https://zgshen.me/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title>Windows 装机软件</title>
-    <link href="http://zgshen.github.io/2018/12/01/Windows%20%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6/"/>
-    <id>http://zgshen.github.io/2018/12/01/Windows 装机软件/</id>
+    <link href="https://zgshen.me/2018/12/01/Windows%20%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6/"/>
+    <id>https://zgshen.me/2018/12/01/Windows 装机软件/</id>
     <published>2018-11-30T16:00:00.000Z</published>
-    <updated>2019-01-06T12:01:57.771Z</updated>
+    <updated>2019-03-03T14:41:47.143Z</updated>
     
     <content type="html"><![CDATA[<p>Windows 日常使用中，难免会碰到一些流氓软件，安装的时候不小心就装了个全家桶，时不时给你弹个广告，特别是双11的特殊日子，各家软件都给你发来问候，一时间桌面真是红红火火的。虽然知道某些软件其实很好用，知道广告是软件厂商的重要收入来源，但我实在忍受不了在全神贯注工作的时候给你来一发弹窗，实在碍眼得不行，只能寻找替代品。</p>
 <p>其实日常使用大部分软件都有开源性质或无广告版本的，功能也足够强大。</p>
@@ -87,17 +89,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>域名更换注册商</title>
-    <link href="http://zgshen.github.io/2018/10/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2%E6%9C%8D%E5%8A%A1%E5%95%86/"/>
-    <id>http://zgshen.github.io/2018/10/14/域名更换服务商/</id>
+    <link href="https://zgshen.me/2018/10/14/%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2%E6%9C%8D%E5%8A%A1%E5%95%86/"/>
+    <id>https://zgshen.me/2018/10/14/域名更换服务商/</id>
     <published>2018-10-13T16:00:00.000Z</published>
-    <updated>2018-10-14T15:11:20.049Z</updated>
+    <updated>2019-03-03T14:49:00.739Z</updated>
     
     <content type="html"><![CDATA[<p>域名不论是新注册、续费和转移，不同的注册商的定价和提供的服务都不一样。有些注册商对新注册域名有比较大的优惠，但续费的就不是那么便宜，还好域名是可以转移到别的注册商，所以给我们的选择就比较多了。<a id="more"></a></p>
 <h4 id="一般在哪个注册商注册域名考虑的方面有："><a href="#一般在哪个注册商注册域名考虑的方面有：" class="headerlink" title="一般在哪个注册商注册域名考虑的方面有："></a>一般在哪个注册商注册域名考虑的方面有：</h4><p>价格：要快速知道各注册商的域名定价，可以到一些域名比较网站看看，比如 <code>www.domcomp.com</code> ；<br>备案情况：许多人建博客喜欢用 <code>.me、.im</code> 域名，但这些域名现在国内是无法备案的，所以只能选择国外的注册商；<br>whois ：不少注册商都有提供免费的 whois 隐私保护功能；<br>dns ：域名解析功能，不同注册商也有所区别。例如这次我从 Namecheap 转到 Porkbun ，Porkbun 并没有找到二级域名重定向到顶级域名功能，比如把 www 定向到顶级域名，只支持重定向到另一个域名。</p>
@@ -112,60 +116,66 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>星球大战</title>
-    <link href="http://zgshen.github.io/2018/02/23/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/"/>
-    <id>http://zgshen.github.io/2018/02/23/星球大战/</id>
+    <link href="https://zgshen.me/2018/02/23/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/"/>
+    <id>https://zgshen.me/2018/02/23/星球大战/</id>
     <published>2018-02-22T16:00:00.000Z</published>
-    <updated>2018-09-14T01:30:26.976Z</updated>
+    <updated>2019-03-03T14:50:23.191Z</updated>
     
-    <content type="html"><![CDATA[<p>趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。<br><img src="https://i.imgur.com/uOmRjVv.jpg" alt="startwar" title="" width="500px"><br>星战电影拍摄时间线比较有意思的是先拍了正传的三部，后来才补全拍的几部前传。虽然从1977年正传第一部到2017年第八部，跨度40年，电影技术与时俱进，但早年的几部也经过了重制，特效和观影效果不至于看起来太尴尬。<br>系列电影让人感触的是，随着一部部作品的发展，角色的命运也被慢慢揭示。甚至，扮演这些角色的演员，由于他们所扮演的角色成为自己的另一个符号，被世人所熟知，比如我们的莱亚公主。而且，他们的命运也跟戏里的角色有了关联，这样想起来，编剧也是个不得了的工作呢。</p>
+    <content type="html"><![CDATA[<p>趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。<br><img src="https://i.imgur.com/uOmRjVv.jpg" alt="starwars" title="starwars"><br>星战电影拍摄时间线比较有意思的是先拍了正传的三部，后来才补全拍的几部前传。虽然从1977年正传第一部到2017年第八部，跨度40年，电影技术与时俱进，但早年的几部也经过了重制，特效和观影效果不至于看起来太尴尬。<br>系列电影让人感触的是，随着一部部作品的发展，角色的命运也被慢慢揭示。甚至，扮演这些角色的演员，由于他们所扮演的角色成为自己的另一个符号，被世人所熟知，比如我们的莱亚公主。而且，他们的命运也跟戏里的角色有了关联，这样想起来，编剧也是个不得了的工作呢。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/uOmRjVv.jpg&quot; alt=&quot;startwar&quot; title=&quot;&quot; width=&quot;500px&quot;&gt;
+      &lt;p&gt;趁着春节，把星球大战系列电影刷了一遍，除了最后一部《星球大战：最后的绝地武士》还没正版资源，所以还没看。&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/uOmRjVv.jpg&quot; alt=&quot;starwars&quot; title=&quot;starwars&quot;&gt;&lt;br&gt;星战
     
     </summary>
     
+      <category term="生活" scheme="https://zgshen.me/categories/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>天河公园</title>
-    <link href="http://zgshen.github.io/2017/10/08/tianhe/"/>
-    <id>http://zgshen.github.io/2017/10/08/tianhe/</id>
+    <link href="https://zgshen.me/2017/10/08/tianhe/"/>
+    <id>https://zgshen.me/2017/10/08/tianhe/</id>
     <published>2017-10-07T16:00:00.000Z</published>
-    <updated>2018-09-14T01:30:40.716Z</updated>
+    <updated>2019-03-03T15:07:31.020Z</updated>
     
-    <content type="html"><![CDATA[<p>跑跑步…<br><img src="https://i.imgur.com/wlNk0y3.png" alt="天河公园" title="" width="500px"></p>
+    <content type="html"><![CDATA[<p>跑跑步…<br><img src="https://i.imgur.com/wlNk0y3.png" alt="天河公园" title="天河公园"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;跑跑步…&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/wlNk0y3.png&quot; alt=&quot;天河公园&quot; title=&quot;&quot; width=&quot;500px&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;跑跑步…&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/wlNk0y3.png&quot; alt=&quot;天河公园&quot; title=&quot;天河公园&quot;&gt;&lt;/p&gt;
 
     
     </summary>
     
+      <category term="生活" scheme="https://zgshen.me/categories/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>闭包</title>
-    <link href="http://zgshen.github.io/2017/09/12/%E9%97%AD%E5%8C%85/"/>
-    <id>http://zgshen.github.io/2017/09/12/闭包/</id>
+    <link href="https://zgshen.me/2017/09/12/%E9%97%AD%E5%8C%85/"/>
+    <id>https://zgshen.me/2017/09/12/闭包/</id>
     <published>2017-09-11T16:00:00.000Z</published>
-    <updated>2017-09-22T10:58:00.655Z</updated>
+    <updated>2019-03-03T14:49:43.088Z</updated>
     
     <content type="html"><![CDATA[<p>在Web开发中，在使用JavScript时，就算没用过，也听说过闭包这个名词。闭将外部作用域中的局部变量封闭起来的函数成为闭包，本质就是一个函数。<a id="more"></a><br>闭包的作用</p>
 <ul>
@@ -187,17 +197,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Java基础" scheme="https://zgshen.me/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
     <title>RESTful API开发的简单应用</title>
-    <link href="http://zgshen.github.io/2017/09/02/RESTful%20API%20%E5%BC%80%E5%8F%91/"/>
-    <id>http://zgshen.github.io/2017/09/02/RESTful API 开发/</id>
+    <link href="https://zgshen.me/2017/09/02/RESTful%20API%20%E5%BC%80%E5%8F%91/"/>
+    <id>https://zgshen.me/2017/09/02/RESTful API 开发/</id>
     <published>2017-09-01T16:00:00.000Z</published>
-    <updated>2018-04-08T14:00:49.442Z</updated>
+    <updated>2019-03-03T14:47:21.871Z</updated>
     
     <content type="html"><![CDATA[<p>在很早之前接触 Spring MVC 的时候，都知道 Spring MVC 支持 RESTful 风格API的开发，但对于 RESTful 只是有个模糊的认识，以至于甚至在开发写出来的接口其实不符合 RESTful 的要求。</p>
 <h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>REST 的全称是 Resource Representational State Transfer ，资源以某种表现形式进行状态转移<br>Resource：资源，即数据；<br>Representational：某种表现形式，比如用JSON，XML，JPEG等；<br>State Transfer：状态变化。通过HTTP动词实现。<br><a id="more"></a><br>HTTP动词有如下几个：</p>
@@ -229,17 +241,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Web技术" scheme="http://zgshen.github.io/tags/Web%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Web技术" scheme="https://zgshen.me/tags/Web%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title>用本地服务器解决node-sass安装失败问题</title>
-    <link href="http://zgshen.github.io/2017/08/20/%E7%94%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
-    <id>http://zgshen.github.io/2017/08/20/用本地服务器解决node-sass安装失败问题/</id>
+    <link href="https://zgshen.me/2017/08/20/%E7%94%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
+    <id>https://zgshen.me/2017/08/20/用本地服务器解决node-sass安装失败问题/</id>
     <published>2017-08-19T16:00:00.000Z</published>
-    <updated>2017-09-12T04:45:17.126Z</updated>
+    <updated>2019-03-03T14:49:21.901Z</updated>
     
     <content type="html"><![CDATA[<p>今天要用到node-sass这东西，使用命令 <code>npm install node-sass --save</code> 安装。然而搞半天始终下载不来，换成淘宝的镜像都不行，因为下载时还会去github下载一个 <code>win32-x64-48_binding.node</code> 的包，然后下不来就一直卡着最后失败。<br>一种解决方法就是根据下载失败提示的链接直接把那个二进制包下载下来，然后放在本地服务器目录下，比如可以根据失败提示的版本号在Nginx的html目录下以版本号建个文件夹放进去，像这样 <code>nginx-1.10.1\html\v4.5.3\win32-x64-48_binding.node</code> ,然后执行 <code>npm install node-sass --save-dev --sass-binary-site=http://localhost:8090/ --registry=https://registry.npm.taobao.org</code> 端口号为Nginx设置的端口号， <code>v4.5.3\win32-x64-48_binding.node</code> 这一串不用加，这样 <code>win32-x64-48_binding.node</code> 这个包就直接从本地服务器下载了。</p>
 ]]></content>
@@ -250,17 +264,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>线程池</title>
-    <link href="http://zgshen.github.io/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
-    <id>http://zgshen.github.io/2017/07/20/线程池/</id>
+    <link href="https://zgshen.me/2017/07/20/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>https://zgshen.me/2017/07/20/线程池/</id>
     <published>2017-07-19T16:00:00.000Z</published>
-    <updated>2018-04-14T09:35:04.681Z</updated>
+    <updated>2019-03-03T14:49:30.181Z</updated>
     
     <content type="html"><![CDATA[<p>创建一个新的线程是有代价的，创建大量的线程会消耗许多系统资源，影响系统的性能。这时，我们就需要使用线程池来管理线程，线程池能缓存线程，可用闲置的线程来执行新任务，能有效控制线程并发数，并对线程进行一些简单的管理。<a id="more"></a></p>
 <p>先创建一个线程任务类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TaskThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(TaskThread.class);</div><div class="line">    <span class="keyword">private</span> String task;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TaskThread</span><span class="params">(String task)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.task = task;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        task();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">task</span><span class="params">()</span> </span>&#123;</div><div class="line">        LOG.info(<span class="string">"任务:"</span> + task + <span class="string">"  线程:"</span> + Thread.currentThread().getName());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -298,17 +314,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Java基础" scheme="https://zgshen.me/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
     <title>Spring Boot 打包部署</title>
-    <link href="http://zgshen.github.io/2017/07/15/Spring%20Boot%E9%83%A8%E7%BD%B2/"/>
-    <id>http://zgshen.github.io/2017/07/15/Spring Boot部署/</id>
+    <link href="https://zgshen.me/2017/07/15/Spring%20Boot%E9%83%A8%E7%BD%B2/"/>
+    <id>https://zgshen.me/2017/07/15/Spring Boot部署/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-07-26T14:27:28.592Z</updated>
+    <updated>2019-03-03T14:47:51.708Z</updated>
     
     <content type="html"><![CDATA[<p>Spring Boot默认集成Web容器，部署也相对简单，如果需要以war包形式部署在外部Web容器上也可以，只需要做一些简单的修改配置。<br><a id="more"></a></p>
 <h2 id="使用集成的Web容器部署方式"><a href="#使用集成的Web容器部署方式" class="headerlink" title="使用集成的Web容器部署方式"></a>使用集成的Web容器部署方式</h2><p><strong>打包</strong><br>maven 工程在 eclipse 中执行 Run as Maven build，输入 clean package 进行打包，这里要注意的是 Spring Boot 打成jar包要可以运行，必须使用Spring Boot提供的一个插件，不然打成的普通的jar是无法运行Spring Boot工程的，一般会提示 jar中没有主清单属性。<br>在pom.xml加入插件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>repackage<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -325,17 +343,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>ThreadLcoal</title>
-    <link href="http://zgshen.github.io/2017/07/01/ThreadLcoal/"/>
-    <id>http://zgshen.github.io/2017/07/01/ThreadLcoal/</id>
+    <link href="https://zgshen.me/2017/07/01/ThreadLcoal/"/>
+    <id>https://zgshen.me/2017/07/01/ThreadLcoal/</id>
     <published>2017-06-30T16:00:00.000Z</published>
-    <updated>2017-07-04T04:48:39.562Z</updated>
+    <updated>2019-03-03T14:48:04.092Z</updated>
     
     <content type="html"><![CDATA[<p>ThreadLcoal不是线程，而是一个创建线程的局部变量的类，主要用于存储多线程下类的某些变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，当前线程的ThreadLocal的变量只能被该线程访问，而其他线程访问不到。<br><a id="more"></a><br><strong>使用</strong><br>类定义，支持泛型<br><code>public class ThreadLocal&lt;T&gt;</code><br>初始化值<br><code>private T setInitialValue()</code><br>set方法<br><code>public void set(T value)</code><br>get方法<br><code>public T get()</code></p>
 <p><strong>例子</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test04</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> ThreadLocal&lt;Integer&gt; local = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">localTread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNum</span><span class="params">()</span></span>&#123;</div><div class="line">            local.set(i++);</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> Integer <span class="title">getNum</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">return</span> local.get();</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(local.get() == <span class="keyword">null</span>)&#123;</div><div class="line">                setNum();</div><div class="line">                System.out.println(<span class="string">"set threadlocal num..."</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.print(<span class="string">"the object is: "</span>);</div><div class="line">            System.out.println(local);</div><div class="line">            System.out.println(local.get());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            localTread t = <span class="keyword">new</span> Test04().new localTread();</div><div class="line">            </div><div class="line">            Thread t1 = <span class="keyword">new</span> Thread(t);</div><div class="line">            Thread t2 = <span class="keyword">new</span> Thread(t);</div><div class="line">            Thread t3 = <span class="keyword">new</span> Thread(t);</div><div class="line">            </div><div class="line">            t1.start();</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            t2.start();</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">            t3.start();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -351,17 +371,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Java基础" scheme="https://zgshen.me/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
     <title>泛型</title>
-    <link href="http://zgshen.github.io/2017/06/30/%E6%B3%9B%E5%9E%8B/"/>
-    <id>http://zgshen.github.io/2017/06/30/泛型/</id>
+    <link href="https://zgshen.me/2017/06/30/%E6%B3%9B%E5%9E%8B/"/>
+    <id>https://zgshen.me/2017/06/30/泛型/</id>
     <published>2017-06-29T16:00:00.000Z</published>
-    <updated>2017-07-26T09:39:31.606Z</updated>
+    <updated>2019-03-03T14:49:15.849Z</updated>
     
     <content type="html"><![CDATA[<p>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。使用泛型，意味着编写的代码可以被很多不同类型    的对象所重用。<br><a id="more"></a><br><strong>泛型类</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassTest</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> T firtsFiled;</div><div class="line">    <span class="keyword">public</span> T secondFiled;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirtsFiled</span><span class="params">(T data)</span></span>&#123;</div><div class="line">        firtsFiled = data;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecondFiled</span><span class="params">(T data)</span></span>&#123;</div><div class="line">        secondFiled = data;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getFirtsFiled</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> firtsFiled;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getSecondFiled</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> secondFiled;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getStaticData</span><span class="params">(T data)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>以上是一个简单的泛型类，T成为类型变量，一般使用大写字母命名。在Java中常用变量E表示集合的元素类型，K和V表示关键字与值的类型，T表示任意类型（约定俗成的用法，事实随便一个字母都行）。<br>当实例化泛型类型需要用具体类型替代类型变量<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ClassTest&lt;String&gt; one  = <span class="keyword">new</span> ClassTest&lt;&gt;();</div><div class="line">ClassTest&lt;Integer&gt; two  = <span class="keyword">new</span> ClassTest&lt;&gt;();</div><div class="line">one.setFirtsFiled(<span class="string">"data1"</span>);      </div><div class="line">two.setFirtsFiled(<span class="number">123</span>);</div></pre></td></tr></table></figure></p>
@@ -383,17 +405,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Java基础" scheme="http://zgshen.github.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Java基础" scheme="https://zgshen.me/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
   <entry>
     <title>SSM框架，基于JavaConfig配置方式，不用xml配置文件</title>
-    <link href="http://zgshen.github.io/2017/06/14/SSM%E6%A1%86%E6%9E%B6%EF%BC%8C%E5%9F%BA%E4%BA%8EJavaConfig%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%8D%E7%94%A8xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>http://zgshen.github.io/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/</id>
+    <link href="https://zgshen.me/2017/06/14/SSM%E6%A1%86%E6%9E%B6%EF%BC%8C%E5%9F%BA%E4%BA%8EJavaConfig%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%8D%E7%94%A8xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>https://zgshen.me/2017/06/14/SSM框架，基于JavaConfig配置方式，不用xml配置文件/</id>
     <published>2017-06-13T16:00:00.000Z</published>
-    <updated>2017-06-14T14:26:20.599Z</updated>
+    <updated>2019-03-03T14:48:00.085Z</updated>
     
     <content type="html"><![CDATA[<p>在使用Spring开发时，我们经常会看到各种各样xml配置，过于繁多的xml配置显得复杂烦人。在Spring3之后，Spring支持使用JavaConfig来代替xml配置，这种方式也得到越来越多人的推荐，甚至在Spring Boot的项目中，基本上已经见不到xml的影子了。这里将使用JavaConfig方式对SSM框架进行整合。<br><a id="more"></a><br>一、maven 的pom.xml配置<br>各种jar包的配置如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.open.ssm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ssm-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></div><div class="line">  </div><div class="line">  	</div><div class="line">  	<span class="comment">&lt;!-- 版本 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">junit.version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">junit.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">spring.version</span>&gt;</span>4.3.0.RELEASE<span class="tag">&lt;/<span class="name">spring.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">jackson.version</span>&gt;</span>2.5.0<span class="tag">&lt;/<span class="name">jackson.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">mysql-connector-java.version</span>&gt;</span>5.1.37<span class="tag">&lt;/<span class="name">mysql-connector-java.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fastjson.version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">fastjson.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">slf4j.version</span>&gt;</span>1.7.12<span class="tag">&lt;/<span class="name">slf4j.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">commons-io.version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="name">commons-io.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">commons-fileupload.version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">commons-fileupload.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">commons-collections.version</span>&gt;</span>3.2.2<span class="tag">&lt;/<span class="name">commons-collections.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">commons-lang3.version</span>&gt;</span>3.3.2<span class="tag">&lt;/<span class="name">commons-lang3.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">commons-codec.version</span>&gt;</span>1.10<span class="tag">&lt;/<span class="name">commons-codec.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">javax.servlet-api.version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">javax.servlet-api.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">druid.version</span>&gt;</span>1.0.16<span class="tag">&lt;/<span class="name">druid.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">mybatis.version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">mybatis.version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">mybatis-spring.version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">mybatis-spring.version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="comment">&lt;!-- 依赖管理 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">   	</div><div class="line">	   	<span class="comment">&lt;!-- 单元测试 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;junit.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- json --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;fastjson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- spring --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-beans<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-tx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-aspects<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-annotations<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- jdbc驱动包  --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mysql-connector-java.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!--common 组件 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-io.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-fileupload.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-collections<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-collections<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-collections.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-lang3.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">		    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">		    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">		    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-codec.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- 日志处理 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;slf4j.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="comment">&lt;!-- servlet --&gt;</span></div><div class="line">		<span class="comment">&lt;!-- javax.servlet相关 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;javax.servlet-api.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;druid.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis-spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">		</div><div class="line">  	<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line">  	</div><div class="line">	<span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>ssm-demo<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">			</div><div class="line">			<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">port</span>&gt;</span>8088<span class="tag">&lt;/<span class="name">port</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">path</span>&gt;</span>/<span class="tag">&lt;/<span class="name">path</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">			</div><div class="line">		<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">build</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>二、SpringMvc的配置<br>首先创建一个初始化类，继承 <code>AbstractAnnotationConfigDispatcherServletInitializer</code> </p>
@@ -423,17 +447,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>Spring Boot 普通类调用Bean对象的一种方式</title>
-    <link href="http://zgshen.github.io/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
-    <id>http://zgshen.github.io/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/</id>
+    <link href="https://zgshen.me/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://zgshen.me/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/</id>
     <published>2017-06-07T16:00:00.000Z</published>
-    <updated>2017-09-22T11:47:14.961Z</updated>
+    <updated>2019-03-03T14:47:34.259Z</updated>
     
     <content type="html"><![CDATA[<p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> TestService testService;</div></pre></td></tr></table></figure></p>
 <p>注入TestService 接口就可以调用此接口实现类的实现的方法。<a id="more"></a><br>但在一般类中显然不可以这么做，注入的 TestService  将会报空指针异常，你无法拿到这个bean，在一般的ssm工程中我们可以通过xml配置把普通类设置成一个bean对象，那么 TestService 就有效了， 或者使用 <code>ApplicationContext</code> 直接读取xml配置中的bean也可以拿到 TestService。`</p>
@@ -451,17 +477,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Spring" scheme="http://zgshen.github.io/tags/Spring/"/>
+    
+      <category term="Spring" scheme="https://zgshen.me/tags/Spring/"/>
     
   </entry>
   
   <entry>
     <title>Spring Boot 过滤器、监听器和拦截器使用</title>
-    <link href="http://zgshen.github.io/2017/06/07/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/"/>
-    <id>http://zgshen.github.io/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/</id>
+    <link href="https://zgshen.me/2017/06/07/Spring%20Boot%20%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BD%BF%E7%94%A8/"/>
+    <id>https://zgshen.me/2017/06/07/Spring Boot 过滤器、监听器和拦截器使用/</id>
     <published>2017-06-06T16:00:00.000Z</published>
-    <updated>2017-06-12T14:49:15.383Z</updated>
+    <updated>2019-03-03T14:47:44.957Z</updated>
     
     <content type="html"><![CDATA[<p>1、过滤器和监听器<br>Spring Boot中对于过滤器和监听器的使用跟一般web工程中使用方式没什么不同，使用注解方式就可以快速创建，只是要使用注解方式需要在Application类加上 <code>@ServletComponentScan</code> 注解表明开启servlet的注解<br>创建一个监听器<a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@WebListener</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstListener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Logger LOG = LoggerFactory.getLogger(FirstListener.class);</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;</div><div class="line">		LOG.info(<span class="string">"FirstListener 初始化..."</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;</div><div class="line">		LOG.info(<span class="string">"FirstListener 销毁..."</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>创建一个过滤器，过滤test和hello下文的所有路径<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@WebFilter</span>(filterName=<span class="string">"firstFilter"</span>, urlPatterns = &#123;</div><div class="line">		<span class="string">"/test/*"</span>,</div><div class="line">		<span class="string">"/hello/*"</span></div><div class="line">		&#125;)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirsrtFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Logger LOG = LoggerFactory.getLogger(FirsrtFilter.class);</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span></span></div><div class="line">			<span class="keyword">throws</span> IOException, ServletException &#123;</div><div class="line">		HttpServletRequest req = (HttpServletRequest) request;</div><div class="line">		String requestURI = req.getRequestURI();</div><div class="line">		LOG.info(<span class="string">"过滤到的请求---&gt;"</span>+requestURI);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -480,15 +508,17 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>深圳</title>
-    <link href="http://zgshen.github.io/2017/05/28/%E6%B7%B1%E5%9C%B3/"/>
-    <id>http://zgshen.github.io/2017/05/28/深圳/</id>
+    <link href="https://zgshen.me/2017/05/28/%E6%B7%B1%E5%9C%B3/"/>
+    <id>https://zgshen.me/2017/05/28/深圳/</id>
     <published>2017-05-27T16:00:00.000Z</published>
     <updated>2018-09-14T01:32:04.552Z</updated>
     
@@ -503,16 +533,16 @@
     </summary>
     
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>Spring Boor配置Druid数据源</title>
-    <link href="http://zgshen.github.io/2017/05/18/Spring%20Boor%E9%85%8D%E7%BD%AEDruid%E6%95%B0%E6%8D%AE%E6%BA%90/"/>
-    <id>http://zgshen.github.io/2017/05/18/Spring Boor配置Druid数据源/</id>
+    <link href="https://zgshen.me/2017/05/18/Spring%20Boor%E9%85%8D%E7%BD%AEDruid%E6%95%B0%E6%8D%AE%E6%BA%90/"/>
+    <id>https://zgshen.me/2017/05/18/Spring Boor配置Druid数据源/</id>
     <published>2017-05-17T16:00:00.000Z</published>
-    <updated>2018-09-13T14:45:54.999Z</updated>
+    <updated>2019-03-03T14:47:30.190Z</updated>
     
     <content type="html"><![CDATA[<p>Druid是阿里巴巴开源平台上的一个项目,整个项目由数据库连接池、插件框架和SQL解析器组成。</p>
 <h3 id="添加Druid数据源"><a href="#添加Druid数据源" class="headerlink" title="添加Druid数据源"></a>添加Druid数据源</h3><p>要使用Druid数据源，我们需要在 application.properties 下添加配置信息<a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#数据库访问配置</div><div class="line">#mysql</div><div class="line">#spring.datasource.type=com.alibaba.druid.pool.DruidDataSource</div><div class="line">#spring.datasource.driver-class-name=com.mysql.jdbc.Driver</div><div class="line">#spring.datasource.url=jdbc:mysql://localhost:3306/blog</div><div class="line">#oracle</div><div class="line">spring.datasource.driverClassName=oracle.jdbc.driver.OracleDriver</div><div class="line">spring.datasource.url=jdbc:oracle:thin:@127.0.0.1:1521:orcl</div><div class="line">spring.datasource.username=system</div><div class="line">spring.datasource.password=123456</div><div class="line"></div><div class="line">#连接池配置</div><div class="line">spring.datasource.initialSize=5</div><div class="line">spring.datasource.minIdle=5</div><div class="line">spring.datasource.maxActive=20</div><div class="line">#连接等待超时时间</div><div class="line">spring.datasource.maxWait=60000</div><div class="line">#配置隔多久进行一次检测(检测可以关闭的空闲连接)</div><div class="line">spring.datasource.timeBetweenEvictionRunsMillis=60000</div><div class="line">#配置连接在池中的最小生存时间</div><div class="line">spring.datasource.minEvictableIdleTimeMillis=300000</div><div class="line">spring.datasource.validationQuery=SELECT 1 FROM DUAL</div><div class="line">spring.datasource.testWhileIdle=true</div><div class="line">spring.datasource.testOnBorrow=false</div><div class="line">spring.datasource.testOnReturn=false</div><div class="line"># 打开PSCache，并且指定每个连接上PSCache的大小</div><div class="line">spring.datasource.poolPreparedStatements=true</div><div class="line">spring.datasource.maxPoolPreparedStatementPerConnectionSize=20</div><div class="line"># 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙</div><div class="line">spring.datasource.filters=stat,wall,log4j</div><div class="line"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</div><div class="line">spring.datasource.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</div></pre></td></tr></table></figure></p>
@@ -533,17 +563,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>Spring Boot 热部署与日志配置</title>
-    <link href="http://zgshen.github.io/2017/05/11/Spring%20Boot%20%E7%83%AD%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/"/>
-    <id>http://zgshen.github.io/2017/05/11/Spring Boot 热部署与日志配置/</id>
+    <link href="https://zgshen.me/2017/05/11/Spring%20Boot%20%E7%83%AD%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/"/>
+    <id>https://zgshen.me/2017/05/11/Spring Boot 热部署与日志配置/</id>
     <published>2017-05-10T16:00:00.000Z</published>
-    <updated>2018-09-13T14:31:54.230Z</updated>
+    <updated>2019-03-03T14:47:40.821Z</updated>
     
     <content type="html"><![CDATA[<p>热部署和日志是开发中常用的功能，Srping Boot同样集成了相应的工具，可以方便地实现这些功能。</p>
 <h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><p>Spring Boot提供了 <code>spring-boot-devtools</code> 模块用于热部署，直接引入就行。<a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -566,17 +598,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>创建一个Spring Boot工程</title>
-    <link href="http://zgshen.github.io/2017/05/10/%E5%88%9B%E5%BB%BASpring%20Boot%E5%B7%A5%E7%A8%8B/"/>
-    <id>http://zgshen.github.io/2017/05/10/创建Spring Boot工程/</id>
+    <link href="https://zgshen.me/2017/05/10/%E5%88%9B%E5%BB%BASpring%20Boot%E5%B7%A5%E7%A8%8B/"/>
+    <id>https://zgshen.me/2017/05/10/创建Spring Boot工程/</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2018-09-13T14:53:49.876Z</updated>
+    <updated>2019-03-03T14:48:49.663Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>在搭建传统的SpringMVC项目或其他Spring项目的的时候，我们通常都需要写一堆与Spring整合的xml配置文件，过程繁琐复杂不说，而且容易出错。为了简化开发，Spring Boot应运而生。<br>Spring Boot可以创建独立运行的基于Spring的应用，并且大多数时候只需编写少量的配置。能独立运行的原因是Spring Boot项目本身嵌入了Tomcat等其他web容器插件，详细介绍看官网<a href="http://projects.spring.io/spring-boot/。" target="_blank" rel="external">http://projects.spring.io/spring-boot/。</a></p>
@@ -602,17 +636,19 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web框架" scheme="http://zgshen.github.io/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>eclipse neon版本打开某些javascript文件异常问题</title>
-    <link href="http://zgshen.github.io/2017/05/02/eclipse%20neon%E7%89%88%E6%9C%AC%E6%89%93%E5%BC%80%E6%9F%90%E4%BA%9Bjavascript%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/"/>
-    <id>http://zgshen.github.io/2017/05/02/eclipse neon版本打开某些javascript文件异常问题/</id>
+    <link href="https://zgshen.me/2017/05/02/eclipse%20neon%E7%89%88%E6%9C%AC%E6%89%93%E5%BC%80%E6%9F%90%E4%BA%9Bjavascript%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/"/>
+    <id>https://zgshen.me/2017/05/02/eclipse neon版本打开某些javascript文件异常问题/</id>
     <published>2017-05-01T16:00:00.000Z</published>
-    <updated>2018-09-14T01:46:44.151Z</updated>
+    <updated>2019-03-03T14:44:37.181Z</updated>
     
     <content type="html"><![CDATA[<p>eclipse neon版本的javascript编辑器无法处理某些异常信息，比如本人在用require js和vue js的时候碰过这种异常</p>
 <p></p><p style="word-wrap:break-word;word-break:break-all;"><br>java.lang.NoSuchMethodError:jdk.nashorn.internal.runtime.ECMAException.getEcmaError()Ljava/lang/Object;<br></p><br>然后js文件直接就打不开了，最终在stackoverflow找到相关问题，链接<br><a href="http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken" target="_blank" rel="external">http://stackoverflow.com/questions/38089331/eclipse-neon-java-ee-ide-javascript-editor-broken</a><p></p>
@@ -626,8 +662,10 @@
     
     </summary>
     
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="其他" scheme="http://zgshen.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
