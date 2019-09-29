@@ -2,13 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zgshen.me/2019/09/26/mysql%E6%B8%85%E9%99%A4%E9%94%99%E8%AF%AF%E4%B8%B4%E6%97%B6%E8%A1%A8/</loc>
-    <lastmod>2019-09-26</lastmod>
+    <lastmod>2019-09-29</lastmod>
   </url>  <url>
     <loc>https://zgshen.me/2019/08/06/Nginx%E5%8D%87%E7%BA%A7/</loc>
     <lastmod>2019-08-26</lastmod>
-  </url>  <url>
-    <loc>https://zgshen.me/2019/08/19/2019%E5%B9%B49%E6%9C%88/</loc>
-    <lastmod>2019-08-18</lastmod>
   </url>  <url>
     <loc>https://zgshen.me/2019/08/19/20190812-20190819%E5%91%A8%E6%8A%A5/</loc>
     <lastmod>2019-08-18</lastmod>
@@ -16,10 +13,10 @@
     <loc>https://zgshen.me/2019/08/12/20190805-20190811%E5%91%A8%E6%8A%A5/</loc>
     <lastmod>2019-08-14</lastmod>
   </url>  <url>
-    <loc>https://zgshen.me/2019/08/04/20190805-20190903/</loc>
+    <loc>https://zgshen.me/2019/08/04/20190729-20190804%E5%91%A8%E6%8A%A5/</loc>
     <lastmod>2019-08-12</lastmod>
   </url>  <url>
-    <loc>https://zgshen.me/2019/08/04/20190729-20190804%E5%91%A8%E6%8A%A5/</loc>
+    <loc>https://zgshen.me/2019/08/04/20190805-20190903/</loc>
     <lastmod>2019-08-12</lastmod>
   </url>  <url>
     <loc>https://zgshen.me/2017/08/20/%E7%94%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</loc>

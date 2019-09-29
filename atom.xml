@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zgshen.me/"/>
-  <updated>2019-09-26T04:29:32.940Z</updated>
+  <updated>2019-09-29T14:25:51.612Z</updated>
   <id>https://zgshen.me/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://zgshen.me/2019/09/26/mysql%E6%B8%85%E9%99%A4%E9%94%99%E8%AF%AF%E4%B8%B4%E6%97%B6%E8%A1%A8/"/>
     <id>https://zgshen.me/2019/09/26/mysql清除错误临时表/</id>
     <published>2019-09-25T16:00:00.000Z</published>
-    <updated>2019-09-26T04:29:32.940Z</updated>
+    <updated>2019-09-29T14:25:51.612Z</updated>
     
-    <content type="html"><![CDATA[<p>去年对数据库一个大表做了 optimize 操作，由于不了解（先给自己一巴掌）操作就草草执行了。此操作会拷贝原表数据到临时表，如果此时硬盘空间不够，就会报错，或者表太大，执行时间将及其漫长，反正哪种都是不可接受的。<br><a id="more"></a><br>这是当时的日志<br><img src="https://user-images.githubusercontent.com/20520272/65656809-c0057000-e053-11e9-82ba-399e98adcd48.png" alt="image"></p><p>当时就把进程 kill 掉了，但是留下了一个 75G 没有用的临时表，后来因为服务器加了硬盘空间，就没有去管它。最近硬盘又快占满，这个 75G 废弃文件实在碍眼，就着手看看怎么安全删除。</p><p>首先暴力 rm 必定不可取，参考互联网资料，这个应该是官方的一个解决方案<br><a href="https://mariadb.com/resources/blog/get-rid-of-orphaned-innodb-temporary-tables-the-right-way/" target="_blank" rel="noopener">https://mariadb.com/resources/blog/get-rid-of-orphaned-innodb-temporary-tables-the-right-way/</a></p><p><img src="https://user-images.githubusercontent.com/20520272/65656922-2094ad00-e054-11e9-8c49-2ee8d50397e6.png" alt="image"></p><p>试着按参考链接执行建同名表，正常建表命令肯定不会影响数据库，找到原来的表结构建表<br>CREATE TABLE <code>#sql-5df6_36c</code> (<br>  <code>id</code> bigint(32) NOT NULL AUTO_INCREMENT,<br>  <code>card</code> varchar(50) DEFAULT NULL COMMENT ‘卡券号’,<br>  <code>createTime</code> datetime DEFAULT NULL COMMENT ‘创建时间’,<br>  <code>status</code> varchar(1) DEFAULT NULL COMMENT ‘状态’,<br>  <code>posData</code> text COMMENT ‘POS请求的数据’,<br>  <code>ffData</code> text COMMENT ‘飞凡返回的data’,<br>  <code>reason</code> varchar(500) DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>),<br>  KEY <code>card_index</code> (<code>card</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=152943355 DEFAULT CHARSET=utf8;</p><p><img src="https://user-images.githubusercontent.com/20520272/65656942-2e4a3280-e054-11e9-90e6-6f338e8b5416.png" alt="image"></p><p>结果残缺的 #sql-5df6_36c.frm 被自动删掉<br><img src="https://user-images.githubusercontent.com/20520272/65656964-3ace8b00-e054-11e9-8237-80a89a339ce7.png" alt="image"></p><p>接下来剩下缺失表结构的大文件<br>cp cc_card_log.frm /app/mysql/data/watsons_coupon/#sql-ib2460-3936078760.frm<br>复制表结构命名与临时表相同</p><p><img src="https://user-images.githubusercontent.com/20520272/65656989-4ae66a80-e054-11e9-9cd5-c9d36f4b2757.png" alt="image"></p><p>再 drop 表，提示表不存在<br><img src="https://user-images.githubusercontent.com/20520272/65657013-5cc80d80-e054-11e9-9c0a-100e0467ce8b.png" alt="image"></p><p>先再建表<br><img src="https://user-images.githubusercontent.com/20520272/65657025-66ea0c00-e054-11e9-9bc2-4bb41efbe406.png" alt="image"></p><p>可以看到与临时表同名多会生成这两个文件，原来的两个文件也还在的<br><img src="https://user-images.githubusercontent.com/20520272/65657033-70737400-e054-11e9-9e00-4b53ba93e40f.png" alt="image"></p><p>再试试 drop 表<br><img src="https://user-images.githubusercontent.com/20520272/65657048-7cf7cc80-e054-11e9-9c28-189f9c8de552.png" alt="image"></p><p>发现不行，四个文件都还在<br>再尝试<br><img src="https://user-images.githubusercontent.com/20520272/65657062-8aad5200-e054-11e9-920a-8cd054a5ccc1.png" alt="image"></p><p>@0023sql@002dib2460@002d3936078760 两个文件倒是删掉了</p><p>#sql-ib2460-3936078760 两个还好好的<br>仔细一看</p><p>#sql-ib2460-3936078760.frm  用户组用户都是 root ，cp 的时候用了 sudo 执行，需要授权用户</p><p>chown mysql:mysql #sql-ib2460-3936078760.frm<br><img src="https://user-images.githubusercontent.com/20520272/65657080-9ac53180-e054-11e9-939e-6c5c0cdb95ce.png" alt="image"></p><p>再 drop 表<br><img src="https://user-images.githubusercontent.com/20520272/65657103-a9134d80-e054-11e9-8dcd-88cecd594ce1.png" alt="image"></p><p>75G文件5s多drop掉，总算删掉了</p>]]></content>
+    <content type="html"><![CDATA[<p>去年对数据库一个大表做了 optimize 操作，由于不了解具体操作就草草执行了。此操作会拷贝原表数据到临时表，如果此时硬盘空间不够，就会报错，或者表太大，执行时间将及其漫长，反正哪种都是不可接受的。<br><a id="more"></a><br>这是当时的日志<br><img src="https://user-images.githubusercontent.com/20520272/65656809-c0057000-e053-11e9-82ba-399e98adcd48.png" alt="image"></p><p>当时就把进程 kill 掉了，但是留下了一个 75G 没有用的临时表，后来因为服务器加了硬盘空间，就没有去管它。最近硬盘又快占满，这个 75G 废弃文件实在碍眼，就着手看看怎么安全删除。</p><p>首先暴力 rm 必定不可取，参考互联网资料，这个应该是官方的一个解决方案<br><a href="https://mariadb.com/resources/blog/get-rid-of-orphaned-innodb-temporary-tables-the-right-way/" target="_blank" rel="noopener">https://mariadb.com/resources/blog/get-rid-of-orphaned-innodb-temporary-tables-the-right-way/</a></p><p><img src="https://user-images.githubusercontent.com/20520272/65656922-2094ad00-e054-11e9-8c49-2ee8d50397e6.png" alt="image"></p><p>试着按参考链接执行建同名表，正常建表命令肯定不会影响数据库，找到原来的表结构建表<br>CREATE TABLE <code>#sql-5df6_36c</code> (<br>  <code>id</code> bigint(32) NOT NULL AUTO_INCREMENT,<br>  <code>card</code> varchar(50) DEFAULT NULL COMMENT ‘卡券号’,<br>  <code>createTime</code> datetime DEFAULT NULL COMMENT ‘创建时间’,<br>  <code>status</code> varchar(1) DEFAULT NULL COMMENT ‘状态’,<br>  <code>posData</code> text COMMENT ‘POS请求的数据’,<br>  <code>ffData</code> text COMMENT ‘飞凡返回的data’,<br>  <code>reason</code> varchar(500) DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>),<br>  KEY <code>card_index</code> (<code>card</code>)<br>) ENGINE=InnoDB AUTO_INCREMENT=152943355 DEFAULT CHARSET=utf8;</p><p><img src="https://user-images.githubusercontent.com/20520272/65656942-2e4a3280-e054-11e9-90e6-6f338e8b5416.png" alt="image"></p><p>结果残缺的 #sql-5df6_36c.frm 被自动删掉<br><img src="https://user-images.githubusercontent.com/20520272/65656964-3ace8b00-e054-11e9-8237-80a89a339ce7.png" alt="image"></p><p>接下来剩下缺失表结构的大文件<br>cp cc_card_log.frm /app/mysql/data/watsons_coupon/#sql-ib2460-3936078760.frm<br>复制表结构命名与临时表相同</p><p><img src="https://user-images.githubusercontent.com/20520272/65656989-4ae66a80-e054-11e9-9cd5-c9d36f4b2757.png" alt="image"></p><p>再 drop 表，提示表不存在<br><img src="https://user-images.githubusercontent.com/20520272/65657013-5cc80d80-e054-11e9-9c0a-100e0467ce8b.png" alt="image"></p><p>先再建表<br><img src="https://user-images.githubusercontent.com/20520272/65657025-66ea0c00-e054-11e9-9bc2-4bb41efbe406.png" alt="image"></p><p>可以看到与临时表同名多会生成这两个文件，原来的两个文件也还在的<br><img src="https://user-images.githubusercontent.com/20520272/65657033-70737400-e054-11e9-9e00-4b53ba93e40f.png" alt="image"></p><p>再试试 drop 表<br><img src="https://user-images.githubusercontent.com/20520272/65657048-7cf7cc80-e054-11e9-9c28-189f9c8de552.png" alt="image"></p><p>发现不行，四个文件都还在<br>再尝试<br><img src="https://user-images.githubusercontent.com/20520272/65657062-8aad5200-e054-11e9-920a-8cd054a5ccc1.png" alt="image"></p><p>@0023sql@002dib2460@002d3936078760 两个文件倒是删掉了</p><p>#sql-ib2460-3936078760 两个还好好的<br>仔细一看</p><p>#sql-ib2460-3936078760.frm  用户组用户都是 root ，cp 的时候用了 sudo 执行，需要授权用户</p><p>chown mysql:mysql #sql-ib2460-3936078760.frm<br><img src="https://user-images.githubusercontent.com/20520272/65657080-9ac53180-e054-11e9-939e-6c5c0cdb95ce.png" alt="image"></p><p>再 drop 表<br><img src="https://user-images.githubusercontent.com/20520272/65657103-a9134d80-e054-11e9-8dcd-88cecd594ce1.png" alt="image"></p><p>75G文件5s多drop掉，总算删掉了</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;去年对数据库一个大表做了 optimize 操作，由于不了解（先给自己一巴掌）操作就草草执行了。此操作会拷贝原表数据到临时表，如果此时硬盘空间不够，就会报错，或者表太大，执行时间将及其漫长，反正哪种都是不可接受的。&lt;br&gt;
+      &lt;p&gt;去年对数据库一个大表做了 optimize 操作，由于不了解具体操作就草草执行了。此操作会拷贝原表数据到临时表，如果此时硬盘空间不够，就会报错，或者表太大，执行时间将及其漫长，反正哪种都是不可接受的。&lt;br&gt;
     
     </summary>
     
@@ -42,32 +42,6 @@
     <title>20190812-20190819周报</title>
     <link href="https://zgshen.me/2019/08/19/20190812-20190819%E5%91%A8%E6%8A%A5/"/>
     <id>https://zgshen.me/2019/08/19/20190812-20190819周报/</id>
-    <published>2019-08-18T16:00:00.000Z</published>
-    <updated>2019-08-18T16:34:29.825Z</updated>
-    
-    <content type="html"><![CDATA[<p>《漫威蜘蛛侠》白金纪念。变态侄子给叔婶上坟。能力越大，责任越大。<br><img src="/img/ba/Marvel&#39;s Spider-Man_20190818214045.jpg" alt="img"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;《漫威蜘蛛侠》白金纪念。变态侄子给叔婶上坟。能力越大，责任越大。&lt;br&gt;&lt;img src=&quot;/img/ba/Marvel&amp;#39;s Spider-Man_20190818214045.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="https://zgshen.me/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="其他" scheme="https://zgshen.me/tags/%E5%85%B6%E4%BB%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>20190812-20190819周报</title>
-    <link href="https://zgshen.me/2019/08/19/2019%E5%B9%B49%E6%9C%88/"/>
-    <id>https://zgshen.me/2019/08/19/2019年9月/</id>
     <published>2019-08-18T16:00:00.000Z</published>
     <updated>2019-08-18T16:34:29.825Z</updated>
     
@@ -140,8 +114,8 @@
   
   <entry>
     <title>20190729-20190804周报</title>
-    <link href="https://zgshen.me/2019/08/04/20190729-20190804%E5%91%A8%E6%8A%A5/"/>
-    <id>https://zgshen.me/2019/08/04/20190729-20190804周报/</id>
+    <link href="https://zgshen.me/2019/08/04/20190805-20190903/"/>
+    <id>https://zgshen.me/2019/08/04/20190805-20190903/</id>
     <published>2019-08-03T16:00:00.000Z</published>
     <updated>2019-08-12T01:50:36.534Z</updated>
     
@@ -162,8 +136,8 @@
   
   <entry>
     <title>20190729-20190804周报</title>
-    <link href="https://zgshen.me/2019/08/04/20190805-20190903/"/>
-    <id>https://zgshen.me/2019/08/04/20190805-20190903/</id>
+    <link href="https://zgshen.me/2019/08/04/20190729-20190804%E5%91%A8%E6%8A%A5/"/>
+    <id>https://zgshen.me/2019/08/04/20190729-20190804周报/</id>
     <published>2019-08-03T16:00:00.000Z</published>
     <updated>2019-08-12T01:50:36.534Z</updated>
     
@@ -476,6 +450,29 @@
     
     
       <category term="web框架" scheme="https://zgshen.me/tags/web%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 普通类调用Bean对象的一种方式</title>
+    <link href="https://zgshen.me/2017/06/08/Spring%20Boot%20%E6%99%AE%E9%80%9A%E7%B1%BB%E8%B0%83%E7%94%A8Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://zgshen.me/2017/06/08/Spring Boot 普通类调用Bean对象的一种方式/</id>
+    <published>2017-06-07T16:00:00.000Z</published>
+    <updated>2019-03-03T14:47:34.260Z</updated>
+    
+    <content type="html"><![CDATA[<p>有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> TestService testService;</span><br></pre></td></tr></table></figure></p><p>注入TestService 接口就可以调用此接口实现类的实现的方法。<a id="more"></a><br>但在一般类中显然不可以这么做，注入的 TestService  将会报空指针异常，你无法拿到这个bean，在一般的ssm工程中我们可以通过xml配置把普通类设置成一个bean对象，那么 TestService 就有效了， 或者使用 <code>ApplicationContext</code> 直接读取xml配置中的bean也可以拿到 TestService。`</p><p>Spring Boot 已经摒弃了各种繁琐的xml配置，当然就不再使用xml配置的方式，之前在网上看到一种很简便的方式，但现在又找不到链接了，这里做下记录。</p><p>在普通类中定义 <code>ApplicationContext</code> 静态变量和set方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</span><br><span class="line">applicationContext = context;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>在启动类中，启动时事实已经生成 ConfigurableApplicationContext 对象， ConfigurableApplicationContext 是 ApplicationContext 接口的实现，这里直接传到普通类的 setApplicationContext 方法就行了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WxApplication</span> <span class="keyword">implements</span> <span class="title">EmbeddedServletContainerCustomizer</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">ConfigurableApplicationContext applicationContext = SpringApplication.run(WxApplication.class, args);</span><br><span class="line">TestClass.setApplicationContext(applicationContext);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>由于是静态变量，类加载时 applicationContext 已经存在，就可获取到 TestService 了，唯一不好就是静态变量在服务器启动后将一直存在<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;<span class="comment">//启动类set入，调用下面set方法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext context)</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">applicationContext = context;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getBeanTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">TestService testService  = (TestService)applicationContext.getBean(TestService.class);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>补充</strong>：<br>在普通 Spring 工程在启动的时候都会通过 <code>org.springframework.web.context.ContextLoaderListener</code> 监听器从加载系统资源并管理bean， Spring 提供的 <code>WebApplicationContextUtils</code> 工具类能在请求时获取到运行时工程的bean，如果看源码就可以知道监听器执行时与 <code>WebApplicationContextUtils</code> 类的关联</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装一下，类的class和请求request为必要参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getBean</span><span class="params">(Class&lt;? extends Object&gt; cla,HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(request == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (T)WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext()).getBean(cla);<span class="comment">//getBean参数可为bean类的.class或直接是bean的Id</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这样获取bean</span></span><br><span class="line">TestService testService= (TestService)getBean(TestService.class, request);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有时我们有一些特殊的需要，可能要在一个不被Spring管理的普通类中去调用Spring管理的bean对象的一些方法，比如一般SpringMVC工程在controller中通过&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Autowired&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TestService testService;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;注入TestService 接口就可以调用此接口实现类的实现的方法。
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zgshen.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Spring" scheme="https://zgshen.me/tags/Spring/"/>
     
   </entry>
   
