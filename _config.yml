@@ -80,8 +80,8 @@ theme: polk
 deploy:
   type: git
   repository: 
-    #github: git@github.com:zgshen/zgshen.github.io.backup.git
+    github: git@github.com:zgshen/zgshen.github.io.git
     #git push git@github.com:zgshen/zgshen.github.io.backup.git master
     #gitlab: git@gitlab.com:zgshen/zgshen.gitlab.io.git
-    coding: git@git.coding.net:zgshen/zgshen.git
+    #coding: git@git.coding.net:zgshen/zgshen.git
   branch: master
