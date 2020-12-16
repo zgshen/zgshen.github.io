@@ -18,5 +18,6 @@ sns:
 # Nav menu
 menu:
   Home: /
-  Archives: /archives
+  #Archives: /archives
   About: /about
+  Search: https://www.google.com/search?q=site:zgshen.me/
