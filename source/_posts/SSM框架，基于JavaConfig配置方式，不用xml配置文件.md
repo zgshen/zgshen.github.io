@@ -663,4 +663,4 @@ public class DruidStatFilter extends WebStatFilter {
 ```
 浏览器直接输入ip+端口/druid，这里在本地是 http://localhost:8088/druid 进入登录页面，输入配置的用户名密码就可以进入监控页面了。
 
-本文我写了一个demo，放在 https://github.com/shen28/ssm-demo ，后续有时间会加上其他的一些东西。
+本文我写了一个demo，放在 https://github.com/zgshen/ssm-demo ，后续有时间会加上其他的一些东西。

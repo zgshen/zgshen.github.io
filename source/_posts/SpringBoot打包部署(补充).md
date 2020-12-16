@@ -43,8 +43,8 @@ SpringBoot 启动可以以加载外部依赖目录来启动工程，所以我不
 ```
 
 打包后的目录结构，将 lib 目录的依赖包拷贝出来上传到服务器，依赖一般很少改动，若依赖改变重新传一次
-<img src="/img/ba/iNMHmVK.png" alt="" title="">
- 
+<img src="../images/backup/iNMHmVK.png" alt="" title="">
+
  打开 include nothing 的配置注释重新打包
  ```xml
 <include>
@@ -54,7 +54,7 @@ SpringBoot 启动可以以加载外部依赖目录来启动工程，所以我不
  ```
 
 打包后的文件，很小了，不用每次部署都传大文件
-<img src="/img/ba/IY80hVI.png" alt="" title="">
+<img src="../images/backup/IY80hVI.png" alt="" title="">
 
 另外也可以直接用 maven maven-dependency-plugin 插件直接把 jar 包拷贝到目标目录，不需要去包里拷贝，更直接
 ```xml

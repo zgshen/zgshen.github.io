@@ -36,12 +36,12 @@ END;
 ```
 创建生成的样子
 
-![这里写图片描述](/img/ba/6h3FmqU.png)
+![这里写图片描述](../images/backup/6h3FmqU.png)
 
 DEFINER的信息是'用户名'@'host'
 
 输入参数值测试
-![这里写图片描述](/img/ba/ikltBrd.png)
+![这里写图片描述](../images/backup/ikltBrd.png)
 
 调用存储使用call命令
-![这里写图片描述](/img/ba/VhhN91s.png)
+![这里写图片描述](../images/backup/VhhN91s.png)

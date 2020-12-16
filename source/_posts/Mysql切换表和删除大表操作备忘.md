@@ -24,7 +24,7 @@ UNLOCK TABLES;
 #### 删除大表
 
 要删除的表已经很大
-<img src="/img/ba/1ml0e2B.png" alt="表占用" title="" >
+<img src="../images/backup/1ml0e2B.png" alt="表占用" title="" >
 
 可以利用硬链接和 `truncate` 降低 `drop table` 对线上环境的影响
 创建方法都很简单：
@@ -32,16 +32,16 @@ UNLOCK TABLES;
 硬链接 （实体链接）ln       source  target
 
 使用此办法前提条件，需要开启独立表空间，如果是共享表空间无法使用改方法。查询 `show variables like 'innodb_file_per%'\G`，结果值是 ON 表明开启了。
-<img src="/img/ba/umwKspV.png" alt="查询开启表空间" title="">
+<img src="../images/backup/umwKspV.png" alt="查询开启表空间" title="">
 
 开启独立表空间表文件就都是单独的
-<img src="/img/ba/2C3DNGG.png" alt="数据库文件" title="" >
+<img src="../images/backup/2C3DNGG.png" alt="数据库文件" title="" >
 
 建立硬链接 `ln cc_card_log_1206.ibd cc_card_log_1206.ibd.hdlk` ，
 之后 cc_card_log_1206.ibd 的 INODES 属性变成了2，变成2之后 drop table 就不会直接把文件删除了，只是删除了链接，避免对数据库的影响，最后再把 cc_card_log_1206.ibd 删除掉就行了。 
-<img src="/img/ba/jAYLKYZ.png" alt="建立硬链接" title="" >
+<img src="../images/backup/jAYLKYZ.png" alt="建立硬链接" title="" >
 
 drop 删除表
-<img src="/img/ba/BT1TMmX.png" alt="drop操作" title="" >
+<img src="../images/backup/BT1TMmX.png" alt="drop操作" title="" >
 
 物理上删除表，这里用 truncate 命令直接清空文件也可以，执行 `truncate -s 0 cc_card_log_120601.ibd.hdlk`

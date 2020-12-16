@@ -235,7 +235,7 @@ public class DruidMonitorConfig {
 
 ```
 启动项目后访问 ip:端口/druid 输入配置类设置的账号密码进入监控后台。我们先执行一个数据库操作，可以在sql监控选项卡看到执行的sql
-![这里写图片描述](/img/ba/JEBueNM.png)
+![这里写图片描述](../images/backup/JEBueNM.png)
 
 查看数据源选项卡可以看到配置连接池参数也都生效了
-![这里写图片描述](/img/ba/y0z7uOV.png)
+![这里写图片描述](../images/backup/y0z7uOV.png)

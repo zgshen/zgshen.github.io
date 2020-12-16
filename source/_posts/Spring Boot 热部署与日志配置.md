@@ -71,7 +71,7 @@ public class IndexController {
 }
 ```
 访问本controller，输出（日志级别ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF，所以只输出error的）
-![这里写图片描述](/img/ba/fFwjHVg.png)
+![这里写图片描述](../images/backup/fFwjHVg.png)
 
 如果我们需要更复杂的日志功能，可以自己写一个xml文件来配置，比如输出到控制台使用Spring Boot的默认配置，而输出到文件使用自定义配置。
 在resources下新建一个logback.xml配置文件并把刚才logging.file的配置删掉，配置如下

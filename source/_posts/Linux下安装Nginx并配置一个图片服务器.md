@@ -10,7 +10,7 @@ date: 2017-04-21
 
 2、自定义创建一个文件夹作为Nginx安装目录，这里在home下创建nginx文件夹；
 <!--more-->
-![](/img/ba/mC614ol.png)
+![](../images/backup/mC614ol.png)
 
 3、在解压的文件夹（nginx-1.10.3）下执行`./configure --prefix=/home/nginx` 命令。
 意思即配置安装环境，将会把Nginx安装到/home/nginx下；
@@ -19,10 +19,10 @@ date: 2017-04-21
 `yum -y install gcc gcc-c++ autoconf automake make`
 
 若出现缺少依赖包则先安装依赖包，以下纯净centos mini版碰到的两个依赖包问题
-![](/img/ba/QTPk1ng.png)
+![](../images/backup/QTPk1ng.png)
 出现上面这个执行 yum -y install pcre-devel 安装依赖，
 
-![](/img/ba/PzUawgZ.png)
+![](../images/backup/PzUawgZ.png)
 出现这个yum install -y zlib-devel 安装依赖，
 
 若还有其他依赖问题，根据缺少的文件提示安装相应的东西；
@@ -186,7 +186,7 @@ server下listen的端口改为8088，并增加一个location配置，用于访�
 7、访问。
 输入ifconfig命令查看虚拟机ip，测试：
 
-<img src="/img/ba/n4QXlG8.png" alt="" title="" width="700px" height="280px">
+<img src="../images/backup/n4QXlG8.png" alt="" title="" width="700px" height="280px">
 
 在/home/images下放张图片，测试访问：
-<img src="/img/ba/E4LVgOy.png" alt="doge" title="" width="400px" height="300px">
+<img src="../images/backup/E4LVgOy.png" alt="doge" title="" width="400px" height="300px">
