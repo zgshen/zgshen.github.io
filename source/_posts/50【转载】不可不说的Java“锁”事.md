@@ -40,13 +40,16 @@ Java中往往是按照是否含有某一特性来定义锁，我们通过特性�
 public synchronized void testMethod() {
 	// 操作同步资源
 }
-// ReentrantLockprivate ReentrantLock lock = new ReentrantLock(); // 需要保证多个线程使用的是同一个锁public void modifyPublicResources() {
+// ReentrantLock
+private ReentrantLock lock = new ReentrantLock(); // 需要保证多个线程使用的是同一个锁
+public void modifyPublicResources() {
 	lock.lock();
 	// 操作同步资源
 	lock.unlock();
 }
 
-// ------------------------- 乐观锁的调用方式 -------------------------private AtomicInteger atomicInteger = new AtomicInteger();  // 需要保证多个线程使用的是同一个AtomicInteger
+// ------------------------- 乐观锁的调用方式 -------------------------
+private AtomicInteger atomicInteger = new AtomicInteger();  // 需要保证多个线程使用的是同一个AtomicInteger
 atomicInteger.incrementAndGet(); //执行自增1
 ```
 
@@ -81,7 +84,8 @@ public final int incrementAndGet() {
   return unsafe.getAndAddInt(this, valueOffset, 1) + 1;
 }
 
-// Unsafe.classpublic final int getAndAddInt(Object var1, long var2, int var4) {
+// Unsafe.class
+public final int getAndAddInt(Object var1, long var2, int var4) {
   int var5;
   do {
       var5 = this.getIntVolatile(var1, var2);
@@ -89,7 +93,9 @@ public final int incrementAndGet() {
   return var5;
 }
 
-// ------------------------- OpenJDK 8 -------------------------// Unsafe.javapublic final int getAndAddInt(Object o, long offset, int delta) {
+// ------------------------- OpenJDK 8 -------------------------
+// Unsafe.java
+public final int getAndAddInt(Object o, long offset, int delta) {
    int v;
    do {
        v = getIntVolatile(o, offset);
@@ -321,14 +327,21 @@ public class Widget {
 ```java
 protected final boolean tryAcquire(int acquires) {
 	Thread current = Thread.currentThread();
-	int c = getState(); // 取到当前锁的个数int w = exclusiveCount(c); // 取写锁的个数wif (c != 0) { // 如果已经有线程持有了锁(c!=0)// (Note: if c != 0 and w == 0 then shared count != 0)if (w == 0 || current != getExclusiveOwnerThread()) // 如果写线程数（w）为0（换言之存在读锁） 或者持有锁的线程不是当前线程就返回失败return false;
-		if (w + exclusiveCount(acquires) > MAX_COUNT)    // 如果写入锁的数量大于最大数（65535，2的16次方-1）就抛出一个Error。throw new Error("Maximum lock count exceeded");
+	int c = getState(); // 取到当前锁的个数
+    int w = exclusiveCount(c); // 取写锁的个数w
+    if (c != 0) { // 如果已经有线程持有了锁(c!=0)
+        // (Note: if c != 0 and w == 0 then shared count != 0)
+        if (w == 0 || current != getExclusiveOwnerThread()) // 如果写线程数（w）为0（换言之存在读锁） 或者持有锁的线程不是当前线程就返回失败				return false;
+		if (w + exclusiveCount(acquires) > MAX_COUNT)    // 如果写入锁的数量大于最大数（65535，2的16次方-1）就抛出一个Error。
+            throw new Error("Maximum lock count exceeded");
 		// Reentrant acquire
-    setState(c + acquires);
+    	setState(c + acquires);
+    	return true;
+  	}
+  	if (writerShouldBlock() || !compareAndSetState(c, c + acquires)) // 如果当且写线程数为0，并且当前线程需要阻塞那么就返回失败；或者如果通过CAS增加写线程数失败也返回失败。
+        return false;
+	setExclusiveOwnerThread(current); // 如果c=0，w=0或者c>0，w>0（重入），则设置当前线程或锁的拥有者
     return true;
-  }
-  if (writerShouldBlock() || !compareAndSetState(c, c + acquires)) // 如果当且写线程数为0，并且当前线程需要阻塞那么就返回失败；或者如果通过CAS增加写线程数失败也返回失败。return false;
-	setExclusiveOwnerThread(current); // 如果c=0，w=0或者c>0，w>0（重入），则设置当前线程或锁的拥有者return true;
 }
 
 ```
@@ -351,7 +364,8 @@ protected final int tryAcquireShared(int unused) {
     int c = getState();
     if (exclusiveCount(c) != 0 &&
         getExclusiveOwnerThread() != current)
-        return -1;                                   // 如果其他线程已经获取了写锁，则当前线程获取读锁失败，进入等待状态int r = sharedCount(c);
+        return -1;                                   // 如果其他线程已经获取了写锁，则当前线程获取读锁失败，进入等待状态
+    int r = sharedCount(c);
     if (!readerShouldBlock() &&
         r < MAX_COUNT &&
         compareAndSetState(c, c + SHARED_UNIT)) {
