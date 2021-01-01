@@ -6,13 +6,13 @@
 title: 星际行者
 subtitle:
 description:
-author: zgshen
+author: zguishen
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://zgshen.me
+url: https://zguishen.com
 root: /
 permalink: posts/:abbrlink.html
 abbrlink:
