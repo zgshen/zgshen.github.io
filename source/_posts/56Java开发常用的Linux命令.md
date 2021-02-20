@@ -376,104 +376,10 @@ ps aux | grep nginx # 查看特定进程nginx
 ps -ef | grep nginx # 同上
 pstree -A # 查看进程树
 ```
-```bash
-[root@VM-0-16-centos ~]# ps -l
-F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
-4 S     0 18708 18700  0  80   0 - 29155 do_wai pts/0    00:00:00 bash
-0 R     0 31523 18708  0  80   0 - 38312 -      pts/0    00:00:00 ps
-[root@VM-0-16-centos ~]# ps aux | grep nginx
-root      6912  0.0  0.0  10612  2472 ?        Ss    2020   0:00 nginx: master process nginx -g daemon off;
-101       6966  0.0  0.0  11024  1996 ?        S     2020   0:00 nginx: worker process
-root     14491  0.0  0.0 122588  5264 ?        Ss    2020   0:00 nginx: master process /usr/sbin/nginx
-nginx    25747  0.0  0.0 125116  5912 ?        S     2020   0:13 nginx: worker process
-nginx    25748  0.0  0.0 125212  6004 ?        S     2020   0:14 nginx: worker process
-root     31756  0.0  0.0 112712   964 pts/0    R+   23:40   0:00 grep --color=auto nginx
-[root@VM-0-16-centos ~]# 
-[root@VM-0-16-centos ~]# ps -ef | grep nginx
-root      6912  6895  0  2020 ?        00:00:00 nginx: master process nginx -g daemon off;
-101       6966  6912  0  2020 ?        00:00:00 nginx: worker process
-root     14491     1  0  2020 ?        00:00:00 nginx: master process /usr/sbin/nginx
-nginx    25747 14491  0  2020 ?        00:00:13 nginx: worker process
-nginx    25748 14491  0  2020 ?        00:00:14 nginx: worker process
-root     31840 18708  0 23:40 pts/0    00:00:00 grep --color=auto nginx
-[root@VM-0-16-centos ~]# pstree -A
-systemd-+-ReverseProxy_li---6*[{ReverseProxy_li}]
-        |-YDLive---8*[{YDLive}]
-        |-YDService-+-YDEdr---11*[{YDEdr}]
-        |           `-24*[{YDService}]
-        |-acpid
-        |-2*[agetty]
-        |-atd
-        |-auditd---{auditd}
-        |-barad_agent-+-barad_agent
-        |             `-barad_agent-+-sh
-        |                           `-3*[{barad_agent}]
-        |-containerd-+-containerd-shim-+-nginx---nginx
-        |            |                 `-9*[{containerd-shim}]
-        |            `-13*[{containerd}]
-        |-crond
-        |-dbus-daemon
-        |-dhclient
-        |-dockerd-+-docker-proxy---6*[{docker-proxy}]
-        |         `-14*[{dockerd}]
-        |-firewalld---{firewalld}
-        |-java---53*[{java}]
-        |-lsmd
-        |-lvmetad
-        |-mongod---27*[{mongod}]
-        |-mysqld---31*[{mysqld}]
-        |-nginx---2*[nginx]
-        |-ntpd
-        |-polkitd---6*[{polkitd}]
-        |-rsyslogd---2*[{rsyslogd}]
-        |-sgagent---{sgagent}
-        |-sshd---sshd---bash---pstree
-        |-systemd-journal
-        |-systemd-logind
-        |-systemd-udevd
-        `-tuned---4*[{tuned}]
-
-```
+![](../images/20210219/1613749448742.png)
 
 2.top
-```
-top - 23:46:16 up 179 days, 11:16,  1 user,  load average: 0.00, 0.02, 0.05
-Tasks:  96 total,   1 running,  95 sleeping,   0 stopped,   0 zombie
-%Cpu(s):  0.3 us,  0.5 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
-KiB Mem :  8009128 total,   832280 free,  1235088 used,  5941760 buff/cache
-KiB Swap:        0 total,        0 free,        0 used.  6469384 avail Mem 
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                        
-    9 root      20   0       0      0      0 S   0.3  0.0  72:08.41 rcu_sched                      
-  527 root      20   0  164108   2288   1580 R   0.3  0.0   0:00.01 top                            
- 5084 root      20   0 1206836  72228  11740 S   0.3  0.9 140:34.62 YDService                      
- 5106 root      20   0  838712  14736  11192 S   0.3  0.2 103:15.01 YDEdr                          
- 5136 root      20   0 1053412   6192   3948 S   0.3  0.1   2:11.21 YDLive                         
-22552 mongod    20   0 1145880  87196   6064 S   0.3  1.1 735:14.39 mongod                         
-28621 mysql     20   0 1603716 228676   9964 S   0.3  2.9  93:54.32 mysqld                         
-    1 root      20   0  191128   4044   2516 S   0.0  0.1  69:06.43 systemd                        
-    2 root      20   0       0      0      0 S   0.0  0.0   0:06.15 kthreadd                       
-    4 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H                   
-    6 root      20   0       0      0      0 S   0.0  0.0   2:00.46 ksoftirqd/0                    
-    7 root      rt   0       0      0      0 S   0.0  0.0   1:11.04 migration/0                    
-    8 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_bh                         
-   10 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 lru-add-drain                  
-   11 root      rt   0       0      0      0 S   0.0  0.0   1:04.96 watchdog/0                     
-   12 root      rt   0       0      0      0 S   0.0  0.0   0:54.02 watchdog/1                     
-   13 root      rt   0       0      0      0 S   0.0  0.0   1:10.53 migration/1                    
-   14 root      20   0       0      0      0 S   0.0  0.0   1:58.97 ksoftirqd/1                    
-   16 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/1:0H                   
-   18 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs                      
-   19 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 netns                          
-   20 root      20   0       0      0      0 S   0.0  0.0   0:07.27 khungtaskd                     
-   21 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 writeback                      
-   22 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kintegrityd                    
-   23 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 bioset                         
-   24 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 bioset                         
-   25 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 bioset                         
-   26 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kblockd                        
-   27 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 md 
-```
+![](../images/20210219/1613749642290.png)
 **第一行，任务队列信息，同 uptime 命令的执行结果**
 
 系统时间：23:46:16  
