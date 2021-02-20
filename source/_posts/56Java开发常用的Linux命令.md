@@ -231,9 +231,10 @@ drw-rw-rw- 4 root root 4096 Dec  3 06:05 SSR-Bash-Python
 ## 压缩和打包
 ### 压缩文件名
 Linux 底下有很多压缩文件名，常见的如下：
+
 |扩展名|压缩程序|
-|---|---|
-|*.Z	|compress|
+|--- | ---|
+|*.Z	|compress
 |*.zip	|zip
 |*.gz	|gzip
 |*.bz2	|bzip2
@@ -242,6 +243,7 @@ Linux 底下有很多压缩文件名，常见的如下：
 |*.tar.gz	|tar 程序打包的文件，经过 gzip 的压缩
 |*.tar.bz2	|tar 程序打包的文件，经过 bzip2 的压缩
 |*.tar.xz	|tar 程序打包的文件，经过 xz 的压缩
+
 ### 压缩指令
 ### 1. gzip
 gzip 是 Linux 使用最广的压缩指令，可以解开 compress、zip 与 gzip 所压缩的文件。  
