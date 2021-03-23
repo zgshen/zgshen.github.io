@@ -5,9 +5,7 @@ tags: 博客
 date: 2020-12-16
 ---
 
-**新建分支或 git 库存放 Hexo 源文件**
-
----
+## 新建分支或 git 库存放 Hexo 源文件
 
 折腾一下把 Hexo 网站用 Github Actions 进行自动化部署，基本流程是这样的
 
@@ -20,9 +18,7 @@ date: 2020-12-16
 
 这里用的是新建 hexo-blog 分支放 Hexo 源文件，新建一个 git 库也是可以，当然 Github Actions 也是在新建的 git 库上。
 
-**配置公私密钥**
-
----
+## 配置公私密钥
 
 因为涉及代码的 ssh 推送等交互，所以需要设置私钥和公钥。这里因为是用一个 git 库两个分支来做的，所以公私钥都在当前 git 库设置，如果用的是新建 git 库存放 Hexo 源文件，那私钥要放在 Hexo 源文件 git 库，公钥放在静态网站库上。
 
@@ -48,9 +44,7 @@ ssh-keygen -t rsa -b 4096 -C "xx@xx.com" -f github-deploy-key -N ""
 - `Name` 输入 `HEXO_DEPLOY_PRI`
 - `Value` 输入生成的 `github-deploy-key` 的内容
 
-**自动化部署脚本**
-
----
+## 自动化部署脚本
 
 在 hexo-blog 分支根目录下创建 .github 文件夹再进去创建 workflows 文件夹再创建 HexoCI.yml 文件
 
@@ -93,10 +87,28 @@ jobs:
           hexo d
 ```
 
-**构建结果**
-
----
+## 构建结果
 
 Actions 里可以看到每次构建流程，失败的可以进去查看日志定位问题。
 
 ![image-20201216180620677](../images/20201216/f5826da6fa20.png)
+
+## 链接优化
+
+安装 hexo-abbrlink 插件， package.json 中
+``` json
+"hexo-abbrlink": "^2.2.1",
+```
+
+配置文件
+``` yml
+url: https://zguishen.com
+root: /
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+permalink_defaults:
+```
+
+不同组合链接形式不同。
