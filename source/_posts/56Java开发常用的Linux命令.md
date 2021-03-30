@@ -413,6 +413,15 @@ load average数据是每隔5秒钟检查一次活跃的进程数，然后按特�
 备注：  
 可用内存=free + buffer + cached对于内存监控，在top里我们要时刻监控第五行swap交换分区的used，如果这个数值在不断的变化，说明内核在不断进行内存和swap的数据交换，这是真正的内存不够用了。第四行中使用中的内存总量（used）指的是现在系统内核控制的内存数，第四行中空闲内存总量（free）是内核还未纳入其管控范围的数量。纳入内核管理的内存不见得都在使用中，还包括过去使用过的现在可以被重复利用的内存，内核并不把这些可被重新使用的内存交还到free中去，因此在linux上free内存会越来越少，但不用为此担心。
 
+## JDK 常用命令
+Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo
+- jps，JVM Process Status Tool，显示指定系统内所有的HotSpot虚拟机进程；
+- jstat，JVM statistics Monitoring，用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据；
+- jmap，JVM Memory Map 命令用于生成heap dump文件；
+- jhat，JVM Heap Analysis Tool 命令是与 jmap 搭配使用，用来分析 jmap 生成的 dump 文件，jhat 内置了一个微型的 HTTP/HTML 服务器，生成 dump 的分析结果后，可以在浏览器中查看；
+- jstack，用于生成java虚拟机当前时刻的线程快照；
+- jinfo，JVM Configuration info 这个命令作用是实时查看和调整虚拟机运行参数。
+
 ## 参考
 
 - [1] [Linux基本概念及常用命令实现汇总](https://reid.run/archives/linux1#toc-head-45)
