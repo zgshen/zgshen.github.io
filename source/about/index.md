@@ -13,7 +13,11 @@ Java 后端开发者。
 素甘淡泊心常泰，曾履忧危体愈坚。<br>
 
 Game Life:
-<a href="https://www.exophase.com/steam/user/morro28/"><img src="https://card.exophase.com/1/1405899.png"></a>
-<a href="https://www.exophase.com/psn/user/guaguaer/"><img src="https://card.exophase.com/1/1405886.png"></a>
+<a href="https://www.exophase.com/steam/user/morro28/">
+    <img src="https://card.exophase.com/1/1405899.png" style="max-width: 100%;">
+</a>
+<a href="https://www.exophase.com/psn/user/guaguaer/">
+    <img src="https://card.exophase.com/1/1405886.png" style="max-width: 100%;">
+</a>
 
 Contact me by <a style="font-size: larger;" href="mailto:zguishen@foxmail.com">Mail</a> or <a style="font-size: larger;" href="https://github.com/zgshen">Github</a>.
