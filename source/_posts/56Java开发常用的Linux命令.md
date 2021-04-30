@@ -298,7 +298,7 @@ $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
 |解压缩	|tar -jxv -f filename.tar.bz2 -C 要解压缩的目录
 
 
-## 防火墙
+## 网络
 ### iptables 
 ```
 开启： chkconfig iptables on  
@@ -318,7 +318,35 @@ service firewalld start;  或者 #systemctl start firewalld.service;#开启防
 service firewalld stop;  或者 #systemctl stop firewalld.service;#关闭防火墙
 service firewalld restart;  或者 #systemctl restart firewalld.service;  #重启防火墙
 systemctl disable firewalld.service#禁止防火墙开启自启
+
+firewall-cmd --list-all #查看防火墙规则
+firewall-cmd --zone=public --list-ports #查看所有打开的端口
+firewall-cmd --zone=public --permanent --add-port=15672/tcp #添加端口，--permanent永久生效，没有此参数重启后失效
+firewall-cmd --reload #重新载入，添加端口后重新载入生效
+firewall-cmd --zone=public --remove-port=80/tcp --permanent #删除，同样需要重载生效
 ```
+
+### ss
+ss是Socket Statistics的缩写。ss命令用来显示处于活动状态的套接字信息。它可以显示和netstat类似的内容。但ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息，而且比netstat更快速更高效。
+
+```
+ss [参数]
+-n	不解析服务名称，已数字方式显示
+-a	显示所有套接字
+-l	显示处于监听状态的套接字
+-o	显示计时器信息
+-e	显示详细的套接字信息
+-m	显示套接字的内存使用情况
+-p	显示使用套接字的进程
+```
+
+```
+ss -t -a #显示TCP套接字
+ss -u -a #显示UDP套接字
+ss -s #显示套接字使用概况
+ss -lnp|grep 80 #80端口占用
+```
+
 
 ## vi/vim 基本操作
 ### vi与vim两者区别  
