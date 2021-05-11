@@ -8,7 +8,7 @@ comments: false
 
 [自用导航站](https://nav.zguishen.com/)
 
-[博客Notion备份](https://www.notion.so/Notion-9a91957659094e0c91dfb35ff313853b)
+[博客Notion备份](https://notion.zguishen.com/)
 
 ### 友链：
 暂无
