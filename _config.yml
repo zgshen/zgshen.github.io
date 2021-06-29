@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 素甘
+title: Zgshen's Blog
 subtitle:
-description: 素甘淡泊心常泰，曾履忧危体愈坚
+description: 
 author: zguishen
 language: zh-CN
 timezone: Asia/Shanghai
@@ -84,7 +84,4 @@ deploy:
   type: git
   repository: 
     github: git@github.com:zgshen/zgshen.github.io.git
-    #git push git@github.com:zgshen/zgshen.github.io.backup.git master
-    #gitlab: git@gitlab.com:zgshen/zgshen.gitlab.io.git
-    #coding: git@git.coding.net:zgshen/zgshen.git
   branch: master
