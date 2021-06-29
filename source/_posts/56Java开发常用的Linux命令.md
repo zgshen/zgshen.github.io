@@ -3,6 +3,7 @@ title: Java开发常用的Linux命令
 categories: 技术
 tags: Linux
 date: 2021-2-5
+toc: true
 ---
 
 ## 系统信息

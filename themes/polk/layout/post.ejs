@@ -7,6 +7,12 @@
     <span class="post-time"><%- date(page.date, "YYYY-MM-DD") %></span>
   </div>
   <div class="post-content">
+    <% if (page.toc){ %>
+	<div id="toc" class="toc-article">
+	  <%- toc(page.content) %>
+    </div>
+	<% } %>
+	
     <%- page.content %>
   </div>
   <div class="post-footer">
