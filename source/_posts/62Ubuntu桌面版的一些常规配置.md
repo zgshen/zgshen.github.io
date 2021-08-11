@@ -73,14 +73,17 @@ style:
 
 亮度调节
 
+系统装完没有亮度调节，看别人说法应该发是显卡驱动或者内核版本的问题，不想折腾这些了，干脆装个小工具解决。
+
 ```bash
 sudo add-apt-repository ppa:apandada1/brightness-controller
 sudo apt update
-sudo apt install brightness-controller
-brightness-controller
+sudo apt install brightness-controller-simple
 ```
 
 资源监控
+
+用来看网速、cpu 和 内存占用。
 
 ```bash
 # 添加软件源的命令
@@ -92,9 +95,9 @@ sudo add-apt-repository -r ppa:fossfreedom/indicator-sysmonitor
 sudo apt install indicator-sysmonitor -y
 ```
 
-打开 System Monitor Indicator，Perference - General - Run on startup 开机启动
+打开 System Monitor Indicator，Perference - General - Run on startup 设置开机启动。
 
-Advanced 中设置自定义格式  men{men}  net{net}
+Advanced 中自定义在顶栏显示的格式 cpu:{cpu} men:{men}  net:{net}
 
 ### 5. 设置恢复
 
