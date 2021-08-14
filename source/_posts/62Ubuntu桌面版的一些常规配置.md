@@ -7,9 +7,25 @@ toc: true
 ---
 以前一直在 Windows 桌面环境下做开发，接触的 Linux 机器都是服务器，基本上全都是在终端操作。最近来兴趣尝试在 Linux 桌面下做开发，总的来说，以日常开发办公的体验还可以，真正的 Linux 环境下工程的编译和部署调试比起虚拟机和远程终端还是好太多。但桌面的上手顺畅程序和 Windows 和 macOS 还是完全没法比，有些工具安装方式也比较麻烦，而且不同的 Linux 发行版差异巨大。
 
-尝试过 CentOS、Debian、Manjaro 和 Ubuntu 之后，个人感觉 Ubuntu 的总体体验是最好的，用的的人多，资料好早，不会常年不更新也不会更新太激进。下面记录一下使用 Ubuntu 20.04 LTS 一些配置。
+尝试过 CentOS、Debian、Manjaro 和 Ubuntu 之后，个人感觉 Ubuntu 的总体体验是最好的，用的的人多，资料好早，不会常年不更新也不会更新太激进。总结一下：  
+- 想要好的桌面体验用 Windows 或者 Mac，Linux 再怎么怎么折腾都比不了
+- 用 Linux 就要忍得了 Linux 的桌面和输入法问题
+- 如果你是不折腾就会死星人，就用 Arch 系的发行版，如果不想折腾只要安心开发就用 debian 系的发行版
+下面记录一下使用 Ubuntu 20.04 LTS 一些配置。
 
-### 1. 科学上网设置
+### 1. vi 编辑器
+上手先设置下 vi 吧，Ubuntu 默认的 vi 使用方向键和退格键有问题，可以通过修改配置或安装 full 版本的 vi 解决。
+
+编辑/etc/vim下的vimrc.tiny文件 `sudo vi /etc/vim/vimrc.tiny`
+将 set compatible 改成 set nocompatible ，然后添加 set backspace=2 即可解决。
+
+或者卸载旧版 vi 装新的
+```bash
+sudo apt-get remove vim-common
+sudo apt-get install vim
+```
+
+### 2. 科学上网设置
 
 使用并对比几个客户端，Qv2Ray 是比较好用的一个。
 
@@ -299,6 +315,33 @@ ntfs-3g-mount: failed to access mountpoint /media/nathan/testd: 没有那个文�
 Windows 盘的原因，unclean 啥的，没正常关机导致的。好吧前一天开的 Windows 睡觉时休眠，早上打开的时候不是进入 Windows ，也没多想就没管进 Ubuntu了，确实没正常关机。网上看到别人也有相似问题 [解决 Linux 挂载 NTFS 分区只读不能写的问题](https://cloud.tencent.com/developer/article/1520766)。
 
 重启进入 Windows 再正常重启进入 Ubuntu 就行了。
+
+**设置开机自动挂载硬盘**
+
+运行如下命令查看硬盘分区：
+
+```bash
+sudo blkid
+```
+
+看输出找到自己需要挂载的盘，比如这里要挂载的是 c 盘 `/dev/sdb1` 和 d 盘 `/dev/sda2`
+
+```
+/dev/sdb1: LABEL="win-c" UUID="96A8CBEBA8CBC7C7" TYPE="ntfs" PARTUUID="995606b6-6b82-7ed4-84e7-007d680f31d3"
+/dev/sdb2: UUID="0C38-06FF" TYPE="vfat" PARTUUID="dc885421-8944-2273-207d-3685601c7169"
+/dev/sda1: PARTLABEL="Microsoft reserved partition" PARTUUID="140f0f24-f5ff-4ea3-b95e-cd12128e0d58"
+/dev/sda2: LABEL="win-d" UUID="04BECAB2BECA9C14" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="9a67d1d2-7618-4173-a9d8-d05bf45e924f"
+```
+
+修改配置文件 `sudo vi /etc/fstab` 最后加上
+
+```bash
+# Windows disks
+/dev/sdb1                      /media/nathan/win-c
+/dev/sda2                      /media/nathan/win-d
+```
+
+重启系统完事
 
 ### 8. 禁止休眠和系统唤醒
 
