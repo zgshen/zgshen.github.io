@@ -298,3 +298,77 @@ ntfs-3g-mount: failed to access mountpoint /media/nathan/testd: 没有那个文�
 Windows 盘的原因，unclean 啥的，没正常关机导致的。好吧前一天开的 Windows 睡觉时休眠，早上打开的时候不是进入 Windows ，也没多想就没管进 Ubuntu了，确实没正常关机。网上看到别人也有相似问题 [解决 Linux 挂载 NTFS 分区只读不能写的问题](https://cloud.tencent.com/developer/article/1520766)。
 
 重启进入 Windows 再正常重启进入 Ubuntu 就行了。
+
+### 8. 禁止休眠和唤醒
+
+**休眠问题**
+
+笔记本盖子关闭外接显示器的时候，一关闭显示器系统就休眠了， 不想休眠可以通过编辑 logind.conf 配置来设置
+
+```bash
+sudo vi /etc/systemd/logind.conf
+```
+
+修改其中的 HandleLidSwitch 配置为  ignore 后重启机器
+
+```bash
+# poweroff 关闭盖子时关闭计算机
+# hibernate 关闭盖子时计算机休眠
+# suspend 关闭盖子时暂停计算机
+# ignore 不执行任何操作
+#HandleLidSwitch=suspend
+HandleLidSwitch=ignore
+```
+
+**usb 设备唤醒**
+
+查看所有 usb 设备的电源唤醒状态
+
+```bash
+nathan@nathan-tp:~$ grep . /sys/bus/usb/devices/*/power/wakeup
+/sys/bus/usb/devices/1-1.3/power/wakeup:enabled
+/sys/bus/usb/devices/1-1.4/power/wakeup:disabled
+/sys/bus/usb/devices/1-1/power/wakeup:disabled
+/sys/bus/usb/devices/1-6/power/wakeup:disabled
+/sys/bus/usb/devices/1-7/power/wakeup:disabled
+/sys/bus/usb/devices/2-1/power/wakeup:disabled
+/sys/bus/usb/devices/usb1/power/wakeup:disabled
+/sys/bus/usb/devices/usb2/power/wakeup:disabled
+```
+
+`lsusb` 查看外接设备 
+
+```bash
+nathan@nathan-tp:~$ lsusb
+Bus 002 Device 005: ID 0424:5744 Microchip Technology, Inc. (formerly SMSC) Hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 007: ID 04f2:b541 Chicony Electronics Co., Ltd Integrated Camera
+Bus 001 Device 005: ID 8087:0a2b Intel Corp. 
+Bus 001 Device 003: ID 138a:0090 Validity Sensors, Inc. VFS7500 Touch Fingerprint Sensor
+Bus 001 Device 016: ID 046d:c084 Logitech, Inc. G203 Gaming Mouse
+Bus 001 Device 015: ID 1c4f:0002 SiGma Micro Keyboard TRACER Gamma Ivory
+Bus 001 Device 014: ID 0424:2744 Microchip Technology, Inc. (formerly SMSC) Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
+
+用这个也可以看到
+
+```bash
+nathan@nathan-tp:~$ grep . /sys/bus/usb/devices/*/product
+/sys/bus/usb/devices/1-1.3/product:USB Keyboard
+/sys/bus/usb/devices/1-1.4/product:G102 Prodigy Gaming Mouse
+/sys/bus/usb/devices/1-1/product:USB2744
+/sys/bus/usb/devices/1-8/product:Integrated Camera
+/sys/bus/usb/devices/2-1/product:USB5744
+/sys/bus/usb/devices/usb1/product:xHCI Host Controller
+/sys/bus/usb/devices/usb2/product:xHCI Host Controller
+```
+
+两个 usb 都是 disabled，全都改成 enabled 得了
+
+用管理员修改 wakeup 值为 enabled
+
+```bash
+echo 'enabled' > /sys/bus/usb/devices/usb1/power/wakeup
+echo 'enabled' > /sys/bus/usb/devices/usb2/power/wakeup
+```
