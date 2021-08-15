@@ -315,9 +315,9 @@ Could not mount read-write, trying read-only
 ntfs-3g-mount: failed to access mountpoint /media/nathan/testd: 没有那个文件或目录
 ```
 
-Windows 盘的原因，unclean 啥的，没正常关机导致的。好吧前一天开的 Windows 睡觉时休眠，早上打开的时候不是进入 Windows ，也没多想就没管进 Ubuntu了，确实没正常关机。网上看到别人也有相似问题 [解决 Linux 挂载 NTFS 分区只读不能写的问题](https://cloud.tencent.com/developer/article/1520766)。
+Windows 盘的原因，unclean 啥的，没正常关机导致的。我是睡觉时把 Windows 休眠了，早上打开直接进 Ubuntu了，确实没正常关机。网上看到别人也有相似问题 [解决 Linux 挂载 NTFS 分区只读不能写的问题](https://cloud.tencent.com/developer/article/1520766)。
 
-重启进入 Windows 再正常重启进入 Ubuntu 就行了。
+重启进入 Windows 再正常关机重启进入 Ubuntu 就行了。
 
 **设置开机自动挂载硬盘**
 
