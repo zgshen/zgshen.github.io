@@ -128,7 +128,16 @@ tail -100f xx  #实时查看最后的一百行
 以字符或者十六进制的形式显示二进制文件。
 
 ## 用户和用户组
+
 ### 用户
+
+查看所有用户列表
+```bash
+cat /etc/passwd #可以查看所有用户的列表
+cat /etc/passwd | grep ${username} #查询用户
+w #可以查看当前活跃的用户列表
+```
+
 添加新的用户账号使用 useradd 命令，删除使用 userdel 命令，修改使用 usermod 命令
 ```bash
 useradd 选项 用户名
@@ -148,6 +157,15 @@ usermod -s /bin/ksh -d /home/z –g developer sam
 
 
 ### 用户组
+
+查看用户组
+```bash
+cat /etc/group #查看用户组
+groups #当前用户所属的组列表
+groups ${username} #指定用户所属的组列表
+id #打印指定用户及其用户组的信息，省略用户名则显示当前用户信息
+```
+
 增加用户组
 ```
 groupadd 选项 用户组
@@ -161,6 +179,11 @@ groupdel 用户组
 修改用户组
 ```
 groupmod 选项 用户组
+```
+
+切换用户组
+```
+newgrp 群组名称
 ```
 
 ## 权限操作
@@ -301,15 +324,28 @@ $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
 
 ## 网络
 ### iptables 
+永久开启/关闭 iptables
 ```
 开启： chkconfig iptables on  
 关闭： chkconfig iptables off   
 ```
-即时生效，重启后失效  
+
+重启后失效  
 ```
 开启： service iptables start   
 关闭： service iptables stop   
 状态 service iptables status  
+```
+
+查看、添加和删除
+```bash
+iptables -nL --line-number #查看当前规则
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT #允许访问80端口，-A 排在最后面，从上往下匹配
+iptables -D INPUT 2 #删除 INPUT 指定行规则，第二行
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT #允许访问80端口，-I 排在前面，从上往下匹配
+iptables -I INPUT -p tcp --dport 5700 -j DROP #禁止端口访问
+service iptables save #保存修改规则
+cat /etc/sysconfig/iptables #查看系统规则
 ```
 
 ### firewalld 

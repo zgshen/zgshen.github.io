@@ -5,12 +5,15 @@ tags: 基础
 date: 2021-8-11
 toc: true
 ---
+
 以前一直在 Windows 桌面环境下做开发，接触的 Linux 机器都是服务器，基本上全都是在终端操作。最近来兴趣尝试在 Linux 桌面下做开发，总的来说，以日常开发办公的体验还可以，真正的 Linux 环境下工程的编译和部署调试比起虚拟机和远程终端还是好太多。但桌面的上手顺畅程序和 Windows 和 macOS 还是完全没法比，有些工具安装方式也比较麻烦，而且不同的 Linux 发行版差异巨大。
 
 尝试过 CentOS、Debian、Manjaro 和 Ubuntu 之后，个人感觉 Ubuntu 的总体体验是最好的，用的的人多，资料好早，不会常年不更新也不会更新太激进。总结一下：  
 - 想要好的桌面体验用 Windows 或者 Mac，Linux 再怎么怎么折腾都比不了
 - 用 Linux 就要忍得了 Linux 的桌面和输入法问题
-- 如果你是不折腾就会死星人，就用 Arch 系的发行版，如果不想折腾只要安心开发就用 debian 系的发行版
+- 如果你是不折腾就会死星人，就用 Arch 系的发行版，KDE 桌面还行，能看懂 Arch 的文档就能解决大多数问题
+- 如果不想折腾只要安心开发就用 debian 系的发行版，Ubuntu 应该是用户最多的 Linux 发行版，资料多，坑也有大多数用户帮你踩了
+
 下面记录一下使用 Ubuntu 20.04 LTS 一些配置。
 
 ### 1. vi 编辑器
@@ -52,11 +55,11 @@ V2Ray 资源目录 `/home/nathan/app/v2ray/`
 
 Linux 下的输入法大多拉跨，搜狗的兼容性问题巨多，根本不可用，要么用系统自带的 IBus 或自己装的 Fcitx 框架，自带的中文输入体验都不行，最好是在框架上装其他输入法引擎，试用下来 rime 的体验还不错。最烦人的问题是在 JetBrains 家的 IDE 下编辑文本，不管什么输入法多少都有问题，输入法无法跟随光标，需要重新编译 JetBrainsRuntime 来解决。
 
-**IBus（IDEA 下输入框有问题）**
+**IBus**
 
-首次使用 IBus，打开设置中的语言管理，Ubuntu 会提示你更新依赖，更新完毕添加拼音输入源，重启系统就可以使用系统自带的中文输入了。
+首次使用 IBus，打开设置中的语言管理，Ubuntu 会提示你更新依赖，更新完毕添加拼音输入源，重启系统就可以使用系统自带的中文输入了。但是用 IBus 在 Jetbrains 家 IDE 下输入框被固定在了左下角，光标不跟随输入法，后面换 Fcitx 就没问题了。
 
-然后安装 rime `sudo apt-get install ibus-rime`
+IBus 框架下 rime 输入法体验还不错，安装 ibus-rime `sudo apt-get install ibus-rime`
 
 安装输入法方案，有很多，双拼全拼还是五笔自己选一个 https://github.com/rime/home/wiki/RimeWithIBus#ubuntu
 
@@ -227,7 +230,7 @@ export IDEA_JDK= 下载别人的环境/自己编译好的环境
 
 **亮度调节**
 
-系统装完没有亮度调节，看别人说法应该发是显卡驱动或者内核版本的问题，不想折腾这些了，干脆装个小工具解决。
+笔记本外接显示器发现没有亮度调节的控件没了，应该是缺少对应显示器驱动，装个小工具凑合用
 
 ```bash
 sudo add-apt-repository ppa:apandada1/brightness-controller
