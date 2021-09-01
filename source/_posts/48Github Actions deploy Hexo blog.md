@@ -1,5 +1,5 @@
 ---
-title: Github Actions deploy Hexo blog
+title: GitHub Actions deploy Hexo blog
 categories: 技术
 tags: 博客
 date: 2020-12-16
@@ -7,16 +7,16 @@ date: 2020-12-16
 
 ## 新建分支或 git 库存放 Hexo 源文件
 
-折腾一下把 Hexo 网站用 Github Actions 进行自动化部署，基本流程是这样的
+折腾一下把 Hexo 网站用 GitHub Actions 进行自动化部署，基本流程是这样的
 
 ![image-20201216172358832](../images/20201216/e8f634bcc01f.png)
 
 - master：主干是原来的静态网站资源，也就是 hexo 编译后 public 下的文件；
 - hexo-blog：新建一个分支，放 hexo 的源文件，包括配置、主题和 markdown 文本等。
 
-流程就是我们写 markdown 文章后，就推送到 hexo-blog 分支，触发 Github Actions 进行自动化部署编译，并把编译完的资源推送到 master 分支，这就完成一次 Hexo 博客的更新。
+流程就是我们写 markdown 文章后，就推送到 hexo-blog 分支，触发 GitHub Actions 进行自动化部署编译，并把编译完的资源推送到 master 分支，这就完成一次 Hexo 博客的更新。
 
-这里用的是新建 hexo-blog 分支放 Hexo 源文件，新建一个 git 库也是可以，当然 Github Actions 也是在新建的 git 库上。
+这里用的是新建 hexo-blog 分支放 Hexo 源文件，新建一个 git 库也是可以，当然 GitHub Actions 也是在新建的 git 库上。
 
 ## 配置公私密钥
 
