@@ -1,5 +1,5 @@
 ---
-title: IDEA 部署 Docker 到 WSL2
+title: IDEA 连接使用  WSL2 的 Docker 环境
 categories: 技术
 tags: 其他
 date: 2021-7-19
