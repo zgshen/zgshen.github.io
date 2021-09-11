@@ -7,7 +7,7 @@ tags:
 date: 2021-09-11
 ---
 
-记录下用 RabitMQ 订阅 binlog 的方法，相关编码的 GitHub 地址在 https://github.com/zgshen/lin/tree/master/lin-mq
+记录下用 RabitMQ 订阅 binlog 的方法，相关编码的 GitHub 地址在 [lin-mq](https://github.com/zgshen/lin/tree/master/lin-mq)
 
 ### 1.数据库
 
