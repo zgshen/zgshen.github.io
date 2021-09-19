@@ -22,7 +22,7 @@ FLUSH PRIVILEGES;
 查看是否开启 binlog 模式，如果log_bin的值为OFF是未开启，为ON是已开启
 
 ```sql
-SHOW VARIABLES LIKE '%log_bin%'
+SHOW VARIABLES LIKE '%log_bin%';
 ```
 
 修改/etc/my.cnf 需要开启binlog模式
