@@ -5,6 +5,7 @@ tags:
   - 技术
   - Java
 date: 2021-09-19
+toc: true
 ---
 
 在 2021年9月15日，Java 社区正式发布了 Java17，从 JDK8 之后，Java 的更新策略改为以时间驱动的方式。一般如果要对旧 JDK 进行升级，都会选择长期支持版，JDK11 和最近更新的 JDK17 是长期支持版本。但是，由于更新 JDK 带来的收益不大，商业项目更看重稳定性，大多数人不愿意踩坑，“又不是不能用”，干嘛要更新。因此，不少开发者都没有接触到新 JDK 的新特性，甚至有些在用 JDK8 的人连 JDK8 的新特性都用不利索或者直接旧不知道。接下来我将分三篇文章分别介绍 JDK8、JDk11 和 JDK17 常用或者有用的新功能。
@@ -436,6 +437,89 @@ public class TimeExample {
 }
 ```
 
-### 6. 参考
+### 6. CompletableFuture 异步编程
+
+在 Java8 之前 Future 接口提供了异步执行任务的能力，但对于结果的获取只能通过阻塞或者轮询的方式。为了增强异步编程的功能，Java8 添加了 CompletableFuture 类，CompletableFuture 类实现了 CompletionStage 和 Future 接口。
+
+在 CompletableFuture 中带有 Async 的都是异步方法，get 方法是同步的。
+```java
+@Test
+public void futureTest() throws ExecutionException, InterruptedException, TimeoutException {
+    //单纯地返回一个值
+    CompletableFuture<String> future = CompletableFuture.completedFuture("msg");
+    System.out.println(future.get());
+
+    //直接进行运算并返回
+    CompletableFuture<Integer> supplyAsync = CompletableFuture.supplyAsync(() -> {
+        try {
+            Thread.sleep(2500L);
+            //Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return 1 + 1;
+    });
+    //是否执行完毕
+    System.out.println(supplyAsync.isDone());
+    //立刻返回执行结果或异常，否则返回指定值
+    System.out.println(supplyAsync.getNow(1));
+    //设置超时
+    System.out.println(supplyAsync.get(2, TimeUnit.SECONDS));
+}
+```
+
+对于多步骤的处理用 thenApply 
+```java
+@Test
+public void apply() throws ExecutionException, InterruptedException {
+    //多步骤处理，一个步骤处理完把结果返回给下一步继续处理，同步 thenApply，异步 thenApplyAsync
+    CompletableFuture<Integer> future = CompletableFuture.completedFuture(1)
+            .thenApply(i -> i + 2)
+            .thenApplyAsync(i -> i + 3)
+            //计算完毕后的处理，不影响 get 返回值
+            .whenCompleteAsync((result, exception) -> {
+                result *= 10;
+                System.out.println("calculate result:" + result);
+            });
+    System.out.println(future.get());
+}
+```
+
+组合方法用 thenCompose
+```java
+@Test
+public void thenComposeExample() throws ExecutionException, InterruptedException {
+    String original = "Message";
+    //将字符串转换大写，得到结果再转换小写，再组合起来
+    CompletableFuture cf = CompletableFuture.completedFuture(original)
+            .thenApply(s -> s.toUpperCase())
+            .thenCompose(upper -> CompletableFuture.completedFuture(original)
+                    .thenApply(s -> s.toLowerCase())
+                    .thenApply(s -> upper + s));
+    System.out.println(cf.get());
+}
+```
+
+等待多个任务一起执行完毕再进行处理可以使用 allOf 方法
+```java
+@Test
+public void allof() throws ExecutionException, InterruptedException {
+    List<Integer> integers = List.of(1, 2, 3);
+    List<CompletableFuture<Integer>> futureList = integers.stream()
+                    .map(item -> CompletableFuture.completedFuture(item).thenApplyAsync(num -> num * num))
+                    .collect(Collectors.toList());
+    CompletableFuture<Void> allof = CompletableFuture
+            .allOf(futureList.toArray(new CompletableFuture[futureList.size()]))
+            .whenCompleteAsync((result, exception) -> {
+                futureList.forEach(cf -> {
+                    System.out.println(cf.getNow(0));
+                });
+            });
+    //handle 住看输出结果，因为是上面都用异步的，这里不等很可能看不到输出
+    allof.get();
+}
+```
+
+### 7. 参考
 - [1] [Java Platform SE 8](https://docs.oracle.com/javase/8/docs/api/)
 - [2] [Java 8  新特性 | 菜鸟教程](https://www.runoob.com/java/java8-new-features.html)
