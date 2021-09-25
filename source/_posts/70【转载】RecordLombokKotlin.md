@@ -1,5 +1,5 @@
 ---
-title: Why Java's Records Are Better* Than Lombok's @Data and Kotlin's Data Classes
+title: 【转载】Why Java's Records Are Better* Than Lombok's @Data and Kotlin's Data Classes
 categories: 技术
 tags: 
   - 技术
