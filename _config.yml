@@ -85,3 +85,6 @@ deploy:
   repository: 
     github: git@github.com:zgshen/zgshen.github.io.git
   branch: master
+
+marked:
+  smartypants: false

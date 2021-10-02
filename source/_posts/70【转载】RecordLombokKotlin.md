@@ -1,5 +1,5 @@
 ---
-title: 【转载】Why Java's Records Are Better* Than Lombok's @Data and Kotlin's Data Classes
+title: 【转载】Why Java's Records Are Better Than Lombok's @Data and Kotlin's Data Classes
 categories: 技术
 tags: 
   - 技术
@@ -10,7 +10,7 @@ toc: true
 
 原文链接：https://nipafx.dev/java-record-semantics/
 
-While all three remove boilerplate, the similarities don't go much further. Records have stronger semantics with important downstream benefits, which makes them better*. (* not always; depends on circumstances; excuse the clickbait)
+While all three remove boilerplate, the similarities don't go much further. Records have stronger semantics with important downstream benefits, which makes them better. (not always; depends on circumstances; excuse the clickbait)
 
 ![](../images/202109/record-semantics.webp)
 
