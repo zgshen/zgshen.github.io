@@ -8,9 +8,9 @@ date: 2021-09-22
 toc: true
 ---
 
-2018年9月26日，Oracle 官方宣布Java 11 正式发布，这是自 Java8 之后 Java 大版本周期变化后的第一个长期支持版本。这篇介绍的是 Java9 到 Java11 累积的一些新特性，只涉及语法和编码上的功能，其他的如工具和虚拟机改进不涉及。
+2018年9月26日，Oracle 官方宣布 Java 11 正式发布，这是自 Java8 之后 Java 大版本周期变化后的第一个长期支持版本。这篇介绍的是 Java9 到 Java11 累积的一些新特性，只涉及语法和编码上的功能，其他的如工具和虚拟机改进不涉及。
 
-源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java9to11)
+本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java9to11)
 
 ### 1. 接口
 
@@ -83,7 +83,7 @@ public void InputStreamTest() throws IOException {
 
 ### 4. 集合、Stream 和 Optional 
 
-在集合上，Java 9 增加 了 List.of()、Set.of()、Map.of() 和 Map.ofEntries()等工厂方法来创建不可变集合
+在集合框架中，Java 9 增加 了 List.of()、Set.of()、Map.of() 和 Map.ofEntries() 等工厂方法来创建不可变集合
 
 ```java
 @Test
@@ -116,7 +116,7 @@ public void streamTest() {
             Optional.of(2)).flatMap(Optional::stream).count();
     Assert.assertEquals(2, count);
 
-    //空值throw
+    //空值 throw
     Optional.empty().orElseThrow();
 }
 ```
@@ -134,7 +134,7 @@ public void iterateTest() {
 
 ### 5. 变量类型推断
 
-Java10 开始变量不需要写具体类型，编译器能根据右边的表达式自动推断类型
+从 Java10 开始变量不需要写具体类型，变量类型直接使用 var 定义，编译器能根据右边的表达式自动推断类型。
 ```java
 @Test
 public void var() {
@@ -198,6 +198,9 @@ public class HttpClientExample {
         System.out.println(body);
     }
 
+    /**
+    * GET
+    */
     @Test
     public void getTest() {
         var request = HttpRequest.newBuilder()
@@ -213,6 +216,9 @@ public class HttpClientExample {
                 }).join();
     }
 
+    /**
+    * POST
+    */
     @Test
     public void postTest() {
         var requestBody = "{'key':'val'}";
@@ -228,6 +234,9 @@ public class HttpClientExample {
                 }).join();
     }
 
+    /**
+    * HTTP2
+    */
     @Test
     public void Http2Test() throws URISyntaxException {
         HttpClient.newBuilder()

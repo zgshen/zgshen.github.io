@@ -8,21 +8,18 @@ date: 2021-09-19
 toc: true
 ---
 
-在 2021年9月15日，Java 社区正式发布了 Java17，从 JDK8 之后，Java 的更新策略改为以时间驱动的方式。一般如果要对旧 JDK 进行升级，都会选择长期支持版，JDK11 和最近更新的 JDK17 是长期支持版本。但是，由于更新 JDK 带来的收益不大，商业项目更看重稳定性，大多数人不愿意踩坑，“又不是不能用”，干嘛要更新。因此，不少开发者都没有接触到新 JDK 的新特性，甚至有些在用 JDK8 的人连 JDK8 的新特性都用不利索或者直接旧不知道。接下来我将分三篇文章分别介绍 JDK8、JDk11 和 JDK17 常用或者有用的新功能。
+从 JDK8 之后，Java 的更新策略改为以时间驱动的方式，每六个月发布一个新的Java版本，每三年发表一个长期支持版本。一般如果要对旧 JDK 进行升级，都会选择长期支持版，JDK11 和最近更新的 JDK17 是长期支持版本。但是由于商业项目更看重稳定性，更新 JDK 带来的收益不大，大多数人不愿意踩坑去更新 JDK。因此，很多人都只是从新闻了解到新 JDK 的新特性，平常开发没有接触到，甚至有些在用 JDK8 的人连 JDK8 的新特性都用不利索或者直接就不知道。其实许多新特性是可以简化我们的开发，能让我们以更优雅的方式实现功能。接下来我将分三篇文章分别简单介绍 JDK8、JDK9-JDk11 和 JDK12-JDK17 在编码方面的一些新功能，至于虚拟机的改进和其他部门这里暂不做讨论。
 
 先从 Java8 开始说起，看看部分常用的新特性。
-源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java8)
+本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java8)
 
 ### 1. Lambda 表达式
 
 Lambda 允许把函数作为一个方法的参数（函数作为参数传递进方法中），让匿名内部类的写法更简便。
 
-测试类例子
+例子：
 
 ```java
-/**
- * 测试类
- */
 public class LambdaTest {
 
     public LambdaTest() {
@@ -56,7 +53,7 @@ interface SingleFncInterface {
 }
 ```
 
-`SingleFncInterface` 是一个典型的函数式接口，只包含一个抽象方法，可以加上 `@FunctionalInterface` 注解标记，限制只允许定义一个抽象方法。
+以上 `SingleFncInterface` 是一个典型的函数式接口，只包含一个抽象方法，可以加上 `@FunctionalInterface` 注解标记，限制只允许定义一个抽象方法。
 
 ```java
 /**
@@ -70,7 +67,7 @@ public void singleFunTest() {
     });
 
     //SingleFncInterface s = (String str) -> System.out.println(str);
-		SingleFncInterface s = str -> System.out.println(str);
+	SingleFncInterface s = str -> System.out.println(str);
     s.doSomething("123");
 
     //简化形式，方法引用
@@ -79,7 +76,8 @@ public void singleFunTest() {
 }
 ```
 
-lambda 表达式的语法格式如：(parameters) -> expression/statements，特殊的还有更加简化的方法引用的类型。
+可以看出 lambda 表达式的语法格式是如：(parameters) -> expression/statements，特殊的还有更加简化的方法引用方式。
+
 方法引用可分为三种，静态、实例和构造引用，使用例子如下：
 
 ```java
@@ -109,7 +107,7 @@ public void refTest() {
 }
 ```
 
-在 JDK 中提供了四种类型的函数式接口：
+根据输入和返回参数的不同，JDK 中提供了四种类型的函数式接口：
 
 ```java
 /**
@@ -156,7 +154,7 @@ public void funTest() {
 
 ### 2. 接口默认方法
 
-Java8 允许在接口中添加一个或者多个默认方法，在 `SingleFncInterface` 接口中 `print()` 就是一个默认方法。增加默认方法是为了给家口添加新方法的同时不影响已有的实现，不需要修改全部实现类。
+Java8 允许在接口中添加一个或者多个默认方法，在 `SingleFncInterface` 接口中 `print()` 就是一个默认方法。增加默认方法是为了给接口添加新方法的同时不影响已有的实现，不需要修改全部实现类。
 
 ```java
 @FunctionalInterface
@@ -171,7 +169,7 @@ interface SingleFncInterface {
 
 ### 3. Optional 类
 
-在 Java8 之前，空指针异常是编码最需要注意的异常，我们往往都需要手动编码对变量进行 null 判断，对可能的空指针异常进行捕获处理。Java8 提供的 Optional 类以比较优雅的方式进行空值判断，解决空指针异常。
+在 Java8 之前，空指针异常是编码时最需要注意的异常，我们往往都需要手动对变量进行 null 值判断，对可能的空指针异常进行捕获处理。Java8 提供的 Optional 类可以以比较优雅的方式进行空值判断，解决空指针异常。
 
 ```java
 import org.junit.Before;
@@ -261,7 +259,7 @@ Optional<Insurance> insurance = Optional.of(this.insurance)
 // this.insurance 为 null 返回 Optional.empty
 Optional<Insurance> insurance = Optional.ofNullable(this.insurance)
 ```
-简单来说，如果想得到一个非 null 值的 Optional 使用 `Optional.of`允许 null 值的话使用 `Optional.ofNullable`;
+简单来说，如果想得到一个非 null 值的 Optional 使用 `Optional.of`，允许 null 值的话使用 `Optional.ofNullable`;
 
 ```java
 String name = person.flatMap(Person::getCar)
@@ -285,6 +283,9 @@ import java.util.stream.Collectors;
 
 public class StreamExample {
 
+    /**
+     * 初始化集合
+     */
     List<Fruit> fruits = new ArrayList<>(Arrays.asList(
             new Fruit("apple"),
             new Fruit("banana"),
@@ -440,7 +441,9 @@ public class TimeExample {
 
 ### 6. CompletableFuture 异步编程
 
-在 Java8 之前 Future 接口提供了异步执行任务的能力，但对于结果的获取只能通过阻塞或者轮询的方式。为了增强异步编程的功能，Java8 添加了 CompletableFuture 类，CompletableFuture 类实现了 CompletionStage 和 Future 接口。
+在 Java8 之前 Future 接口提供了异步执行任务的能力，但对于结果的获取只能通过阻塞或者轮询的方式。为了增强异步编程的功能，Java8 添加了 CompletableFuture 类，CompletableFuture 类实现了 CompletionStage 和 Future 接口，默认使用 ForkJoinPool.commonPool() 线程池。
+
+commonPool 是当前 JVM（进程） 上的所有 CompletableFuture、并行 Stream 共享的，commonPool 的目标场景是非阻塞的 CPU 密集型任务，其线程数默认为 CPU 数量减1，所以对于我们用 java 常做的 IO 密集型任务，默认线程池是远远不够使用的；在双核及以下机器上，默认线程池又会退化为为每个任务创建一个线程，相当于没有线程池。所以使用 CompletableFuture 时要根据业务决定是否需要自定义线程池。
 
 在 CompletableFuture 中带有 Async 的都是异步方法，get 方法是同步的。
 ```java
@@ -524,3 +527,4 @@ public void allof() throws ExecutionException, InterruptedException {
 ### 7. 参考
 - [1] [Java Platform SE 8](https://docs.oracle.com/javase/8/docs/api/)
 - [2] [Java 8  新特性 | 菜鸟教程](https://www.runoob.com/java/java8-new-features.html)
+- [3] [CompletableFuture避坑1——需要自定义线程池](https://www.jianshu.com/p/8c9dc192fa63)
