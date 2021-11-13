@@ -21,7 +21,7 @@ menu:
   #Archives: /archives
   About: /about
   Search: https://www.google.com/search?q=site:zguishen.com 
-  Collection: /collection
+  Collections: /collections
 
 # Analytics
 google_analytics: 'UA-106347761-1' ## Your Google Analytics tracking id, e.g. UA-106347761-2
