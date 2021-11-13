@@ -1,5 +1,5 @@
 ---
-title: 友链与收藏
+title: 收藏
 type: "links"
 comments: false
 ---
