@@ -1,5 +1,5 @@
 ---
-title: Spring Boor配置Druid数据源
+title: Spring Boot配置Druid数据源
 categories: 技术
 tags: web框架
 date: 2017-05-18
