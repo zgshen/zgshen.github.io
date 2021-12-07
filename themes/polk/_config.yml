@@ -19,9 +19,10 @@ sns:
 menu:
   Home: /
   #Archives: /archives
+  Tech: /tags/技术/
   About: /about
   Search: https://www.google.com/search?q=site:zguishen.com 
-  Collections: /collections
+  Bookmarks: /bookmarks
 
 # Analytics
 google_analytics: 'UA-106347761-1' ## Your Google Analytics tracking id, e.g. UA-106347761-2
