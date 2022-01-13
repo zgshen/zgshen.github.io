@@ -38,14 +38,14 @@ Java中往往是按照是否含有某一特性来定义锁，我们通过特性�
 // ------------------------- 悲观锁的调用方式 -------------------------
 // synchronized
 public synchronized void testMethod() {
-	// 操作同步资源
+    // 操作同步资源
 }
 // ReentrantLock
 private ReentrantLock lock = new ReentrantLock(); // 需要保证多个线程使用的是同一个锁
 public void modifyPublicResources() {
-	lock.lock();
-	// 操作同步资源
-	lock.unlock();
+    lock.lock();
+    // 操作同步资源
+    lock.unlock();
 }
 
 // ------------------------- 乐观锁的调用方式 -------------------------
@@ -102,7 +102,6 @@ public final int getAndAddInt(Object o, long offset, int delta) {
    } while (!compareAndSwapInt(o, offset, v, v + delta));
    return v;
 }
-
 ```
 
 根据OpenJDK 8的源码我们可以看出，getAndAddInt()循环获取给定对象o中的偏移量处的值v，然后判断内存值是否等于v。如果相等则将内存值设置为 v + delta，否则返回false，继续循环进行重试，直到设置成功才能退出循环，并且将旧值返回。整个“比较+更新”操作封装在compareAndSwapInt()中，在JNI里是借助于一个CPU指令完成的，属于原子操作，可以保证多个线程都能够看到同一个变量的修改值。
@@ -112,10 +111,10 @@ public final int getAndAddInt(Object o, long offset, int delta) {
 CAS虽然很高效，但是它也存在三大问题，这里也简单说一下：
 
 1. **ABA问题**。CAS需要在操作值的时候检查内存值是否发生变化，没有发生变化才会更新内存值。但是如果内存值原来是A，后来变成了B，然后又变成了A，那么CAS进行检查时会发现值没有发生变化，但是实际上是有变化的。ABA问题的解决思路就是在变量前面添加版本号，每次变量更新的时候都把版本号加一，这样变化过程就从“A－B－A”变成了“1A－2B－3A”。
-    - JDK从1.5开始提供了AtomicStampedReference类来解决ABA问题，具体操作封装在compareAndSet()中。compareAndSet()首先检查当前引用和当前标志与预期引用和预期标志是否相等，如果都相等，则以原子方式将引用值和标志的值设置为给定的更新值。
+   - JDK从1.5开始提供了AtomicStampedReference类来解决ABA问题，具体操作封装在compareAndSet()中。compareAndSet()首先检查当前引用和当前标志与预期引用和预期标志是否相等，如果都相等，则以原子方式将引用值和标志的值设置为给定的更新值。
 2. **循环时间长开销大**。CAS操作如果长时间不成功，会导致其一直自旋，给CPU带来非常大的开销。
 3. **只能保证一个共享变量的原子操作**。对一个共享变量执行操作时，CAS能够保证原子操作，但是对多个共享变量操作时，CAS是无法保证操作的原子性的。
-    - Java从1.5开始JDK提供了AtomicReference类来保证引用对象之间的原子性，可以把多个变量放在一个对象里来进行CAS操作。
+   - Java从1.5开始JDK提供了AtomicReference类来保证引用对象之间的原子性，可以把多个变量放在一个对象里来进行CAS操作。
 
 ### **2. 自旋锁 VS 适应性自旋锁**
 
@@ -173,12 +172,12 @@ Monitor是线程私有的数据结构，每一个线程都有一个可用monitor
 
 通过上面的介绍，我们对synchronized的加锁机制以及相关知识有了一个了解，那么下面我们给出四种锁状态对应的的Mark Word内容，然后再分别讲解四种锁状态的思路以及特点：
 
-| 锁状态   | 存储内容                                                | 存储内容 |
-| :------- | :------------------------------------------------------ | :------- |
-| 无锁     | 对象的hashCode、对象分代年龄、是否是偏向锁（0）         | 01       |
-| 偏向锁   | 偏向线程ID、偏向时间戳、对象分代年龄、是否是偏向锁（1） | 01       |
-| 轻量级锁 | 指向栈中锁记录的指针                                    | 00       |
-| 重量级锁 | 指向互斥量（重量级锁）的指针                            | 10       |
+| 锁状态  | 存储内容                          | 存储内容 |
+|:---- |:----------------------------- |:---- |
+| 无锁   | 对象的hashCode、对象分代年龄、是否是偏向锁（0）  | 01   |
+| 偏向锁  | 偏向线程ID、偏向时间戳、对象分代年龄、是否是偏向锁（1） | 01   |
+| 轻量级锁 | 指向栈中锁记录的指针                    | 00   |
+| 重量级锁 | 指向互斥量（重量级锁）的指针                | 10   |
 
 **无锁**
 
@@ -271,7 +270,6 @@ public class Widget {
         System.out.println("方法2执行...");
     }
 }
-
 ```
 
 在上面的代码中，类中的两个方法都是被内置锁synchronized修饰的，doSomething()方法中调用doOthers()方法。因为内置锁是可重入的，所以同一个线程在调用doOthers()时可以直接获得当前对象的锁，进入doOthers()进行操作。
@@ -326,24 +324,23 @@ public class Widget {
 
 ```java
 protected final boolean tryAcquire(int acquires) {
-	Thread current = Thread.currentThread();
-	int c = getState(); // 取到当前锁的个数
+    Thread current = Thread.currentThread();
+    int c = getState(); // 取到当前锁的个数
     int w = exclusiveCount(c); // 取写锁的个数w
     if (c != 0) { // 如果已经有线程持有了锁(c!=0)
         // (Note: if c != 0 and w == 0 then shared count != 0)
-        if (w == 0 || current != getExclusiveOwnerThread()) // 如果写线程数（w）为0（换言之存在读锁） 或者持有锁的线程不是当前线程就返回失败				return false;
-		if (w + exclusiveCount(acquires) > MAX_COUNT)    // 如果写入锁的数量大于最大数（65535，2的16次方-1）就抛出一个Error。
+        if (w == 0 || current != getExclusiveOwnerThread()) // 如果写线程数（w）为0（换言之存在读锁） 或者持有锁的线程不是当前线程就返回失败                return false;
+        if (w + exclusiveCount(acquires) > MAX_COUNT)    // 如果写入锁的数量大于最大数（65535，2的16次方-1）就抛出一个Error。
             throw new Error("Maximum lock count exceeded");
-		// Reentrant acquire
-    	setState(c + acquires);
-    	return true;
-  	}
-  	if (writerShouldBlock() || !compareAndSetState(c, c + acquires)) // 如果当且写线程数为0，并且当前线程需要阻塞那么就返回失败；或者如果通过CAS增加写线程数失败也返回失败。
+        // Reentrant acquire
+        setState(c + acquires);
+        return true;
+      }
+      if (writerShouldBlock() || !compareAndSetState(c, c + acquires)) // 如果当且写线程数为0，并且当前线程需要阻塞那么就返回失败；或者如果通过CAS增加写线程数失败也返回失败。
         return false;
-	setExclusiveOwnerThread(current); // 如果c=0，w=0或者c>0，w>0（重入），则设置当前线程或锁的拥有者
+    setExclusiveOwnerThread(current); // 如果c=0，w=0或者c>0，w>0（重入），则设置当前线程或锁的拥有者
     return true;
 }
-
 ```
 
 - 这段代码首先取到当前锁的个数c，然后再通过c来获取写锁的个数w。因为写锁是低16位，所以取低16位的最大值与当前的c做与运算（ int w = exclusiveCount©; ），高16位和0与运算后是0，剩下的就是低位运算的值，同时也是持有写锁的线程数目。
@@ -386,7 +383,6 @@ protected final int tryAcquireShared(int unused) {
     }
     return fullTryAcquireShared(current);
 }
-
 ```
 
 可以看到在tryAcquireShared(int unused)方法中，如果其他线程已经获取了写锁，则当前线程获取读锁失败，进入等待状态。如果当前线程获取了写锁或者写锁未被获取，则当前线程（线程安全，依靠CAS保证）增加读状态，成功获取读锁。读锁的每次释放（线程安全的，可能有多个读线程同时释放读锁）均减少读状态，减少的值是“1<<16”。所以读写锁才能实现读读的过程共享，而读写、写读、写写的过程互斥。

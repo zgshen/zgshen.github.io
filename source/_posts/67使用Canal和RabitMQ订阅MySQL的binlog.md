@@ -121,9 +121,9 @@ import org.springframework.context.annotation.Configuration;
 public class BinlogMQConfig {
 
     public final static String BINLOG_MQ_EXCHANGE = "BINLOG_MQ_EXCHANGE";
-    
+
     public final static String BINLOG_MQ_QUEUE = "BINLOG_MQ_QUEUE";
-    
+
     public final static String BINLOG_MQ_KEY = "BINLOG_MQ_KEY.*";
 
     @Bean
