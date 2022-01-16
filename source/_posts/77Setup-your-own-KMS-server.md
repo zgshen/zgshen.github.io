@@ -105,7 +105,10 @@ cscript ospp.vbs /inpkey:xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
 Run CMD with administrator, and registry KMS server address:
 
 ```
-cscript ospp.vbs /sethst:[IP or domain]:[Port]
+cscript ospp.vbs /sethst:[domain]
+# if you use other port, set ip and port separately
+# cscript ospp.vbs /sethst:[IP]
+# cscript ospp.vbs /setprt:[Port]
 ```
 
 Activate Office：
