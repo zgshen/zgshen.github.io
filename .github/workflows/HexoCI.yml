@@ -32,7 +32,8 @@ jobs:
       - name: Hexo deploy
         run: |
           hexo clean
+          hexo g
           tiddlywiki tiddlywiki --build index
-          mkdir -p public/wiki
+          mkdir public/wiki
           mv tiddlywiki/output/index.html public/wiki
           hexo d
