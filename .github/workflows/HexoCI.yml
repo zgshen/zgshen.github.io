@@ -33,6 +33,6 @@ jobs:
         run: |
           hexo clean
           tiddlywiki tiddlywiki --build index
-          mkdir public/wiki
+          mkdir -p public/wiki
           mv tiddlywiki/output/index.html public/wiki
           hexo d
