@@ -27,8 +27,12 @@ jobs:
           git config --global user.email "zguishen@foxmail.com"
           git config --global user.name "zguishen"
           npm install hexo-cli -g
+          npm install tiddlywiki -g
           npm install
       - name: Hexo deploy
         run: |
           hexo clean
           hexo d
+          tiddlywiki tiddlywiki --build index
+          mkdir public/wiki
+          mv tiddlywiki/output/index.html public/wiki

@@ -1,0 +1,12 @@
+caption: 自定义样式
+created: 20220119094322705
+modified: 20220119120524920
+tags: $:/tags/Stylesheet
+title: Custom data-styles
+type: text/vnd.tiddlywiki
+
+body {
+    background-image: url(../images/wiki/ganyu.jpg);
+    background-repeat: no-repeat;
+	background-attachment:fixed;
+}
