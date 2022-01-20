@@ -1,10 +1,13 @@
 caption: 自定义样式
 created: 20220119094322705
-modified: 20220119120524920
+modified: 20220120094619870
 tags: $:/tags/Stylesheet
 title: Custom data-styles
 type: text/vnd.tiddlywiki
 
+[data-tiddler-title="自定义CSS"] {
+  color: red;
+}
 body {
     background-image: url(../images/wiki/ganyu.jpg);
     background-repeat: no-repeat;
