@@ -65,10 +65,10 @@ jobs:
         uses: actions/checkout@v1
         with:
           ref: hexo-blog ##分支名
-      - name: Use Node.js ${{ matrix.node_version }}
+      - name: Setup node
         uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node_version }}
+          node-version: '12.x'
       - name: Setup hexo
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
@@ -77,8 +77,8 @@ jobs:
           echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.email "zguishen@foxmail.com"
-          git config --global user.name "zguishen"
+          git config --global user.email "xx@xx.com"
+          git config --global user.name "yourname"
           npm install hexo-cli -g
           npm install
       - name: Hexo deploy
@@ -96,12 +96,14 @@ Actions 里可以看到每次构建流程，失败的可以进去查看日志定
 ## 链接优化
 
 安装 hexo-abbrlink 插件， package.json 中
-``` json
+
+```json
 "hexo-abbrlink": "^2.2.1",
 ```
 
 配置文件
-``` yml
+
+```yml
 url: https://zguishen.com
 root: /
 permalink: posts/:abbrlink.html

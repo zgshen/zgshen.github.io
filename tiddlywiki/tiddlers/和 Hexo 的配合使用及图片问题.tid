@@ -1,6 +1,6 @@
 created: 20220120095141817
 list-after: 自定义CSS
-modified: 20220120124057403
+modified: 20220120152359661
 tags: [[TiddlyWiki 使用教程]]
 title: 和 Hexo 的配合使用及图片问题
 type: text/vnd.tiddlywiki
@@ -27,7 +27,7 @@ server {
 
 ```
 
-启动 Nginx 和 Tiddlywiki 烦的话写个 bat 脚本;
+启动 Nginx 和 Tiddlywiki 烦的话写个 bat 脚本（注意不要保存为 tiddlywiki.bat，会与 tiddlywiki 命令冲突，保存为其他名字如 mywiki.bat 就行）：
 
 ```bash
 tasklist | find /i "nginx.exe" >nul 2>nul && goto 存在 || goto 不存在
@@ -49,6 +49,6 @@ goto 启动
 :启动
 
 echo 启动tiddlywiki
-tiddlywiki D:\application\hexo\tiddlywiki --listen port=7001
+tiddlywiki D:\application\hexo\mywiki --listen port=7001
 echo 'tiddlywiki started.'
 ```
