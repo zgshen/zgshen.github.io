@@ -84,11 +84,8 @@ jobs:
           hexo d
 ```
 - `npm install tiddlywiki -g` 把 tiddlywiki 也装上
-
 - `hexo g` 执行生成静态文件到 public 文件夹中；
-
 - `tiddlywiki tiddlywiki --build index` 输出 index.html 文件到 tiddlywiki/output 文件夹；
-
 - 在 public 创建 wiki 文件夹，再把 index.html 移过来就完事了。
 
 还有另外一种方法可以先在 source 文件夹下创建 wiki 目录，然后修改 GitHub Action 脚本，先生成 index.html 文件，然后移动到 source/wiki 目录下，然后再 `hexo g` 编译也行，大概改成这样，自行测试：
