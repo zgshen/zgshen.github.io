@@ -8,8 +8,6 @@ tags:
 date: 2022-01-16
 ---
 
-
-
 I have setup a KMS server on my CentOS VPS, it allows me to significantly simply the process of activating Microsoft products on the corporate network.
 
 Here are the installation steps:
@@ -64,11 +62,9 @@ vlmcs-Windows-x86.exe [IP or domain]:[Port]
 
 ### Finally activate Windows/Office
 
-Find the Vol key that corresponds to [Windows](https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys) or [Office](https://docs.microsoft.com/en-us/DeployOffice/vlactivation/gvlks) (your Office must be Vol version).
+Find the Vol key that corresponds to [Windows](https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys) or [Office](https://docs.microsoft.com/en-us/DeployOffice/vlactivation/gvlks) (make sure the Office is Vol version).
 
 #### Windows
-
-安装从上面得到的key：
 
 Install the key you find above:
 
