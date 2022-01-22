@@ -1,6 +1,6 @@
 caption: 自定义样式
 created: 20220119094322705
-modified: 20220120094619870
+modified: 20220122153136035
 tags: $:/tags/Stylesheet
 title: Custom data-styles
 type: text/vnd.tiddlywiki
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
   color: red;
 }
 body {
-    background-image: url(../images/wiki/ganyu.jpg);
+    background-image: url(https://zkcing.com/api/pic);
     background-repeat: no-repeat;
 	background-attachment:fixed;
 }
