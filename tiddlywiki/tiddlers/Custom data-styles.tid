@@ -1,6 +1,6 @@
 caption: 自定义样式
 created: 20220119094322705
-modified: 20220122153136035
+modified: 20220128114352008
 tags: $:/tags/Stylesheet
 title: Custom data-styles
 type: text/vnd.tiddlywiki
@@ -12,4 +12,5 @@ body {
     background-image: url(https://zkcing.com/api/pic);
     background-repeat: no-repeat;
 	background-attachment:fixed;
+	background-size:cover;
 }
