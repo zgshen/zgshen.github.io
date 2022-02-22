@@ -30,34 +30,61 @@ Spring Cloud 是基于 Spring Boot 提供的一套微服务框架，用于微服
 	- 资源集中管理
 	- 功能可复用
 
-### 4. 三种依赖注入的方式
-#### 4.1. 构造方法注入
-将被依赖对象通过构造函数的参数注入给依赖对象，并且在初始化对象的时候注入。
+### 4. Spring的 依赖注入方式
 
-优点： 对象初始化完成后便可获得可使用的对象。  
-缺点： 当需要注入的对象很多时，构造器参数列表将会很长；不够灵活。若有多种注入方式，每种方式只需注入指定几个依赖，那么就需要提供多个重载的构造函数。
+#### 4.1. 构造器注入
 
-#### 4.2. setter 方法注入
-IoC Service Provider 通过调用成员变量提供的 setter 函数将被依赖对象注入给依赖类。
+将被依赖对象通过构造函数的参数注入给依赖对象，并且在初始化对象的时候注入。Spring 推荐的注入方式，适合强制依赖用法。
 
-优点： 灵活，可以选择性地注入需要的对象。  
-缺点： 依赖对象初始化完成后由于尚未注入被依赖对象，因此还不能使用。
+```java
+private DependencyA dependencyA;
+private DependencyB dependencyB;;
 
-#### 4.3. 接口注入
-依赖类必须要实现指定的接口，然后实现该接口中的一个函数，该函数就是用于依赖注入，该函数的参数就是要注入的对象。
+@Autowired
+public DI(DependencyA dependencyA, DependencyB dependencyB) {
+    this.dependencyA = dependencyA;
+    this.dependencyB = dependencyB;
+}
+```
 
-优点： 接口注入中，接口的名字、函数的名字都不重要，只要保证函数的参数是要注入的对象类型即可。  
-缺点： 侵入行太强，很少使用。
+- 优点： 对象初始化完成后便可获得可使用的对象，单元测试使用 Mock 就可以无需启动 DI 容器就可以实例化。
+- 缺点： 当需要注入的对象很多时，构造器参数列表将会很长；不够灵活。若有多种注入方式，每种方式只需注入指定几个依赖，那么就需要提供多个重载的构造函数。
 
-### 5. Spring 使用的注入方式
-Spring 的注入方式只有两种，分别是 setter 注入和构造方法注入。  
-通常使用的 @Autowried 注解实际是 setter 注入的一种变体。
+#### 4.2. setter 注入
 
-Spring 的注入模式有四种：
-- no
-- byType
-- byName
-- constructor
+IoC Service Provider 通过调用成员变量提供的 setter 函数将被依赖对象注入给依赖类。如果有可选可变的依赖就使用 setter 注入，而且可用 @Autowired(required = false) 来指定可选依赖项，构造注入则不能这么干，因为是应用于所有构造函数。
+
+```java
+private DependencyA dependencyA;
+private DependencyB dependencyB;
+
+@Autowired
+public void setDependencyA(DependencyA dependencyA) {
+    this.dependencyA = dependencyA;
+}
+
+@Autowired(required = false)
+public void setDependencyB(DependencyB dependencyB) {
+    this.dependencyB = dependencyB;
+}
+````
+
+setter 注入比较灵活，可以选择性地注入需要的对象。
+
+#### 4.3. Filed 注入
+
+属性注入，在 bean 变量上使用注解进行依赖注入，本质上是通过反射的方式直接注入到 field。这应该是平时开发见到最多的的一种方式。
+
+```java
+@Autowired
+private DependencyA dependencyA;
+
+@Autowired
+private DependencyB dependencyB;
+```
+
+Filed 注入优点是最简单方便的方式，但是 Spring 官方不推荐使用这种方式，当注入依赖太多的时候意味着类承担了太多的责任，违反单一职责原则，而且没有警告因为这种方式可以无线扩展。
+
 
 ### 6. 用到哪些设计模式
 - 工厂模式：Spring 使用工厂模式可以通过 `BeanFactory` 或 `ApplicationContext` 创建 bean 对象；
