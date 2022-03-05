@@ -50,7 +50,7 @@ public DI(DependencyA dependencyA, DependencyB dependencyB) {
 - 优点： 对象初始化完成后便可获得可使用的对象，单元测试使用 Mock 就可以无需启动 DI 容器就可以实例化。
 - 缺点： 当需要注入的对象很多时，构造器参数列表将会很长；不够灵活。若有多种注入方式，每种方式只需注入指定几个依赖，那么就需要提供多个重载的构造函数。
 
-#### 4.2. setter 注入
+#### 4.2. Setter 注入
 
 IoC Service Provider 通过调用成员变量提供的 setter 函数将被依赖对象注入给依赖类。如果有可选可变的依赖就使用 setter 注入，而且可用 @Autowired(required = false) 来指定可选依赖项，构造注入则不能这么干，因为是应用于所有构造函数。
 
