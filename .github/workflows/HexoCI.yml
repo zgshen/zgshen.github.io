@@ -34,6 +34,6 @@ jobs:
           hexo clean
           hexo g
           tiddlywiki tiddlywiki --build index
-          mkdir public/wiki
-          mv tiddlywiki/output/index.html public/wiki
+          mkdir public/tiddlywiki
+          mv tiddlywiki/output/index.html public/tiddlywiki
           hexo d

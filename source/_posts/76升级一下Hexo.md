@@ -73,3 +73,60 @@ node-sass                     MISSING   5.0.0   7.0.1  -         hexo
 ```
 
 我懒得升级，等有问题再看吧。
+
+### 2022-03-06 升级
+
+```bash
+# 查看版本
+hexo -v
+# 升级覆盖安装
+npm install -g hexo-cli
+# 新建目录初始化 hexo
+hexo init <folder>
+# 再看下版本
+hexo -v
+```
+
+之前的版本 hexo 一些依赖可能已经没用了，比如 `node-sass` 早该弃用了。备份 package.json，把刚刚初始化的新的 package.json 复制过来，如果有用到 hexo 默认安装以外的插件，手动添加上去。
+
+```bash
+# 主要看下三方插件用不用升级
+# 没有新增其他依赖下面两个命令就不用执行了
+npm outdated
+npm install -save
+```
+
+例如我自己的 package.json 整理后：
+
+```json
+{
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "6.0.0"
+  },
+  "dependencies": {
+    "hexo": "^6.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^5.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-server": "^3.0.0",
+ 	  "hexo-deployer-git": "^3.0.0",
+	  "hexo-abbrlink": "^2.2.1"
+  }
+}
+```
+
+比默认 hexo 多加了 hexo-deployer-git 和 hexo-abbrlink 依赖，去掉了 hexo-theme-landscape 主题依赖，因为用了其他主题。
+
