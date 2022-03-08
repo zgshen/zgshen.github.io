@@ -30,16 +30,6 @@ tiddlywiki tiddlywiki --init server
 
 我们写的 wiki 的源文件就放在 tiddlywiki/tiddlers 文件夹中，类似 Hexo 的 source/_posts 文件夹。
 
-Hexo 主题配置加个 wiki 入口：
-
-```bash
-menu:
-  Home: /
-  Archives: /archives
-  About: /about
-  wiki: /wiki
-```
-
 ### 修改 GitHub Action 脚本
 
 ```yml
@@ -79,24 +69,24 @@ jobs:
           hexo clean
           hexo g
           tiddlywiki tiddlywiki --build index
-          mkdir public/wiki
-          mv tiddlywiki/output/index.html public/wiki
+          mkdir public/tiddlywiki
+          mv tiddlywiki/output/index.html public/tiddlywiki
           hexo d
 ```
 - `npm install tiddlywiki -g` 把 tiddlywiki 也装上
 - `hexo g` 执行生成静态文件到 public 文件夹中；
 - `tiddlywiki tiddlywiki --build index` 输出 index.html 文件到 tiddlywiki/output 文件夹；
-- 在 public 创建 wiki 文件夹，再把 index.html 移过来就完事了。
+- 在 public 创建 tiddlywiki 文件夹，再把 index.html 移过来就完事了。
 
-还有另外一种方法可以先在 source 文件夹下创建 wiki 目录，然后修改 GitHub Action 脚本，先生成 index.html 文件，然后移动到 source/wiki 目录下，然后再 `hexo g` 编译也行，大概改成这样，自行测试：
+还有另外一种方法可以先在 source 文件夹下创建 wiki 目录，然后修改 GitHub Action 脚本，先生成 index.html 文件，然后移动到 source/tiddlywiki 目录下，然后再 `hexo g` 编译也行，大概改成这样，自行测试：
 
 ```bash
 - name: Hexo deploy
   run: |
     hexo clean
-    mkdir source/wiki
+    mkdir source/tiddlywiki
     tiddlywiki tiddlywiki --build index
-    mv tiddlywiki/output/index.html source/wiki
+    mv tiddlywiki/output/index.html source/tiddlywiki
     # hexo g 应该都可以不写了
     hexo g
     hexo d
@@ -105,13 +95,13 @@ jobs:
 不过要设置下 Hexo 不要把 index.html 也编译了：
 
 ```bash
-# _config.yml skip_render 配置，编译渲染忽略 wiki 下的所有文件
-skip_render: [wiki/**]
+# _config.yml skip_render 配置，编译渲染忽略 v 下的所有文件
+skip_render: [tiddlywiki/**]
 ```
 
 效果：
 - [主页](https://zguishen.com/)
-- [wiki](https://zguishen.com/wiki/)
+- [wiki](https://zguishen.com/tiddlywiki/)
 
 ### 参考
 
