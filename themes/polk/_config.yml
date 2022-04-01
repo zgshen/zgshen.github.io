@@ -23,8 +23,6 @@ menu:
   About: /about
   Search: https://www.google.com/search?q=site:zguishen.com 
   Bookmarks: /bookmarks
-  wiki: https://wiki.zguishen.com
-  notion: https://notion.zguishen.com/
 
 # Analytics
 google_analytics: 'G-QJJXLFJG24' ## Your Google Analytics tracking id, e.g. UA-106347761-2
