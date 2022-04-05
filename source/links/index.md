@@ -5,7 +5,9 @@ comments: false
 ---
 
 ### 友链：
-暂无
+
+还没友链...想加友链的网友可以到GitHub给我留言，我看到会添加上，[传送门点我](https://github.com/zgshen/zgshen.github.io/issues/3)。
+
 
 ### 收藏：
 
