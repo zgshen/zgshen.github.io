@@ -8,6 +8,8 @@ comments: false
 
 还没友链...想加友链的网友可以到GitHub给我留言，我看到会添加上，[传送门点我](https://github.com/zgshen/zgshen.github.io/issues/3)。
 
+- [导航](https://nav.zguishen.com)
+- ...
 
 ### 收藏：
 
