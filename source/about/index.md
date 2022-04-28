@@ -11,10 +11,10 @@ comments: false
 愿意尝试各种新事物，兴趣爱好广泛杂乱，门门懂,样样瘟。
 
 Steam:
-[![](https://card.exophase.com/1/1587571.png)](https://www.exophase.com/steam/user/nathan193/)
+[![](https://card.exophase.com/1/1587571.png)](https://www.exophase.com/steam/user/nathan262/)
 
 PlayStation:
 [![](https://card.exophase.com/1/1405886.png)](https://www.exophase.com/psn/user/guaguaer/)
 
 
-Contact me by [Mail](mailto:zguishen@foxmail.com) / [Github](https://github.com/) / [Twitter](https://twitter.com/gangan262)
+Contact me by [Mail](mailto:zguishen@foxmail.com) / [Github](https://github.com/) / [Twitter](https://twitter.com/gangan193)
