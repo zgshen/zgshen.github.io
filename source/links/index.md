@@ -12,13 +12,15 @@ comments: false
 
 - ...
 
-### 服务
+### 个人
 
 - [zguishen's navigation](https://nav.zguishen.com)
 
 - [zguishen's wiki](https://wiki.zguishen.com/)
 
-### 收藏：
+- [zguishen's notion page](https://notion.zguishen.com/)
+
+### 其他：
 
 - [v2ex](https://www.v2ex.com/)
 
