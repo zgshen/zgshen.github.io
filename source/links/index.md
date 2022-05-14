@@ -4,7 +4,7 @@ type: "links"
 comments: false
 ---
 
-### 友链：
+#### 友链：
 
 友链 GitHub 留言，我看到会添加上，[传送门](https://github.com/zgshen/zgshen.github.io/issues/3)。
 
@@ -12,7 +12,7 @@ comments: false
 
 - ...
 
-### 个人
+#### 个人
 
 - [zguishen's navigation](https://nav.zguishen.com)
 
@@ -20,7 +20,7 @@ comments: false
 
 - [zguishen's notion page](https://notion.zguishen.com/)
 
-### 其他：
+#### 其他：
 
 - [v2ex](https://www.v2ex.com/)
 
