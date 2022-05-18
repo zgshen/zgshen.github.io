@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>闭包 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=Java基础>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">闭包</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2017-09-12</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>在Web开发中，在使用JavScript时，就算没用过，也听说过闭包这个名词。闭将外部作用域中的局部变量封闭起来的函数成为闭包，本质就是一个函数。<span id="more"></span><br>闭包的作用</p>
+<ul>
+<li>保护函数内变量的安全，不能被外部随意修改，只能通过制定函数接口操作</li>
+<li>在内存中维持变量，不会被销毁，所以弊端是滥用可能造成内存泄漏</li>
+</ul>
+<p>例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">9</span>;</span><br><span class="line">    add = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	num++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">clo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//add();//这里还不能执行</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="title function_">fun</span>();<span class="comment">//获得闭包函数</span></span><br><span class="line"><span class="title function_">add</span>();<span class="comment">//操作num的值</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="title function_">f</span>();<span class="comment">//执行函数获取局部变量num的值 11</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上例子最终的 value 值就是局部变量 num 的值， clo 函数就是闭包。<br>我们无法直接访问 num 变量，但根据Javascript的链式作用域，对于 clo ， fun 内部的所有内部变量都是可见的，所以只要把 clo 作为返回值就可以在外部访问 num 内部变量了。<br>add 函数在这里是一个全局变量，在Javascript中，在函数中变量定义不加上 var 或者其他类型，会被视为全局变量，但要在函数执行后得到声明才能使用，如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">1</span>;<span class="comment">//局部</span></span><br><span class="line">    j = <span class="number">2</span>;<span class="comment">//全局，执行test函数时声明，之后全局可用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(j)</span><br></pre></td></tr></table></figure>
+<p>所以在 fun 函数执行后声明完成，就可以在外部执行，由于闭包 clo 维持了 num 变量，所以在外部 add 函数修改的 num 跟在 fun 函数中 num 的是同一个。</p>
+<p>事实上， num 变量在函数中有点类似 Java 中的私有变量，外部不能直接访问，而需要函数内部其他方法访问。以函数对象写另一个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">23</span>;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">&quot;shen&quot;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">getName</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">setAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    	age++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ff = <span class="keyword">new</span> <span class="title function_">foo</span>();</span><br><span class="line"><span class="comment">//ff.age;//访问不到局部变量</span></span><br><span class="line">ff.<span class="title function_">setAge</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ff.<span class="title function_">getAge</span>())<span class="comment">//24</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ff.<span class="title function_">getName</span>())<span class="comment">//shen</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Java 中，也有类似的闭包实现存在，匿名内部类就是一个例子，它可以访问外部类的成员变量（相当于第一个例子的clo函数可以访问fun函数的num变量）。但是，由于Java无法保证内部类使用的外部类的局部变量在内外部类同步都指向同一基本类型数据或对象，因为Java只是把外部类的变量做一个拷贝丢给了内部类另一个变量而已。所以，只能干脆限制在内部类访问的外部类变量必须定义为 final 类型，即初始化后就不能修改<br>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Cat</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eatSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//final int num = 10;</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>;<span class="comment">//final默认可以不写，但当你尝试对num进行操作，比如num++之类，编译器会报错（环境Java8）</span></span><br><span class="line">        <span class="type">Cat</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;eat &quot;</span> + num + <span class="string">&quot; fish&quot;</span>);<span class="comment">//访问外部num变量</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        a.eat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//Java8支持更简便的Lambda表达式</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">LambdaEatTest</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span> ()-&gt;System.out.println(<span class="string">&quot;eat &quot;</span> + num + <span class="string">&quot; fish&quot;</span>);</span><br><span class="line">        cat.eat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Test</span>().eatSomething();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Test</span>().LambdaEatTest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此，也有些人认为Java的闭包不能算是真正意义上的闭包，有不可修改外部变量的限制。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

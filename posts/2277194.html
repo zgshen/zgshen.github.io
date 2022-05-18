@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>Ubuntu 桌面版的一些常规配置 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=基础>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">Ubuntu 桌面版的一些常规配置</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2021-08-11</span>
+  </div>
+  <div class="post-content">
+    
+	<div id="toc" class="toc-article">
+	  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E5%8C%BA"><span class="toc-number">1.</span> <span class="toc-text">1. 分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-vi-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">2. vi 编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3. 科学上网设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">4. 输入法设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">5. 其他常用软件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%E6%81%A2%E5%A4%8D"><span class="toc-number">6.</span> <span class="toc-text">6. 默认设置恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%94%B9%E4%B8%BA%E8%8B%B1%E6%96%87"><span class="toc-number">7.</span> <span class="toc-text">7. 中文文件夹改为英文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%8C%82%E8%BD%BD-Windows-%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A1%AC%E7%9B%98"><span class="toc-number">8.</span> <span class="toc-text">8. 挂载 Windows 系统的硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E7%A6%81%E6%AD%A2%E4%BC%91%E7%9C%A0%E5%92%8C%E7%B3%BB%E7%BB%9F%E5%94%A4%E9%86%92"><span class="toc-number">9.</span> <span class="toc-text">9. 禁止休眠和系统唤醒</span></a></li></ol>
+    </div>
+	
+	
+    <p><img src="/../images/202108/20210817231422.jpg" alt="Ubuntu-Desktop"></p>
+<p>以前一直在 Windows 桌面环境下做开发，接触的 Linux 机器都是服务器，基本上全都是在终端操作。最近来兴趣尝试在 Linux 桌面下做开发，总的来说，以日常开发办公的体验还可以，真正的 Linux 环境下工程的编译和部署调试比起虚拟机和远程终端还是好太多。但桌面的上手顺畅程序和 Windows 和 macOS 还是完全没法比，有些工具安装方式也比较麻烦，而且不同的 Linux 发行版差异巨大。</p>
+<p>尝试过 CentOS、Debian、Manjaro 和 Ubuntu 之后，个人感觉 Ubuntu 的总体体验是最好的，用的的人多，资料好早，不会常年不更新也不会更新太激进。总结一下：  </p>
+<ul>
+<li>想要好的桌面体验用 Windows 或者 Mac，Linux 再怎么折腾都比不了</li>
+<li>用 Linux 就要忍得了 Linux 的桌面和输入法问题</li>
+<li>如果你是不折腾就会死星人，就用 Arch 系的发行版，KDE 桌面还行，能看懂 Arch 的文档就能解决大多数问题</li>
+<li>如果不想折腾只要安心开发就用 debian 系的发行版，Ubuntu 应该是用户最多的 Linux 发行版，资料多，坑也有大多数用户帮你踩了</li>
+</ul>
+<p>下面记录一下使用 Ubuntu 20.04 LTS 一些配置。</p>
+<h3 id="1-分区"><a href="#1-分区" class="headerlink" title="1. 分区"></a>1. 分区</h3><p>装系统的时候最好自己手动分下区，注意别因为格式化硬盘丢数据了，如果有数据的话。<br>我自己 500G 空间的划分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/boot   主分区 1G</span><br><span class="line">/       逻辑分区 300G</span><br><span class="line">/home   逻辑分区 199G</span><br></pre></td></tr></table></figure>
+<p>安装启动引导器的设备选择 &#x2F;boot 分区所在的设备。</p>
+<h3 id="2-vi-编辑器"><a href="#2-vi-编辑器" class="headerlink" title="2. vi 编辑器"></a>2. vi 编辑器</h3><p>上手先设置下 vi 吧，Ubuntu 默认的 vi 使用方向键和退格键有问题，可以通过修改配置或安装 full 版本的 vi 解决。</p>
+<p>编辑&#x2F;etc&#x2F;vim下的vimrc.tiny文件 <code>sudo vi /etc/vim/vimrc.tiny</code><br>将 set compatible 改成 set nocompatible ，然后添加 set backspace&#x3D;2 即可解决。</p>
+<p>或者卸载旧版 vi 装新的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove vim-common</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-科学上网设置"><a href="#3-科学上网设置" class="headerlink" title="3. 科学上网设置"></a>3. 科学上网设置</h3><p>使用并对比几个客户端，Qv2Ray 是比较好用的一个。</p>
+<p>下载 Qv2Ray 和 v2Ray</p>
+<p>到 <a target="_blank" rel="noopener" href="https://github.com/Qv2ray/Qv2ray">https://github.com/Qv2ray/Qv2ray</a> 下载 deb 格式安装包；</p>
+<p>到 <a target="_blank" rel="noopener" href="https://github.com/v2ray/v2ray-core/releases/">https://github.com/v2ray/v2ray-core/releases/</a> 下载 v2ray-linux-64.zip 压缩包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip v2ray-linux-64.zip</span><br><span class="line">sudo apt install  Qv2ray.....deb</span><br></pre></td></tr></table></figure>
+
+<p>点击分组，添加订阅，输入订阅地址更新订阅。</p>
+<p>首选项-内核设置，填入 v2ray 解压文件的路径。</p>
+<p>V2Ray  核心可执行文件路径 <code>/home/nathan/app/v2ray/v2ray</code></p>
+<p>V2Ray 资源目录 <code>/home/nathan/app/v2ray/</code></p>
+<h3 id="4-输入法设置"><a href="#4-输入法设置" class="headerlink" title="4. 输入法设置"></a>4. 输入法设置</h3><p>Linux 下的输入法大多拉跨，搜狗的兼容性问题巨多，根本不可用，要么用系统自带的 IBus 或自己装的 Fcitx 框架，自带的中文输入体验都不行，最好是在框架上装其他输入法引擎，试用下来 rime 的体验还不错。最烦人的问题是在 JetBrains 家的 IDE 下编辑文本，不管什么输入法多少都有问题，输入法无法跟随光标，需要重新编译 JetBrainsRuntime 来解决。</p>
+<blockquote>
+<p>2021&#x2F;08&#x2F;17 更新，搜狗输入法 2.4.0.3469 版本修复了许多问题，退格删除不会删除已输入文字了，IDEA 中也能正常使用。</p>
+</blockquote>
+<p><strong>IBus</strong></p>
+<p>首次使用 IBus，打开设置中的语言管理，Ubuntu 会提示你更新依赖，更新完毕添加拼音输入源，重启系统就可以使用系统自带的中文输入了。但是用 IBus 在 Jetbrains 家 IDE 下输入框被固定在了左下角，光标不跟随输入法，后面换 Fcitx 就没问题了。</p>
+<p>IBus 框架下 rime 输入法体验还不错，安装 ibus-rime <code>sudo apt-get install ibus-rime</code></p>
+<p>安装输入法方案，有很多，双拼全拼还是五笔自己选一个 <a target="_blank" rel="noopener" href="https://github.com/rime/home/wiki/RimeWithIBus#ubuntu">https://github.com/rime/home/wiki/RimeWithIBus#ubuntu</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install librime-data-pinyin-simp</span><br></pre></td></tr></table></figure>
+
+<p>另一种方法官方推荐使用 <a target="_blank" rel="noopener" href="https://github.com/rime/plum">&#x2F;plum&#x2F;</a> 安裝最新版本</p>
+<p>创建配置文件 <code>vi ~/.config/ibus/rime/default.custom.yaml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">&quot;menu/page_size&quot;:</span> <span class="number">9</span> <span class="comment">#每页候选词个数</span></span><br><span class="line">  <span class="attr">&quot;ascii_composer/switch_key/Shift_L&quot;:</span> <span class="string">commit_code</span> <span class="comment">#左shift提交字母</span></span><br><span class="line">  <span class="attr">&quot;style/color_scheme&quot;:</span> <span class="string">dota_2</span></span><br></pre></td></tr></table></figure>
+
+<p>创建配置文件 <code>vi ~/.config/ibus/rime/build/ibus_rime.yaml</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">style:</span><br><span class="line">  horizontal: <span class="literal">true</span> <span class="comment">#横向候选框</span></span><br></pre></td></tr></table></figure>
+
+<p>到语言设置添加输入源，重新部署即可生效。</p>
+<p>或者命令重启 ibus，执行 <code>ibus-daemon -d -x -r</code></p>
+<p>其他设置看官方文档 <a target="_blank" rel="noopener" href="https://github.com/rime/home/wiki/CustomizationGuide">https://github.com/rime/home/wiki/CustomizationGuide</a></p>
+<p><strong>关于扩充词库：</strong></p>
+<p>找找下载别人的词库文件，格式类似 luna_pinyin.chat.dict.yaml，以 dict.yml 结尾。</p>
+<p>新建编辑 luna_pinyin.extended.dict.yaml 文件，import_tables 下的列表就是词库。列表名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rime dictionary</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">name: luna_pinyin.extended</span><br><span class="line">version: <span class="string">&quot;2021.08.12&quot;</span></span><br><span class="line"><span class="built_in">sort</span>: by_weight</span><br><span class="line">use_preset_vocabulary: <span class="literal">true</span></span><br><span class="line">import_tables:</span><br><span class="line">  - luna_pinyin</span><br><span class="line">  - luna_pinyin.extra_hanzi</span><br></pre></td></tr></table></figure>
+
+<p>创建 luna_pinyin_simp.custom.yaml，translator&#x2F;dictionary 设 luna_pinyin.extended</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">  switches:</span><br><span class="line">    - name: ascii_mode</span><br><span class="line">      reset: 1                                          <span class="comment"># 默认英文</span></span><br><span class="line">      states: [<span class="string">&quot;中&quot;</span>, <span class="string">&quot;英&quot;</span>]</span><br><span class="line">    - name: full_shape</span><br><span class="line">      reset: 0                                          <span class="comment"># 默认半角</span></span><br><span class="line">      states: [<span class="string">&quot;半&quot;</span>, <span class="string">&quot;全&quot;</span>]</span><br><span class="line">    - name: zh_simp</span><br><span class="line">      reset: 1                                          <span class="comment"># 预设简体</span></span><br><span class="line">      states: [<span class="string">&quot;繁&quot;</span>, <span class="string">&quot;简&quot;</span>]</span><br><span class="line">    - name: ascii_punct</span><br><span class="line">      states: [<span class="string">&quot;。，&quot;</span>, <span class="string">&quot;．，&quot;</span>]</span><br><span class="line">    - options: [utf8, gbk]                              <span class="comment"># 字符集</span></span><br><span class="line">      reset: 1                                          <span class="comment"># 默认 GBK</span></span><br><span class="line">      states: [<span class="string">&quot;utf8&quot;</span>, <span class="string">&quot;gbk&quot;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;engine/filters/@next&quot;</span>: charset_filter@gbk            <span class="comment"># 默认 GBK</span></span><br><span class="line">  <span class="string">&quot;engine/translators/@next&quot;</span>: reverse_lookup_translator</span><br><span class="line"></span><br><span class="line">  translator:</span><br><span class="line">    dictionary: luna_pinyin.extended</span><br><span class="line">    prism: luna_pinyin_simp</span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;speller/algebra/@before 0&quot;</span>: xform/^([b-df-hj-np-tv-z])$/<span class="variable">$1_</span>/</span><br><span class="line"></span><br><span class="line">  punctuator:                                           <span class="comment"># 符号快速输入和部分符号的快速上屏</span></span><br><span class="line">    import_preset: symbols</span><br><span class="line">    full_shape:</span><br><span class="line">      <span class="string">&quot;\\&quot;</span>: <span class="string">&quot;、&quot;</span></span><br><span class="line">    half_shape:</span><br><span class="line">      <span class="string">&quot;#&quot;</span>: <span class="string">&quot;#&quot;</span></span><br><span class="line">      <span class="string">&quot;`&quot;</span>: <span class="string">&quot;`&quot;</span></span><br><span class="line">      <span class="string">&quot;~&quot;</span>: <span class="string">&quot;~&quot;</span></span><br><span class="line">      <span class="string">&quot;@&quot;</span>: <span class="string">&quot;@&quot;</span></span><br><span class="line">      <span class="string">&quot;=&quot;</span>: <span class="string">&quot;=&quot;</span></span><br><span class="line">      <span class="string">&quot;/&quot;</span>: [<span class="string">&quot;/&quot;</span>, <span class="string">&quot;÷&quot;</span>]</span><br><span class="line">      <span class="string">&#x27;\&#x27;</span>: <span class="string">&quot;、&quot;</span></span><br><span class="line">      <span class="string">&quot;&#x27;&quot;</span>: &#123;pair: [<span class="string">&quot;「&quot;</span>, <span class="string">&quot;」&quot;</span>]&#125;</span><br><span class="line">      <span class="string">&quot;[&quot;</span>: [<span class="string">&quot;【&quot;</span>, <span class="string">&quot;[&quot;</span>]</span><br><span class="line">      <span class="string">&quot;]&quot;</span>: [<span class="string">&quot;】&quot;</span>, <span class="string">&quot;]&quot;</span>]</span><br><span class="line">      <span class="string">&quot;$&quot;</span>: [<span class="string">&quot;¥&quot;</span>, <span class="string">&quot;$&quot;</span>, <span class="string">&quot;€&quot;</span>, <span class="string">&quot;£&quot;</span>, <span class="string">&quot;¢&quot;</span>, <span class="string">&quot;¤&quot;</span>]</span><br><span class="line">      <span class="string">&quot;&lt;&quot;</span>: [<span class="string">&quot;《&quot;</span>, <span class="string">&quot;〈&quot;</span>, <span class="string">&quot;«&quot;</span>, <span class="string">&quot;&lt;&quot;</span>]</span><br><span class="line">      <span class="string">&quot;&gt;&quot;</span>: [<span class="string">&quot;》&quot;</span>, <span class="string">&quot;〉&quot;</span>, <span class="string">&quot;»&quot;</span>, <span class="string">&quot;&gt;&quot;</span>]</span><br><span class="line"></span><br><span class="line">  recognizer:</span><br><span class="line">    patterns:</span><br><span class="line">      email: <span class="string">&quot;^[A-Za-z][-_.0-9A-Za-z]*@.*$&quot;</span></span><br><span class="line">      uppercase: <span class="string">&quot;[A-Z][-_+.&#x27;0-9A-Za-z]*$&quot;</span></span><br><span class="line">      url: <span class="string">&quot;^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$&quot;</span></span><br><span class="line">      punct: <span class="string">&quot;^/([a-z]+|[0-9]0?)$&quot;</span></span><br><span class="line">      reverse_lookup: <span class="string">&quot;`[a-z]*&#x27;?$&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后重新部署</p>
+<p><strong>Fcitx</strong></p>
+<p>与 IBus 的部署类似，安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-rime</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>sudo apt-get install fcitx-rime</code> 下创建默认配置文件 default.custom.yaml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">patch:</span><br><span class="line">  menu/page_size: 9 <span class="comment">#每页候选词个数</span></span><br><span class="line">  ascii_composer/switch_key/Shift_L: commit_code <span class="comment">#左shift提交字母</span></span><br></pre></td></tr></table></figure>
+
+<p>词库的配置与 IBus 也一样，将 luna_pinyin.extended.dict.yaml 、luna_pinyin_simp.custom.yaml 和词库文件复制过来重新部署就是了。如果有问题就从最简单的一个词库文件配起，慢慢排查问题。</p>
+<p>fcitx 皮肤导入路径 &#x2F;usr&#x2F;share&#x2F;fcitx&#x2F;skin，直接将皮肤文件夹丢在这里就行了，比如我用这个 <a target="_blank" rel="noopener" href="https://github.com/henices/rime">https://github.com/henices/rime</a>  ，还可以自己修改字体和配置 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi usr/share/fcitx/skin/mac-gray/fcitx_skin.conf</span><br><span class="line"><span class="comment">#输入栏字体和颜色设置</span></span><br><span class="line">[SkinFont]</span><br><span class="line">FontSize=14</span><br><span class="line">MenuFontSize=11</span><br><span class="line">RespectDPI=True</span><br><span class="line">TipColor=25 120 200</span><br><span class="line">InputColor=25 120 200</span><br><span class="line">IndexColor=25 120 200</span><br><span class="line">FirstCandColor=240 50 50</span><br><span class="line">UserPhraseColor=25 120 200</span><br><span class="line">CodeColor=0 0 0</span><br><span class="line">OtherColor=105 105 105</span><br><span class="line">ActiveMenuColor=255 255 255</span><br><span class="line">InactiveMenuColor=0 0 0</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜狗</strong></p>
+<p>官网下载 deb 文件直接安装就好了。</p>
+<p>搜狗的环境配置文件路径是 <code>~/.config/sogoupinyin/conf/enc.ini</code></p>
+<p>隐藏状态栏 <code>StatusAppearance=0</code> </p>
+<p><strong>JetBrains IDE 中文输入法不跟随光标问题</strong></p>
+<p>运行环境的问题，官方一直不做修复，需要打补丁重新编译 JetBrainsRuntime，比较麻烦，可以直接下载别人已经编译好的环境直接用。</p>
+<p>讨论<br><a target="_blank" rel="noopener" href="https://bbs.archlinuxcn.org/viewtopic.php?id=10529">https://bbs.archlinuxcn.org/viewtopic.php?id=10529</a></p>
+<p>编译步骤<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41859728/article/details/109187748">https://blog.csdn.net/qq_41859728/article/details/109187748</a></p>
+<p>GitHub Action 自动化编译的环境 <a target="_blank" rel="noopener" href="https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64">https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64</a></p>
+<p>直接下载，IDEA 装个 Choose Runtime 选择切换到下载的环境就可以了，或者修改 idea.sh 在文件开头添加环境变量。切换环境后用 IBus 输入法还是有问题，所以后面换成 Fictx 了就解决问题了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export IDEA_JDK=/JetBrainsRuntime/build/linux-x86_64-normal-server-release/images/jdk</span></span><br><span class="line"><span class="built_in">export</span> IDEA_JDK= 下载别人的环境/自己编译好的环境</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5-其他常用软件安装"><a href="#5-其他常用软件安装" class="headerlink" title="5. 其他常用软件安装"></a>5. 其他常用软件安装</h3><p><strong>亮度调节</strong></p>
+<p>笔记本外接显示器发现没有亮度调节的控件没了，应该是缺少对应显示器驱动，装个小工具凑合用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:apandada1/brightness-controller</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install brightness-controller-simple</span><br></pre></td></tr></table></figure>
+
+<p><strong>资源监控</strong></p>
+<p>安装 System Monitor Indicator 用来看网速、cpu 和 内存占用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加软件源的命令</span></span><br><span class="line">sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor &amp;&amp; sudo apt update</span><br><span class="line"><span class="comment"># 如果需要删除该软件源可以使用</span></span><br><span class="line">sudo add-apt-repository -r ppa:fossfreedom/indicator-sysmonitor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 indicator-sysmonitor</span></span><br><span class="line">sudo apt install indicator-sysmonitor -y</span><br></pre></td></tr></table></figure>
+
+<p>打开 System Monitor Indicator，Perference - General - Run on startup 设置开机启动。</p>
+<p>Advanced 中自定义在顶栏显示的格式 cpu:{cpu} men:{men}  net:{net}</p>
+<p>或者使用 Resource Monitor 插件也不错</p>
+<p><a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/1634/resource-monitor/">https://extensions.gnome.org/extension/1634/resource-monitor/</a></p>
+<p><strong>VS Code</strong></p>
+<p>不要用 snap 商店安装 VS Code，没法用中文输入法的，到官网下载 deb 文件安装吧。由于 D 盘文件比较多，打开的时候会报错 &quot;Visual Studio Code is unable to watch for file changes in this large workspace&quot; (error ENOSPC)。把这个系统变量调大就行了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+
+<p>The limit can be increased to its maximum by editing <code>/etc/sysctl.conf</code> (except on Arch Linux, read below) and adding this line to the end of the file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.inotify.max_user_watches=524288</span><br></pre></td></tr></table></figure>
+
+<p>The new value can then be loaded in by running <code>sudo sysctl -p</code>.</p>
+<h3 id="6-默认设置恢复"><a href="#6-默认设置恢复" class="headerlink" title="6. 默认设置恢复"></a>6. 默认设置恢复</h3><p>Ubunut20.02 桌面启动器 gonme 恢复默认设置，包括桌面布局、图标和系统应用（如输入法和终端等）都会恢复为默认设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dconf reset -f /org/gnome/</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-中文文件夹改为英文"><a href="#7-中文文件夹改为英文" class="headerlink" title="7. 中文文件夹改为英文"></a>7. 中文文件夹改为英文</h3><p>打开终端，在终端中输入命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=en_US</span><br><span class="line">xdg-user-dirs-gtk-update</span><br></pre></td></tr></table></figure>
+
+<p>跳出对话框询问是否将目录转化为英文路径,同意并关闭.在终端中输入命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=zh_CN</span><br></pre></td></tr></table></figure>
+
+<p>关闭终端，下次重启进入系统，会提示是否把转化好的目录改回中文，选择不再提示，并取消修改，主目录的中文转英文就完成了。</p>
+<h3 id="8-挂载-Windows-系统的硬盘"><a href="#8-挂载-Windows-系统的硬盘" class="headerlink" title="8. 挂载 Windows 系统的硬盘"></a>8. 挂载 Windows 系统的硬盘</h3><p>由于以前的工程全在 Windows 系统下，想在 Ubuntu 直接打开编辑，发现 IDEA 一直报错</p>
+<p>Unable to save settings: Failed to save settings. Please restart IntelliJ IDEA ，找了下问题挂载的硬盘权限是没问题了，但就是不能创建文件和编辑文件。</p>
+<p>重新挂载硬盘 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nathan@nathan-tp:/media/nathan$ sudo mount /dev/sda2 /media/nathan/testd</span><br><span class="line">The disk contains an unclean file system (0, 0).</span><br><span class="line">Metadata kept <span class="keyword">in</span> Windows cache, refused to mount.</span><br><span class="line">Falling back to read-only mount because the NTFS partition is <span class="keyword">in</span> an</span><br><span class="line">unsafe state. Please resume and shutdown Windows fully (no hibernation</span><br><span class="line">or fast restarting.)</span><br><span class="line">Could not mount read-write, trying read-only</span><br><span class="line">ntfs-3g-mount: failed to access mountpoint /media/nathan/testd: 没有那个文件或目录</span><br></pre></td></tr></table></figure>
+
+<p>Windows 盘的原因，unclean 啥的，没正常关机导致的。我是睡觉时把 Windows 休眠了，早上打开直接进 Ubuntu了，确实没正常关机。网上看到别人也有相似问题 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1520766">解决 Linux 挂载 NTFS 分区只读不能写的问题</a>。</p>
+<p>重启进入 Windows 再正常关机重启进入 Ubuntu 就行了。</p>
+<p><strong>设置开机自动挂载硬盘</strong></p>
+<p>运行如下命令查看硬盘分区：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure>
+
+<p>看输出找到自己需要挂载的盘，比如这里要挂载的是 c 盘 <code>/dev/sdb1</code> 和 d 盘 <code>/dev/sda2</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/dev/sdb1: LABEL=&quot;win-c&quot; UUID=&quot;96A8CBEBA8CBC7C7&quot; TYPE=&quot;ntfs&quot; PARTUUID=&quot;995606b6-6b82-7ed4-84e7-007d680f31d3&quot;</span><br><span class="line">/dev/sdb2: UUID=&quot;0C38-06FF&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;dc885421-8944-2273-207d-3685601c7169&quot;</span><br><span class="line">/dev/sda1: PARTLABEL=&quot;Microsoft reserved partition&quot; PARTUUID=&quot;140f0f24-f5ff-4ea3-b95e-cd12128e0d58&quot;</span><br><span class="line">/dev/sda2: LABEL=&quot;win-d&quot; UUID=&quot;04BECAB2BECA9C14&quot; TYPE=&quot;ntfs&quot; PARTLABEL=&quot;Basic data partition&quot; PARTUUID=&quot;9a67d1d2-7618-4173-a9d8-d05bf45e924f&quot;</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件 <code>sudo vi /etc/fstab</code> 最后加上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows disks</span></span><br><span class="line">/dev/sdb1                      /media/nathan/win-c</span><br><span class="line">/dev/sda2                      /media/nathan/win-d</span><br></pre></td></tr></table></figure>
+
+<p>重启系统完事</p>
+<h3 id="9-禁止休眠和系统唤醒"><a href="#9-禁止休眠和系统唤醒" class="headerlink" title="9. 禁止休眠和系统唤醒"></a>9. 禁止休眠和系统唤醒</h3><p><strong>休眠问题</strong></p>
+<p>笔记本盖子关闭外接显示器的时候，一关闭显示器系统就休眠了， 不想休眠可以通过编辑 logind.conf 配置来设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/systemd/logind.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改其中的 HandleLidSwitch 配置为  ignore 后重启机器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># poweroff 关闭盖子时关闭计算机</span></span><br><span class="line"><span class="comment"># hibernate 关闭盖子时计算机休眠</span></span><br><span class="line"><span class="comment"># suspend 关闭盖子时暂停计算机</span></span><br><span class="line"><span class="comment"># ignore 不执行任何操作</span></span><br><span class="line"><span class="comment">#HandleLidSwitch=suspend</span></span><br><span class="line">HandleLidSwitch=ignore</span><br></pre></td></tr></table></figure>
+
+<p><strong>usb 设备唤醒</strong></p>
+<p>查看所有 usb 设备的电源唤醒状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nathan@nathan-tp:~$ grep . /sys/bus/usb/devices/*/power/wakeup</span><br><span class="line">/sys/bus/usb/devices/1-1.3/power/wakeup:enabled</span><br><span class="line">/sys/bus/usb/devices/1-1.4/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/1-1/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/1-6/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/1-7/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/2-1/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/usb1/power/wakeup:disabled</span><br><span class="line">/sys/bus/usb/devices/usb2/power/wakeup:disabled</span><br></pre></td></tr></table></figure>
+
+<p><code>lsusb</code> 查看外接设备 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">nathan@nathan-tp:~$ lsusb</span><br><span class="line">Bus 002 Device 005: ID 0424:5744 Microchip Technology, Inc. (formerly SMSC) Hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub</span><br><span class="line">Bus 001 Device 007: ID 04f2:b541 Chicony Electronics Co., Ltd Integrated Camera</span><br><span class="line">Bus 001 Device 005: ID 8087:0a2b Intel Corp. </span><br><span class="line">Bus 001 Device 003: ID 138a:0090 Validity Sensors, Inc. VFS7500 Touch Fingerprint Sensor</span><br><span class="line">Bus 001 Device 016: ID 046d:c084 Logitech, Inc. G203 Gaming Mouse</span><br><span class="line">Bus 001 Device 015: ID 1c4f:0002 SiGma Micro Keyboard TRACER Gamma Ivory</span><br><span class="line">Bus 001 Device 014: ID 0424:2744 Microchip Technology, Inc. (formerly SMSC) Hub</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+
+<p>用这个也可以看到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nathan@nathan-tp:~$ grep . /sys/bus/usb/devices/*/product</span><br><span class="line">/sys/bus/usb/devices/1-1.3/product:USB Keyboard</span><br><span class="line">/sys/bus/usb/devices/1-1.4/product:G102 Prodigy Gaming Mouse</span><br><span class="line">/sys/bus/usb/devices/1-1/product:USB2744</span><br><span class="line">/sys/bus/usb/devices/1-8/product:Integrated Camera</span><br><span class="line">/sys/bus/usb/devices/2-1/product:USB5744</span><br><span class="line">/sys/bus/usb/devices/usb1/product:xHCI Host Controller</span><br><span class="line">/sys/bus/usb/devices/usb2/product:xHCI Host Controller</span><br></pre></td></tr></table></figure>
+
+<p>两个 usb 都是 disabled，全都改成 enabled 得了</p>
+<p>用管理员修改 wakeup 值为 enabled</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;enabled&#x27;</span> &gt; /sys/bus/usb/devices/usb1/power/wakeup</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;enabled&#x27;</span> &gt; /sys/bus/usb/devices/usb2/power/wakeup</span><br></pre></td></tr></table></figure>
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>GitHub Actions deploy Hexo blog - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=博客>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">GitHub Actions deploy Hexo blog</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2020-12-16</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <h2 id="新建分支或-git-库存放-Hexo-源文件"><a href="#新建分支或-git-库存放-Hexo-源文件" class="headerlink" title="新建分支或 git 库存放 Hexo 源文件"></a>新建分支或 git 库存放 Hexo 源文件</h2><p>折腾一下把 Hexo 网站用 GitHub Actions 进行自动化部署，基本流程是这样的</p>
+<p><img src="/../images/20201216/e8f634bcc01f.png" alt="image-20201216172358832"></p>
+<ul>
+<li>master：主干是原来的静态网站资源，也就是 hexo 编译后 public 下的文件；</li>
+<li>hexo-blog：新建一个分支，放 hexo 的源文件，包括配置、主题和 markdown 文本等。</li>
+</ul>
+<p>流程就是我们写 markdown 文章后，就推送到 hexo-blog 分支，触发 GitHub Actions 进行自动化部署编译，并把编译完的资源推送到 master 分支，这就完成一次 Hexo 博客的更新。</p>
+<p>这里用的是新建 hexo-blog 分支放 Hexo 源文件，新建一个 git 库也是可以，当然 GitHub Actions 也是在新建的 git 库上。</p>
+<h2 id="配置公私密钥"><a href="#配置公私密钥" class="headerlink" title="配置公私密钥"></a>配置公私密钥</h2><p>因为涉及代码的 ssh 推送等交互，所以需要设置私钥和公钥。这里因为是用一个 git 库两个分支来做的，所以公私钥都在当前 git 库设置，如果用的是新建 git 库存放 Hexo 源文件，那私钥要放在 Hexo 源文件 git 库，公钥放在静态网站库上。</p>
+<p>生成密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;xx@xx.com&quot;</span> -f github-deploy-key -N <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>生成两个文件：</p>
+<ul>
+<li><code>github-deploy-key.pub</code> 公钥</li>
+<li><code>github-deploy-key</code> 私钥</li>
+</ul>
+<p>打开 <a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.github.io/settings/keys">https://github.com/xxx/xxx.github.io/settings/keys</a> 填写公钥，xxx github 用户名</p>
+<ul>
+<li><code>Title</code> 输入 <code>HEXO_DEPLOY_PUB</code> （自定义名称，后面自动化部署脚本用到，一致就行）</li>
+<li><code>Key</code> 输入生成的 <code>github-deploy-key.pub</code> 的内容</li>
+<li>勾选 <code>Allow write access</code> 用于推送分支</li>
+</ul>
+<p>打开 <a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.github.io/settings/secrets/actions">https://github.com/xxx/xxx.github.io/settings/secrets/actions</a> 填写私钥（新建git库方式私钥在新建git库上设置）</p>
+<ul>
+<li><code>Name</code> 输入 <code>HEXO_DEPLOY_PRI</code></li>
+<li><code>Value</code> 输入生成的 <code>github-deploy-key</code> 的内容</li>
+</ul>
+<h2 id="自动化部署脚本"><a href="#自动化部署脚本" class="headerlink" title="自动化部署脚本"></a>自动化部署脚本</h2><p>在 hexo-blog 分支根目录下创建 .github 文件夹再进去创建 workflows 文件夹再创建 HexoCI.yml 文件</p>
+<p>编辑 HexoCI.yml 文件，内容找个别人的抄来用，<a target="_blank" rel="noopener" href="https://blog.csdn.net/xinruodingshui/article/details/105499161#t4">https://blog.csdn.net/xinruodingshui/article/details/105499161#t4</a></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hexo-blog</span> <span class="comment">##分支名</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">source</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">hexo-blog</span> <span class="comment">##分支名</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">node</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;12.x&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">ACTION_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">          echo &quot;$ACTION_DEPLOY_KEY&quot; &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string">          git config --global user.email &quot;xx@xx.com&quot;</span></span><br><span class="line"><span class="string">          git config --global user.name &quot;yourname&quot;</span></span><br><span class="line"><span class="string">          npm install hexo-cli -g</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">deploy</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          hexo clean</span></span><br><span class="line"><span class="string">          hexo d</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="构建结果"><a href="#构建结果" class="headerlink" title="构建结果"></a>构建结果</h2><p>Actions 里可以看到每次构建流程，失败的可以进去查看日志定位问题。</p>
+<p><img src="/../images/20201216/f5826da6fa20.png" alt="image-20201216180620677"></p>
+<h2 id="链接优化"><a href="#链接优化" class="headerlink" title="链接优化"></a>链接优化</h2><p>安装 hexo-abbrlink 插件， package.json 中</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;hexo-abbrlink&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.2.1&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://zguishen.com</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink.html</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 算法：crc16(default) and crc32</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment"># 进制：dec(default) and hex</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br></pre></td></tr></table></figure>
+
+<p>不同组合链接形式不同。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

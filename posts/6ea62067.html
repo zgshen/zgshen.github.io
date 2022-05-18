@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>Python 中的协程 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=技术,Java,协程,Python>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">Python 中的协程</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-02-05</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>协程很久之前就知到这东西，但是 Java 没有，也就没怎么去了解，最近在学 Python 接触到协程，做个记录。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>说到协程一般都会联系到进程和线程，通常请款下这三者的比较如下：</p>
+<ul>
+<li>进程：程序执行的一个实例，一个进程最少包含一个线程，不同进程之间的切换代价大；</li>
+<li>线程：CPU 调度的基本单位，进程的一个实体，线程的上下文切换代价比进程小；</li>
+<li>协程：是一种用户态的轻量级线程，一个线程可包含多个协程。</li>
+</ul>
+<p>协程的最大的优势是极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。</p>
+<p>第二大优势就是不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多。</p>
+<h3 id="Python-中的协程"><a href="#Python-中的协程" class="headerlink" title="Python 中的协程"></a>Python 中的协程</h3><h4 id="生成器-generator-和-yield-关键字"><a href="#生成器-generator-和-yield-关键字" class="headerlink" title="生成器 generator 和 yield 关键字"></a>生成器 generator 和 yield 关键字</h4><p>如果一个函数定义中包含 yield 关键字，那这个函数就是一个 generator 函数。</p>
+<p>yield 的语法规则是：在yield这里暂停函数的执行，并返回yield后面表达式的值（默认为 None），直到被 next() 方法再次调用时，从上次暂停的 yield 代码处继续往下执行。当没有可以继续 next() 的时候，抛出异常，该异常可被 for 循环处理。</p>
+<p>每个生成器都可以执行 send() 方法，为生成器内部的 yield 语句发送数据。Python 对协程的支持是通过 generator 实现的。</p>
+<p>看一个生产者和消费者的例子，生产者生产消息后 yield 跳转消费者消费，消费者执行后又跳回生产者继续生产，任务都在一个线程内部完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">consumer</span>():</span><br><span class="line">    r = <span class="string">&#x27;start task...&#x27;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 遇到 yield 语句返回，再次执行从上次返回的 yield 语句处继续执行</span></span><br><span class="line">        n = <span class="keyword">yield</span> r</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> n:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[CONSUMER] Consuming %s...&#x27;</span> % n)</span><br><span class="line">        r = <span class="string">&#x27;success&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">produce</span>(<span class="params">c</span>):</span><br><span class="line">    <span class="comment"># 第一次运行生成器用 send() 函数，传入 None 参数启动生成器</span></span><br><span class="line">    <span class="built_in">print</span>(c.send(<span class="literal">None</span>))</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; <span class="number">3</span>:</span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[PRODUCER] Producing %s...&#x27;</span> % n)</span><br><span class="line">        r = c.send(n)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[PRODUCER] Consumer return: %s&#x27;</span> % r)</span><br><span class="line">    c.close()</span><br><span class="line"></span><br><span class="line">c = consumer()</span><br><span class="line">produce(c)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">start task...</span><br><span class="line">[PRODUCER] Producing 1...</span><br><span class="line">[CONSUMER] Consuming 1...</span><br><span class="line">[PRODUCER] Consumer return: success</span><br><span class="line">[PRODUCER] Producing 2...</span><br><span class="line">[CONSUMER] Consuming 2...</span><br><span class="line">[PRODUCER] Consumer return: success</span><br><span class="line">[PRODUCER] Producing 3...</span><br><span class="line">[CONSUMER] Consuming 3...</span><br><span class="line">[PRODUCER] Consumer return: success</span><br></pre></td></tr></table></figure>
+
+<h4 id="asyncio-coroutine-和-yield-from"><a href="#asyncio-coroutine-和-yield-from" class="headerlink" title="@asyncio.coroutine 和 yield from"></a>@asyncio.coroutine 和 yield from</h4><p>@asyncio.coroutine 标记一个生成器为协程，yield from 即等待另一个协程的返回。asyncio 是 Python3.4 开始引入的一个基于时间循环的异步 IO 模块</p>
+<p>asyncio的编程模型就是一个消息循环。我们从asyncio模块中直接获取一个 EventLoop 的引用，然后把需要执行的协程扔到EventLoop中执行，就实现了异步 IO。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio, datetime</span><br><span class="line"></span><br><span class="line"><span class="meta">@asyncio.coroutine</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">task</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Start: &#123;&#125; Time: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, datetime.datetime.now()))</span><br><span class="line">    <span class="comment"># 延时模拟 IO 任务，比如网络请求或者写文件等等</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> asyncio.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;continue other task: &#x27;</span>, name)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;End: &#123;&#125; Time: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, datetime.datetime.now()))</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [task(<span class="string">&#x27;t1&#x27;</span>), task(<span class="string">&#x27;t2&#x27;</span>)] </span><br><span class="line"><span class="comment">#loop.run_until_complete(asyncio.wait(tasks))</span></span><br><span class="line"><span class="comment"># wait 和 gather 返回值有所不同</span></span><br><span class="line">loop.run_until_complete(asyncio.gather(*tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/coroutin/test.py:6: DeprecationWarning: &quot;@coroutine&quot; decorator is deprecated since Python 3.8, use &quot;async def&quot; instead</span><br><span class="line">  def task(name):</span><br><span class="line">Start: t1 Time: 2022-02-26 00:43:01.195497</span><br><span class="line">Start: t2 Time: 2022-02-26 00:43:01.196419</span><br><span class="line">continue other task:  t1</span><br><span class="line">End: t1 Time: 2022-02-26 00:43:03.199804</span><br><span class="line">continue other task:  t2</span><br><span class="line">End: t2 Time: 2022-02-26 00:43:03.200136</span><br></pre></td></tr></table></figure>
+
+<p>这里环境用的是 Python3.8，可以看到警告，新版本不推荐用 <code>@coroutine</code>，可以用 <code>async def</code> 来定义协程。</p>
+<h4 id="async-和-await"><a href="#async-和-await" class="headerlink" title="async 和 await"></a>async 和 await</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio, datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">task</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Start: &#123;&#125; Time: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, datetime.datetime.now()))</span><br><span class="line">    <span class="keyword">await</span> asyncio.wait([ioTask(name)])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;continue other task: &#x27;</span>, name)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;End: &#123;&#125; Time: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(name, datetime.datetime.now()))</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">ioTask</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="comment"># 延时模拟 IO 任务，比如网络请求或者写文件等等</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;execute io task: &#x27;</span>, name)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [task(<span class="string">&#x27;t1&#x27;</span>), task(<span class="string">&#x27;t2&#x27;</span>)] </span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Start: t2 Time: 2022-02-26 00:46:01.575044</span><br><span class="line">Start: t1 Time: 2022-02-26 00:46:01.575539</span><br><span class="line">execute io task:  t2</span><br><span class="line">execute io task:  t1</span><br><span class="line">continue other task:  t2</span><br><span class="line">End: t2 Time: 2022-02-26 00:46:03.580642</span><br><span class="line">continue other task:  t1</span><br><span class="line">End: t1 Time: 2022-02-26 00:46:03.580710</span><br></pre></td></tr></table></figure>
+
+<p>适合 IO 密集型，不适合 CPU 密集型应用</p>
+<h3 id="Java-为什么没有协程"><a href="#Java-为什么没有协程" class="headerlink" title="Java 为什么没有协程"></a>Java 为什么没有协程</h3><p>在当前已发行版 Java 中，还没有协程，通常使用协程的意义是为了节省创建和切换线程带来的开销，但是在 Java 一直都有其他的解决方式，比如：</p>
+<ul>
+<li>有 Netty 这类非阻塞的I&#x2F;O客户端-服务器框架；</li>
+<li>线程池解决了线程创建和销毁的开销；</li>
+<li>JDK 也有 JUC 等完备的工具用于异步编程。</li>
+</ul>
+<p>其他语言使用协程最大的好处是写法简单优雅，写起来是同步的，跑起来是异步的。相比之下 Java 的异步线程写法就复杂得多，而且 Java 一直以来都被吐槽太过繁琐。</p>
+<p>目前 Java 也有在推动协程库的开发，这个就是 <a target="_blank" rel="noopener" href="https://jdk.java.net/loom/">Loom</a> 项目，目前还在开发阶段。</p>
+<ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/asyncio.html#module-asyncio">asyncio --- 异步 I&#x2F;O Python 3.10.2 文档</a></li>
+<li>[2] <a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/83">协程与异步IO</a></li>
+<li>[3] <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/342525260/answer/820437729">什么情况下需要使用 Python 的 asyncio 模块</a></li>
+<li>[4] <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332042250">为什么 Java 坚持多线程不选择协程？</a></li>
+</ul>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E5%8D%8F%E7%A8%8B/" rel="tag">协程</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

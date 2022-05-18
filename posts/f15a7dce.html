@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>Redis systemd 服务和 daemon no 配置的冲突问题 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=技术,Redis>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">Redis systemd 服务和 daemon no 配置的冲突问题</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-01-16</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>Ubuntu 虚拟机安装 Reis，<code>sudo apt install redis -y</code>。</p>
+<p>然后照着以前的经验修改了配置文件<code>/etc/redis/redis.conf</code>，关闭保护模式，设置守护线程，去掉外网访问限制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># By default protected mode is enabled. You should disable it only if</span></span><br><span class="line"><span class="comment"># you are sure you want clients from other hosts to connect to Redis</span></span><br><span class="line"><span class="comment"># even if no authentication is configured, nor a specific set of interfaces</span></span><br><span class="line"><span class="comment"># are explicitly listed using the &quot;bind&quot; directive.</span></span><br><span class="line"><span class="comment">#protected-mode yes</span></span><br><span class="line">protected-mode no</span><br><span class="line"></span><br><span class="line"><span class="comment"># By default Redis does not run as a daemon. Use &#x27;yes&#x27; if you need it.</span></span><br><span class="line"><span class="comment"># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.</span></span><br><span class="line"><span class="comment"># daemonize yes</span></span><br><span class="line"><span class="comment"># apt 安装方式这里默认是 yes 开启守护线程，改错的就是这个地方</span></span><br><span class="line"><span class="comment"># 但是自己手动官网下压缩包这个值是 no，才要改成 yes</span></span><br><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line"><span class="comment"># IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span></span><br><span class="line"><span class="comment"># JUST COMMENT THE FOLLOWING LINE.</span></span><br><span class="line"><span class="comment"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span><br><span class="line"><span class="comment">#bind 127.0.0.1 ::1</span></span><br></pre></td></tr></table></figure>
+
+<p>因为当时没有立刻重启验证没发现问题，后来过几天用到了 Redis 测试能直接连接就直接用了。然后在跑项目的时候就出问题了。项目中有用到 Lua 脚本，项目刚启动的时候没问题，但过一两分钟就会报 <code>NOSCRIPT No matching script. Please use EVAL</code> 脚本找不到的问题，在服务器上查询脚本是否存在：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SCRIPT EXISTS 54a45387997c486efb954b3bf990f34881e41b7a</span><br><span class="line">1) (<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; SCRIPT EXISTS 54a45387997c486efb954b3bf990f34881e41b7a</span><br><span class="line">1) (<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+
+<p>项目启动加载 Lua 脚本到 Redis 一开始存在，一会就没了，奇怪，看看 systemd status：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl status redis-server.service</span><br><span class="line">● redis-server.service - Advanced key-value store</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: activating (start) since Mon 2022-01-17 22:16:03 CST; 54s ago</span><br><span class="line">       Docs: http://redis.io/documentation,</span><br><span class="line">             man:redis-server(1)</span><br><span class="line">Cntrl PID: 14160 (redis-server)</span><br><span class="line">      Tasks: 4 (<span class="built_in">limit</span>: 4612)</span><br><span class="line">     Memory: 1.9M</span><br><span class="line">     CGroup: /system.slice/redis-server.service</span><br><span class="line">             └─14160 /usr/bin/redis-server *:6379</span><br><span class="line"></span><br><span class="line">Jan 17 22:16:03 vb-ubuntu systemd[1]: Starting Advanced key-value store...</span><br></pre></td></tr></table></figure>
+
+<p>还在 activating 中，但此时 Redis 是已经可以访问的了，再看看 journalctl 的日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ journalctl -b -u redis-server</span><br><span class="line">-- Logs begin at Tue 2021-11-16 10:31:34 CST, end at Mon 2022-01-17 22:30:57 CST. --</span><br><span class="line">Jan 16 16:49:47 vb-ubuntu systemd[1]: Starting Advanced key-value store...</span><br><span class="line">Jan 16 16:51:18 vb-ubuntu systemd[1]: redis-server.service: start operation timed out. Terminating.</span><br><span class="line">Jan 16 16:51:18 vb-ubuntu systemd[1]: redis-server.service: Failed with result <span class="string">&#x27;timeout&#x27;</span>.</span><br><span class="line">Jan 16 16:51:18 vb-ubuntu systemd[1]: Failed to start Advanced key-value store.</span><br><span class="line">Jan 16 16:51:19 vb-ubuntu systemd[1]: redis-server.service: Scheduled restart job, restart counter is at 1.</span><br><span class="line">Jan 16 16:51:19 vb-ubuntu systemd[1]: Stopped Advanced key-value store.</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 Failed with result &#39;timeout&#39; 后接着 Scheduled restart job，Redis 重启，一直循环反复。Redis   持久化并没有保存 Lua 脚本的，重启后就会丢失，所有项目会有脚本找不到的问题。</p>
+<p>此时问题很清晰了，应该是改了一些配置导致出问题，先看看 Redis 服务的配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/systemd/system/redis.service</span></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/bin/redis-server /etc/redis/redis.conf</span><br><span class="line">PIDFile=/run/redis/redis-server.pid</span><br><span class="line">TimeoutStopSec=0</span><br><span class="line">Restart=always</span><br><span class="line">Restart=no</span><br><span class="line">User=redis</span><br><span class="line">Group=redis</span><br><span class="line">RuntimeDirectory=redis</span><br><span class="line">RuntimeDirectoryMode=2755</span><br></pre></td></tr></table></figure>
+
+<p><code>Restart=always</code> 服务启动失败了也会一直尝试重启。<code>Type=forking</code> 和 <code>/etc/redis/redis.conf</code> 中的 <code>daemonize no</code> 冲突了。</p>
+<p><code>man systemd.service</code> 可以看 Type 为 forking 的解释：如果设为 forking ，那么表示 ExecStart&#x3D; 进程将会在启动过程中使用 fork() 系统调用。 也就是当所有通信渠道都已建好、启动亦已成功之后，父进程将会退出，而子进程将作为主服务进程继续运行。 这是传统UNIX守护进程的经典做法。 在这种情况下，systemd 会认为在父进程退出之后，该服务就已经启动完成。 如果使用了此种类型，那么建议同时设置 PIDFile&#x3D; 选项，以帮助 systemd 准确可靠的定位该服务的主进程。 systemd 将会在父进程退出之后 立即开始启动后继单元。</p>
+<p>“父进程将会退出，而子进程将作为主服务进程继续运行”，所以 Redis 设置为非守护进程就有问题了。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

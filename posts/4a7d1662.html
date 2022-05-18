@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>虚拟机环境配置备忘 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=技术,Linux,Docker>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">虚拟机环境配置备忘</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2021-11-16</span>
+  </div>
+  <div class="post-content">
+    
+	<div id="toc" class="toc-article">
+	  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">系统安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">设置和软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">3.1.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh"><span class="toc-number">3.2.</span> <span class="toc-text">ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker"><span class="toc-number">3.3.</span> <span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh"><span class="toc-number">3.4.</span> <span class="toc-text">zsh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%85%E7%BB%AD"><span class="toc-number">4.</span> <span class="toc-text">待续</span></a></li></ol>
+    </div>
+	
+	
+    <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>Oracle VM VirtualBox</li>
+<li>ubuntu-20.04.2-live-server-amd64.iso</li>
+</ul>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>CPU 核心根据物理机核心数拉满，待会需要装软件能更快些</p>
+<p>存储不用分区了，感觉虚拟机分区没啥意义，需要扩容的时候反而麻烦。</p>
+<p>软件源换成国内比较快的源，比如阿里（<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> ）或者清华（<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> ）的。</p>
+<p>安装的时候把 ssh 工具安装选择勾上。</p>
+<p>安装完毕会更新一些东西，不需要就可以 reboot 了，自用虚拟机也懒得安全更新了。</p>
+<p>reboot 正常重启的话到 VirtualBox 里重启。因为是服务器版本，有 cloud-init 云环境这东西，重启后关了，用不着。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> cloud-init-local cloud-init cloud-config cloud-final</span><br><span class="line">systemctl stop cloud-init-local cloud-init cloud-config cloud-final</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置和软件安装"><a href="#设置和软件安装" class="headerlink" title="设置和软件安装"></a>设置和软件安装</h2><h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>网络问题以前写过 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u012809062/article/details/118102545">VirtualBox Ubuntu20.04 网络设置</a>，懒得搬过来了。</p>
+<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>如何之前没选择安装 ssh 工具，手动安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>客户机上 <code>ssh-keygen -t rsa</code> 生成密钥</p>
+<p>Linux 上密钥位置在当前用户目录下  <code>.ssh</code> 文件夹中，Windows 上密钥位置在 <code>C:\Users\用户名\.ssh</code> 中，公钥文件为 id_rsa.pub，私钥文件为 id_rsa</p>
+<p>将公钥文件上传到当前用户目录下 <code>/home/用户/.ssh/</code> （或者想给谁 ssh 权限放谁目录下，目录不存在先创建）</p>
+<p>创建 authorized_keys 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>将公钥写入 authorized_keys 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys`</span><br></pre></td></tr></table></figure>
+<p>注意服务器机器若也想 ssh 其他机器，.ssh 目录下要是先生成 id_rsa.pub 文件，上传的客户端公钥文件改个名，别把服务器机器自己的公钥给覆盖了。</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>原软件源中的 Docker 可能不是最新版本的</p>
+<p>更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<p>使用下面的 <code>curl</code> 导入源仓库的 GPG key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<p>将 Docker APT 软件源添加到你的系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在，Docker 软件源被启用了，你可以安装软件源中任何可用的 Docker 版本。</p>
+<p>安装 Docker 最新版本，运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>非 root 用户执行 docker 命令权限不足，不想 sudo 就把用户加到 docker 用户组，重开终端即生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &#123;用户名&#125;</span><br></pre></td></tr></table></figure>
+
+<p>想在 IDEA 或其他工具连接管理容器可以开启远程模式。</p>
+<p>编辑 docker 服务，加上远程监听服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /lib/systemd/system/docker.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H fd:// --containerd=/run/containerd/containerd.sock</span><br></pre></td></tr></table></figure>
+
+<p>reload 下守护线程，重启 docker。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>根据你的 ip 访问 http:&#x2F;&#x2F;{ip}:2375&#x2F;version，可以看到版本信息就行了。另外在 IDEA 连接 Docker 的时候需要把代理（HTTP Proxy 那地方）关了，否则连接可以会报异常<code>java.io.IOException: unexpected end of stream</code>。</p>
+<h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p>github raw 被墙，不想脚本安装就先装 zsh，再克隆git库配置一下就好了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line"><span class="built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>vi ~&#x2F;.zshrc   修改主题</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#ZSH_THEME=<span class="string">&quot;robbyrussell&quot;</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;ys&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>echo $SHELL</code>  查看默认 shell</p>
+<p><code>chsh -s /bin/zsh</code>   设置 zsh 为默认 shell</p>
+<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2><p>...</p>
+<p>一些常用的命令配置可以写成脚本一键执行更简单。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

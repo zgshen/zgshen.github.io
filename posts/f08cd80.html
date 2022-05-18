@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>微服务要点梳理 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=面试>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">微服务要点梳理</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2020-12-22</span>
+  </div>
+  <div class="post-content">
+    
+	<div id="toc" class="toc-article">
+	  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E6%96%BD%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A5%BD%E5%A4%84"><span class="toc-number">1.</span> <span class="toc-text">1. 实施微服务好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">2. 带来的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Spring-Cloud-%E7%BB%84%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3. Spring Cloud 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%99%90%E6%B5%81%E6%96%B9%E6%B3%95%EF%BC%88%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E3%80%81%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7%E3%80%81%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E4%BF%9D%E6%8A%A4%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">4. 限流方法（流量控制、熔断降级、系统负载保护）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">5. 限流算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">6. 负载均衡方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-number">7.</span> <span class="toc-text">7. 分布式锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-CAP%E7%90%86%E8%AE%BA"><span class="toc-number">8.</span> <span class="toc-text">8. CAP理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-BASE-%E7%90%86%E8%AE%BA"><span class="toc-number">9.</span> <span class="toc-text">9. BASE 理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-number">10.</span> <span class="toc-text">10. 分布式事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6"><span class="toc-number">11.</span> <span class="toc-text">11. 分布式事务框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Seata-4%E7%A7%8D%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text">12. Seata 4种事务模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA"><span class="toc-number">13.</span> <span class="toc-text">13. 分布式链路跟踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%88%86%E5%B8%83%E5%BC%8F-id-%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">14. 分布式 id 生成方式</span></a></li></ol>
+    </div>
+	
+	
+    <blockquote>
+<p>微服务是一种用于构建应用的架构方案。微服务架构有别于更为传统的单体式方案，可将应用拆分成多个核心功能。每个功能都被称为一项服务，可以单独构建和部署，这意味着各项服务在工作（和出现故障）时不会相互影响。</p>
+</blockquote>
+<span id="more"></span>
+
+<!-- TOC -->
+
+<ul>
+<li><a href="#1-%E5%AE%9E%E6%96%BD%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%A5%BD%E5%A4%84">1. 实施微服务好处</a></li>
+<li><a href="#2-%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98">2. 带来的问题</a></li>
+<li><a href="#3-spring-cloud-%E7%BB%84%E4%BB%B6">3. Spring Cloud 组件</a></li>
+<li><a href="#4-%E9%99%90%E6%B5%81%E6%96%B9%E6%B3%95%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E4%BF%9D%E6%8A%A4">4. 限流方法（流量控制、熔断降级、系统负载保护）</a></li>
+<li><a href="#5-%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95">5. 限流算法</a></li>
+<li><a href="#6-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%B3%95">6. 负载均衡方法</a></li>
+<li><a href="#7-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81">7. 分布式锁</a></li>
+<li><a href="#8-cap%E7%90%86%E8%AE%BA">8. CAP理论</a></li>
+<li><a href="#9-base-%E7%90%86%E8%AE%BA">9. BASE 理论</a></li>
+<li><a href="#10-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1">10. 分布式事务</a></li>
+<li><a href="#11-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6">11. 分布式事务框架</a></li>
+<li><a href="#12-seata-4%E7%A7%8D%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F">12. Seata 4种事务模式</a></li>
+<li><a href="#13-%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA">13. 分布式链路跟踪</a></li>
+<li><a href="#14-%E5%88%86%E5%B8%83%E5%BC%8F-id-%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F">14. 分布式 id 生成方式</a></li>
+</ul>
+<!-- /TOC -->
+
+<h3 id="1-实施微服务好处"><a href="#1-实施微服务好处" class="headerlink" title="1. 实施微服务好处"></a>1. 实施微服务好处</h3><ul>
+<li>针对特定服务发布，影响小，风险小，成本低</li>
+<li>频繁发布版本，快速交付需求</li>
+<li>低成本扩容，弹性伸缩，适应云环境</li>
+</ul>
+<h3 id="2-带来的问题"><a href="#2-带来的问题" class="headerlink" title="2. 带来的问题"></a>2. 带来的问题</h3><ul>
+<li>分布式系统的复杂性</li>
+<li>部署，测试和监控的成本问题</li>
+<li>分布式事务和CAP的相关问题</li>
+</ul>
+<h3 id="3-Spring-Cloud-组件"><a href="#3-Spring-Cloud-组件" class="headerlink" title="3. Spring Cloud 组件"></a>3. Spring Cloud 组件</h3><ul>
+<li>注册中心 Eureka，其他的还有 Zookeeper、Consul 和 Nacos。用于服务发现；</li>
+<li>配置中心 Spring Cloud Config</li>
+<li>网关 Spring Gateway 和 Zuul</li>
+<li>客户端负载均衡 Ribbon，默认策略是轮询</li>
+<li>断路器 Hystix</li>
+<li>RPC 客户端 Feign</li>
+</ul>
+<h3 id="4-限流方法（流量控制、熔断降级、系统负载保护）"><a href="#4-限流方法（流量控制、熔断降级、系统负载保护）" class="headerlink" title="4. 限流方法（流量控制、熔断降级、系统负载保护）"></a>4. 限流方法（流量控制、熔断降级、系统负载保护）</h3><ul>
+<li>Hystrix 熔断策略基于异常比率；限流基于 QPS，支持基于调用关系的限流</li>
+<li>Sentinel  熔断策略基于响应时间、异常比率、异常数；限流支持有限（并发线程数或信号量大小）</li>
+<li>Redis + Lua 脚本。<br>  判断 key 是否存在，若不存在设置 key 过期时间和对应 value 为1；<br>  若存在判断在过期时间内 key 对应的 value 值是否大于限制数量，大于返回 false，小于自增加2并返回 true。</li>
+</ul>
+<h3 id="5-限流算法"><a href="#5-限流算法" class="headerlink" title="5. 限流算法"></a>5. 限流算法</h3><ul>
+<li>计数器（固定窗口）</li>
+<li>滑动窗口（Sentinel）</li>
+<li>漏桶（Java 线程池）</li>
+<li>令牌桶（Guava RateLimiter）</li>
+</ul>
+<h3 id="6-负载均衡方法"><a href="#6-负载均衡方法" class="headerlink" title="6. 负载均衡方法"></a>6. 负载均衡方法</h3><ul>
+<li>随机</li>
+<li>轮询</li>
+<li>加权响应：响应时间短的权重就大</li>
+</ul>
+<h3 id="7-分布式锁"><a href="#7-分布式锁" class="headerlink" title="7. 分布式锁"></a>7. 分布式锁</h3><ul>
+<li>数据库级别：读频繁用乐观锁，写频繁用悲观锁<ul>
+<li>乐观锁：基于版本号实现</li>
+<li>悲观锁：基于数据库级别的 for update</li>
+</ul>
+</li>
+<li>基于 Redis 原子性操作，使用 setnx 和 expire 实现</li>
+<li>基于 Rdisson 框架实现</li>
+<li>基于 Zookeeper，使用 InterprocessMutex 实现</li>
+</ul>
+<h3 id="8-CAP理论"><a href="#8-CAP理论" class="headerlink" title="8. CAP理论"></a>8. CAP理论</h3><ul>
+<li>Consistency 一致性：写之后的操作，必须返回该值。分布式系统中任意一个节点都会查询到相同的信息。</li>
+<li>Availability 可用性：正常响应时间，服务一直可用。只要收到用户请求，服务器就必须做出响应。</li>
+<li>Partition tolerance 分区容错性：区之间通讯可能失败，容忍某些区奔溃。当部分节点出现问题的时候，系统依然能正常堆外提供服务。</li>
+</ul>
+<h3 id="9-BASE-理论"><a href="#9-BASE-理论" class="headerlink" title="9. BASE 理论"></a>9. BASE 理论</h3><ul>
+<li>Basically Available（基本可用）</li>
+<li>Soft state（软状态）</li>
+<li>Eventually consistent（最终一致性）</li>
+</ul>
+<h3 id="10-分布式事务"><a href="#10-分布式事务" class="headerlink" title="10. 分布式事务"></a>10. 分布式事务</h3><p>分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。常用的解决方案有：</p>
+<ul>
+<li>基于 XA 协议的 2PC （两阶段提交）和 3PC。Seata 常用模式</li>
+<li>基于业务层的 TCC 方案。Try Confirm Cancel 三阶段，代码实现复杂度相对较高</li>
+<li>使用应用消息队列 + 本地消息表实现的最终一致性方案。跨行转账可通过该方案实现。目前市面上支持该方案的 mq 只有阿里的 rocketmq，单消息队列可用于：<ul>
+<li>用户注册成功后发送邮件</li>
+<li>电商系统给用户发送优惠券</li>
+</ul>
+</li>
+<li>最大努力通知。例如支付回调和其他一些回调通知</li>
+</ul>
+<h3 id="11-分布式事务框架"><a href="#11-分布式事务框架" class="headerlink" title="11. 分布式事务框架"></a>11. 分布式事务框架</h3><ul>
+<li>Seata：提供 AT、TCC、SAGA 和 XA 事务模式</li>
+<li>TX-LCN：提供LCN（2pc）、TCC、TXC 三种事务模式</li>
+<li>Raincat</li>
+</ul>
+<h3 id="12-Seata-4种事务模式"><a href="#12-Seata-4种事务模式" class="headerlink" title="12. Seata 4种事务模式"></a>12. Seata 4种事务模式</h3><p>（AT、TCC、Saga、XA）模式分析<br>四种分布式事务模式，分别在不同的时间被提出，每种模式都有它的适用场景。</p>
+<ul>
+<li>AT 模式是无侵入的分布式事务解决方案，适用于不希望对业务进行改造的场景，几乎0学习成本。</li>
+<li>TCC 模式是高性能分布式事务解决方案，适用于核心系统等对性能有很高要求的场景。</li>
+<li>Saga 模式是长事务解决方案，适用于业务流程长且需要保证事务最终一致性的业务系统，Saga 模式一阶段就会提交本地事务，无锁，长流程情况下可以保证性能，多用于渠道层、集成层业务系统。事务参与者可能是其它公司的服务或者是遗留系统的服务，无法进行改造和提供 TCC 要求的接口，也可以使用 Saga 模式。</li>
+<li>XA模式是分布式强一致性的解决方案，但性能低而使用较少。</li>
+</ul>
+<h3 id="13-分布式链路跟踪"><a href="#13-分布式链路跟踪" class="headerlink" title="13. 分布式链路跟踪"></a>13. 分布式链路跟踪</h3><ul>
+<li>Spring Cloud Sleuth</li>
+<li>ZipKin</li>
+</ul>
+<h3 id="14-分布式-id-生成方式"><a href="#14-分布式-id-生成方式" class="headerlink" title="14. 分布式 id 生成方式"></a>14. 分布式 id 生成方式</h3><ul>
+<li>UUID</li>
+<li>数据库自增 ID</li>
+<li>号段模式</li>
+<li>Redis</li>
+<li>雪花算法</li>
+</ul>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

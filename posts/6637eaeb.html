@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>再探枚举类Enum - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=技术,Java>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">再探枚举类Enum</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-03-29</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>枚举类是 Java 很常见的类了，最近在推上看到一个很有意思的枚举用法，加上执行开发中碰到的枚举的一些问题，这里记录一下。</p>
+<h3 id="枚举定义和使用场景"><a href="#枚举定义和使用场景" class="headerlink" title="枚举定义和使用场景"></a>枚举定义和使用场景</h3><p>枚举是一个被命名的整形常数的集合。在 Java 中，描述抽象的事物外面用类和接口，但有些特殊的类的属性是一组固定的常数集合，那么就可以用枚举来表示，典型的例子比如星期有周日到周一，人类的性别有男女...嗯，如果见过国外的一些网站可能会有一些跨性别或其他选项可选，不过还是一样是常数集合。</p>
+<p>比如一个 Person 类，性别 gender 用0表示女的，1表示男的，在数据库字段也是存的0或1的tinyint类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="comment">//名字</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="comment">//性别：0女，1男</span></span><br><span class="line">    <span class="type">int</span> gender;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * getter/setter 省略</span></span><br><span class="line"><span class="comment">     * ...</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式客户端拿到 Person 对象之后看到 gender 的值后，并不知道0或1代表什么，只能看注释或者文档。</p>
+<p>使用 Enum 之后的写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="comment">//名字</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="comment">//性别</span></span><br><span class="line">    Gender gender;</span><br><span class="line">    <span class="comment">//getter/setter/toString 省略</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//性别枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Gender</span> &#123;</span><br><span class="line"></span><br><span class="line">    Female(<span class="number">0</span>),</span><br><span class="line">    Male(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> gender;</span><br><span class="line">    Gender(<span class="type">int</span> gender) &#123;</span><br><span class="line">        <span class="built_in">this</span>.gender = gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getVal</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> gender;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">    p.setName(<span class="string">&quot;nathan&quot;</span>);</span><br><span class="line">    <span class="comment">//只能传入Gender存在的类型</span></span><br><span class="line">    p.setGender(Gender.Male);</span><br><span class="line"></span><br><span class="line">    System.out.println(p);</span><br><span class="line">    <span class="comment">//可以获知属性值代表什么类型</span></span><br><span class="line">    System.out.println(<span class="string">&quot;gender:&quot;</span> + p.getGender() + <span class="string">&quot;/value:&quot;</span> + p.getGender().getVal());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面可以看出，枚举类有三个好处。</p>
+<ul>
+<li>枚举也是类，可以有属性和方法</li>
+<li>类型检查和有效性检查</li>
+<li>本身就带有含义，不用像常量那样需要查询文档或注释才知道值定义</li>
+</ul>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>之前在<a target="_blank" rel="noopener" href="https://twitter.com/dblevins/status/1502481447935897601">推上</a>别人看到用 Enum 来简化时间解析，可以拥有类型和有效性检查的好处。用法是这样的;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">DateUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    yyyy_MM_dd(<span class="string">&quot;yyyy-MM-dd&quot;</span>),</span><br><span class="line">    MMM_dd_yyyy(<span class="string">&quot;MMM dd, yyyy&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DateTimeFormatter formatter;</span><br><span class="line"></span><br><span class="line">    DateUtil(<span class="keyword">final</span> String formatString) &#123;</span><br><span class="line">        formatter = DateTimeFormatter.ofPattern(formatString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LocalDate <span class="title function_">parse</span><span class="params">(<span class="keyword">final</span> String string)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> LocalDate.parse(string, formatter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">format</span><span class="params">(<span class="keyword">final</span> LocalDate date)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> formatter.format(date);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Date <span class="title function_">parseDate</span><span class="params">(<span class="keyword">final</span> String string)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Date.from(parse(string).atStartOfDay()</span><br><span class="line">                .atZone(ZoneId.systemDefault())</span><br><span class="line">                .toInstant());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">format</span><span class="params">(<span class="keyword">final</span> Date date)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> format(date.toInstant()</span><br><span class="line">                .atZone(ZoneId.systemDefault())</span><br><span class="line">                .toLocalDate());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//按照枚举定义的格式转化成LocalDate</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">parse</span> <span class="operator">=</span> DateUtil.yyyy_MM_dd.parse(<span class="string">&quot;2022-03-31&quot;</span>);</span><br><span class="line">        System.out.println(parse);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//把LocalDate转换成字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">format</span> <span class="operator">=</span> DateUtil.MMM_dd_yyyy.format(LocalDate.now());</span><br><span class="line">        System.out.println(format);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举的问题"><a href="#枚举的问题" class="headerlink" title="枚举的问题"></a>枚举的问题</h3><p>看过<a target="_blank" rel="noopener" href="https://github.com/alibaba/p3c">《阿里巴巴Java开发手册》</a>应该注意到其中对枚举类的使用做了限制，二方库里可定义枚举类型，参数可以使用枚举类型，但是接口返回值不允许使用枚举类型或者包含枚举类型的 POLO 对象。原因是使用枚举作为返回值，若 RPC 客户端和服务端版本不一致的话，会造成反序列化异常。</p>
+<p>以上面 Person 类为例，版本1的 Gender 属性有两个类型 Male 和 Female，将这个版本的 SDK 给客户端用。后来需求变化，版本2的 Gender 加了 Transgender，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Gender</span> &#123;</span><br><span class="line"></span><br><span class="line">    Female(<span class="number">0</span>),</span><br><span class="line">    Male(<span class="number">1</span>),</span><br><span class="line">    Transgender(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> gender;</span><br><span class="line">    Gender(<span class="type">int</span> gender) &#123;</span><br><span class="line">        <span class="built_in">this</span>.gender = gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getVal</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> gender;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果客户端还是使用旧的 SDK 的进行请求调用的话，涉及序列化就会出现错误。</p>
+<p>以 Jackson 的序列化反序列化为例，Gender 新加类型序列化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//版本2</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">p.setName(<span class="string">&quot;nathan&quot;</span>);</span><br><span class="line">p.setGender(Gender.Transgender);</span><br><span class="line"><span class="type">String</span> <span class="variable">ps</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>().writeValueAsString(p);</span><br><span class="line"><span class="comment">//&#123;&quot;name&quot;:&quot;nathan&quot;,&quot;gender&quot;:&quot;Transgender&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>客户端反序列化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">pStr</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;name\&quot;:\&quot;nathan\&quot;,\&quot;gender\&quot;:\&quot;Transgender\&quot;&#125;&quot;</span>;</span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> mapper.readValue(pStr, Person.class);</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.InvalidFormatException: Can not construct instance of com.review.enumtest.Gender from String value &#x27;Transgender&#x27;: value not one of declared Enum instance names: [Female, Male]</span><br><span class="line"> at [Source: &#123;&quot;name&quot;:&quot;nathan&quot;,&quot;gender&quot;:&quot;Transgender&quot;&#125;; line: 1, column: 17] (through reference chain: com.review.enumtest.Person[&quot;gender&quot;])</span><br></pre></td></tr></table></figure>
+
+<p>解决方法就是接口返回值不要用枚举，或者客户端需要自行处理不存在枚举类型，比如转换成 null 或者设置为默认值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">pStr</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;name\&quot;:\&quot;nathan\&quot;,\&quot;gender\&quot;:\&quot;Transgender\&quot;&#125;&quot;</span>;</span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> mapper</span><br><span class="line">                .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, <span class="literal">true</span>)</span><br><span class="line">                .readValue(pStr, Person.class);</span><br></pre></td></tr></table></figure>
+
+<p>两种处理方式的分歧是在认为枚举应不应该允许变化的，使用哪种看自己业务的需求。可以看看<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/52760637">知乎</a>上关于 Enum 反序列化问题的讨论。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

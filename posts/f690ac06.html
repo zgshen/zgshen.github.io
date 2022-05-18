@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>把 Tiddlywiki 整合到 Hexo 中一起部署 - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=Tiddlywiki,Hexo>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">把 Tiddlywiki 整合到 Hexo 中一起部署</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-01-20</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>最近在找一款 wiki 用来记录一些系统化的知识和笔记，发现了 <a target="_blank" rel="noopener" href="https://tiddlywiki.com/">TiddlyWiki</a> 这个东西。TiddlyWiki 是一个仅由单个 HTML 文件组成的非网络应用的 Wiki 程序，不依赖数据库存储数据，非常有特色，能装插件，玩法也比较多。</p>
+<p>后来想到既然最后发布到互联网都是静态文件，那就放到 Hexo 一起部署好了，不需要再搞一个服务来放 TiddlyWiki 的单 HTML 文件了。</p>
+<p>我们可以将 TiddlyWiki 的单 HTML 文件放到 Hexo 的 public&#x2F;wiki 文件夹中，在网站放个 &#x2F;wiki 入口，随着 Hexo 的提交部署就可以访问了。但随着 wiki 越写越多，生成的单 HTML 文件越来越大，push 也慢，我们不用这种方式。其实我们只关心写东西，其他麻烦的事情全都交给 GitHub Action 或其他自动化部署工具来做就行了。下面是整合的步骤。</p>
+<h3 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h3><p>先安装 TiddlyWiki：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g tiddlywiki</span><br><span class="line">tiddlywiki  --version</span><br></pre></td></tr></table></figure>
+
+<p>在 Hexo 根目录下初始化一个 TiddlyWiki：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tiddlywiki tiddlywiki --init server</span><br></pre></td></tr></table></figure>
+
+<p>我们写的 wiki 的源文件就放在 tiddlywiki&#x2F;tiddlers 文件夹中，类似 Hexo 的 source&#x2F;_posts 文件夹。</p>
+<h3 id="修改-GitHub-Action-脚本"><a href="#修改-GitHub-Action-脚本" class="headerlink" title="修改 GitHub Action 脚本"></a>修改 GitHub Action 脚本</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">hexo-blog</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">source</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">hexo-blog</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">node</span> </span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;12.x&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">ACTION_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          mkdir -p ~/.ssh/</span></span><br><span class="line"><span class="string">          echo &quot;$ACTION_DEPLOY_KEY&quot; &gt; ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          chmod 600 ~/.ssh/id_rsa</span></span><br><span class="line"><span class="string">          ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span></span><br><span class="line"><span class="string">          git config --global user.email &quot;xx@xx.com&quot;</span></span><br><span class="line"><span class="string">          git config --global user.name &quot;yourname&quot;</span></span><br><span class="line"><span class="string">          npm install hexo-cli -g</span></span><br><span class="line"><span class="string">          npm install tiddlywiki -g</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">deploy</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          hexo clean</span></span><br><span class="line"><span class="string">          hexo g</span></span><br><span class="line"><span class="string">          tiddlywiki tiddlywiki --build index</span></span><br><span class="line"><span class="string">          mkdir public/tiddlywiki</span></span><br><span class="line"><span class="string">          mv tiddlywiki/output/index.html public/tiddlywiki</span></span><br><span class="line"><span class="string">          hexo d</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>npm install tiddlywiki -g</code> 把 tiddlywiki 也装上</li>
+<li><code>hexo g</code> 执行生成静态文件到 public 文件夹中；</li>
+<li><code>tiddlywiki tiddlywiki --build index</code> 输出 index.html 文件到 tiddlywiki&#x2F;output 文件夹；</li>
+<li>在 public 创建 tiddlywiki 文件夹，再把 index.html 移过来就完事了。</li>
+</ul>
+<p>还有另外一种方法可以先在 source 文件夹下创建 wiki 目录，然后修改 GitHub Action 脚本，先生成 index.html 文件，然后移动到 source&#x2F;tiddlywiki 目录下，然后再 <code>hexo g</code> 编译也行，大概改成这样，自行测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- name: Hexo deploy</span><br><span class="line">  run: |</span><br><span class="line">    hexo clean</span><br><span class="line">    <span class="built_in">mkdir</span> <span class="built_in">source</span>/tiddlywiki</span><br><span class="line">    tiddlywiki tiddlywiki --build index</span><br><span class="line">    <span class="built_in">mv</span> tiddlywiki/output/index.html <span class="built_in">source</span>/tiddlywiki</span><br><span class="line">    <span class="comment"># hexo g 应该都可以不写了</span></span><br><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br></pre></td></tr></table></figure>
+
+<p>不过要设置下 Hexo 不要把 index.html 也编译了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml skip_render 配置，编译渲染忽略 v 下的所有文件</span></span><br><span class="line">skip_render: [tiddlywiki/**]</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<ul>
+<li><a href="https://zguishen.com/">主页</a></li>
+<li><a href="https://zguishen.com/tiddlywiki/">wiki</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>[1] <a href="https://zguishen.com/posts/936b5ee4.html">Hexo 自动化部署的参考 GitHub Actions deploy Hexo blog</a></li>
+<li>[2] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Tiddlywiki">Tiddlywiki - 维基百科，自由的百科全书</a></li>
+</ul>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Tiddlywiki/" rel="tag">Tiddlywiki</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

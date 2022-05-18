@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>升级一下 Hexo - zguishen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=技术,blog>
+  
+    <meta name="description" content="zgshen,zguishen,甘甘">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="zguishen&#39;s blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <script data-ad-client="ca-pub-2187290877628564" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+  <script>
+    pangu.spacingElementByClassName('post');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+  <body>
+    <div class="container">
+      <article class="post">
+  <div class="post-title">
+    <h1 class="article-title">升级一下 Hexo</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-01-04</span>
+  </div>
+  <div class="post-content">
+    
+	
+    <p>GitHub 提醒 Hexo 有一个安全问题 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4838">CVE-2021-25987</a>，需要升级到最新版本。</p>
+<p>把 package.json 修改 Hexo 版本为 6.0.0，推送看 GitHub Action 任务，有错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">WARN  Deprecated config detected: <span class="string">&quot;external_link&quot;</span> with a Boolean value is deprecated. See https://hexo.io/docs/configuration <span class="keyword">for</span> more details.</span><br><span class="line">FATAL TypeError: Object.fromEntries is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+
+<p>一个是 external_link 属性要过时了的警告，一个是函数不存在问题。</p>
+<p>看下 Hexo 的<a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration#Writing">配置文档</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">external_link	Open external links <span class="keyword">in</span> a new tab?	</span><br><span class="line">external_link.enable	Open external links <span class="keyword">in</span> a new tab?	<span class="literal">true</span></span><br><span class="line">external_link.field	Applies to the whole site or post only	site</span><br><span class="line">external_link.exclude	Exclude hostname. Specify subdomain when applicable, including www	[]</span><br></pre></td></tr></table></figure>
+
+<p>external_link 配置有变化，在 _config.yml 改为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">external_link:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  field: site <span class="comment"># Apply to the whole site</span></span><br><span class="line">  exclude: <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>另一个错误 Object.fromEntries is not a function，是因为 Nodejs 版本低了，需要 12.x 以上版本才行。</p>
+<p>修改自动化部署配置文件 HexoCI.yml，Nodejs 版本改成 12.x。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- name: Setup node </span><br><span class="line">  uses: actions/setup-node@v1</span><br><span class="line">  with:</span><br><span class="line">    node-version: &#x27;12.x&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>package.json 中一些比较老的依赖也可以随手升级下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">D:\application\hexo&gt;npm outdated</span><br><span class="line">Package                       Current  Wanted  Latest  Location  Depended by</span><br><span class="line">hexo                          MISSING   6.0.0   6.0.0  -         hexo</span><br><span class="line">hexo-abbrlink                 MISSING   2.2.1   2.2.1  -         hexo</span><br><span class="line">hexo-deployer-git             MISSING   0.2.0   3.0.0  -         hexo</span><br><span class="line">hexo-generator-archive        MISSING   0.1.5   1.0.0  -         hexo</span><br><span class="line">hexo-generator-baidu-sitemap  MISSING   0.1.9   0.1.9  -         hexo</span><br><span class="line">hexo-generator-category       MISSING   0.1.3   1.0.0  -         hexo</span><br><span class="line">hexo-generator-feed           MISSING   1.2.2   3.0.0  -         hexo</span><br><span class="line">hexo-generator-index          MISSING   0.2.1   2.0.0  -         hexo</span><br><span class="line">hexo-generator-json-content   MISSING   3.0.1   4.2.3  -         hexo</span><br><span class="line">hexo-generator-search         MISSING   2.4.3   2.4.3  -         hexo</span><br><span class="line">hexo-generator-sitemap        MISSING   1.2.0   2.2.0  -         hexo</span><br><span class="line">hexo-generator-tag            MISSING   0.2.0   1.0.0  -         hexo</span><br><span class="line">hexo-renderer-ejs             MISSING   0.2.0   2.0.0  -         hexo</span><br><span class="line">hexo-renderer-marked          MISSING  0.2.11   4.1.0  -         hexo</span><br><span class="line">hexo-renderer-pug             MISSING   0.0.5   2.0.0  -         hexo</span><br><span class="line">hexo-renderer-sass            MISSING   0.3.2   0.4.0  -         hexo</span><br><span class="line">hexo-renderer-scss            MISSING   1.2.0   1.2.0  -         hexo</span><br><span class="line">hexo-renderer-stylus          MISSING   0.3.3   2.0.1  -         hexo</span><br><span class="line">hexo-server                   MISSING   0.2.2   3.0.0  -         hexo</span><br><span class="line">node-sass                     MISSING   5.0.0   7.0.1  -         hexo</span><br></pre></td></tr></table></figure>
+
+<p>我懒得升级，等有问题再看吧。</p>
+<h3 id="2022-03-06-升级"><a href="#2022-03-06-升级" class="headerlink" title="2022-03-06 升级"></a>2022-03-06 升级</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">hexo -v</span><br><span class="line"><span class="comment"># 升级覆盖安装</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 新建目录初始化 hexo</span></span><br><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="comment"># 再看下版本</span></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>之前的版本 hexo 一些依赖可能已经没用了，比如 <code>node-sass</code> 早该弃用了。备份 package.json，把刚刚初始化的新的 package.json 复制过来，如果有用到 hexo 默认安装以外的插件，手动添加上去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主要看下三方插件用不用升级</span></span><br><span class="line"><span class="comment"># 没有新增其他依赖下面两个命令就不用执行了</span></span><br><span class="line">npm outdated</span><br><span class="line">npm install -save</span><br></pre></td></tr></table></figure>
+
+<p>例如我自己的 package.json 整理后：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo-site&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;private&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo generate&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;clean&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;deploy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo deploy&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo server&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6.0.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^5.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line"> 	  <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">	  <span class="attr">&quot;hexo-abbrlink&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.2.1&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>比默认 hexo 多加了 hexo-deployer-git 和 hexo-abbrlink 依赖，去掉了 hexo-theme-landscape 主题依赖，因为用了其他主题。</p>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    zguishen
+  </span>
+   / Documentation licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
