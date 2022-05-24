@@ -19,7 +19,7 @@ sns:
 menu:
   Home: /
   #Archives: /archives
-  Tech: /tags/技术/
+  #Tech: /tags/技术/
   About: /about
   Search: https://www.google.com/search?q=site:zguishen.com 
   Links: /links
