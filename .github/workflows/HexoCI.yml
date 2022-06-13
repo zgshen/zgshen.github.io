@@ -32,6 +32,7 @@ jobs:
       - name: Hexo deploy
         run: |
           hexo clean
+          mv source/_posts/images source/images
           hexo g
           tiddlywiki tiddlywiki --build index
           mkdir public/tiddlywiki
