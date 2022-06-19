@@ -6,6 +6,7 @@ tags:
     - Windows 激活
     - Office 激活
 date: 2022-01-16
+toc: true
 ---
 
 I have setup a KMS server on my CentOS VPS, it allows me to significantly simply the process of activating Microsoft products on the corporate network.

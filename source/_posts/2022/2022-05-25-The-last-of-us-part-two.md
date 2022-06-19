@@ -4,6 +4,7 @@ categories: 生活
 tags: 
     - 游戏
 date: 2022-05-25
+toc: true
 ---
 
 > May Your Survival Be Long. May Your Death Be Swift.
