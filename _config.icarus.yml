@@ -240,7 +240,7 @@ widgets:
                 url: https://github.com/zgshen
             Twitter:
                 icon: fab fa-twitter
-                url: https://twitter.com
+                url: https://twitter.com/gangan193
             RSS:
                 icon: fas fa-rss
                 url: /atom.xml
