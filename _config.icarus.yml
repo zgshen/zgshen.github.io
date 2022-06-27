@@ -110,6 +110,8 @@ navbar:
         Categories: /categories
         Tags: /tags
         About: /about
+        Wiki: https://wiki.zguishen.com/
+        Notion: https://notion.zguishen.com/
     # Links to be shown on the right of the navigation bar
     links:
         Download on GitHub:
@@ -224,7 +226,7 @@ widgets:
         # Author title
         author_title: Software Engineer
         # Author's current location
-        location: +86-020
+        location: Guangzhou China
         # URL or path to the avatar image
         avatar: /images/blog/avatar.jpeg
         # Whether show the rounded avatar image

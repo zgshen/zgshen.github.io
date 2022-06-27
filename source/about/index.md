@@ -22,17 +22,3 @@ comments: false
 ```
 
 联系方式： [Mail](mailto:zguishen@foxmail.com) / [Github](https://github.com/) / [Twitter](https://twitter.com/gangan193)
-
-个人服务：
-
-Notion [http://notion.zguishen.com/](http://notion.zguishen.com/)
-
-Wiki [http://wiki.zguishen.com/](http://wikizguishen.com/)
-
-导航 [http://nav.zguishen.com/](http://nav.zguishen.com/)
-
-Steam:
-[![Steam](https://card.exophase.com/1/1587571.png)](https://www.exophase.com/steam/user/nathan262/)
-
-PlayStation:
-[![PlayStation](https://card.exophase.com/1/1405886.png)](https://www.exophase.com/psn/user/guaguaer/)
