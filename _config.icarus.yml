@@ -108,8 +108,9 @@ navbar:
         Home: /
         #Archives: /archives
         Categories: /categories
-        Tags: /tags
+        #Tags: /tags
         About: /about
+        Kindle: /kindle
         Wiki: https://wiki.zguishen.com/
         Notion: https://notion.zguishen.com/
     # Links to be shown on the right of the navigation bar
@@ -271,14 +272,14 @@ widgets:
         position: left
         type: categories
     # Archives posts widget configurations
-    #-
-        # Where should the widget be placed, left sidebar or right sidebar
-        #position: right
-        #type: archives
-    # Tags widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: right
+        type: archives
+    # Tags widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
         type: tags
     
 # Plugin configurations

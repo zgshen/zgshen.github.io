@@ -34,7 +34,7 @@ function hasColumn(widgets, position, config, page) {
 
 function getColumnCount(widgets, config, page) {
     // if post url, return 4, 75%
-    if (page.__post) return 4;
+    if (page.__post || page.__page) return 4;
     return [hasColumn(widgets, 'left', config, page), hasColumn(widgets, 'right', config, page)].filter(v => !!v).length + 1;
 }
 
@@ -72,7 +72,7 @@ class Widgets extends Component {
         const columnCount = getColumnCount(config.widgets, config, page);
 
         // if post url, hide right widget
-        if (page.__post && position==='right') {
+        if ((page.__post || page.__page) && position==='right') {
             return null;
         }
 
