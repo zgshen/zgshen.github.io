@@ -8,7 +8,7 @@ comments: false
 
 喜欢打游戏/鼓捣电子产品/开发程序/科幻星际作品等等。
 
-愿意尝试各种新事物，兴趣爱好广泛杂乱，门门懂,样样瘟。
+愿意尝试各种新事物，兴趣爱好广泛杂乱，门门懂，样样瘟。
 
 欢迎和我交换友链，评论区留言博客名称和链接。
 
@@ -17,7 +17,8 @@ comments: false
 ```
 名称 zguishen's blog
 链接 http://zguishen.com/
-头像 http://zguishen.com/avatar.png
+头像圆 http://zguishen.com/images/blog/avatar.png
+头像方 http://zguishen.com/images/blog/avatar_square.png
 订阅 http://zguishen.com/atom.xml
 ```
 
