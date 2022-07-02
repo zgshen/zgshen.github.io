@@ -17,8 +17,8 @@ comments: false
 ```
 名称 zguishen's blog
 链接 http://zguishen.com/
-头像圆 http://zguishen.com/images/blog/avatar.png
-头像方 http://zguishen.com/images/blog/avatar_square.png
+头像圆 http://zguishen.com/images/blog/avatar.jpeg
+头像方 http://zguishen.com/images/blog/avatar_square.jpeg
 订阅 http://zguishen.com/atom.xml
 ```
 
