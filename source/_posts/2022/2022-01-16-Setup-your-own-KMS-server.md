@@ -3,8 +3,8 @@ title: Setup your own KMS server
 categories: 技术
 tags: 
     - KMS
-    - Windows 激活
-    - Office 激活
+    - Windows
+    - Office
 date: 2022-01-16
 toc: true
 ---

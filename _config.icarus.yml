@@ -176,10 +176,10 @@ donates:
     #    # URL to the "Afdian.net" personal page
     #    url: ''
     # Alipay donate button configurations
-    -
-        type: alipay
+    #-
+        #type: alipay
     #    # Alipay qrcode image URL
-        qrcode: '/images/blog/AliPay.png'
+        #qrcode: '/images/blog/AliPay.png'
     # Patreon donate button configurations
     #-
     #    type: patreon
@@ -193,10 +193,10 @@ donates:
     #    # Currency code
     #    currency_code: USD
     # Wechat donate button configurations
-    -
-        type: wechat
+    #-
+        #type: wechat
     #    # Wechat qrcode image URL
-        qrcode: '/images/blog/WeChat.png'
+        #qrcode: '/images/blog/WeChat.png'
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 #share:
