@@ -61,7 +61,7 @@ head:
         # Twitter card type (twitter:card)
         twitter_card: 
         # Twitter ID (twitter:creator)
-        twitter_id: gangan193
+        twitter_id: 
         # Twitter Site (twitter:site)
         twitter_site: 
         # Google+ profile link (deprecated)
@@ -241,9 +241,9 @@ widgets:
             Github:
                 icon: fab fa-github
                 url: https://github.com/zgshen
-            Twitter:
-                icon: fab fa-twitter
-                url: https://twitter.com/gangan193
+            #Twitter:
+                #icon: fab fa-twitter
+                #url: https://twitter.com/
             RSS:
                 icon: fas fa-rss
                 url: /atom.xml

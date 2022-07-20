@@ -21,4 +21,4 @@ comments: false
 订阅 http://zguishen.com/atom.xml
 ```
 
-联系方式： [Mail](mailto:zguishen@foxmail.com) / [Github](https://github.com/) / [Twitter](https://twitter.com/gangan193)
+联系： [Mail](mailto:zengguishen@gmail.com) / [Github](https://github.com/zgshen)
