@@ -5,7 +5,6 @@ import shutil
 template = """
 ---
 title: %s
-comments: true
 ---
 
 """
@@ -18,7 +17,8 @@ dir_name = 'kindle'
 
 def split_clippings():
     # 清空文件夹重建
-    shutil.rmtree(dir_name)
+    if os.path.exists(path):
+        shutil.rmtree(dir_name)
     os.mkdir(dir_name)
     with open("My Clippings.txt", "r", encoding="utf-8") as f:
         content = f.read()
