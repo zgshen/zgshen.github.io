@@ -1,6 +1,7 @@
 
 ---
 title: 世界经典文学名著系列:小王子The Little Prince(全英文版) (安东尼·德·圣埃克苏佩里)
+date: 2022-07-05
 ---
 
 Nevertheless he is the only one of them all who does not seem to me ridiculous.

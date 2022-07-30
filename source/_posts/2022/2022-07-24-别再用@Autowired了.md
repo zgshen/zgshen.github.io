@@ -1,0 +1,97 @@
+---
+title: 别再用@Autowired注解了
+categories: 技术
+tags: 
+  - 技术
+  - Java
+  - Spring
+date: 2022-07-24
+toc: true
+---
+
+## Spring依赖注入
+
+先看看Spring的几种依赖注入方式：构造器注入、Field 注入和Setter注入。
+
+### 构造器注入
+
+将被依赖对象通过构造函数的参数注入给依赖对象，并且在初始化对象的时候注入。Spring 推荐的注入方式，适合强制依赖用法。fi
+
+```java
+private DependencyA dependencyA;
+private DependencyB dependencyB;;
+
+// @Autowired不是必须的，在 Spring4.x 中增加了新的特性：如果类只提供了一个带参数的构造方法，则不需要对对其内部的属性写 @Autowired 注解，Spring 会自动为你注入属性。
+@Autowired
+public DI(DependencyA dependencyA, DependencyB dependencyB) {
+    this.dependencyA = dependencyA;
+    this.dependencyB = dependencyB;
+}
+```
+
+- 优点： 对象初始化完成后便可获得可使用的对象，单元测试使用 Mock 就可以无需启动 DI 容器就可以实例化。
+- 缺点： 当需要注入的对象很多时，构造器参数列表将会很长；不够灵活。若有多种注入方式，每种方式只需注入指定几个依赖，那么就需要提供多个重载的构造函数。
+
+#### Setter注入
+
+IoC Service Provider 通过调用成员变量提供的 setter 函数将被依赖对象注入给依赖类。如果有可选可变的依赖就使用 setter 注入，而且可用 @Autowired(required = false) 来指定可选依赖项，构造注入则不能这么干，因为是应用于所有构造函数。
+
+```java
+private DependencyA dependencyA;
+private DependencyB dependencyB;
+
+@Autowired
+public void setDependencyA(DependencyA dependencyA) {
+    this.dependencyA = dependencyA;
+}
+
+@Autowired(required = false)
+public void setDependencyB(DependencyB dependencyB) {
+    this.dependencyB = dependencyB;
+}
+```
+
+setter 注入比较灵活，可以选择性地注入需要的对象。
+
+#### Field注入
+
+属性注入，在 bean 变量上使用注解进行依赖注入，本质上是通过反射的方式直接注入到 field。这应该是平时开发见到最多的的一种方式。
+
+```java
+@Autowired
+private DependencyA dependencyA;
+
+@Autowired
+private DependencyB dependencyB;
+```
+
+Filed 注入是最简单方便的方式。
+
+## Field注入的局限和替代方案
+
+### 局限
+
+在以往Field注入应该是我们用的最多的依赖注入方式，直接引入bean然后在变量上使用@Autowired就行了，不过后来你会发现在IDEA会给出警告“Field injection is not recommend”。
+
+由于Field注入使用简单，我们有意无意就会引入许多依赖，当注入依赖太多的时候意味着类承担了太多的责任，这违反面向对象的单一职责原则，而且不管引入多少都没有警告，因为这种方式可以无限扩展。
+
+不过Field注入也有局限，无法在声明为final/immutable的字段上使用@Autowired注解，因为这些字段必须在类实例化的时候被初始化。
+
+再者，Field注入对单元测试也不友好，你不得不使用Spring IoC容器来创建这些bean（和IoC容器强耦合了），但是单元测试原则上要快，启动IoC容器太慢，如果是构造注入的话，我们完成可以bean当成一个普通类来创建对象，直接通过构造传入就行。
+
+### 替代方案
+
+如果不使用@Autowired，我们还可以使用JDK提供的@Resource注解，可减少与Spring的耦合，使用一样简单，所以一样会有容易滥用的问题。
+
+更推荐的方式是使用构造注入。当需要越多依赖的时候，构造参数越多，看起来很丑陋，我们可以使用Lombok来简化构造器注入。
+
+Lombok提供了三个相关的注解来简化依赖注入：
+
+- @AllArgsConstructor 用来生成包含所有字段构的造方法；
+
+- @NoArgsConstructor 用来生成无参的构造方法；
+
+- @RequiredArgsConstructor 生成的构造方法只包含声明为final或者non-null的字段。
+
+然后你会发现使用变得和Field注入差不多简单，想防止滥用还是得自己控制，把类设计好，避免包含太多职责。
+
