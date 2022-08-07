@@ -33,6 +33,9 @@ jobs:
         run: |
           hexo clean
           mv source/_posts/images source/images
+          cd source/
+          python3 kindle.py
+          cd ..
           hexo g
           tiddlywiki tiddlywiki --build index
           mkdir public/tiddlywiki

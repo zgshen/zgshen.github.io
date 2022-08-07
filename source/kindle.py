@@ -5,6 +5,7 @@ import shutil
 template = """
 ---
 title: %s
+date: %s
 ---
 
 """
@@ -31,14 +32,13 @@ def split_clippings():
         if len(note)<5:
             continue
         book_name = note[0]
-        book_name = book_name[1:len(book_name)]
-        if book_name in books:
-            # 追加
-            n = ''.join([note[3], '\n', note[1], '\n---\n\n'])
-            books[book_name]['num'] = books[book_name]['num'] + 1
-            books[book_name]['contents'].append(n)
-        else:
-            # 每本书第一条标注或笔记的日期
+        # 过滤feff空格
+        book_name = book_name.replace(u'\ufeff','')
+        # 位置和添加时间
+        inner_position = note[1]
+        inner_position = ''.join(['\n<small>', inner_position[2:len(inner_position)], '</small>'])
+        if not book_name in books:
+            # 每本书第一条标注，抽取书籍信息，标注笔记写到数组
             date = note[1].split(split_mark_date)[7]
             y = date.index('年')
             m = date.index('月')
@@ -48,7 +48,7 @@ def split_clippings():
             # 路径别带空格，不然index.md的markdown生成不了链接
             file_name = ''.join([path, date, '-', book_name.replace(' ', ''), '.md'])
             short_file_name = ''.join([date, '-', book_name.replace(' ', ''), '.html'])
-            head = ''.join([template % book_name, note[3], '\n', note[1], '\n---\n\n'])
+            head = ''.join([template % (book_name, date), note[3], '\n', inner_position, '\n\n---\n\n'])
 
             # 写到字典
             books[book_name] = {
@@ -58,6 +58,12 @@ def split_clippings():
                 'first_date':date,
                 'contents': [head]
             }
+        else:
+            # 追加写进标注数组
+            n = ''.join([note[3], '\n', inner_position, '\n\n---\n\n'])
+            books[book_name]['num'] = books[book_name]['num'] + 1
+            books[book_name]['contents'].append(n)
+        
 
 def generate_md_file():
     # 排序
@@ -72,9 +78,10 @@ def generate_md_file():
             first_date = sorted_book['first_date']
             file_name = sorted_book['file_name']
             contents = sorted_book['contents']
-            # 书籍信息
+            # 书籍信息列表写入index.md
             f.write(''.join(['- [', sorted_book_name, '](/kindle/', short_file_name, ') / ', str(num), '条 / ', first_date, '\n']))
-            # 根据书籍生成文件，写入笔记
+            
+            # 根据书籍信息生成md文件，并写入笔记
             with open(file_name, 'a') as cf:
                 for content in contents:
                     cf.write(content)

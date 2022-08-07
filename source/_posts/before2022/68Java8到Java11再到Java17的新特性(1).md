@@ -12,7 +12,7 @@ toc: true
 从 JDK8 之后，Java 的更新策略改为以时间驱动的方式，每六个月发布一个新的Java版本，每三年发表一个长期支持版本。一般如果要对旧 JDK 进行升级，都会选择长期支持版，JDK11 和最近更新的 JDK17 是长期支持版本。但是由于商业项目更看重稳定性，更新 JDK 带来的收益不大，大多数人不愿意踩坑去更新 JDK。因此，很多人都只是从新闻了解到新 JDK 的新特性，平常开发没有接触到，甚至有些在用 JDK8 的人连 JDK8 的新特性都用不利索或者直接就不知道。其实许多新特性是可以简化我们的开发，能让我们以更优雅的方式实现功能。接下来我将分三篇文章分别简单介绍 JDK8、JDK9-JDk11 和 JDK12-JDK17 在编码方面的一些新功能，至于虚拟机的改进和其他部门这里暂不做讨论。
 
 先从 Java8 开始说起，看看部分常用的新特性。
-本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java8)
+本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/java/src/com/jdk/java8)
 
 ### 1. Lambda 表达式
 

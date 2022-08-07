@@ -11,7 +11,7 @@ toc: true
 
 2021年9月14日甲骨文正式发布 Java 17，这是继 Java11 之后的又一个 LTS 版本，而且 Oracle 开始提供免费使用的许可证，并在下一个 LTS 版本之后继续提供整整一年。所以还是有限制的，一般我们都用 OpenJDK 得了，来看看 Java12 到 17 提供了哪些新的语言特性和 API。
 
-本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/src/com/jdk/java12to17)
+本文源码地址：[code-note](https://github.com/zgshen/code-note/tree/master/java/src/com/jdk/java12to17)
 
 ### 1. Switch 表达式
 
