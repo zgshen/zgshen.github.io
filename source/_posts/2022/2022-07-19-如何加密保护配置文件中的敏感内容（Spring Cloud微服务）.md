@@ -184,7 +184,7 @@ spring:
       #  service-id: lin-config-server
       #  enabled: true
 ```
-直接直接写服务端的uri地址，多个的话写discovery service-id，也就是在Eureka注册的服务id名。
+直接写服务端的uri地址，多个的话写discovery service-id，也就是在Eureka注册的服务id名。
 
 存储库则是直接写yml配置文件，比如有个服务名称是spring-test-api，配置文件的文件名根据dev和prd或其他环境可写成spring-test-api-dev.yml和spring-test-api-prd.yml等。
 
