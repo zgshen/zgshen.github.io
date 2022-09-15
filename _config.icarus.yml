@@ -110,9 +110,9 @@ navbar:
         Categories: /categories
         #Tags: /tags
         About: /about
+        Weekly: https://zguishen.notion.site/b366b4876f0c40238a1d8679e3a2e712?v=43f75e4079cc449a9a6b9b43fe6ad235
         Kindle: /kindle
         Wiki: https://wiki.zguishen.com/
-        Notion: https://notion.zguishen.com/
     # Links to be shown on the right of the navigation bar
     links:
         Download on GitHub:
