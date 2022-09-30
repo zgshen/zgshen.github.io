@@ -10,15 +10,4 @@ comments: false
 
 愿意尝试各种新事物，兴趣爱好广泛杂乱，门门懂，样样瘟。
 
-欢迎和我交换友链，评论区留言博客名称和链接。
-
-本站信息：
-
-```
-名称 zguishen's blog
-链接 http://zguishen.com/
-头像 http://zguishen.com/images/blog/avatar.jpeg
-订阅 http://zguishen.com/atom.xml
-```
-
 联系： [Mail](mailto:zengguishen@gmail.com) / [Github](https://github.com/zgshen)

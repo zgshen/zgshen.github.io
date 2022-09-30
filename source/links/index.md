@@ -1,31 +1,26 @@
 ---
-title: 收藏
+title: 友链
 type: "links"
 comments: true
 ---
 
-#### 友链
+欢迎和我交换友链，评论区留言博客名称和链接。
 
-欢迎和我交换友链，评论区留言或者到 [Github issue](https://github.com/zgshen/zgshen.github.io/issues/3) 留言。
+本站信息：
 
 ```
 名称 zguishen's blog
 链接 http://zguishen.com/
-头像 http://zguishen.com/avatar.png
+头像 http://zguishen.com/images/blog/avatar.jpeg
 订阅 http://zguishen.com/atom.xml
 ```
 
+#### 友链
+
 - [愿星光伴你左右](http://shanks.link/)  v友
 
-- ...
+- [Komi的暗影摩西岛](https://komisans.cc/)  v友
 
-#### 个人
-
-- [zguishen's navigation](https://nav.zguishen.com)
-
-- [zguishen's wiki](https://wiki.zguishen.com/)
-
-- [zguishen's notion page](https://notion.zguishen.com/)
 
 #### 其他
 
