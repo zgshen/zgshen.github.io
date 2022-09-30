@@ -2,10 +2,19 @@
 import os
 import shutil
 
+index_md = """
+---
+title: Kindle 读书笔记
+comments: false
+---
+
+"""
+
 template = """
 ---
 title: %s
 date: %s
+comments: false
 ---
 
 """
@@ -70,7 +79,8 @@ def generate_md_file():
     sorted_books = sorted(books, key = lambda i: books[i]['first_date'], reverse=True)
     index_file = path + 'index.md'
     with open(index_file, 'w') as f:
-        f.write('## Kindle 读书笔记\n\n')
+        f.write(index_md)
+        f.write('# Kindle 读书笔记\n\n')
         for sorted_book_name in sorted_books:
             sorted_book = books[sorted_book_name]
             short_file_name = sorted_book['short_file_name']

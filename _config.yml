@@ -78,7 +78,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: icarus
+theme: cactus
+theme_config:
+  colorscheme: classic
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
