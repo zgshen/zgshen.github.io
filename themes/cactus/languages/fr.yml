@@ -1,66 +1,38 @@
-common:
-    archive:
-        one: 'Archive'
-        other: 'Archives'
-    category:
-        one: 'Catégorie'
-        other: 'Catégories'
-    tag:
-        one: 'Tag'
-        other: 'Tags'
-    post:
-        one: 'Article'
-        other: 'Articles'
-    page:
-        one: 'Page'
-        other: 'Pages'
-    prev: 'Préc'
-    next: 'Suiv'
-widget:
-    follow: 'Suivre'
-    recents: 'Récents'
-    links: 'Liens'
-    catalogue: 'Catalogue'
-    subscribe_email: 'Abonnez-vous aux mises à jour'
-    subscribe: 'Abonnez-vous'
-    adsense: 'Annonce'
-    followit: 'follow.it'
-article:
-    created_at: 'Publié il y a&nbsp;%s'
-    updated_at: 'Mis à jour il y a&nbsp;%s'
-    more: 'Lire la suite'
-    comments: 'Commentaires'
-    read_time: '%s de lecture'
-    word_count:
-        one: 'Environ %d mot'
-        other: 'Environ %d mots'
-    licensing:
-        author: 'Author'
-        created_at: 'Posted on'
-        updated_at: 'Updated on'
-        licensed_under: 'Licensed under'
-donate:
-    title: "Vous aimez cet article? Soutenez l'auteur avec"
-    afdian: 'Afdian.net'
-    alipay: 'Alipay'
-    wechat: 'Wechat'
-    paypal: 'Paypal'
-    patreon: 'Patreon'
-    buymeacoffee: 'Achetez-moi un café'
-plugin:
-    backtotop: 'Retour au sommet'
-    visit_count: '%s&nbsp;visites'
-    visitor_count: 'Visité par %s utilisateurs'
-    cookie_consent:
-      message: Ce site Web utilise des cookies pour améliorer votre expérience.
-      dismiss: Je l'ai!
-      allow: Autorise les cookies
-      deny: Déclin
-      link: Apprendre encore plus
-      policy: Politique relative aux cookies
+nav:
+  home: Accueil
+  about: A propos
+  articles: Archives
+  projects: Projets
+  search: Rechercher
+
+footer:
+  copyright: Copyright
+
+index:
+  find_me_on: Retrouve moi sur
+  enum_comma: ','
+  enum_and: et
+  articles: Articles
+  projects: Projets
+
+post:
+  desktop:
+    previous: Article précédent
+    next: Article suivant
+    back_to_top: Retour en haut
+    share: Partager
+  mobile:
+    menu: Menu
+    toc: Sections
+    back_to_top: Début
+    share: Partager
+
 search:
-    search: 'Search'
-    hint: 'Type something...'
-    no_result: 'Aucun résultat pour'
-    untitled: '(Sans titre)'
-    empty_preview: '(Pas de prévisualisation)'
+  search: rechercher...
+  no_results: Aucun résultat trouvé.
+
+pagination:
+  page: Page %d sur %d
+
+comments:
+  no_js: Veuillez activer JavaScript pour voir les réactions.

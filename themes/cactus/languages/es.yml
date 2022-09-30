@@ -1,67 +1,38 @@
-#By SrWoOoW
-common:
-    archive:
-        one: 'Archivo'
-        other: 'Archivos'
-    category:
-        one: 'Categoría'
-        other: 'Categorías'
-    tag:
-        one: 'Etiqueta'
-        other: 'Etiquetas'
-    post:
-        one: 'Entrada'
-        other: 'Entradas'
-    page:
-        one: 'Página'
-        other: 'Páginas'
-    prev: 'Anterior'
-    next: 'Siguiente'
-widget:
-    follow: 'SEGUIR'
-    recents: 'Recientes'
-    links: 'Enlaces'
-    catalogue: 'Catálogo'
-    subscribe_email: 'Suscríbete para recibir actualizaciones'
-    subscribe: 'Suscribir'
-    adsense: 'Anuncio'
-    followit: 'follow.it'
-article:
-    created_at: 'Publicado hace&nbsp;%s'
-    updated_at: 'Actualizado hace&nbsp;%s'
-    more: 'Leer más'
-    comments: 'Comentarios'
-    read_time: '%s de lectura'
-    word_count:
-        one: 'Aproximadamente %d palabra'
-        other: 'Aproximadamente %d palabras'
-    licensing:
-        author: 'Author'
-        created_at: 'Posted on'
-        updated_at: 'Updated on'
-        licensed_under: 'Licensed under'
-donate:
-    title: '¿Te gusta este artículo? Apoya al autor con'
-    afdian: 'Afdian.net'
-    alipay: 'Alipay'
-    wechat: 'Wechat'
-    paypal: 'Paypal'
-    patreon: 'Patreon'
-    buymeacoffee: 'Cómprame un café'
-plugin:
-    backtotop: 'Volver arriba'
-    visit_count: '%s&nbsp;visitas'
-    visitor_count: 'Visitado por %s usuarios'
-    cookie_consent:
-      message: Este sitio web utiliza cookies para mejorar su experiencia.
-      dismiss: ¡Entendido!
-      allow: Permitir cookies
-      deny: Descenso
-      link: Aprende más
-      policy: Política de cookies
+nav:
+  home: Inicio
+  about: Acerca de
+  articles: Articulos
+  projects: Proyectos
+  search: Buscar
+
+footer:
+  copyright: Copyright
+
+index:
+  find_me_on: Encuentrame en
+  enum_comma: ','
+  enum_and: y
+  articles: Articulos
+  projects: Proyectos
+
+post:
+  desktop:
+    previous: Post Anterior
+    next: Post Siguiente
+    back_to_top: Arriba
+    share: Compartir Post
+  mobile:
+    menu: Menu
+    toc: TOC
+    back_to_top: Top
+    share: Compartir
+
 search:
-    search: 'Buscar'
-    hint: 'Teclea algo...'
-    no_result: 'No hay resultados para'
-    untitled: '(Sin título)'
-    empty_preview: '(Sin vista previa)'
+  search: Buscar...
+  no_results: No se encontraron resultados.
+
+pagination:
+  page: Pagina %d de %d
+
+comments:
+  no_js: Por favor activa JavaScript para ver el contenido.

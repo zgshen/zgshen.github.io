@@ -1,66 +1,73 @@
-common:
-    archive:
-        one: 'Archive'
-        other: 'Archives'
-    category:
-        one: 'Category'
-        other: 'Categories'
-    tag:
-        one: 'Tag'
-        other: 'Tags'
-    post:
-        one: 'Post'
-        other: 'Posts'
-    page:
-        one: 'Page'
-        other: 'Pages'
-    prev: 'Previous'
-    next: 'Next'
-widget:
-    follow: 'Follow'
-    recents: 'Recents'
-    links: 'Links'
-    catalogue: 'Catalogue'
-    subscribe_email: 'Subscribe for updates'
-    subscribe: 'Subscribe'
-    adsense: 'Advertisement'
-    followit: 'follow.it'
-article:
-    created_at: 'Posted&nbsp;%s'
-    updated_at: 'Updated&nbsp;%s'
-    more: 'Read more'
-    comments: 'Comments'
-    read_time: '%s read'
-    word_count:
-        one: 'About %d word'
-        other: 'About %d words'
-    licensing:
-        author: 'Author'
-        created_at: 'Posted on'
-        updated_at: 'Updated on'
-        licensed_under: 'Licensed under'
-donate:
-    title: 'Like this article? Support the author with'
-    afdian: 'Afdian.net'
-    alipay: 'Alipay'
-    wechat: 'Wechat'
-    paypal: 'Paypal'
-    patreon: 'Patreon'
-    buymeacoffee: 'Buy me a coffee'
-plugin:
-    backtotop: 'Back to top'
-    visit_count: '%s&nbsp;visits'
-    visitor_count: 'Visited by %s users'
-    cookie_consent:
-      message: This website uses cookies to improve your experience.
-      dismiss: Got it!
-      allow: Allow cookies
-      deny: Decline
-      link: Learn more
-      policy: Cookie Policy
+nav:
+  home: Home
+  about: About
+  articles: Writing
+  tag: Tag
+  category: Category
+  projects: Projects
+  search: Search
+  links: Links
+  weekly: Weekly
+  kindle: Kindle
+  wiki: Wiki
+
+icons:
+  menu: Menu
+  top: Top
+
+footer:
+  copyright: Copyright
+
+index:
+  find_me_on: Find me on
+  enum_comma: ','
+  enum_and: and
+  articles: Writing
+  projects: Projects
+  topics: Topics
+  most_recent: Most recent
+
+post:
+  desktop:
+    previous: Previous post
+    next: Next post
+    back_to_top: Back to top
+    share: Share post
+  mobile:
+    menu: Menu
+    toc: TOC
+    back_to_top: Top
+    share: Share
+
 search:
-    search: 'Search'
-    hint: 'Type something...'
-    no_result: 'No results for'
-    untitled: '(Untitled)'
-    empty_preview: '(No preview)'
+  search: Search...
+  no_results: No results found.
+
+tag_cloud:
+  zero: No tags
+
+pagination:
+  page: Page %d of %d
+
+counter:
+  tag_cloud:
+    zero: No tags
+    one: ""
+    other: ""
+
+  categories:
+    zero: No categories
+    one: ""
+    other: ""
+
+  archive_posts:
+    zero: No posts.
+    one: ""
+    other: ""
+
+comments:
+  no_js: Please enable JavaScript to view the comments.
+
+tooltip:
+  copy_tip: Copy to clipboard!
+  copied: Copied!

@@ -1,66 +1,69 @@
-common:
-    archive:
-        one: '归档'
-        other: '归档'
-    category:
-        one: '分类'
-        other: '分类'
-    tag:
-        one: '标签'
-        other: '标签'
-    post:
-        one: '文章'
-        other: '文章'
-    page:
-        one: '页面'
-        other: '页面'
-    prev: '上一页'
-    next: '下一页'
-widget:
-    follow: '关注我'
-    recents: '最新文章'
-    links: '链接'
-    catalogue: '目录'
-    subscribe_email: '订阅更新'
-    subscribe: '订阅'
-    adsense: '广告'
-    followit: 'follow.it'
-article:
-    created_at: '%s发表'
-    updated_at: '%s更新'
-    more: '阅读更多'
-    comments: '评论'
-    read_time: '%s读完'
-    word_count:
-        one: '大约%d个字'
-        other: '大约%d个字'
-    licensing:
-        author: '作者'
-        created_at: '发布于'
-        updated_at: '更新于'
-        licensed_under: '许可协议'
-donate:
-    title: '喜欢这篇文章？打赏一下作者吧'
-    afdian: '爱发电'
-    alipay: '支付宝'
-    wechat: '微信'
-    paypal: 'Paypal'
-    patreon: 'Patreon'
-    buymeacoffee: '送我杯咖啡'
-plugin:
-    backtotop: '回到顶端'
-    visit_count: '%s次访问'
-    visitor_count: '共%s个访客'
-    cookie_consent:
-      message: 此网站使用Cookie来改善您的体验。
-      dismiss: 知道了！
-      allow: 允许使用Cookie
-      deny: 拒绝
-      link: 了解更多
-      policy: Cookie政策
+nav:
+  home: 首页
+  about: 关于
+  articles: 归档
+  projects: 项目
+  tag: 标签
+  category: 分类
+  search: 搜索
+  
+icons:
+  menu: 目录
+  top: 顶部
+
+footer:
+  copyright: Copyright
+
+index:
+  find_me_on: 在这里找到我：
+  enum_comma: '，'
+  enum_and: 和
+  articles: 文章
+  projects: 项目
+  topics: 标签
+  most_recent: 最新发布
+
+post:
+  desktop:
+    previous: 上一篇
+    next: 下一篇
+    back_to_top: 返回顶部
+    share: 分享文章
+  mobile:
+    menu: 菜单
+    toc: 目录
+    back_to_top: 返回顶部
+    share: 分享
+
 search:
-    search: '搜索'
-    hint: '想要查找什么...'
-    no_result: '未找到搜索结果'
-    untitled: '(无标题)'
-    empty_preview: '(无内容预览)'
+  search: 搜索...
+  no_results: 抱歉，没有符合您搜索条件的结果。请换其它关键词再试。
+
+tag_cloud:
+  zero: 没有标签
+
+pagination:
+  page: 第 %d 页，共 %d 页
+ 
+counter:
+  tag_cloud:
+    zero: 没有标签
+    one: ""
+    other: ""
+
+  categories:
+    zero: 没有分类
+    one: ""
+    other: ""
+
+  archive_posts:
+    zero: 没有归档
+    one: ""
+    other: ""
+
+comments:
+  no_js: 加载评论需要在浏览器启用 JavaScript 脚本支持。
+
+tooltip:
+  copy_tip: 复制到粘贴板！
+  copied: 复制成功！

@@ -1,66 +1,65 @@
-common:
-    archive:
-        one: 'Archiv'
-        other: 'Archive'
-    category:
-        one: 'Kategorie'
-        other: 'Kategorien'
-    tag:
-        one: 'Tag'
-        other: 'Tags'
-    post:
-        one: 'Seite'
-        other: 'Seiten'
-    page:
-        one: 'Page'
-        other: 'Pages'
-    prev: 'Zurück'
-    next: 'Weiter'
-widget:
-    follow: 'Folgen'
-    recents: 'Letzte Einträge'
-    links: 'Links'
-    catalogue: 'Katalog'
-    subscribe_email: 'Abonnieren Sie Updates'
-    subscribe: 'Abonnieren'
-    adsense: 'Werbung'
-    followit: 'follow.it'
-article:
-    created_at: 'Gepostet vor&nbsp;%s'
-    updated_at: 'Aktualisiert vor&nbsp;%s'
-    more: 'Mehr lesen'
-    comments: 'Kommentare'
-    read_time: '%s lesen'
-    word_count:
-        one: 'Über %d Wort'
-        other: 'Über %d Wörter'
-    licensing:
-        author: 'Author'
-        created_at: 'Posted on'
-        updated_at: 'Updated on'
-        licensed_under: 'Licensed under'
-donate:
-    title: 'Gefällt Ihnen der Artikel? Unterstützen Sie den Autor mit'
-    afdian: 'Afdian.net'
-    alipay: 'Alipay'
-    wechat: 'Wechat'
-    paypal: 'Paypal'
-    patreon: 'Patreon'
-    buymeacoffee: 'Kauf mir einen Kaffee'
-plugin:
-    backtotop: 'Zurück nach oben'
-    visit_count: '%s&nbsp;Besuche'
-    visitor_count: 'Von %s Nutzern besucht'
-    cookie_consent:
-      message: Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern.
-      dismiss: Verstanden!
-      allow: Cookies zulassen
-      deny: Ablehnen
-      link: Mehr erfahren
-      policy: Cookie-Richtlinie
+nav:
+  home: Startseite
+  about: Über diese Webseite
+  articles: Artikel
+  tag: Tag
+  category: Kategorie
+  projects: Projekte
+  search: Suche
+
+footer:
+  copyright: Copyright
+
+index:
+  find_me_on: Finde mich auf
+  enum_comma: ','
+  enum_and: und
+  articles: Artikel
+  projects: Projekte
+  topics: Themen
+  most_recent: Neueste
+
+post:
+  desktop:
+    previous: Vorheriger Beitrag
+    next: Nächster Beitrag
+    back_to_top: Zurück zum Anfang
+    share: Beitrag teilen
+  mobile:
+    menu: Menü
+    toc: TOC
+    back_to_top: Nach oben
+    share: Teilen
+
 search:
-    search: 'Suche'
-    hint: 'Tippen Sie etwas...'
-    no_result: 'Keine Ergebnisse für'
-    untitled: '(Ohne Titel)'
-    empty_preview: '(Keine Vorschau)'
+  search: Suche...
+  no_results: Keine Ergebnisse gefunden.
+
+tag_cloud:
+  zero: Keine Tags
+
+pagination:
+  page: Seite %d von %d
+
+counter:
+  tag_cloud:
+    zero: Keine Tags
+    one: ""
+    other: ""
+
+  categories:
+    zero: Keine Kategorien
+    one: ""
+    other: ""
+
+  archive_posts:
+    zero: Keine Beiträge.
+    one: ""
+    other: ""
+
+comments:
+  no_js: Bitte aktivieren Sie JavaScript um die Kommentare anzuzeigen.
+
+tooltip:
+  copy_tip: In die Zwischenablage kopiert!
+  copied: Kopiert!
