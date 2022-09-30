@@ -89,7 +89,7 @@ def generate_md_file():
             file_name = sorted_book['file_name']
             contents = sorted_book['contents']
             # 书籍信息列表写入index.md
-            f.write(''.join(['- [', sorted_book_name, '](/kindle/', short_file_name, ') / ', str(num), '条 / ', first_date, '\n']))
+            f.write(''.join(['[', sorted_book_name, '](/kindle/', short_file_name, ') / ', str(num), '条 / ', first_date, '\n\n']))
             
             # 根据书籍信息生成md文件，并写入笔记
             with open(file_name, 'a') as cf:
