@@ -29,7 +29,7 @@ nav:
 # (see https://fontawesome.com/icons?d=gallery&s=brands);
 # only 'mail' is an exception.
 social_links:
-  github: http://github.com/probberechts/cactus-dark
+  github: http://github.com/zgshen
   #twitter: /
   #facebook: /
   #linkedin: /
@@ -46,7 +46,7 @@ tags_overview: false
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
   show_all_posts: false
-  post_count: 10
+  post_count: 15
   sort_updated: false
 
 # Customize the archive view.
