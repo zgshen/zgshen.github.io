@@ -202,12 +202,12 @@ Python 对协程的支持是通过 generator 实现的，之前写过一篇[笔�
 
 ```go
 func TestGoroutines(t *testing.T) {
-	rand.Seed(time.Now().UnixNano())
+    rand.Seed(time.Now().UnixNano())
     // context 设置1秒超时
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
-	foo(ctx)
+    ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+    defer cancel()
+    
+    foo(ctx)
 }
 
 //只能编辑foo函数，foo函数必须调用slow函数；
@@ -218,30 +218,30 @@ func foo(ctx context.Context) {
 // slow 函数模拟任务
 func slow() {
     // 随机延时[0,3)
-	n := rand.Intn(3)
-	fmt.Printf("sleep %ds\n", n)
-	time.Sleep(time.Second * time.Duration(n))
+    n := rand.Intn(3)
+    fmt.Printf("sleep %ds\n", n)
+    time.Sleep(time.Second * time.Duration(n))
 }
 ```
 
 下面是一个解法，当 slow 任务大于1秒，多路复用器会先收到 context 的超时事件，返回结束；当 slow 任务小于1秒，多路复用器会先收到数据1，正常返回结束。
 ```go
 func foo(ctx context.Context) {
-	ch := make(chan int, 1)
+    ch := make(chan int, 1)
     // 协程异步执行slow任务，完成写通道
-	go func(ctx context.Context) {
-		slow()
-		ch <- 1
-	}(ctx)
-
+    go func(ctx context.Context) {
+    	slow()
+    	ch <- 1
+    }(ctx)
+    
     // 多路复用器检测通道两个事件，
     // 一个是context的超时事件，一个是数据写入事件
-	select {
-	case <-ctx.Done():
-		return
-	case <-ch:
-		return
-	}
+    select {
+    case <-ctx.Done():
+    	return
+    case <-ch:
+    	return
+    }
 }
 ```
 
