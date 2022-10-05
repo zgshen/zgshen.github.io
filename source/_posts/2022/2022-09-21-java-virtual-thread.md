@@ -9,7 +9,7 @@ toc: true
 date: 2022-09-21
 ---
 
-最近看到JDK19发布了，拖了这么多年终于加入了虚拟线程功能，目前还是预览阶段，[openjdk网站](https://openjdk.org/jeps/425)上有详细的介绍，来先看看 Java 版的协程是怎么样的。
+最近看到JDK19发布了，拖了这么多年终于加入了虚拟线程功能，目前还是预览阶段，[OpenJDK网站](https://openjdk.org/jeps/425)上有详细的介绍，来先看看 Java 版的协程是怎么样的。
 
 ## 设计目标和解决的问题
 
@@ -177,7 +177,7 @@ i=4, thread:VirtualThread[#26]/runnable@ForkJoinPool-1-worker-4
 i=2, thread:VirtualThread[#24]/runnable@ForkJoinPool-1-worker-4
 ```
 
-可以看到 VirtualThread 后面的数字是虚拟线程 id，可以大量创建，worker 后面的的 id 数表示平台线程，不会超过 CPU 核心数。
+可以看到 VirtualThread 后面的数字是虚拟线程 id，虚拟线程可以大量创建；worker 后面的的 id 数表示平台线程，不会超过 CPU 核心数。
 
 再看 i=0 对应的信息，延时前后的虚拟线程 id 相同，但 worker 已经不同的，虚拟线程在IO堵塞时会从平台线程上卸载，保存堆栈信息，当阻塞操作完成时调度器会重新挂载，还原现场，不过重新挂载到的平台线程可能不是之前的同一个。
 
@@ -185,7 +185,7 @@ i=2, thread:VirtualThread[#24]/runnable@ForkJoinPool-1-worker-4
 - 在 synchronized 代码块或方法中执行；
 - 在本地方法和外部函数（Foreign Function，也是JDK的预览功能，允许 Java 程序与 JVM 运行时之外的代码和数据互操作）中执行。
 
-很不幸的是，JDBC 的 API 也用到了 synchronized，但是平常业务有离不开涉及数据库的操作。对于以上情况，synchronized 可以用 ReentrantLock 来代替，修改系统参数最大平台线程数`jdk.virtualThreadScheduler.maxPoolSize`，设置超过处理器数量的平台线程数，保证有足够的平台线程可用。
+很不幸的是，JDBC 的 API 也用到了 synchronized，但是平常业务有离不开涉及数据库的操作。对于以上情况，synchronized 可以用 ReentrantLock 来代替；修改系统参数最大平台线程数`jdk.virtualThreadScheduler.maxPoolSize`，设置超过处理器数量的平台线程数，保证有足够的平台线程可用。
 
 
 ## 与其他语言的协程对比
@@ -254,4 +254,4 @@ func foo(ctx context.Context) {
 - [1] [JEP 425: Virtual Threads (Preview)](https://openjdk.org/jeps/425)
 - [2] [Enable "preview" features in an early-access version of Java in IntelliJ](https://stackoverflow.com/questions/72083752/enable-preview-features-in-an-early-access-version-of-java-in-intellij)
 - [3] [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量](https://developer.aliyun.com/article/1026412#slide-3)
-- [4] [Go race 竞态检测面试题](https://twitter.com/ezogreatagain/status/1480377334595133443?s=20&t=Y5YDWPSVcfxp6iJqhmoS2g)
+- [4] [Golang 面试题](https://twitter.com/ezogreatagain/status/1480377334595133443?s=20&t=Y5YDWPSVcfxp6iJqhmoS2g)
