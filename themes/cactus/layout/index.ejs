@@ -1,7 +1,5 @@
 <section id="about">
-  <% if (config.description) { %>
-    <%- markdown(config.description) %>
-  <% } %>
+  Total of <%- site.posts.length %> articles.
   <% if (theme.social_links) { %>
     <p>
       <%= __('index.find_me_on') %>
