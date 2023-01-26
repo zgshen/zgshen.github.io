@@ -48,7 +48,7 @@ def split_clippings():
         inner_position = ''.join(['\n<small>', inner_position[2:len(inner_position)], '</small>'])
         if not book_name in books:
             # 每本书第一条标注，抽取书籍信息，标注笔记写到数组
-            date = note[1].split(split_mark_date)[7]
+            date = note[1].split(split_mark_date)[-2]
             y = date.index('年')
             m = date.index('月')
             d = date.index('日')
