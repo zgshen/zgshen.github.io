@@ -15,7 +15,7 @@ jobs:
       - name: Setup node 
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '16'
       - name: Setup hexo
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
