@@ -121,6 +121,15 @@ public void contrastTest() {
     long s4 = System.currentTimeMillis();
     System.out.printf("固定线程数量线程池耗时:%sms %n", s4-s3);
 }
+
+public void task(ExecutorService executor) {
+    IntStream.range(0, 10_000).forEach(i -> {
+        executor.submit(() -> {
+            Thread.sleep(Duration.ofSeconds(1));
+            return i;
+        });
+    });
+}
 ```
 
 结果：
