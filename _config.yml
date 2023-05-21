@@ -80,7 +80,7 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: cactus
 theme_config:
-  colorscheme: classic
+  colorscheme: white
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
