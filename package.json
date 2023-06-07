@@ -24,6 +24,8 @@
     "hexo-deployer-git": "3.0.0",
     "hexo-abbrlink": "2.2.1",
     "hexo-generator-feed": "3.0.0",
+    "hexo-renderer-pug": "3.0.0",
+    "hexo-renderer-sass-next": "0.1.3",
     "bulma-stylus": "0.8.0",
     "hexo-pagination": "2.0.0"
   }

@@ -1,7 +1,7 @@
 ---
 title: 关于
 type: "about"
-comments: false
+comments: true
 ---
 
 后端程序员。
