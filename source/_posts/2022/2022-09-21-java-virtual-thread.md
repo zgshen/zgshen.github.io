@@ -1,5 +1,5 @@
 ---
-title: 简单了解下JDK19预览版的 Virtual Threads
+title: 简单了解下 JDK19 预览版的 Virtual Threads
 categories: 技术
 tags:
   - 技术
