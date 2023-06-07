@@ -16,7 +16,7 @@ direction: ltr
 nav:
   home: /
   about: /about/
-  articles: /archives/
+  #articles: /archives/
   links: /links
   weekly: https://zguishen.notion.site/b366b4876f0c40238a1d8679e3a2e712?v=43f75e4079cc449a9a6b9b43fe6ad235
   kindle: /kindle
