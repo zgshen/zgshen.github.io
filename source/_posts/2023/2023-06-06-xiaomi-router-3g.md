@@ -1,5 +1,5 @@
 ---
-title: 小米R3G 解锁 SSH 和刷 Padava 及启用 Clash
+title: 小米R3G 解锁 SSH 和刷 Padavan 及启用 Clash
 categories: 技术
 tags:
   - Router
