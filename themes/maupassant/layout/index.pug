@@ -16,8 +16,8 @@ block content
         a(href=url_for(post.path))
           +title(post)
       .post-meta= post.date.format(config.date_format)
-      if theme.disqus.enable == true
-        a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
+      //-if theme.disqus.enable == true
+      //-  a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
       if theme.changyan
         a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
           span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
