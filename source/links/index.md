@@ -24,6 +24,8 @@ comments: true
 
 #### 其他
 
+- [十年之约-虫洞](https://foreverblog.cn/go.html)
+
 - [美团技术团队](https://tech.meituan.com/)
 
 - [小米信息部技术团队](https://xiaomi-info.github.io/)

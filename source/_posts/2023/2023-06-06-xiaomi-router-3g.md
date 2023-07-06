@@ -37,7 +37,7 @@ date: 2023-06-06
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.31.1
 ```
 
-![](../images/202306/screenshot-2023-06-06-20-03-57.png)
+![](../images/2023/screenshot-2023-06-06-20-03-57.png)
 
 ### 刷入Breed
 
@@ -68,8 +68,8 @@ https://opt.cn2qq.com/padavan/ 搜索MI-R3G下载对应固件。
 高级设置-系统管理-服务，启用SSH服务。
 
 扩展功能-搭建 Web环境设置 clash，如果用上 Vision 和 Reality 协议需要选择 meta 内核，然后有订阅的填上订阅地址，自己写配置文件的，点击“点击按钮显示主配置文件”的选项，把自己配置粘贴进去，点击应用本页面配置等待启动。
-![](../images/202306/screenshot-2023-06-06-20-54-07.png)
+![](../images/2023/screenshot-2023-06-06-20-54-07.png)
 
 等待启动成功点击 Web 管理界面就能看到面板了。
 
-![](../images/202306/screenshot-2023-06-06-20-58-00.png)
+![](../images/2023/screenshot-2023-06-06-20-58-00.png)
