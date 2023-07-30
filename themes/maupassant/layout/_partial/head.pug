@@ -5,6 +5,9 @@ head
   meta(content='black-translucent', name='apple-mobile-web-app-status-bar-style')
   meta(content='telephone=no', name='format-detection')
   meta(name='description', content=config.description)
+  meta(name='twitter:card', content='summary')
+  meta(name='twitter:title', content=page.title)
+  meta(name='twitter:image', content='http://zguishen.com/images/blog/avatar.jpeg')
   block title
   link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?v=' + theme.version)
   link(rel='stylesheet', type='text/css', href='//lib.baomitu.com/normalize/latest/normalize.min.css')
