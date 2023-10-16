@@ -1,5 +1,5 @@
 ---
-title: 火炉山——华快观光点
+title: 火炉山
 categories: 生活
 tags:
   - 旅行
