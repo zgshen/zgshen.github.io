@@ -1,5 +1,5 @@
 ---
-title: FAR: Lone Sails
+title: FAR：Lone Sails
 categories: 生活
 tags:
   - 游戏
