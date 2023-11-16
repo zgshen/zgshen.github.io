@@ -6,13 +6,16 @@ head
   meta(content='telephone=no', name='format-detection')
   meta(name='description', content=config.description)
   meta(name='twitter:card', content='summary')
+  meta(name="twitter:creator" content="@licorice128")
   if page.title
     meta(name='twitter:title', content=page.title)
   else if page.tag
     meta(name='twitter:title', content=page.tag + ' | ' + config.title)
   else if config.title
     meta(name='twitter:title', content=config.title)
-  meta(name='twitter:image', content='http://zguishen.com/images/blog/avatar.jpeg')
+  meta(name='twitter:image', content='https://zguishen.com/images/blog/avatar.jpeg')
+  if page.excerpt
+    meta(property='og:description', content=page.excerpt)
   block title
   link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?v=' + theme.version)
   link(rel='stylesheet', type='text/css', href='//lib.baomitu.com/normalize/latest/normalize.min.css')
