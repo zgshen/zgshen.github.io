@@ -9,7 +9,6 @@ date: 2021-8-18
 
 ```bash
 #ssh 远程机器配置
-#腾讯云
 Host tx
 HostName xxx.xxx.xxx.xxx
 User root
