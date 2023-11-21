@@ -12,9 +12,7 @@ date: 2023-07-13
 
 <!-- more -->
 
-LX10最长只有72mm，真拍不了风光，想换长焦相机了。
+![华快-72mm](https://i.zguishen.com/7c10fef1aca63c9ce64f8.jpg)
 
-![华快-72mm](https://i.zguishen.com/file/7c10fef1aca63c9ce64f8.jpg)
-
-![华快-裁剪](https://i.zguishen.com/file/31d3bdb4db814356607ca.jpg)
+![华快-裁剪](https://i.zguishen.com/31d3bdb4db814356607ca.jpg)
 
