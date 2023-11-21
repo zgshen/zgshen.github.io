@@ -12,7 +12,6 @@ date: 2023-07-13
 
 <!-- more -->
 
-![华快-72mm](https://i.zguishen.com/7c10fef1aca63c9ce64f8.jpg)
+![华快-72mm](https://i.zguishen.com/2023/11/bba9e4e34583276cc489dff2cbeed86a.jpg)
 
-![华快-裁剪](https://i.zguishen.com/31d3bdb4db814356607ca.jpg)
-
+![华快-裁剪](https://i.zguishen.com/2023/11/e5a945e463a1b4c9a235960043a08507.jpg)
