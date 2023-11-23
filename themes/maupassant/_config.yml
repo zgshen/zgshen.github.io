@@ -116,9 +116,9 @@ menu:
   - page: wiki
     directory: https://wiki.zguishen.com
     icon: fa-wikipedia-w
-  - page: rss
-    directory: atom.xml
-    icon: fa-rss
+  - page: notion
+    directory: https://notion.zguishen.com
+    icon: fa-cube
 
 widgets: ## Seven widgets in sidebar provided: search, info, category, tag, recent_posts, recent_comments and links.
   - search
