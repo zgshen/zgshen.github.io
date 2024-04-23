@@ -13,7 +13,7 @@ date: 2024-03-27
 
 自从毕业之后一直以来都是住在城中村，最近想搬家了，虽然关于城中村的研究报道已经有很多了，不过我还是想写一写我对城中村的印象和在村里的生活状况，以及一些租房情况。
 
-![](http://sns-webpic-qc.xhscdn.com/202404230020/28cc4815d74f58ef9e3c911afb94ef18/1040g2sg30rapi9il186g5n7lnkslnb0j14bqeoo!nd_dft_wgth_webp_3)
+![](https://i.zguishen.com/2024/04/8f3018ee7588c80d850ae3f5e74fca5d.jpg)
 
 ### 位置
 
