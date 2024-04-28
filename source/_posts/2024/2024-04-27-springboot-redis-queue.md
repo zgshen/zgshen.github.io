@@ -358,8 +358,6 @@ public class TestStreamProducer {
 }
 ```
 
-虽然 Redis Stream 提供了 MQ 的功能，但是现在成熟的 MQ 工具已经很多了比如 RabbitMQ 和 Kafka 等，不同 MQ 有其适用场景，也许不想再引入其他消息队列组件的话可以尝试使用，不过毕竟新出的东西用的人较少有坑难免要自己踩一遍。
-
 ### 参考
 
 - [1][Claude AI](https://claude.ai/)
