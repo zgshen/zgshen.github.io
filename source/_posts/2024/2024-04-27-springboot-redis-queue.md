@@ -7,7 +7,7 @@ toc: true
 date: 2024-04-27
 ---
 
-Redis 除了做数据缓存，做 NoSQL 数据库，也可以当做轻量级消息队列使用，并且提供了基于 List 实现的、基于 Pub/Sub 机制的订阅/发布模式、基于 sorted set 的实现和基于 Stream 类型的实现几种实现方式。其中 List 实现的分非阻塞和阻塞方式，Stream 则是新版 Redis 5 才支持的消息队列。
+Redis 除了做数据缓存，做 NoSQL 数据库，也可以当做轻量级消息队列使用，并且提供了基于 List 实现的、基于 Pub/Sub 机制的订阅/发布模式、基于 sorted set 的实现和基于 Stream 类型的实现几种实现方式。其中 List 实现的分非阻塞和阻塞方式，Stream 则是 Redis 5 加入的消息队列。
 
 <!-- more -->
 
