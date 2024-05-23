@@ -9,7 +9,7 @@ date: 2024-05-21
 
 很久没更新Ubuntu系统，更新出了点问题记录一下。
 
-<--!more-->
+<!-- more -->
 
 之前禁止了内核更新，最近想更新一下，unhold 了内核版本，重新 apt update 并且 upgrade 更新了下，结果在`neofetch`看到 OS 信息居然变成了 TONGWANDOU？这才想起之前为了安装国内的一些软件添加的一个源：[铜豌豆
 ](https://www.atzlinux.com/allpackages.htm)，结果更新的时候这源不知道加了什么料把系统更新覆盖了，连 grub 都改了...
