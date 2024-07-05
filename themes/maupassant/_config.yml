@@ -113,12 +113,9 @@ menu:
   - page: kindle
     directory: kindle/
     icon: fa-book
-  - page: wiki
-    directory: https://wiki.zguishen.com
-    icon: fa-wikipedia-w
-  - page: notion
-    directory: https://notion.zguishen.com
-    icon: fa-cube
+  - page: gallery
+    directory: https://gallery.zguishen.com
+    icon: fa-image
 
 widgets: ## Seven widgets in sidebar provided: search, info, category, tag, recent_posts, recent_comments and links.
   - search
