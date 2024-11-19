@@ -128,7 +128,7 @@ widgets: ## Seven widgets in sidebar provided: search, info, category, tag, rece
 
 info:
   avatar: /images/blog/avatar.jpeg
-  discription: Stay hungry. Stay foolish.
+  discription: 小心，注意，总结，提高。
   outlinkitem:
     #- name: twitter
     #  outlink: https://twitter.com/username
