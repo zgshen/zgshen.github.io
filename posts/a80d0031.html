@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="zgshen,zguishen,甘甘"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@licorice128"><meta name="twitter:title" content="动态规划"><meta name="twitter:image" content="https://zguishen.com/images/blog/avatar.jpeg"><title>动态规划 | zguishen's blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">动态规划</h1><a id="logo" href="/.">zguishen's blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/kindle/"><i class="fa fa-book"> Kindle</i></a><a target="_blank" rel="noopener" href="https://gallery.zguishen.com"><i class="fa fa-image"> Gallery</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">动态规划</h1><div class="post-meta">2022-06-22<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%AE%80%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">维基百科简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">分析流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">3.1.</span> <span class="toc-text">斐波那契数列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Integer-Break"><span class="toc-number">3.2.</span> <span class="toc-text">Integer Break</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#House-Robber"><span class="toc-number">3.3.</span> <span class="toc-text">House Robber</span></a></li></ol></li></ol></div></div><div class="post-content"><h3 id="维基百科简述"><a href="#维基百科简述" class="headerlink" title="维基百科简述"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-sg/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">维基百科简述</a></h3><p>动态规划（英语：Dynamic programming，简称DP）是一种在数学、管理科学、电脑科学、经济学和生物信息学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。</p>
+<p>动态规划在查找有很多重叠子问题的情况的最优解时有效。它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。因此，动态规划保存递归时的结果，因而不会在解决同样的问题时花费时间。</p>
+<p>动态规划只能应用于有最优子结构的问题。最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。</p>
+<h3 id="分析流程"><a href="#分析流程" class="headerlink" title="分析流程"></a>分析流程</h3><ul>
+<li><p>状态定义：根据问题特征划分阶段，确定dp[i]代表的逻辑</p>
+</li>
+<li><p>列出状态方程：一般是f(n)与前后子函数相关的方程</p>
+</li>
+<li><p>初始状态：dp[0]、dp[1]等等一般是前几个作为初始值</p>
+</li>
+<li><p>遍历顺序:正序或者反向遍历</p>
+</li>
+<li><p>返回坐标:返回dp[n]，最后一个元素值</p>
+</li>
+<li><p>简化空间复杂度：有些问题可以用一些临时变量来存储中间值，降低空间复杂度</p>
+</li>
+</ul>
+<p>部分步骤可以根据实际问题做简化。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>看概念很难理解，所以举几个简单的例子来看看动态规划是怎么用的。</p>
+<h4 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h4><p>斐波那契数列问题就是典型的动态规划问题。</p>
+<ul>
+<li>状态定义：数组中dp[i]就是代表数列的第i个数字</li>
+<li>转移方程：dp[i+1] &#x3D; dp[i] + dp[i-1]</li>
+<li>初始值：dp[0]&#x3D;0, dp[1]&#x3D;1</li>
+<li>返回值：dp[n]，数列最后一个也就是第n个元素的值</li>
+<li>空间优化：用局部变量存储临时值，减小空间复杂度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> dp[] = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i-<span class="number">1</span>] + dp[i-<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以发现，dp[i-1] 和 dp[i-2] 可以用临时变量来存储，不需要dp数组，能把空间复杂度从O(n)降低到O(1)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">/*if (n&lt;2) return n;</span></span><br><span class="line"><span class="comment">    int a=0, b=1, sum=0;</span></span><br><span class="line"><span class="comment">    for (int i=2; i&lt;=n; i++) &#123;</span></span><br><span class="line"><span class="comment">        sum = a+b;</span></span><br><span class="line"><span class="comment">        a = b;</span></span><br><span class="line"><span class="comment">        b = sum;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return sum;*/</span></span><br><span class="line">    <span class="comment">// 继续简化，可读性较差</span></span><br><span class="line">    <span class="type">int</span> a=<span class="number">0</span>, b=<span class="number">1</span>, sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        sum = a+b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Integer-Break"><a href="#Integer-Break" class="headerlink" title="Integer Break"></a>Integer Break</h4><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/integer-break/">https://leetcode.com/problems/integer-break/</a></p>
+<p>整数拆分并计算乘积，求最大的乘积，也就是剪绳子问题，只能按整数分段剪。</p>
+<ul>
+<li>状态定义：dp[i]表示长度为i剪成m段的最大乘积</li>
+<li>转移方程：<ul>
+<li>剪成两段，剪j长度作为一段，乘积就是 j*(i-j)</li>
+<li>大于两段，剪j长度作为多段，那么 dp[i] &#x3D; dp[j]*(i-j)</li>
+<li>综上，转移方程：dp[i] &#x3D; Math.max(j*(i-j), dp[j]*(i-j))</li>
+</ul>
+</li>
+<li>初始值：dp[1]&#x3D;1</li>
+<li>返回值 dp[n]</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">integerBreak</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="comment">//因为dp下表从0开始，dp[0]是第一个，dp[n]是n+1个</span></span><br><span class="line">        <span class="type">int</span> dp[] = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">//2 &lt;= n &lt;= 58，不管dp[1]</span></span><br><span class="line">        <span class="comment">//m段，m&gt;1，1x1=1</span></span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//i表示绳子长度，从3开始，小于3不用算了乘积都是1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">3</span>; i&lt;=n; i++) &#123;</span><br><span class="line">            <span class="comment">//j表示第一次剪去的长度，剩余i-j</span></span><br><span class="line">            <span class="comment">//小于等于 i-2 是因为最后是 j*1 等于 j，没意义</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>; j&lt;=i-<span class="number">2</span>; j++) &#123;</span><br><span class="line">                <span class="comment">//两段直接相乘，或者i-j继续分段，比较取最大值</span></span><br><span class="line">                <span class="comment">//int tmp = Math.max(dp[i-j]*j, (i-j)*j);</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> Math.max(dp[i-j], (i-j)) * j;</span><br><span class="line">                <span class="comment">//和前一个dp比较取最大值</span></span><br><span class="line">                dp[i] = Math.max(tmp, dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他典型的例子还有<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jian-sheng-zi-lcof/solution/mian-shi-ti-14-i-jian-sheng-zi-tan-xin-si-xiang-by/">剪绳子</a>和<a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/">打家劫舍</a>问题。</p>
+<h4 id="House-Robber"><a href="#House-Robber" class="headerlink" title="House Robber"></a>House Robber</h4><ul>
+<li>状态定义：dp[i] 代表前 i 个房子在满足条件下的能偷窃到的最高金额</li>
+<li>转移方程：设n间房子，前n间最大偷窃价值dp[n]，前n-1就是dp[n-1]，再偷一间房子（第n+1间）价值为num<ul>
+<li>偷第n+1个房子，因为有不能偷相邻房子的限制，第n间房子就不能偷了，那么dp[n+1]&#x3D;dp[n-1]+num</li>
+<li>不偷第n+1个房子，那么dp[n+1]&#x3D;dp[n]</li>
+<li>综上，转移方程：dp[n+1]&#x3D;max(dp[n],dp[n−1]+num)</li>
+</ul>
+</li>
+<li>初始值：0间房子偷窃价值dp[0]&#x3D;0</li>
+<li>返回值：dp最后一个，所以房子偷窃价值</li>
+<li>用局部变量存储临时值，减小空间复杂度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> dp[] = <span class="keyword">new</span> <span class="title class_">int</span>[len+<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    dp[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;len; i++) &#123;</span><br><span class="line">        dp[i+<span class="number">1</span>] = Math.max(dp[i], dp[i-<span class="number">1</span>]+nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[len];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>空间优化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="comment">// f(n) = Math.max(f(n-1), f(n-2)+num)</span></span><br><span class="line">        <span class="comment">// n1-&gt;n-1, n2-&gt;n-2</span></span><br><span class="line">        <span class="type">int</span> n1=<span class="number">0</span>, n2=<span class="number">0</span>, tmp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            tmp = n1;</span><br><span class="line">            n1 = Math.max(n2+num, n1);</span><br><span class="line">            n2 = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul></div><div class="post-nav"><a class="pre" href="/posts/237f49c5.html">【转载】Oh Shit, Git!?!</a><a class="next" href="/posts/ace12490.html">高并发</a></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css"><script type="text/javascript" src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script><script type="text/javascript" id="disqus-count-script">$(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '//disqus.com/next/config.json', true);
+  xhr.timeout = 2500;
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      $('.post-meta .post-comments-count').show();
+      var s = document.createElement('script');
+      s.id = 'dsq-count-scr';
+      s.src = 'https://zguishen.disqus.com/count.js';
+      s.async = true;
+      (document.head || document.body).appendChild(s);
+    }
+  };
+  xhr.ontimeout = function () { xhr.abort(); };
+  xhr.send(null);
+});</script><div class="comments" id="disqus_thread"><script type="text/javascript">// Load comments with DisqusJS
+function loadComments() {
+  window.dsqjs = new DisqusJS({
+    shortname: 'zguishen',
+    siteName: 'zguishen\'s blog',
+    identifier: 'posts/a80d0031.html',
+    url: 'https://zguishen.com/posts/a80d0031.html',
+    title: '动态规划',
+    api: '',
+    apikey: '',
+    admin: '',
+    adminLabel: ''
+  });
+}
+// Lazy load {# Credit: https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/comments/disqus.swig #}
+(function () {
+  var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+  if (offsetTop <= 0) {
+    // Load directly when there's no scrollbar
+    window.addEventListener('load', loadComments, false);
+  } else {
+    var disqusScroll = function () {
+      // offsetTop may changes because of manually resizing browser window or lazy loading images
+      var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+      var scrollTop = window.scrollY;
+
+      // Pre-load comments a bit? (margin or anything else)
+      if (offsetTop - scrollTop < 60) {
+        window.removeEventListener('scroll', disqusScroll);
+        loadComments();
+      }
+    };
+    window.addEventListener('scroll', disqusScroll);
+  }
+})();
+// Scroll to comments automatically if #comment-xxx anchor specified
+window.addEventListener('load', function () {
+  // I don't know why, it just works.
+  window.setTimeout(function () {
+    if (location.hash.indexOf('#comment-') !== -1) {
+      document.getElementById('disqus_thread').scrollIntoView(true);
+    }
+  }, 100);
+}, false);
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://zguishen.com"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/images/blog/avatar.jpeg"/></a><p>小心，注意，总结，提高。</p><a class="info-icon" href="https://github.com/zgshen" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">技术</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/KMS/" style="font-size: 15px;">KMS</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/Office/" style="font-size: 15px;">Office</a> <a href="/tags/Tiddlywiki/" style="font-size: 15px;">Tiddlywiki</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/%E6%92%AD%E5%AE%A2/" style="font-size: 15px;">播客</a> <a href="/tags/%E5%8D%8F%E7%A8%8B/" style="font-size: 15px;">协程</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E7%96%AB%E6%83%85/" style="font-size: 15px;">疫情</a> <a href="/tags/%E7%94%9F%E5%AD%98/" style="font-size: 15px;">生存</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">笔记</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 15px;">游戏</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/%E4%B9%A6%E7%B1%8D/" style="font-size: 15px;">书籍</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 15px;">随笔</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E6%B2%BB%E7%96%97/" style="font-size: 15px;">治疗</a> <a href="/tags/VPS/" style="font-size: 15px;">VPS</a> <a href="/tags/Kubernetes/" style="font-size: 15px;">Kubernetes</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/COVID-19/" style="font-size: 15px;">COVID-19</a> <a href="/tags/%E5%B9%BF%E5%B7%9E/" style="font-size: 15px;">广州</a> <a href="/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 15px;">旅行</a> <a href="/tags/Router/" style="font-size: 15px;">Router</a> <a href="/tags/%E5%BD%B1%E8%A7%86/" style="font-size: 15px;">影视</a> <a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 15px;">摄影</a> <a href="/tags/%E5%9F%8E%E5%B8%82/" style="font-size: 15px;">城市</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">博客</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 15px;">转载</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">基础</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/NewFeatures/" style="font-size: 15px;">NewFeatures</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/%E5%81%A5%E5%BA%B7/" style="font-size: 15px;">健康</a> <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 15px;">年终总结</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/Web%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">Web技术</a> <a href="/tags/web%E6%A1%86%E6%9E%B6/" style="font-size: 15px;">web框架</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://shanks.link/" title="愿星光伴你左右" target="_blank">愿星光伴你左右</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">zguishen's blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo &</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Maupassant. </a> <a rel="nofollow" target="_blank" href="https://foreverblog.cn/go.html"> Wormhole.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
