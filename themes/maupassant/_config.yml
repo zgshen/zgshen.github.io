@@ -114,15 +114,15 @@ menu:
     directory: kindle/
     icon: fa-book
   - page: gallery
-    directory: https://gallery.zguishen.com
+    directory: gallery/
     icon: fa-image
 
 widgets: ## Seven widgets in sidebar provided: search, info, category, tag, recent_posts, recent_comments and links.
   - search
-  - info
+  #- info
   - category
   - tag
-  #- recent_posts
+  - recent_posts
   #- recent_comments
   - links
 
