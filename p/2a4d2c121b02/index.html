@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="zgshen,zguishen,甘甘"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@licorice128"><meta name="twitter:title" content="笔记应用选择和知识管理"><meta name="twitter:image" content="https://zguishen.com/images/blog/avatar.jpeg"><title>笔记应用选择和知识管理 | 甘草</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">笔记应用选择和知识管理</h1><a id="logo" href="/.">甘草</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/kindle/"><i class="fa fa-book"> Kindle</i></a><a href="/gallery/"><i class="fa fa-image"> Gallery</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">笔记应用选择和知识管理</h1><div class="post-meta">2022-04-30<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%B1%BB%E7%AC%94%E8%AE%B0%E5%BA%94%E7%94%A8%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.</span> <span class="toc-text">各类笔记应用的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2-or-%E7%BD%91%E7%8A%B6"><span class="toc-number">1.1.</span> <span class="toc-text">树形 or 网状</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF-SaaS-or-%E6%9C%AC%E5%9C%B0%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.</span> <span class="toc-text">在线 SaaS or 本地私有化部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">我的知识管理方法</span></a></li></ol></div></div><div class="post-content"><p><img src="/../images/202205/Screenshot-from-2022-05-03-11-16-29.png" alt="Note"></p>
+<p>开发人员在职业生涯会学习许多技术和技能，随着知识积累越多，复杂度越大，就容易觉得知识体系很混乱。所以就需要我们做笔记，构建自己的知识体系，而且由于各种编程语言和技术之间本身也有共通的地方，做好归纳和关联更有利于我们快速学习新的技术。</p>
+<p>现在网络上有许许多多的笔记应用和管理工具，相关的讨论也非常多，在v2ex搜索笔记应用的帖子多达<a target="_blank" rel="noopener" href="https://www.google.com/search?q=site:v2ex.com/t%20%E7%AC%94%E8%AE%B0%E5%BA%94%E7%94%A8">六千条记录</a>,网友们分享了许多的笔记应用和他们各自的知识管理方法，但总结起来大家在意的无非就是功能、隐私和安全三个方面，下面展开说说。</p>
+<h3 id="各类笔记应用的比较"><a href="#各类笔记应用的比较" class="headerlink" title="各类笔记应用的比较"></a>各类笔记应用的比较</h3><p>做笔记，可以简单地用一个txt文件写，也可以厂商提供的web服务或者应用写，还可以用开源的可私有化部署的笔记应用写。</p>
+<h4 id="树形-or-网状"><a href="#树形-or-网状" class="headerlink" title="树形 or 网状"></a>树形 or 网状</h4><p>各类笔记应用提供的功能也有所不同，一般对于开发人员，更喜欢 Markdown 这样的轻量级标记语言，语法简单，贴代码方便，所以大多笔记应用都支持 Markdown。传统的笔记都是用树形结构（或者说层级）管理，近几年大纲（卡片式）双链（或者说<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%90%91%E9%93%BE%E6%8E%A5">反向链接</a>）笔记开始火了起来，比如 Workflowy、Roam Reseach 和新出的 Logseq 等等。大纲可以转换成脑图，而双链则允许我们在笔记中互相引用其他笔记，整个笔记库形成一个网状的结构，知识之间是互相关联的。双链要求我们要求更强的整合和组织能力，我自己用不惯，个人还是更喜欢树形这样简单的结构。</p>
+<h4 id="在线-SaaS-or-本地私有化部署"><a href="#在线-SaaS-or-本地私有化部署" class="headerlink" title="在线 SaaS or 本地私有化部署"></a>在线 SaaS or 本地私有化部署</h4><p>一款笔记应用，我们除了关注本身的功能外，注意的点还有隐私和安全。</p>
+<p>纯在线或托管在官方服务意味着隐私和安全都难以保证，在线应用需要你注册账号，在国内的应用还必须提供手机号，平台一般都会有一些审查，并且在线服务一旦出现故障或者自己本地没有网络都用不了。优点则是不需要自己操心，上手就用，比如  Notion 这样 all-in-one 的笔记应用，不仅有笔记的功能，还可以管理日程，还有团队协作。</p>
+<p>对比在线应用我更喜欢数据存储在本地的应用，比如 Joplin 和 Obsidian 等，数据同步则由自己解决，比如 Joplin 可以私有化部署， Obsidian 可以用插件同步到云。 </p>
+<p>这里列举一下常见的一些笔记应用：</p>
+<ul>
+<li>传统的笔记应用：Notion、印象、有道、OneNote（不支持Markdown）和为知笔记等。</li>
+<li>大纲双链笔记：Roam Reseach、Logseq 和 Obsidian 等。</li>
+<li>可私有化部署的：Joplin、为知lite 和 Outlilne 等。</li>
+</ul>
+<p>对于有黑历史和名声太臭的比如思源和wolai就别用了。</p>
+<h3 id="我的知识管理方法"><a href="#我的知识管理方法" class="headerlink" title="我的知识管理方法"></a>我的知识管理方法</h3><p>日常网站的收藏剪切，放在 <a target="_blank" rel="noopener" href="https://notion.zguishen.com/">Notion</a>，或者直接备份到 <a target="_blank" rel="noopener" href="https://web.archive.org/">Internet Archive</a></p>
+<p>私人的笔记记录到 Obsidian 这类能自己掌控数据的笔记应用中，同步插件我是用 <a target="_blank" rel="noopener" href="https://github.com/remotely-save/remotely-save">Remotely Save</a> 配合腾讯COS对象存储使用。</p>
+<p>整理成体系的知识，想要分享到互联网，可用 wiki 类应用，比如 TiddlyWiki 或者 MkDocs 这类 wiki 应用上面。我使用的是 MkDocs 做 <a target="_blank" rel="noopener" href="https://wiki.zguishen.com/">wiki</a>。</p>
+<p>自己想法和见闻形成文章的写到博客，可使用 Hexo 或 Hugo 配置 GitHub Action 自动化部署到 GitHub Pages，比如这篇文章就发布到我的<a target="_blank" rel="noopener" href="https://zguishen.com/">博客</a>。</p>
+<p>总结下来，我的知识管理从外界输入到内部整理的路径就是 Notion -&gt; Obsidian -&gt; MkDocs -&gt; Hexo，由粗糙的剪切复制到整理，再到形成自己的知识输出这样一个流程。虽然大家喜欢的工具可能不同，但跟知识管理的思路没关系，这也许可以给你一点参考。</p>
+</div><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul></div><div class="post-nav"><a class="pre" href="/p/4a1de5f4c832/">The Last of Us Part II</a><a class="next" href="/p/eb423e203b39/">疫情封城需要储备什么物资</a></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css"><script type="text/javascript" src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script><script type="text/javascript" id="disqus-count-script">$(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '//disqus.com/next/config.json', true);
+  xhr.timeout = 2500;
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      $('.post-meta .post-comments-count').show();
+      var s = document.createElement('script');
+      s.id = 'dsq-count-scr';
+      s.src = 'https://zguishen.disqus.com/count.js';
+      s.async = true;
+      (document.head || document.body).appendChild(s);
+    }
+  };
+  xhr.ontimeout = function () { xhr.abort(); };
+  xhr.send(null);
+});</script><div class="comments" id="disqus_thread"><script type="text/javascript">// Load comments with DisqusJS
+function loadComments() {
+  window.dsqjs = new DisqusJS({
+    shortname: 'zguishen',
+    siteName: '甘草',
+    identifier: 'p/2a4d2c121b02/',
+    url: 'https://zgshen.github.io/p/2a4d2c121b02/',
+    title: '笔记应用选择和知识管理',
+    api: '',
+    apikey: '',
+    admin: '',
+    adminLabel: ''
+  });
+}
+// Lazy load {# Credit: https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/comments/disqus.swig #}
+(function () {
+  var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+  if (offsetTop <= 0) {
+    // Load directly when there's no scrollbar
+    window.addEventListener('load', loadComments, false);
+  } else {
+    var disqusScroll = function () {
+      // offsetTop may changes because of manually resizing browser window or lazy loading images
+      var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+      var scrollTop = window.scrollY;
+
+      // Pre-load comments a bit? (margin or anything else)
+      if (offsetTop - scrollTop < 60) {
+        window.removeEventListener('scroll', disqusScroll);
+        loadComments();
+      }
+    };
+    window.addEventListener('scroll', disqusScroll);
+  }
+})();
+// Scroll to comments automatically if #comment-xxx anchor specified
+window.addEventListener('load', function () {
+  // I don't know why, it just works.
+  window.setTimeout(function () {
+    if (location.hash.indexOf('#comment-') !== -1) {
+      document.getElementById('disqus_thread').scrollIntoView(true);
+    }
+  }, 100);
+}, false);
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://zgshen.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">技术</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/KMS/" style="font-size: 15px;">KMS</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/Office/" style="font-size: 15px;">Office</a> <a href="/tags/Tiddlywiki/" style="font-size: 15px;">Tiddlywiki</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/%E5%8D%8F%E7%A8%8B/" style="font-size: 15px;">协程</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E6%92%AD%E5%AE%A2/" style="font-size: 15px;">播客</a> <a href="/tags/%E7%96%AB%E6%83%85/" style="font-size: 15px;">疫情</a> <a href="/tags/%E7%94%9F%E5%AD%98/" style="font-size: 15px;">生存</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 15px;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">笔记</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/%E4%B9%A6%E7%B1%8D/" style="font-size: 15px;">书籍</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 15px;">随笔</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/VPS/" style="font-size: 15px;">VPS</a> <a href="/tags/%E6%B2%BB%E7%96%97/" style="font-size: 15px;">治疗</a> <a href="/tags/Kubernetes/" style="font-size: 15px;">Kubernetes</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/COVID-19/" style="font-size: 15px;">COVID-19</a> <a href="/tags/%E5%B9%BF%E5%B7%9E/" style="font-size: 15px;">广州</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 15px;">旅行</a> <a href="/tags/%E5%BD%B1%E8%A7%86/" style="font-size: 15px;">影视</a> <a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 15px;">摄影</a> <a href="/tags/%E5%9F%8E%E5%B8%82/" style="font-size: 15px;">城市</a> <a href="/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/tags/Router/" style="font-size: 15px;">Router</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">博客</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 15px;">转载</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">基础</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/NewFeatures/" style="font-size: 15px;">NewFeatures</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/%E5%81%A5%E5%BA%B7/" style="font-size: 15px;">健康</a> <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 15px;">年终总结</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/Web%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">Web技术</a> <a href="/tags/web%E6%A1%86%E6%9E%B6/" style="font-size: 15px;">web框架</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/p/630247b1a502/">潮汕三市</a></li><li class="post-list-item"><a class="post-list-link" href="/p/9263de5a5c77/">香港石澳</a></li><li class="post-list-item"><a class="post-list-link" href="/p/8832dd9b5543/">昨日的世界</a></li><li class="post-list-item"><a class="post-list-link" href="/p/4f6091246902/">风之城</a></li><li class="post-list-item"><a class="post-list-link" href="/p/fa201fa19d93/">Ubuntu 滚动更新碰到问题记录</a></li><li class="post-list-item"><a class="post-list-link" href="/p/1dd24896a65f/">索尼ZV-E10相机</a></li><li class="post-list-item"><a class="post-list-link" href="/p/3edf72b44c1a/">Redis 消息队列在 SpringBoot 中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/p/b92172fd9611/">你想活出怎样的人生 君たちはどう生きるか</a></li><li class="post-list-item"><a class="post-list-link" href="/p/c04b24b738df/">城中村生活指南</a></li><li class="post-list-item"><a class="post-list-link" href="/p/76b2256aa1ad/">昆明</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://shanks.link/" title="愿星光伴你左右" target="_blank">愿星光伴你左右</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">甘草.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo &</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Maupassant. </a> <a rel="nofollow" target="_blank" href="https://foreverblog.cn/go.html"> Wormhole.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>

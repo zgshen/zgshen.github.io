@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="zgshen,zguishen,甘甘"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@licorice128"><meta name="twitter:title" content="虚拟机环境配置备忘"><meta name="twitter:image" content="https://zguishen.com/images/blog/avatar.jpeg"><title>虚拟机环境配置备忘 | 甘草</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">虚拟机环境配置备忘</h1><a id="logo" href="/.">甘草</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/kindle/"><i class="fa fa-book"> Kindle</i></a><a href="/gallery/"><i class="fa fa-image"> Gallery</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">虚拟机环境配置备忘</h1><div class="post-meta">2021-11-15<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">系统安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">设置和软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">3.1.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh"><span class="toc-number">3.2.</span> <span class="toc-text">ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker"><span class="toc-number">3.3.</span> <span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh"><span class="toc-number">3.4.</span> <span class="toc-text">zsh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%85%E7%BB%AD"><span class="toc-number">4.</span> <span class="toc-text">待续</span></a></li></ol></div></div><div class="post-content"><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>Oracle VM VirtualBox</li>
+<li>ubuntu-20.04.2-live-server-amd64.iso</li>
+</ul>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>CPU 核心根据物理机核心数拉满，待会需要装软件能更快些</p>
+<p>存储不用分区了，感觉虚拟机分区没啥意义，需要扩容的时候反而麻烦。</p>
+<p>软件源换成国内比较快的源，比如阿里（<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> ）或者清华（<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> ）的。</p>
+<p>安装的时候把 ssh 工具安装选择勾上。</p>
+<p>安装完毕会更新一些东西，不需要就可以 reboot 了，自用虚拟机也懒得安全更新了。</p>
+<p>reboot 正常重启的话到 VirtualBox 里重启。因为是服务器版本，有 cloud-init 云环境这东西，重启后关了，用不着。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> cloud-init-local cloud-init cloud-config cloud-final</span><br><span class="line">systemctl stop cloud-init-local cloud-init cloud-config cloud-final</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置和软件安装"><a href="#设置和软件安装" class="headerlink" title="设置和软件安装"></a>设置和软件安装</h2><h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>网络问题以前写过 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u012809062/article/details/118102545">VirtualBox Ubuntu20.04 网络设置</a>，懒得搬过来了。</p>
+<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>如何之前没选择安装 ssh 工具，手动安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>客户机上 <code>ssh-keygen -t rsa</code> 生成密钥</p>
+<p>Linux 上密钥位置在当前用户目录下  <code>.ssh</code> 文件夹中，Windows 上密钥位置在 <code>C:\Users\用户名\.ssh</code> 中，公钥文件为 id_rsa.pub，私钥文件为 id_rsa</p>
+<p>将公钥文件上传到当前用户目录下 <code>/home/用户/.ssh/</code> （或者想给谁 ssh 权限放谁目录下，目录不存在先创建）</p>
+<p>创建 authorized_keys 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>将公钥写入 authorized_keys 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys`</span><br></pre></td></tr></table></figure>
+<p>注意服务器机器若也想 ssh 其他机器，.ssh 目录下要是先生成 id_rsa.pub 文件，上传的客户端公钥文件改个名，别把服务器机器自己的公钥给覆盖了。</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>原软件源中的 Docker 可能不是最新版本的</p>
+<p>更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<p>使用下面的 <code>curl</code> 导入源仓库的 GPG key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<p>将 Docker APT 软件源添加到你的系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在，Docker 软件源被启用了，你可以安装软件源中任何可用的 Docker 版本。</p>
+<p>安装 Docker 最新版本，运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>非 root 用户执行 docker 命令权限不足，不想 sudo 就把用户加到 docker 用户组，重开终端即生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &#123;用户名&#125;</span><br></pre></td></tr></table></figure>
+
+<p>想在 IDEA 或其他工具连接管理容器可以开启远程模式。</p>
+<p>编辑 docker 服务，加上远程监听服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /lib/systemd/system/docker.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span></span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H fd:// --containerd=/run/containerd/containerd.sock</span><br></pre></td></tr></table></figure>
+
+<p>reload 下守护线程，重启 docker。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>根据你的 ip 访问 http:&#x2F;&#x2F;{ip}:2375&#x2F;version，可以看到版本信息就行了。另外在 IDEA 连接 Docker 的时候需要把代理（HTTP Proxy 那地方）关了，否则连接可以会报异常<code>java.io.IOException: unexpected end of stream</code>。</p>
+<h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p>github raw 被墙，不想脚本安装就先装 zsh，再克隆git库配置一下就好了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line"><span class="built_in">cp</span> ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>vi ~&#x2F;.zshrc   修改主题</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#ZSH_THEME=<span class="string">&quot;robbyrussell&quot;</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;ys&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>echo $SHELL</code>  查看默认 shell</p>
+<p><code>chsh -s /bin/zsh</code>   设置 zsh 为默认 shell</p>
+<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2><p>...</p>
+<p>一些常用的命令配置可以写成脚本一键执行更简单。</p>
+</div><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul></div><div class="post-nav"><a class="pre" href="/p/d503987f405f/">痤疮治疗经历</a><a class="next" href="/p/a7c2d22701e6/">加内存</a></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css"><script type="text/javascript" src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script><script type="text/javascript" id="disqus-count-script">$(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '//disqus.com/next/config.json', true);
+  xhr.timeout = 2500;
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      $('.post-meta .post-comments-count').show();
+      var s = document.createElement('script');
+      s.id = 'dsq-count-scr';
+      s.src = 'https://zguishen.disqus.com/count.js';
+      s.async = true;
+      (document.head || document.body).appendChild(s);
+    }
+  };
+  xhr.ontimeout = function () { xhr.abort(); };
+  xhr.send(null);
+});</script><div class="comments" id="disqus_thread"><script type="text/javascript">// Load comments with DisqusJS
+function loadComments() {
+  window.dsqjs = new DisqusJS({
+    shortname: 'zguishen',
+    siteName: '甘草',
+    identifier: 'p/ac1501a69ec7/',
+    url: 'https://zgshen.github.io/p/ac1501a69ec7/',
+    title: '虚拟机环境配置备忘',
+    api: '',
+    apikey: '',
+    admin: '',
+    adminLabel: ''
+  });
+}
+// Lazy load {# Credit: https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/comments/disqus.swig #}
+(function () {
+  var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+  if (offsetTop <= 0) {
+    // Load directly when there's no scrollbar
+    window.addEventListener('load', loadComments, false);
+  } else {
+    var disqusScroll = function () {
+      // offsetTop may changes because of manually resizing browser window or lazy loading images
+      var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
+      var scrollTop = window.scrollY;
+
+      // Pre-load comments a bit? (margin or anything else)
+      if (offsetTop - scrollTop < 60) {
+        window.removeEventListener('scroll', disqusScroll);
+        loadComments();
+      }
+    };
+    window.addEventListener('scroll', disqusScroll);
+  }
+})();
+// Scroll to comments automatically if #comment-xxx anchor specified
+window.addEventListener('load', function () {
+  // I don't know why, it just works.
+  window.setTimeout(function () {
+    if (location.hash.indexOf('#comment-') !== -1) {
+      document.getElementById('disqus_thread').scrollIntoView(true);
+    }
+  }, 100);
+}, false);
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://zgshen.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">技术</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/KMS/" style="font-size: 15px;">KMS</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/Office/" style="font-size: 15px;">Office</a> <a href="/tags/Tiddlywiki/" style="font-size: 15px;">Tiddlywiki</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/%E5%8D%8F%E7%A8%8B/" style="font-size: 15px;">协程</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E6%92%AD%E5%AE%A2/" style="font-size: 15px;">播客</a> <a href="/tags/%E7%96%AB%E6%83%85/" style="font-size: 15px;">疫情</a> <a href="/tags/%E7%94%9F%E5%AD%98/" style="font-size: 15px;">生存</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 15px;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">笔记</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/%E4%B9%A6%E7%B1%8D/" style="font-size: 15px;">书籍</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 15px;">随笔</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/VPS/" style="font-size: 15px;">VPS</a> <a href="/tags/%E6%B2%BB%E7%96%97/" style="font-size: 15px;">治疗</a> <a href="/tags/Kubernetes/" style="font-size: 15px;">Kubernetes</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 15px;">生活</a> <a href="/tags/COVID-19/" style="font-size: 15px;">COVID-19</a> <a href="/tags/%E5%B9%BF%E5%B7%9E/" style="font-size: 15px;">广州</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 15px;">旅行</a> <a href="/tags/%E5%BD%B1%E8%A7%86/" style="font-size: 15px;">影视</a> <a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 15px;">摄影</a> <a href="/tags/%E5%9F%8E%E5%B8%82/" style="font-size: 15px;">城市</a> <a href="/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/tags/Router/" style="font-size: 15px;">Router</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">博客</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 15px;">转载</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">基础</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/NewFeatures/" style="font-size: 15px;">NewFeatures</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/%E5%81%A5%E5%BA%B7/" style="font-size: 15px;">健康</a> <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 15px;">年终总结</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">Java基础</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/Web%E6%8A%80%E6%9C%AF/" style="font-size: 15px;">Web技术</a> <a href="/tags/web%E6%A1%86%E6%9E%B6/" style="font-size: 15px;">web框架</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/p/630247b1a502/">潮汕三市</a></li><li class="post-list-item"><a class="post-list-link" href="/p/9263de5a5c77/">香港石澳</a></li><li class="post-list-item"><a class="post-list-link" href="/p/8832dd9b5543/">昨日的世界</a></li><li class="post-list-item"><a class="post-list-link" href="/p/4f6091246902/">风之城</a></li><li class="post-list-item"><a class="post-list-link" href="/p/fa201fa19d93/">Ubuntu 滚动更新碰到问题记录</a></li><li class="post-list-item"><a class="post-list-link" href="/p/1dd24896a65f/">索尼ZV-E10相机</a></li><li class="post-list-item"><a class="post-list-link" href="/p/3edf72b44c1a/">Redis 消息队列在 SpringBoot 中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/p/b92172fd9611/">你想活出怎样的人生 君たちはどう生きるか</a></li><li class="post-list-item"><a class="post-list-link" href="/p/c04b24b738df/">城中村生活指南</a></li><li class="post-list-item"><a class="post-list-link" href="/p/76b2256aa1ad/">昆明</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://shanks.link/" title="愿星光伴你左右" target="_blank">愿星光伴你左右</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">甘草.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo &</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Maupassant. </a> <a rel="nofollow" target="_blank" href="https://foreverblog.cn/go.html"> Wormhole.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
