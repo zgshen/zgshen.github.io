@@ -37,7 +37,7 @@ jobs:
           python3 kindle.py
           cd ..
           hexo g
-          tiddlywiki tiddlywiki --build index
-          mkdir public/tiddlywiki
-          mv tiddlywiki/output/index.html public/tiddlywiki
+          #tiddlywiki tiddlywiki --build index
+          #mkdir public/tiddlywiki
+          #mv tiddlywiki/output/index.html public/tiddlywiki
           hexo d
