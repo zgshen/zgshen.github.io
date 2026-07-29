@@ -18,10 +18,10 @@ comments: true
 本站信息：
 
 ```
-名称 zguishen's blog
-链接 http://blog.zguishen.com/
-头像 http://blog.zguishen.com/images/blog/avatar.jpeg
-订阅 http://blog.zguishen.com/atom.xml
+名称 甘草
+链接 http://zgshen.github.io/
+头像 http://zgshen.github.io/images/blog/avatar.jpeg
+订阅 http://zgshen.github.io/atom.xml
 ```
 
 联系：

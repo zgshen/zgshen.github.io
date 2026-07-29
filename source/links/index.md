@@ -9,17 +9,13 @@ comments: true
 本站信息：
 
 ```
-名称 zguishen's blog
-链接 http://zguishen.com/
-头像 http://zguishen.com/images/blog/avatar.jpeg
-订阅 http://zguishen.com/atom.xml
+名称 甘草
+链接 http://zgshen.github.io/
+头像 http://zgshen.github.io/images/blog/avatar.jpeg
+订阅 http://zgshen.github.io/atom.xml
 ```
 
 #### 友链
-
-- [愿星光伴你左右](http://shanks.link/)  v友
-
-- [Komi的暗影摩西岛](https://komisans.cc/)  v友
 
 
 #### 其他

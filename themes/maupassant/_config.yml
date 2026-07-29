@@ -144,10 +144,10 @@ info:
       message: RSS
 
 links:
-  - title: 愿星光伴你左右
-    url: http://shanks.link/
-    src: http://shanks.link/img/favicon.ico
-    desc: v2ex 网友
+  #- title: 名称
+  #  url: 链接
+  #  src: 图标链接
+  #  desc: 介绍
 
 timeline:
   - num: 1
